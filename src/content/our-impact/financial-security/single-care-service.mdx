@@ -1,0 +1,51 @@
+---
+slug: /our-impact/financial-security/single-care-service
+title: Single Care Service
+description: SingleCare is a trusted provider of prescription discounts, drug coupons and a prescription discount cards.
+learnMoreUrl: "/our-impact/financial-security/single-care-service"
+---
+
+import SingleCareForm from "@/components/SingleCareForm.astro";
+import LearnMoreBtn from "@/components/LearnMoreBtn.tsx";
+
+import {
+  SINGLE_CARE_TERMS_AND_CONDITIONS_URL,
+  SINGLE_CARE_PRIVACY_URL,
+} from "@/lib/constants";
+
+  <div className="mb-2 self-start ">
+    <h2>What Is SingleCare?</h2>
+    <p>
+      {" "}
+      SingleCare is a trusted provider of prescription discounts, drug coupons
+      and a prescription discount card. Our prescription discounts are
+      pre-activated, ready-to-use and free. We have provided our cardholders
+      with over $1,000,000,000 in savings. We will never charge you a fee for
+      our discounts or our prescription discount card. Search our site for
+      discounts and coupons for your prescription drugs.{" "}
+    </p>
+    <h2>How do I get a Card?</h2>
+    <p>
+      Text “family” to 700700 to receive a card on your phone. Once you have received the card, you can opt out of getting messages by
+      texting “STOP.”
+    </p>
+    <p className="lg:text-sm">Message and data
+      rates may apply.</p>
+      
+        <a
+        className="mr-2"
+          href={SINGLE_CARE_TERMS_AND_CONDITIONS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Terms</a>
+
+        <a
+          href={SINGLE_CARE_PRIVACY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Privacy</a>
+
+    <LearnMoreBtn />
+
+  </div>
+  <SingleCareForm />

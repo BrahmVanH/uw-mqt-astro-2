@@ -1,0 +1,152 @@
+---
+slug: /about/our-leadership
+title: Our Leadership
+description: United Way of Marquette County is governed by a volunteer board of directors, who represent a cross-section of the community.
+requiresGraphqlQuery: true
+---
+
+import { Image } from "astro:assets";
+import { getDefaultProps, onImageError } from "@/lib/error.ts";
+import placeholderImg from "@/image/placeholder.svg";
+
+export function ImageOne({graphqlData}) {
+  const image = {
+    src: graphqlData?.mediaItem1?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image one our culture").src,
+    alt: graphqlData?.mediaItem1?.nodes[0]?.altText ?? "Placeholder Image",
+    height: graphqlData?.mediaItem1?.nodes[0]?.mediaDetails?.height ?? 500,
+    width: graphqlData?.mediaItem1?.nodes[0]?.mediaDetails?.width ?? 500,
+  };
+  
+  if (!image?.src) {
+    onError("No wp content found for image one our leadership ");
+  }
+
+return (
+
+<Image
+  loading="lazy"
+  decoding="async"
+  height={image.height}
+  width={image.width}
+  src={image.src}
+  alt={image.alt}
+  className="max-h-[500px] w-auto justify-self-center mx-auto"
+/>
+); }
+
+export function ImageTwo({graphqlData}) {
+  const image = {
+    src: graphqlData?.mediaItem2?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image two our leadership").src,
+    alt: graphqlData?.mediaItem2?.nodes[0]?.altText ?? "Placeholder Image",
+    height: graphqlData?.mediaItem2?.nodes[0]?.mediaDetails?.height ?? 500,
+    width: graphqlData?.mediaItem2?.nodes[0]?.mediaDetails?.width ?? 500,
+  };
+  if (!image?.src) {
+    onError("No wp content found for image two our leadership ");
+  }
+
+return (
+
+<Image
+  loading="lazy"
+  decoding="async"
+  height={image.height}
+  width={image.width}
+  src={image.src}
+  alt={image.alt}
+  className=" max-h-[600px] w-auto justify-self-center mx-auto "
+/>
+); }
+
+export function ImageThree({graphqlData}) {
+  const image = {
+    src: graphqlData?.mediaItem3?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image three our leadership").src,
+    alt: graphqlData?.mediaItem3?.nodes[0]?.altText ?? "Placeholder Image",
+    height: graphqlData?.mediaItem3?.nodes[0]?.mediaDetails?.height ?? 500,
+    width: graphqlData?.mediaItem3?.nodes[0]?.mediaDetails?.width  ?? 500 ,
+  };
+  if (!image?.src) {
+    onError("No wp content found for image three our leadership ");
+  }
+
+return (
+
+<Image
+  loading="lazy"
+  decoding="async"
+  height={image.height}
+  width={image.width}
+  src={image.src}
+  alt={image.alt}
+  className="w-full max-w-[700px] justify-self-center mx-auto"
+/>
+); }
+
+<ImageOne graphqlData={props.queryData} />
+
+<div className="content">
+## Executive Director
+
+### Andrew Rickauer
+
+Andrew joined United Way of Marquette County as the Executive Director in August 2019. Andrew is an NMU graduate prior to attaining an MBA at Northern Arizona University. He brings over 20 years of business experience and a lifetime of community volunteering and involvement to the United Way. Andrew is always looking for new ways to reach out and help the community. A longtime resident of Marquette, Andrew enjoys skiing, trail running and biking with his wife Krystyna and their three girls.
+
+Email: [arickauer@uwmqt.org](mailto:arickauer@uwmqt.org)
+Phone: [906-226-8171](tel:+1-906-226-8171) x 302
+
+</div>
+
+<ImageTwo graphqlData={props.queryData} />
+
+<div className="content">
+## 2024-25 Campaign Co-Chairs
+
+Megan O'Connor and Jesse Renfors
+Megan O’Connor are a dynamic force in the Marquette County community, balancing multiple roles with passion and dedication. She serves as the Director of Missionary Stewardship for the Diocese of Marquette, hosts WZMQ19’s
+“What’s UP with Megan” as a New Contributor, coordinates marketing for the South Shore Fishing Association, and cantors at St. Peter Cathedral. Megan earned her bachelor’s degree in communication studies from Northern Michigan University.
+
+Megan spent her early years in Manistique before moving downstate. In 2015, she returned to the Upper Peninsula. Beyond her professional work, Megan is actively involved in volunteering with the Marquette County Veteran Alliance, local events, and various Catholic-based activities. Outside of her commitments, she enjoys spending time with her new husband, whom she married on September 21, 2024.
+
+Megan expresses, “Serving the Marquette community has been an honor and a privilege. As the youngest UWMC campaign co-chair, I’m excited to contribute to the United Way campaign for my second year.”
+
+Jesse Renfors is a dedicated community leader and entrepreneur with deep roots in Marquette County. Following the acquisition of industry experience, he returned to the UP to establish Provisions MQT. Renfors is a proven advocate for youth development, having served as a coach for multiple local sports organizations including the 906 Adventure team and Marquette and Cody Junior Hockey programs. His commitment to community service is demonstrated through his board memberships with organizations such as the Yellowstone Recreation Foundation and Park County Pedalers, as well as his active participation in initiatives like Start the Cycle. A member of the NMU Hospitality Leadership Advisory Committee, Renfors contributes to the local economy while fully embracing the Marquette County lifestyle with his family.
+
+</div>
+
+<div className="col-span-2">
+## United Way of Marquette County 2024-25 Board of Directors
+
+<ImageThree graphqlData={props.queryData} />
+<div className=" w-3/4 justify-self-center">
+<div  className="contents text-md">
+
+### Officers and Chairs
+
+| Name                 | Officers/Chairs                                  | Affiliation         |
+| -------------------- | ------------------------------------------------ | ------------------- |
+| Dr Greg Nyen         | President                                        | MARESA              |
+| Genevieve Morgan     | Vice President                                   | NMU                 |
+| Linda St. Arnauld    | Secretary                                        | Retired, BCBSM      |
+| Dave Black           | Treasurer                                        | Embers Credit Union |
+| Shawn Beckman-Owsley | Chair, Community Investment Committee            | Marquette Co. Title |
+| Jennifer Wieczorek   | Chair, Campaign & Community Investment Committee | UPHP                |
+
+  </div>
+  <div className="contents text-md">
+### Members and Affiliates
+
+| Name                  | Affiliation                        |
+| --------------------- | ---------------------------------- |
+| Mike Angeli III       | Lindberg & Sons                    |
+| Ann Crandell-Williams | NMU                                |
+| Richard Graybill      | Graybill & Meade, Attorneys at Law |
+| Dana LaLonde          | MI AFL-CIO                         |
+| Gabe Seelen           | SEMCO                              |
+| Mike Angeli II        | Retired, City of Marquette         |
+| Ryan Stern            | MI Building Trades                 |
+| Tim Wakkuri           | Peninsula Medical Center           |
+
+</div>
+</div>
+
+</div>

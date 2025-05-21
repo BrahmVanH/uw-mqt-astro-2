@@ -1,0 +1,169 @@
+---
+slug: /get-involved/partner/campaign-toolkit
+title: Campaign Toolkit
+description: United Way’s Workplace Campaigns are about bringing your coworkers and staff together through the workplace to inspire change and build your local communities.
+requiresGraphqlQuery: true
+---
+
+import { WP_URL_SRVR as WP_URL } from "astro:env/server";
+import { Image as AstroImage } from "astro:assets";
+import { getDefaultProps, onImageError } from "@/lib/error.ts";
+import { UW_MQT_LOGO_SVG_URL_ENDPOINT } from "@/lib/constants.ts";
+
+import Loading from "@/components/Loading.astro";
+
+import logo from "@/image/logo-mqt-2.svg";
+
+export function KeyToolsForCampaignLeaders({ queryData }) {
+const keyToolsContent = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields || null;
+
+if (!keyToolsContent) {
+return getDefaultProps("No wp content found for key tools for campaign leaders");
+}
+const pledgeForm =
+keyToolsContent?.pledgeForm?.node?.mediaItemUrl ?? "";
+const radioPSAAudio =
+keyToolsContent?.radioPsaAudio?.node?.mediaItemUrl ?? "";
+const radioPSATranscript =
+keyToolsContent?.radioPsaTranscript?.node?.mediaItemUrl ?? "";
+const workplacePacket =
+keyToolsContent?.workplacePacket?.node?.mediaItemUrl ?? "";
+
+const logoUrl = WP_URL ? `${WP_URL}${UW_MQT_LOGO_SVG_URL_ENDPOINT}` : onImageError("No WP URL found for logo campaign toolkit").src;
+
+if (!logoUrl) {
+return Loading;
+}
+
+return (
+
+    <div>
+      <h2 className="uppercase text-lg lg:text-xl text-primary-blue-2 text-pretty md:text-nowrap">
+        Key Tools for Campaign Leaders
+      </h2>
+      <div className="flex flex-col text-left items-start ">
+        <div className="flex flex-col items-start">
+          <h3 className="text-lg font-bold">
+            United Way of Marquette County Logo SVG
+          </h3>
+        {logoUrl &&  <a className="py-0" href={logoUrl} target="_blank" rel="noopener noreferrer">
+            <AstroImage
+            loading="lazy"
+            decoding="async"
+              src={logoUrl}
+              alt="United Way of Marquette County Logo"
+              className="w-20 mt-2 mb-0 py-0 font-heading"
+             width={200}
+            height={92.8}
+            format="svg"
+
+            />
+          </a>}
+        </div>
+        <div className="flex flex-col items-start">
+          <h3 className="text-lg font-bold">Pledge Form</h3>
+          <a href={pledgeForm} target="_blank" rel="noopener noreferrer">
+            Download Pledge Form
+          </a>
+        </div>
+        <div className="flex flex-col items-start">
+          <h3 className="text-lg font-bold">Workplace Packet</h3>
+          <a href={workplacePacket} target="_blank" rel="noopener noreferrer">
+            Download Workplace Packet
+          </a>
+        </div>
+        <div className="flex flex-col items-start">
+          <h3 className="text-lg font-bold">Radio PSA</h3>
+          <a href={radioPSAAudio} target="_blank" rel="noopener noreferrer">
+            Download Radio PSA Audio
+          </a>
+          <a href={radioPSATranscript} target="_blank" rel="noopener noreferrer">
+            Download Radio PSA Transcript
+          </a>
+        </div>
+      </div>
+    </div>
+
+);
+
+}
+
+export function Collage({ queryData }) {
+  const collageImages = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields?.collageImages;
+  
+  if (!collageImages) {
+    return getDefaultProps("No wp content found for collage images");
+  }
+
+// Create array of images from the collageImages object
+const images = Object.keys(collageImages)
+.filter(key => key.startsWith('image'))
+.map(key => ({
+url: collageImages[key]?.node?.sourceUrl || '',
+alt: collageImages[key]?.node?.altText || '',
+height: collageImages[key]?.node?.mediaDetails?.height || 400,
+width: collageImages[key]?.node?.mediaDetails?.width || 800,
+}))
+.filter(img => img.url);
+
+if (!images.length) {
+return getDefaultProps("No valid images found for collage");
+}
+
+return (
+
+<div className="relative grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3 min-h-[382px] xs:min-h-[448px] sm:min-h-[488px] lg:min-h-[512px] max-h-screen max-w-[1000px] xl:max-w-[1400px]">
+  <div className="absolute w-full  flex flex-wrap justify-center items-center gap-2 p-2 z-10 my-auto">
+    {images.map((img, index) => (
+      <AstroImage
+        key={index}
+        src={img.url}
+        alt={img.alt}
+        height={img.height}
+        width={img.width}
+        format="webp"
+        class={`object-cover shadow-md my-0 ${
+          index < 2
+            ? "block"
+            : index < 3
+              ? "hidden md:block"
+              : index < 5
+                ? "hidden lg:block"
+                : index < 6
+                  ? "hidden xl:block"
+                  : "hidden 2xl:block"
+        }`}
+      />
+    ))}
+  </div>
+  <div className="h-full w-full bg-primary-blue-1" />
+  <div className="h-full w-full bg-primary-blue-2" />
+  <div className="h-full w-full bg-primary-yellow-1" />
+</div>
+); }
+
+{props?.queryData && <Collage queryData={props?.queryData} />}
+
+Welcome, Campaign Coordinators!
+
+United Way’s Workplace Campaigns are about bringing your coworkers and staff together through the workplace to inspire change and build your local communities. Campaigns make it easy for your company, agency or group to make impacts on their communities by giving. Not only does workplace campaigns make giving easier by allowing for small increments to build into larger gifts, but it also educates your community about local issues, and connecting them with resources or opportunities to help those in need.
+
+United Way wants to make your workplace campaign easy and successful! The following materials will help you achieve a best practice campaign. If you have any questions or need additional resources, please contact Andrew Rickauer at [(906) 226-8171](tel:+1-906-226-8171) or [arickauer@uwmqt.org](mailto:arickauer@uwmqt.org)
+
+## It Starts With You!
+
+Running a campaign means that you are playing a critical role in building the communities around us. Every workplace is different, so every workplace campaign is also different! We can help you every step of the way on finding the materials, volunteer opportunities, and messaging that fits for your campaign.
+
+## Start a Workplace Campaign
+
+Strong Businesses Make Strong Communities. Strong Communities Make Strong Businesses. Whether you’re a small business, large corporation, or a nonprofit, you can join the more than 100 local businesses and organizations that are making a difference through their workplace campaigns.
+
+### Benefits of a Workplace Campaign
+
+- Build Your Team
+- Engaging current and prospective employees in a community partnership strengthens staff retention, boosts morale and provides development opportunities.
+- Build Your Business
+- See increased sales and improved client relationships. A recent national study found that 70% of consumers are willing to pay more for products from socially responsible companies. (Corporate Social Responsibility Perceptions Survey 2010, PENN SCHOEN BERLAND)
+- Build Your Reputation
+- Community focus strengthens you as an industry and community leader with stakeholders, employees and customers.
+  {props?.queryData && <KeyToolsForCampaignLeaders queryData={props?.queryData} />}

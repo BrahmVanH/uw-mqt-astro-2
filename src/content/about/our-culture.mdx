@@ -1,0 +1,99 @@
+---
+slug: /about/our-culture
+title: Our Culture
+description: United Way fights for the health, education, and financial stability of every person in every community.
+requiresGraphqlQuery: true
+---
+
+import { Image } from "astro:assets";
+import { getDefaultProps, onImageError } from "@/lib/error.ts";
+import placeholderImg from "@/image/placeholder.svg";
+
+export function ImageOne({ queryData }) {
+  if (!queryData?.mediaItem1?.nodes[0]) {
+    return <Image loading="lazy" decoding="async"
+      src={placeholderImg}
+      alt="Placeholder Image"
+      class="w-full"
+    />;
+  }
+
+const image = {
+src: queryData.mediaItem1.nodes[0].mediaItemUrl ?? onImageError("No image found for ImageOne").src,
+alt: queryData.mediaItem1.nodes[0].altText ?? "Placeholder Image",
+height: queryData.mediaItem1.nodes[0].mediaDetails?.height ?? 500,
+width: queryData.mediaItem1.nodes[0].mediaDetails?.width ?? 500,
+};
+
+return (
+
+<Image
+  loading="lazy"
+  decoding="async"
+  height={image.height}
+  width={image.width}
+  src={image.src}
+  alt={image.alt}
+  class="w-full"
+/>
+); }
+
+export function ImageTwo({ queryData }) {
+  if (!queryData?.mediaItem2?.nodes[0]) {
+    return <Image loading="lazy" decoding="async"
+      src={placeholderImg}
+      alt="Placeholder Image"
+      class="w-full"
+    />;
+  }
+
+const image = {
+src: queryData.mediaItem2.nodes[0].mediaItemUrl,
+alt: queryData.mediaItem2.nodes[0].altText ?? "Placeholder Image",
+height: queryData.mediaItem2.nodes[0].mediaDetails?.height ?? 500,
+width: queryData.mediaItem2.nodes[0].mediaDetails?.width ?? 500,
+};
+
+return (
+
+<Image
+  loading="lazy"
+  decoding="async"
+  height={image.height}
+  width={image.width}
+  src={image.src}
+  alt={image.alt}
+  class="w-full"
+/>
+); }
+
+<div className="content"> 
+      ## DIVERSITY, EQUITY & INCLUSION STATEMENT OF PRINCIPLE
+
+      We take the broadest possible view of diversity.
+      We value the visible and invisible qualities that make you who you are.
+      We welcome that every person brings a unique perspective and experience to advance our mission and progress our fight for the health, education, and financial stability of every person in every community.
+      We believe that each United Way community member, donor, volunteer, advocate, and employee must have equal access to solving community problems.
+      We strive to include diversity, equity, and inclusion practices at the center of our daily work.
+      We commit to using these practices for our business and our communities.
+      Join us in embracing diversity, equity and inclusion for every person in every community.
+      LIVE UNITED
+
+</div>
+
+<ImageOne queryData={props.queryData} />
+
+<div className="content">
+
+      ## ANTI-RACISM & ETHNIC DISCRIMINATION STATEMENT
+
+      United Way of Marquette County recognizes there are various forms of racism and ethnic discrimination that have contributed to racial disparities, existing both in the past and persisting today. We unequivocally denounce racism/ethnic discrimination because it undermines the well-being and vitality of any community. Our United Way strives to egnage community members and organizations to work together to provide equity to all of our citizens. We work with public and private partners to co-create solutions that ensure everyone has the resources, support, opportunities, and networks they need to thrive.
+      Adopted 06-17-2021
+
+</div>
+
+<ImageTwo queryData={props.queryData} />
+
+<h2 className="text-primary-blue-2 col-span-2 text-md font-bold">
+  {frontmatter.description}
+</h2>
