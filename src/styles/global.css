@@ -1,441 +1,111 @@
-/**
- * United Way MQT - Global Styles
- * 
- * This file defines the core design system and global styling for the United Way application.
- * It leverages Tailwind CSS v4 with the Oklch color format for greater precision and consistency.
- */
+@import "tailwindcss";
 
-/* Core framework imports */
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
-/* Dark mode variant implementation (Tailwind 4 feature) */
 @custom-variant dark (&:is(.dark *));
 
-/**
- * Design System - Light Theme (Default)
- * 
- * This design system implements a comprehensive set of tokens using the Oklch color space,
- * which provides perceptually uniform colors with better contrast across devices.
- * 
- * Color tokens are organized in several categories:
- * - Core UI colors: background, foreground, card, etc.
- * - Semantic colors: primary, secondary, tertiary
- * - Utility colors: muted, accent, destructive
- * - Component-specific colors: sidebar, chart
- * - Brand color palette: variations of primary colors (blue, red, yellow, etc.)
- */
 :root {
-	/* Border radius - Applied consistently across components */
-	--radius: 0.625rem;
-
-	/* Core UI colors - Base application surfaces and text */
-	--background: oklch(1 0 0); /* Pure white background */
-	--foreground: oklch(0.24 0.0064 0.61); /* Near-black text, slightly warm */
-	--card: oklch(0.985 0 0); /* Subtle off-white for card backgrounds */
-	--card-foreground: oklch(0.24 0.0064 0.61); /* Card text color (same as main foreground) */
-	--popover: oklch(0.985 0 0); /* Popover background matching cards */
-	--popover-foreground: oklch(0.24 0.0064 0.61); /* Popover text color */
-
-	/* Primary colors - Main brand blue */
-	--primary: oklch(0.62 0.0615 228.49); /* United Way brand blue */
-	--primary-foreground: oklch(1 0 0); /* White text on primary backgrounds */
-
-	/* Secondary colors - Gold/amber accent */
-	--secondary: oklch(0.8 0.0319 81.73 / 60%); /* Light gold/amber with transparency */
-	--secondary-foreground: oklch(0.24 0.0064 0.61); /* Dark text on secondary backgrounds */
-
-	/* Tertiary colors - Teal complementary color */
-	--tertiary: oklch(0.72 0.05 151.85); /* Soft teal complement */
-	--tertiary-foreground: oklch(0.85 0 0); /* Light text on tertiary backgrounds */
-
-	/* Neutral scale - Grays and blacks for UI elements */
-	--tertiary-black-1: oklch(0.51 0.0034 264.53); /* Medium gray */
-	--tertiary-black-2: oklch(0.24 0.0064 0.61); /* Dark gray (near black) */
-	--tertiary-black-3: oklch(0.7 0 0); /* Light gray */
-	--tertiary-black-4: oklch(0.85 0 0); /* Very light gray */
-
-	/* Utility colors - For status, indicators and backgrounds */
-	--muted: oklch(0.95 0 0); /* Very light gray background */
-	--muted-foreground: oklch(0.51 0.0034 264.53); /* Medium gray text for less emphasis */
-	--accent: oklch(0.85 0.02 228.49); /* Lighter primary for subtle accents */
-	--accent-foreground: oklch(0.24 0.0064 0.61); /* Dark text on accent backgrounds */
-	--destructive: oklch(0.65 0.24 27.325); /* Red for warnings and errors */
-	--destructive-foreground: oklch(0.95 0 0); /* Light text on destructive backgrounds */
-
-	/* Border, input and focus colors */
-	--border: oklch(0.87 0.01 228.49); /* Subtle primary-tinted border */
-	--input: oklch(0.92 0.01 228.49); /* Very subtle primary-tinted input */
-	--ring: oklch(0.62 0.0615 228.49 / 30%); /* Primary with transparency for focus */
-
-	/* Chart colors - For data visualization */
-	--chart-1: oklch(0.646 0.222 41.116); /* Amber */
-	--chart-2: oklch(0.6 0.118 184.704); /* Teal */
-	--chart-3: oklch(0.55 0.12 227.392); /* Blue */
-	--chart-4: oklch(0.65 0.15 264.376); /* Purple */
-	--chart-5: oklch(0.75 0.15 81.73); /* Gold */
-
-	/* Sidebar component specific colors */
-	--sidebar: oklch(0.985 0 0); /* Sidebar background */
-	--sidebar-foreground: oklch(0.24 0.0064 0.61); /* Sidebar text */
-	--sidebar-primary: oklch(0.62 0.0615 228.49); /* Sidebar accent (primary) */
-	--sidebar-primary-foreground: oklch(1 0 0); /* Text on sidebar primary */
-	--sidebar-accent: oklch(0.95 0 0); /* Sidebar secondary background */
-	--sidebar-accent-foreground: oklch(0.24 0.0064 0.61); /* Text on sidebar accent */
-	--sidebar-border: oklch(0.87 0.01 228.49); /* Sidebar borders */
-	--sidebar-ring: oklch(0.62 0.0615 228.49 / 30%); /* Sidebar focus rings */
-
-	/* Extended color palette - Brand colors with variant shades */
-	/* Blue palette - Primary brand color */
-	--primary-blue-1: oklch(0.58 0.12 240); /* Standard blue */
-	--primary-blue-2: oklch(0.35 0.08 255); /* Dark blue */
-	--primary-blue-3: oklch(0.46 0.1 245); /* Medium blue */
-	--primary-blue-4: oklch(0.85 0.05 235); /* Light blue */
-
-	/* Red palette - For emphasis and CTAs */
-	--primary-red-1: oklch(0.65 0.27 25); /* Standard red */
-	--primary-red-2: oklch(0.55 0.25 20); /* Dark red */
-	--primary-red-3: oklch(0.75 0.2 30); /* Medium red */
-	--primary-red-4: oklch(0.9 0.07 25); /* Light red */
-
-	/* Yellow palette - For highlights and warnings */
-	--primary-yellow-1: oklch(0.8 0.18 80); /* Standard yellow */
-	--primary-yellow-2: oklch(0.7 0.2 60); /* Dark yellow/gold */
-	--primary-yellow-3: oklch(0.85 0.15 85); /* Medium yellow */
-	--primary-yellow-4: oklch(0.95 0.05 80); /* Light yellow */
-
-	/* Green palette - For success states and positive indicators */
-	--secondary-green-1: oklch(0.65 0.15 155); /* Standard green */
-	--secondary-green-2: oklch(0.5 0.12 150); /* Dark green */
-	--secondary-green-3: oklch(0.8 0.1 160); /* Medium green */
-	--secondary-green-4: oklch(0.92 0.05 155); /* Light green */
-
-	/* Purple palette - For specialized UI elements */
-	--tertiary-purple-1: oklch(0.65 0.15 290); /* Standard purple */
-	--tertiary-purple-2: oklch(0.53 0.18 280); /* Dark purple */
-	--tertiary-purple-3: oklch(0.75 0.12 290); /* Medium purple */
-	--tertiary-purple-4: oklch(0.9 0.05 285); /* Light purple */
-
-	/* Typography - Font family definitions */
-	--font-heading: 'Antonio', sans-serif; /* Display and heading font */
-	--font-body: 'Palanquin', sans-serif; /* Body text font */
-	--font-donate-form: 'IBM Plex Sans', sans-serif; /* Form-specific font */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-/**
- * Design System - Dark Theme
- * 
- * Dark theme overrides with higher contrast colors for better accessibility 
- * and readability in low-light environments. Color modifications preserve
- * the brand identity while adapting to dark backgrounds.
- */
 .dark {
-	/* Core UI colors - Dark mode surfaces and text */
-	--background: oklch(0.1 0 0); /* Deep black background for lower eye strain */
-	--foreground: oklch(0.95 0 0); /* Near-white text for high contrast */
-	--card: oklch(0.15 0 0); /* Slightly lighter than background for cards */
-	--card-foreground: oklch(0.95 0 0); /* Consistent with main foreground for readability */
-	--popover: oklch(0.15 0 0); /* Matching card background for consistency */
-	--popover-foreground: oklch(0.95 0 0); /* Consistent with card text color */
-
-	/* Primary colors - Enhanced for dark mode visibility */
-	--primary: oklch(0.65 0.08 228.49); /* Brightened brand blue for dark backgrounds */
-	--primary-foreground: oklch(1 0 0); /* Pure white on primary for maximum contrast */
-
-	/* Secondary colors - Enhanced for dark mode visibility */
-	--secondary: oklch(0.7 0.05 81.73); /* Brighter gold accent for dark backgrounds */
-	--secondary-foreground: oklch(1 0 0); /* White on secondary for better visibility */
-
-	/* Tertiary colors - Enhanced for dark mode */
-	--tertiary: oklch(0.65 0.07 151.85); /* Brightened teal for dark backgrounds */
-	--tertiary-foreground: oklch(1 0 0); /* White on tertiary for better contrast */
-
-	/* Neutral scale - Inverted for dark mode */
-	--tertiary-black-1: oklch(0.65 0.01 264.53); /* Light gray in dark mode */
-	--tertiary-black-2: oklch(0.8 0.01 0.61); /* Lighter gray in dark mode */
-	--tertiary-black-3: oklch(0.85 0 0); /* Very light gray in dark mode */
-	--tertiary-black-4: oklch(0.95 0 0); /* Near-white in dark mode */
-
-	/* Utility colors - Dark mode variants */
-	--muted: oklch(0.2 0 0); /* Subtle dark background for muted elements */
-	--muted-foreground: oklch(0.75 0 0); /* Lighter text for less emphasis, still readable */
-	--accent: oklch(0.2 0 0); /* Dark mode accent background */
-	--accent-foreground: oklch(0.95 0 0); /* High contrast text on accent */
-	--destructive: oklch(0.6 0.2 22); /* Warmer red that's visible on dark backgrounds */
-	--destructive-foreground: oklch(0.95 0 0); /* Near-white text on destructive elements */
-
-	/* Border and input - Dark mode */
-	--border: oklch(0.25 0 0); /* Subtle dark mode border */
-	--input: oklch(0.2 0 0); /* Input background slightly lighter than base */
-	--ring: oklch(0.65 0.08 228.49 / 40%); /* Focus ring with higher opacity for visibility */
-
-	/* Chart colors - Enhanced saturation for dark mode */
-	--chart-1: oklch(0.7 0.22 41); /* Brighter amber for dark backgrounds */
-	--chart-2: oklch(0.65 0.15 184); /* Brighter teal for dark backgrounds */
-	--chart-3: oklch(0.65 0.15 227); /* Brighter blue for dark backgrounds */
-	--chart-4: oklch(0.65 0.18 264); /* Brighter purple for dark backgrounds */
-	--chart-5: oklch(0.7 0.18 81); /* Brighter gold for dark backgrounds */
-
-	/* Sidebar - Dark mode */
-	--sidebar: oklch(0.15 0 0); /* Slightly elevated background for sidebar */
-	--sidebar-foreground: oklch(0.95 0 0); /* High contrast text in sidebar */
-	--sidebar-primary: oklch(0.65 0.08 228.49); /* Matching primary brand color */
-	--sidebar-primary-foreground: oklch(1 0 0); /* White text on sidebar primary */
-	--sidebar-accent: oklch(0.2 0 0); /* Dark accent background for sidebar */
-	--sidebar-accent-foreground: oklch(0.95 0 0); /* High contrast text on sidebar accent */
-	--sidebar-border: oklch(0.25 0 0); /* Subtle borders for sidebar elements */
-	--sidebar-ring: oklch(0.65 0.08 228.49 / 40%); /* Focus indicator for sidebar elements */
-
-	/* Extended color palette - Dark mode variants with increased brightness/saturation */
-	--primary-blue-1: oklch(0.65 0.12 240); /* Brightened standard blue */
-	--primary-blue-2: oklch(0.42 0.08 255); /* Adjusted dark blue for dark mode */
-	--primary-blue-3: oklch(0.55 0.1 245); /* Brightened medium blue */
-	--primary-blue-4: oklch(0.75 0.05 235); /* Lighter blue for dark backgrounds */
-
-	--primary-red-1: oklch(0.68 0.27 25); /* Brightened standard red */
-	--primary-red-2: oklch(0.58 0.25 20); /* Adjusted dark red for dark mode */
-	--primary-red-3: oklch(0.78 0.2 30); /* Brightened medium red */
-	--primary-red-4: oklch(0.88 0.07 25); /* Lighter red for dark backgrounds */
-
-	--primary-yellow-1: oklch(0.78 0.18 80); /* Brightened standard yellow */
-	--primary-yellow-2: oklch(0.68 0.2 60); /* Adjusted dark yellow for dark mode */
-	--primary-yellow-3: oklch(0.83 0.15 85); /* Brightened medium yellow */
-	--primary-yellow-4: oklch(0.9 0.05 80); /* Lighter yellow for dark backgrounds */
-
-	--secondary-green-1: oklch(0.63 0.15 155); /* Brightened standard green */
-	--secondary-green-2: oklch(0.48 0.12 150); /* Adjusted dark green for dark mode */
-	--secondary-green-3: oklch(0.78 0.1 160); /* Brightened medium green */
-	--secondary-green-4: oklch(0.88 0.05 155); /* Lighter green for dark backgrounds */
-
-	--tertiary-purple-1: oklch(0.67 0.15 290); /* Brightened standard purple */
-	--tertiary-purple-2: oklch(0.55 0.18 280); /* Adjusted dark purple for dark mode */
-	--tertiary-purple-3: oklch(0.73 0.12 290); /* Brightened medium purple */
-	--tertiary-purple-4: oklch(0.85 0.05 285); /* Lighter purple for dark backgrounds */
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-/**
- * Tailwind 4 Theme Mapping
- * 
- * This section maps our CSS variables to Tailwind's configuration system.
- * Tailwind 4 introduces the @theme inline directive which allows direct 
- * mapping of design tokens to CSS variables without a separate config file.
- */
 @theme inline {
-	/* Radius values - Derived from the base radius for consistent scaling */
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
-
-	/* Font size values - Typographic scale for the application */
-	--font-size-sm: 14px;
-	--font-size-md: 18px;
-	--font-size-lg: 20px;
-	--font-size-xl: 30px;
-	--font-size-2xl: 44px;
-	--font-size-3xl: 60px;
-	--font-size-4xl: 85px;
-
-	/* Map color variables for Tailwind 4 compatibility */
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-tertiary: var(--tertiary);
-	--color-tertiary-foreground: var(--tertiary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-border: var(--border);
-	--color-input: var(--input);
-	--color-ring: var(--ring);
-	--color-chart-1: var(--chart-1);
-	--color-chart-2: var(--chart-2);
-	--color-chart-3: var(--chart-3);
-	--color-chart-4: var(--chart-4);
-	--color-chart-5: var(--chart-5);
-	--color-sidebar: var(--sidebar);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-ring: var(--sidebar-ring);
-
-	/* Map extended color palette for Tailwind 4 */
-	--color-primary-blue-1: var(--primary-blue-1);
-	--color-primary-blue-2: var(--primary-blue-2);
-	--color-primary-blue-3: var(--primary-blue-3);
-	--color-primary-blue-4: var(--primary-blue-4);
-	--color-primary-red-1: var(--primary-red-1);
-	--color-primary-red-2: var(--primary-red-2);
-	--color-primary-red-3: var(--primary-red-3);
-	--color-primary-red-4: var(--primary-red-4);
-	--color-primary-yellow-1: var(--primary-yellow-1);
-	--color-primary-yellow-2: var(--primary-yellow-2);
-	--color-primary-yellow-3: var(--primary-yellow-3);
-	--color-primary-yellow-4: var(--primary-yellow-4);
-	--color-secondary-green-1: var(--secondary-green-1);
-	--color-secondary-green-2: var(--secondary-green-2);
-	--color-secondary-green-3: var(--secondary-green-3);
-	--color-secondary-green-4: var(--secondary-green-4);
-	--color-tertiary-purple-1: var(--tertiary-purple-1);
-	--color-tertiary-purple-2: var(--tertiary-purple-2);
-	--color-tertiary-purple-3: var(--tertiary-purple-3);
-	--color-tertiary-purple-4: var(--tertiary-purple-4);
-	--color-tertiary-black-1: var(--tertiary-black-1);
-	--color-tertiary-black-2: var(--tertiary-black-2);
-	--color-tertiary-black-3: var(--tertiary-black-3);
-	--color-tertiary-black-4: var(--tertiary-black-4);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/**
- * Base Layer Styles
- * 
- * This section defines core element styles that serve as the foundation
- * for the entire application. These styles establish typography, spacing,
- * and interactive behaviors for HTML elements.
- */
 @layer base {
-	/* Global box model and focus state defaults */
-	* {
-		@apply border-border outline-ring/50;
-	}
-
-	/* Base body styling with responsive constraints */
-	body {
-		@apply bg-background text-foreground;
-		font-family: var(--font-body);
-		font-size: var(--font-size-sm);
-		font-weight: 400;
-		width: 100%;
-		min-height: 100vh;
-		max-width: 1800px;
-		margin: auto;
-		overflow-x: hidden;
-	}
-
-	/* Heading typography with brand styling */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: var(--font-heading);
-		font-weight: 700;
-		line-height: 1.0667;
-		text-transform: uppercase;
-	}
-
-	/* Paragraph spacing and readability */
-	p {
-		line-height: 1.375;
-	}
-
-	/* Link styling defaults */
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	/* Button typography consistency */
-	button {
-		font-family: var(--font-body);
-		font-weight: 400;
-	}
-
-	/* Focus states for accessibility and visual feedback */
-	*:focus {
-		box-shadow: 0 0 0 0.5px var(--primary-blue-3);
-		text-shadow: var(--primary-blue-2);
-		scale: 1.15;
-	}
-
-	/* Enhanced focus visibility for keyboard navigation */
-	*:focus-visible {
-		outline: 2px solid var(--primary-blue-3);
-		box-shadow: 0 0 0 4px var(--primary-blue-4);
-		border-radius: 2px;
-		scale: 1.05;
-		transition: all 0.2s ease-in-out;
-	}
-
-	/* Remove focus styles when using mouse for better aesthetics */
-	*:focus:not(:focus-visible) {
-		outline: none;
-		box-shadow: none;
-		scale: 1;
-	}
-
-	/**
-     * Scrollbar Styling
-     * 
-     * Custom scrollbar appearance across browsers for a consistent look.
-     * Minimal styling improves UI cleanliness while maintaining usability.
-     */
-
-	/* Webkit browsers (Chrome, Safari, Edge) */
-	::-webkit-scrollbar {
-		width: 1px !important;
-		height: 1px !important;
-	}
-
-	::-webkit-scrollbar-track {
-		background: transparent !important;
-		border-radius: 100% !important;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background: var(--primary-blue-3) !important;
-		border-radius: 100% !important;
-	}
-
-	/* Firefox scrollbar */
-	* {
-		scrollbar-width: thin !important;
-		scrollbar-color: var(--primary-blue-3) transparent !important;
-	}
-
-	/* Utility classes for scrollbar customization */
-	.scrollbar-hide {
-		-ms-overflow-style: none !important;
-		scrollbar-width: none !important;
-	}
-
-	.scrollbar-hide::-webkit-scrollbar {
-		display: none;
-		width: 0px !important;
-		height: 0px !important;
-	}
-
-	/* Smooth scrolling behavior */
-	.scroll-smooth {
-		scroll-behavior: smooth;
-	}
-
-	/**
-     * Gradient Utilities
-     * 
-     * Pre-defined gradient styles for UI elements that need visual depth
-     * without requiring custom CSS for each implementation.
-     */
-	.tertiary-black-gradient {
-		background: linear-gradient(135deg, var(--tertiary-black-4) 0%, var(--tertiary-black-3) 100%);
-		transition: all 0.4s ease;
-		opacity: 0.6;
-	}
-
-	.tertiary-black-gradient:hover {
-		background: linear-gradient(135deg, var(--tertiary-black-3) 0%, var(--tertiary-black-4) 100%);
-	}
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
