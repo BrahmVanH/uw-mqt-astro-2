@@ -1,0 +1,84 @@
+---
+export const prerender = false;
+
+import getPageContent from '@/lib/API';
+
+// component imports
+import Layout from '@/layouts/DefaultLayout.astro';
+import OurImpactPageHero, { createProps as createHeroProps } from '@/components/OurImpactPageHero.astro';
+import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStats/index.astro';
+import FourPillarsCards, { createProps as createFourPillarsPreviewProps } from '@/components/FourPillarsPreview/index.astro';
+import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
+import type { OurImpactPageQueryResponse } from '@/types';
+import FrequentlyAskedQuestions, { createProps as createFAQProps } from '@/components/FrequentlyAskedQuestionsAccordion';
+import { onError } from '@/lib/error';
+
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+const path = Astro.url.pathname;
+const queryResponse = await getPageContent(path);
+
+const pageContent: OurImpactPageQueryResponse = queryResponse;
+
+if (!pageContent) {
+	onError('No data returned from the server our impact page query', Astro);
+}
+
+const heroContent = pageContent?.heroComponentOurImpactPages;
+
+const heroProps = createHeroProps(heroContent);
+
+const fourPillarsContent = pageContent?.fourPillarsPreviews;
+
+const fourPillarsProps = createFourPillarsPreviewProps(fourPillarsContent);
+
+const howToContributeContent = pageContent?.howToContributeComponents;
+
+const howToContributeProps = createHowToContributeProps(howToContributeContent);
+
+const ourImpactStatsContent = pageContent?.impactStatistics;
+
+const ourImpactStatsProps = createImpactStatsProps(ourImpactStatsContent);
+const faqProps = createFAQProps(pageContent?.faqs);
+---
+
+<Layout title={'Our Impact | United Way Marquette County'}>
+	<main id='main-content' class='flow'>
+		<h2 class='sr-only'>Our Impact</h2>
+		<OurImpactPageHero {...heroProps} />
+		<div class='content-sections'>
+			<section aria-labelledby='pillars-title'>
+				<h2 id='pillars-title' class='sr-only'>Our Four Pillars</h2>
+				<FourPillarsCards {...fourPillarsProps} />
+			</section>
+
+			<section aria-labelledby='contribute-title'>
+				<h2 id='contribute-title' class='sr-only'>How To Contribute</h2>
+				<HowToContribute {...howToContributeProps} />
+			</section>
+
+			<section aria-labelledby='stats-title'>
+				<h2 id='stats-title' class='sr-only'>Impact Statistics</h2>
+				<OurImpactStats {...ourImpactStatsProps} />
+			</section>
+
+			<section aria-labelledby='faq-title'>
+				<h2 id='faq-title' class='sr-only'>Frequently Asked Questions</h2>
+				<FrequentlyAskedQuestions {...faqProps} client:visible />
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.flow > * + * {
+		margin-top: var(--flow-space, 1rem);
+	}
+	[data-icon] {
+		color: black;
+		stroke: black;
+		fill: hwb(0 0% 100%);
+	}
+</style>

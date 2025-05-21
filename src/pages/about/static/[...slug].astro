@@ -1,0 +1,72 @@
+---
+export const prerender = true;
+import type { GetStaticPaths } from 'astro';
+
+import MdPagesLayout from '@/layouts/MdPagesLayout.astro';
+import Prose from '@/components/Prose/AboutPage.astro';
+import { getEntry, render } from 'astro:content';
+import getPageContent from '@/lib/API';
+import Loading from '@/components/Loading.astro';
+import { getDefaultPageProps } from '@/lib/error';
+import wpWebhook from '@/lib/wpWebhook';
+import { getCollection } from 'astro:content';
+
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+export const getStaticPaths = (async () => {
+	try {
+		const pages = await getCollection('staticAbout');
+
+		if (!pages) {
+			return [];
+		}
+		// const response = await fetch(`${process.env.API_URL}/graphql`, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 		Authorization:
+		// 			'Bearer ',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		query: `
+		//     query {
+		//        pages {
+		//         nodes {
+		//           slug
+		//           uri
+		//           title
+		//           content(format: RAW)
+		//           id
+		//           }
+		//           }
+		//           }
+		//   `,
+		// 	}),
+		// });
+		// if (!response.ok) {
+		// 	throw new Error(`HTTP error! status: ${response.status}`);
+		// }
+		// const { data } = await response.json();
+		// if (!data) {
+		// 	throw new Error('No data returned from the server');
+		// }
+		// wpWebhook(data);
+		// return data.pages.nodes.map((page: any) => ({
+		// 	params: { slug: page.slug.split('/').filter(Boolean) },
+		// 	props: { page },
+		// }));
+
+		return pages.map((page: any) => ({
+			params: { slug: page.slug.split('/').filter(Boolean) },
+			props: { page },
+		}));
+	} catch (error) {
+		console.error('Error in getting static content in about/[...slug]: ', error);
+		return [];
+	}
+}) satisfies GetStaticPaths;
+---
+
+<></>

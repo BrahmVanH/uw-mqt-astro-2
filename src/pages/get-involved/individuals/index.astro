@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+
+import getPageContent from '@/lib/API';
+
+import Layout from '@/layouts/DefaultLayout.astro';
+import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
+import IndividualsPageHero, { createProps as createHeroProps } from '@/components/IndividualsPageHero.astro';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel';
+import type { IndividualsPageQueryResponse } from '@/types';
+
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+const path = Astro.url.pathname;
+
+const queryResponse: IndividualsPageQueryResponse = await getPageContent(path);
+
+const volunteerNeedsProps = await createVolunteerNeedsProps();
+const heroContent = queryResponse?.individualsPageHeroes;
+
+const heroProps = createHeroProps(heroContent);
+
+const impactCarouselContent = queryResponse.impactCarousels;
+const impactCarouselProps = createImpactCarouselProps(impactCarouselContent);
+---
+
+<Layout title='United Way of Marquette County'>
+	<main id='main-content' class='w-full mx-auto max-w-[1800px]'>
+		<h2 class='sr-only'>Get Involved as an Individual</h2>
+
+		<section aria-labelledby='hero-section'>
+			<h2 id='hero-section' class='sr-only'>Welcome</h2>
+			<IndividualsPageHero {...heroProps} />
+		</section>
+
+		<section aria-labelledby='volunteer-section'>
+			<h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
+			<VolunteerNeeds {...volunteerNeedsProps} />
+		</section>
+
+		<section aria-labelledby='impact-section'>
+			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
+			<OurImpactCarousel {...impactCarouselProps} />
+		</section>
+	</main>
+</Layout>

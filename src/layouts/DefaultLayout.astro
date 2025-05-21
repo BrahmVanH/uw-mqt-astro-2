@@ -1,0 +1,94 @@
+---
+export const prerender = false;
+
+import Footer, { type Props as FooterProps } from '@/components/Footer.astro';
+import Nav from '@/components/Nav';
+import PersistentDonateBtn from '@/components/PersistentDonateBtn.astro';
+import SEO from '@/components/SEO.astro';
+
+import { createProps } from '@/config/footer';
+import Gtag from '@/components/Gtag.astro';
+import ConsentBanner from '@/components/ConsentBanner.astro';
+import '@/styles/global.css';
+import '@/styles/microtip.css';
+import '@fontsource/antonio/400.css';
+import '@fontsource/antonio/500.css';
+import '@fontsource/antonio/600.css';
+import '@fontsource/antonio/700.css';
+
+import '@fontsource/palanquin/400.css';
+import '@fontsource/palanquin/500.css';
+import '@fontsource/palanquin/600.css';
+import '@fontsource/palanquin/700.css';
+
+interface Props {
+	title: string;
+}
+
+const url = Astro.url.toString();
+
+const { title } = Astro.props;
+
+const footerProps: FooterProps = await createProps();
+const socials = footerProps.socials;
+
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<Gtag />
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/png' href='/favicon-96x96.png' sizes='96x96' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel='shortcut icon' href='/favicon.ico' />
+		<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+		<meta name='apple-mobile-web-app-title' content='United Way MQT' />
+		<link rel='sitemap' href='/sitemap-0.xml' />
+		<meta name='msapplication-TileColor' content='#0044b5' />
+		<meta name='msapplication-config' content='/browserconfig.xml' />
+		<meta name='generator' content={Astro.generator} />
+		<SEO seo={{ title }} />
+	</head>
+	<body>
+		<Nav path={path} socials={socials} client:visible />
+		<PersistentDonateBtn />
+		<slot />
+		<Footer {...footerProps} />
+		<ConsentBanner />
+	</body>
+</html>
+
+<script>
+	document.addEventListener('DOMContentLoaded', async () => {
+
+		try {
+			const { checkAndGetUrlFocusElement } = await import('@/lib/utils');
+			const { elementIds } = await import('@/lib/constants');
+
+			const focusElementObject = checkAndGetUrlFocusElement(window.location.href, elementIds);
+
+			if (focusElementObject?.id) {
+				const element = document.getElementById(focusElementObject.id);
+
+				if (element) {
+					// Ensure element is focusable
+					if (!element.hasAttribute('tabindex')) {
+						element.setAttribute('tabindex', '-1');
+					}
+
+					// Scroll into view
+					element.scrollIntoView({ behavior: 'smooth' });
+
+					// Wait for scroll to complete then focus
+					setTimeout(() => {
+						element.focus({ preventScroll: true });
+					}, 500);
+				}
+			}
+		} catch (error) {
+		}
+	});
+</script>

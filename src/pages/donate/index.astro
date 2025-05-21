@@ -1,0 +1,233 @@
+---
+export const prerender = false;
+import { getStripe } from '@/lib/stripe';
+import DonationForm from '@/components/DonationForm';
+import * as Sentry from '@sentry/astro';
+import DonateLayout from '@/layouts/DonateLayout.astro';
+import { donateContent } from '@/config';
+import LearnMoreBtn from '@/components/LearnMoreBtn';
+
+if (Astro.request.method === 'POST') {
+	try {
+		const data = await Astro.request?.formData();
+		const isRecurring = data.get('isRecurring');
+		const amount = Number(data.get('amount'));
+		const email = isRecurring ? (data.get('email') as string) : '';
+
+		if (!data) {
+			throw new Error('No form data received');
+		}
+		if (!amount || amount < 1) {
+			throw new Error('Minimum donation amount is $1');
+		}
+
+		const stripe = getStripe();
+
+		if (!stripe) {
+			throw new Error('Failed to get stripe instance');
+		}
+
+		if (isRecurring && email === '') {
+			throw new Error('Email is required for recurring donations');
+		}
+
+		if (!isRecurring && email === '') {
+			const paymentIntent = await stripe.paymentIntents.create({
+				amount: amount * 100,
+				currency: 'usd',
+				payment_method_types: ['card'],
+				metadata: {
+					source: 'donation_form',
+				},
+			});
+
+			if (!paymentIntent?.client_secret) {
+				throw new Error('Failed to create payment intent');
+			}
+
+			return new Response(JSON.stringify({ clientSecret: paymentIntent.client_secret }), {
+				status: 200,
+			});
+		}
+
+		let customer;
+
+		const existingCustomers = await stripe.customers.list({ email: email });
+
+		if (existingCustomers.data.length > 0) {
+			customer = existingCustomers.data[0];
+		} else {
+			customer = await stripe.customers.create({
+				email: email,
+			});
+		}
+
+		const price = await stripe.prices.create({
+			unit_amount: amount * 100,
+			currency: 'usd',
+			recurring: { interval: 'month' },
+			product_data: {
+				name: 'Monthly Donation',
+				metadata: { type: 'donation' },
+			},
+		});
+
+		const subscription = await stripe.subscriptions.create({
+			customer: customer.id,
+			items: [{ price: price.id }],
+			payment_behavior: 'default_incomplete',
+			payment_settings: { save_default_payment_method: 'on_subscription' },
+			expand: ['latest_invoice.payment_intent'],
+		});
+		if (!subscription) {
+			throw new Error('Failed to create subscription');
+		}
+
+		return new Response(
+			JSON.stringify({
+				subscriptionId: subscription.id,
+				clientSecret: (subscription.latest_invoice as any).payment_intent?.client_secret,
+			}),
+			{ status: 200 }
+		);
+	} catch (error) {
+		Sentry.captureException(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);
+		return new Response(JSON.stringify({ error: `Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.` }), { status: 400 });
+	}
+}
+if (Astro.request.method === 'POST') {
+	const stripe = getStripe();
+
+	try {
+		const signature = Astro.request.headers.get('stripe-signature');
+		const body = await Astro.request.text();
+
+		if (!signature || !stripe) {
+			throw new Error('Missing stripe signature or stripe instance');
+		}
+
+		const event = stripe.webhooks.constructEvent(body, signature, import.meta.env.STRIPE_WEBHOOK_SECRET);
+
+		const permittedEvents = ['payment_intent.succeeded'];
+
+		if (permittedEvents.includes(event.type)) {
+			switch (event.type) {
+				case 'payment_intent.succeeded':
+					const data = event.data.object;
+					break;
+				default:
+					throw new Error(`Unhandled event: ${event.type}`);
+			}
+		}
+
+		return new Response(JSON.stringify({ received: true }), {
+			status: 200,
+		});
+	} catch (error: any) {
+		Sentry.captureException(error);
+		return new Response(JSON.stringify({ error: `Webhook Error: ${error?.message}` }), { status: 400 });
+	}
+}
+
+const { title, heading, leadershipLevelsTable, moreOptions: moreWaysToDonate } = donateContent;
+---
+
+<DonateLayout>
+	<main id='main-content' class='flex flex-row justify-center items-center h-screen'>
+		<h1 class='sr-only'>Donate to United Way</h1>
+
+		<div class='lg:w-[80%] grid xl:grid-cols-2 gap-4'>
+			<section id='infoSection' aria-labelledby='donate-info' class='flex flex-col items-center max-h-[90vh] overflow-x-visible overflow-y-scroll scroll-0 lg:pr-3'>
+				<h2 id='donate-info' class='text-3xl font-bold'>{title}</h2>
+				<div class='text-lg lg:text-xl text-primary-blue-1 text-center flex flex-col items-center mt-1 lg:mt-2'>
+					<p class='leading-relaxed'>{heading}</p>
+				</div>
+				<button
+					id='showFormButton'
+					class='lg:hidden w-[90%] mt-4 text-lg font-semibold text-primary-blue-2 py-2 px-4 rounded-lg
+                        bg-gradient-to-r from-primary-yellow-1 from-10% via-primary-yellow-3 via-40% to-primary-yellow-3 to-90%
+                        border-2 border-primary-yellow-4
+                        shadow-sm shadow-primary-yellow-4
+                        focus:outline-none focus:ring-2 focus:ring-primary-yellow-4'
+					aria-expanded='false'
+					aria-controls='donationForm'>
+					Donate Now
+				</button>
+
+				<div class='mt-2 w-full'>
+					<section aria-labelledby='levels-title'>
+						<h2 id='levels-title' class='text-lg font-bold mb-2'>{leadershipLevelsTable.title}</h2>
+						<div class='overflow-x-auto lg:overflow-x-visible lg:mr-2' role='region' aria-labelledby='levels-title' tabindex='0'>
+							<table class='min-w-full w-full bg-white border border-tertiary-black-4'>
+								<thead class='bg-primary-blue-1 text-sm lg:text-md text-white'>
+									<tr>
+										<th class='py-1 px-3 border-b'>Level</th>
+										<th class='py-1 px-3 border-b'>Annual Gift</th>
+										<th class='py-1 px-3 border-b'>Minimum Gift</th>
+										<th class='py-1 px-3 border-b'>Monthly Gift</th>
+									</tr>
+								</thead>
+								<tbody class='text-xs lg:text-sm'>
+									{
+										leadershipLevelsTable.columns.map((row) => (
+											<tr class='hover:bg-gray-50'>
+												<td class='py-1 px-3 border-b'>{row.level}</td>
+												<td class='py-1 px-3 border-b'>{row.annualGiftAmount}</td>
+												<td class='py-1 px-3 border-b'>{row.minimumGiftAmount}</td>
+												<td class='py-1 px-3 border-b'>{row.monthlyGiftIncludingFees}</td>
+											</tr>
+										))
+									}
+								</tbody>
+							</table>
+						</div>
+					</section>
+				</div>
+				{
+					moreWaysToDonate.map(({ heading, subheading, text, link, linkText }) => (
+						<div class='flex flex-col items-center w-[80%] mt-4'>
+							<h2 class='text-lg lg:text-xl'>{heading}</h2>
+							{subheading && <p class='text-sm lg:text-md my-1'>{subheading}</p>}
+							<p class='text-sm lg:text-md my-1'>{text}</p>
+							<LearnMoreBtn href={link} size='md' color='black' text={linkText} ariaLabel={linkText} />
+						</div>
+					))
+				}
+			</section>
+
+			<section id='donationForm' aria-labelledby='form-title' class='hidden lg:block self-center'>
+				<h2 id='form-title' class='sr-only'>Donation Form</h2>
+				<DonationForm client:load />
+			</section>
+		</div>
+	</main>
+</DonateLayout>
+
+<script>
+	function initializeViewportHandling() {
+		const section = document.getElementById('infoSection');
+		const formWrapper = document.getElementById('donationForm');
+		const button = document.getElementById('showFormButton');
+
+		if (window.innerWidth < 1280) {
+			// Ensure initial state
+			formWrapper?.classList.add('hidden');
+			formWrapper?.classList.remove('lg:block');
+			section?.classList.remove('hidden');
+		}
+
+		button?.addEventListener('click', () => {
+			section?.classList.add('hidden');
+			formWrapper?.classList.remove('hidden');
+			formWrapper?.classList.add('block');
+		});
+	}
+
+	window.addEventListener('load', initializeViewportHandling);
+</script>
+
+<style>
+	svg {
+		fill: green;
+	}
+</style>

@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+
+import getPageContent from '@/lib/API';
+
+// component imports
+import Layout from '@/layouts/DefaultLayout.astro';
+
+import FourPillarsHero, { type Props as HeroProps, Pillar, createProps as createHeroProps } from '@/components/FourPillarsHero.astro';
+import HowToContribute, { type Props as HowToContributeProps, createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
+import Upcap211Services from '@/components/UPCAP211Services.astro';
+import type { CommunityResiliencyPageQueryResponse } from '@/types';
+import AliceReport, { createProps as createAliceReportProps } from '@/components/AliceReport.astro';
+import { onError } from '@/lib/error';
+// import SeniorCenter, { createProps as createSeniorCenterProps } from '@/components/SeniorCenter.astro';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel';
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+const path = Astro.url.pathname;
+
+const queryResponse = await getPageContent(path);
+
+const pageContent: CommunityResiliencyPageQueryResponse = queryResponse;
+
+const pageName = Pillar.COMMUNITY_RESILIENCY;
+
+if (!pageContent) {
+	onError('No data returned from the server community resiliency page query', Astro);
+}
+
+const heroContent = pageContent?.fourPillarsHeroComponents;
+const heroProps: HeroProps = createHeroProps(heroContent, pageName);
+
+const howToContributeContent = pageContent?.howToContributeComponents;
+
+const howToContributeProps: HowToContributeProps = createHowToContributeProps(howToContributeContent);
+
+const aliceReportProps = createAliceReportProps(pageContent);
+// const seniorCenterContent = pageContent.seniorCenters;
+// const seniorCenterProps = createSeniorCenterProps(seniorCenterContent);
+
+const impactCarouselContent = pageContent.impactCarousels;
+const impactCarouselProps = createImpactCarouselProps(impactCarouselContent);
+---
+
+<Layout title={'Community Resiliency | Untied Way Marquette County'}>
+	<main id='main-content'>
+		<h2 class='sr-only'>Community Resiliency Programs</h2>
+
+		<section aria-labelledby='hero-section'>
+			<h2 id='hero-section' class='sr-only'>Welcome</h2>
+			<FourPillarsHero {...heroProps} />
+		</section>
+
+		<section aria-labelledby='upcap-section'>
+			<h2 id='upcap-section' class='sr-only'>UPCAP 211 Services</h2>
+			<Upcap211Services />
+		</section>
+
+		<section aria-labelledby='alice-section'>
+			<h2 id='alice-section' class='sr-only'>ALICE Report</h2>
+			<AliceReport {...aliceReportProps} />
+		</section>
+
+		<section aria-labelledby='impact-section'>
+			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
+			<OurImpactCarousel {...impactCarouselProps} />
+		</section>
+
+		<section aria-labelledby='contribute-section'>
+			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
+			<HowToContribute {...howToContributeProps} />
+		</section>
+	</main>
+</Layout>

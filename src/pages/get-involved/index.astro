@@ -1,0 +1,94 @@
+---
+export const prerender = false;
+
+import getPageContent from '@/lib/API';
+
+import Layout from '@/layouts/DefaultLayout.astro';
+
+import PartnersTicker, { createProps as createPartnersTickerProps } from '@/components/PartnersTicker.astro';
+import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
+import YourHelpMatters from '@/components/YourHelpMatters.astro';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel';
+import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
+
+import type { Maybe, PartnersTickerItem, PartnersTickerItemFields } from '@/__generated__/types';
+import type { GetInvolvedPageQueryResponse } from '@/types';
+import GetInvolvedPageHero, { createProps as createHeroProps } from '@/components/GetInvolvedPageHero.astro';
+import { onError } from '@/lib/error';
+
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+const path = Astro.url.pathname;
+
+const queryResponse = await getPageContent(path);
+
+const pageContent: GetInvolvedPageQueryResponse = queryResponse;
+
+if (!pageContent) {
+	onError('No data returned from the server get involved page query', Astro);
+}
+
+// wp content for hero section
+const heroContent = pageContent?.getInvolvedHeroes;
+const heroProps = createHeroProps(heroContent);
+
+// wp content for partner ticker
+const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTickerItems?.nodes
+	.map((node: PartnersTickerItem) => node.partnersTickerItemFields)
+	.filter(
+		(
+			// filter for undefined values
+			partner: Maybe<PartnersTickerItemFields> | undefined
+		): partner is PartnersTickerItemFields => !!partner
+	);
+
+const partnerTickerItems = createPartnersTickerProps(partnerTickerContent);
+
+// wp content for how to contribute section
+const howToContributeContent = pageContent?.howToContributeComponents;
+
+const howToContributeProps = createHowToContributeProps(howToContributeContent);
+
+const ourImpactCarouselContent = pageContent?.impactCarousels;
+const impactCarouselProps = createImpactCarouselProps(ourImpactCarouselContent);
+
+const volunteerNeedsProps = await createVolunteerNeedsProps();
+---
+
+<Layout title='United Way of Marquette County | Get Involved'>
+	<main id='main-content' class='w-full mx-auto max-w-[1800px]'>
+		<h2 class='sr-only'>Get Involved with United Way</h2>
+
+		<section aria-labelledby='hero-section'>
+			<h2 id='hero-section' class='sr-only'>Welcome</h2>
+			<GetInvolvedPageHero {...heroProps} />
+		</section>
+
+		<section aria-labelledby='partners-section'>
+			<h2 id='partners-section' class='sr-only'>Our Partners</h2>
+			<PartnersTicker {...partnerTickerItems} />
+		</section>
+
+		<section aria-labelledby='volunteer-section'>
+			<h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
+			<VolunteerNeeds {...volunteerNeedsProps} />
+		</section>
+
+		<section aria-labelledby='help-section'>
+			<h2 id='help-section' class='sr-only'>Your Help Matters</h2>
+			<YourHelpMatters />
+		</section>
+
+		<section aria-labelledby='impact-section'>
+			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
+			<OurImpactCarousel {...impactCarouselProps} client:visible />
+		</section>
+
+		<section aria-labelledby='contribute-section'>
+			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
+			<HowToContribute {...howToContributeProps} />
+		</section>
+	</main>
+</Layout>

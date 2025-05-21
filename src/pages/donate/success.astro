@@ -1,0 +1,100 @@
+---
+import DonateLayout from '@/layouts/DonateLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getStripe } from '@/lib/stripe';
+
+const STATUS_CONTENT_MAP = {
+	succeeded: {
+		text: 'Payment succeeded',
+		bgColor: 'var(--secondary-green-2)',
+		textColor: 'var(--tertiary-white-1)',
+		icon: 'check',
+	},
+	processing: {
+		text: 'Your payment is processing.',
+		bgColor: 'var(--tertiary-black-3)',
+		textColor: 'var(--tertiary-white-1)',
+		icon: 'info',
+	},
+	requires_payment_method: {
+		text: 'Your payment was not successful, please try again.',
+		bgColor: 'var(--primary-red-2)',
+		textColor: 'var(--tertiary-white-1)',
+		icon: 'close',
+	},
+	default: {
+		text: 'Something went wrong, please try again.',
+		bgColor: 'var(--primary-red-2)',
+		textColor: 'var(--tertiary-white-1)',
+		icon: 'close',
+	},
+};
+
+// Get URL parameters
+const searchParams = Astro.url.searchParams;
+const paymentIntentId = searchParams.get('payment_intent');
+
+if (!paymentIntentId) {
+	return Astro.redirect('/');
+}
+
+const stripe = getStripe();
+if (!stripe) {
+	return Astro.redirect('/');
+}
+
+const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+if (!paymentIntent) {
+	return Astro.redirect('/');
+}
+
+// if (import.meta.env.PROD) {
+// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
+// }
+
+const { status } = paymentIntent;
+---
+
+<DonateLayout title='Donation Status'>
+	<div class='flex flex-col items-center justify-center min-h-screen p-4'>
+		<div class='w-full max-w-md bg-white rounded-[6px] shadow-lg p-3 space-y-4'>
+			<div class='w-min rounded-full flex items-center justify-center mb-4 mx-auto' style={{ backgroundColor: STATUS_CONTENT_MAP[status as keyof typeof STATUS_CONTENT_MAP].bgColor }}>
+				<Icon class='m-1' name={STATUS_CONTENT_MAP[status as keyof typeof STATUS_CONTENT_MAP].icon} size={32} color='white' />
+			</div>
+
+			<h2 class='text-xl font-medium text-center text-tertiary-black-2'>
+				{STATUS_CONTENT_MAP[status as keyof typeof STATUS_CONTENT_MAP].text}
+			</h2>
+
+			{
+				paymentIntent && (
+					<div class='border border-tertiary-black-4 rounded-[6px] p-4 bg-tertiary-white-1 m-2'>
+						<table class='w-full'>
+							<tbody>
+								<tr class='border-b border-tertiary-black-4'>
+									<td class='py-2 text-tertiary-black-3'>ID</td>
+									<td class='py-2 text-tertiary-black-2 tracking-wider font-sans font-medium'>{paymentIntentId}</td>
+								</tr>
+								<tr>
+									<td class='py-2 text-tertiary-black-3'>Status</td>
+									<td class='py-2 text-tertiary-black-2 font-medium uppercase text-center'>{status}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				)
+			}
+
+			{
+				paymentIntent && (
+					<a href={`https://dashboard.stripe.com/payments/${paymentIntentId}`} class='flex items-center justify-center text-primary-blue-1 hover:text-primary-blue-2 transition-colors' target='_blank'>
+						View details
+						<Icon name='external-link' class='w-2 h-2 ml-2' />
+					</a>
+				)
+			}
+
+			<a href='/donate' class='block w-full py-2 px-4 text-center bg-primary-blue-3 text-white rounded-[6px] hover:bg-primary-blue-2 transition-colors'> Return to donations </a>
+		</div>
+	</div>
+</DonateLayout>

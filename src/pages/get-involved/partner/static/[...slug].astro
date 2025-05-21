@@ -1,0 +1,30 @@
+<!-- ---
+import { getDefaultPageProps } from '@/lib/error';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	try {
+		console.log('getting static paths in partner slug');
+
+		const partnerEntries = await getCollection('partner');
+		console.log('partner content entries: ', partnerEntries);
+		const temp = partnerEntries
+			.filter((entry: any) => !entry.data.requiresGraphqlQuery)
+			.map((entry) => {
+				const slugParts = entry.id.split('/');
+				const slug = slugParts.length > 1 ? entry.id : undefined;
+
+				return {
+					params: { slug },
+					props: { entry, prerendered: true },
+				};
+			});
+
+		console.log('partner entries filtered: ', temp);
+
+		return temp;
+	} catch (error) {
+		return getDefaultPageProps(`Error in getting static content in partners/[...slug]: ${error}`);
+	}
+}
+--- -->
