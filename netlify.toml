@@ -1,0 +1,188 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+
+[[redirects]]
+  from = "/volunteer"
+  to = "/get-involved"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/our-staff"
+  to = "/about/our-leadership"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about/our-leadership"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/our-values-history"
+  to = "/about/values-history"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/mobile-food-pantry-schedule"
+  to = "/our-impact/healthy-community#mobile-food-pantry"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/how-you-can-help"
+  to = "/get-involved"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/partner-agencies"
+  to = "/get-involved/partner/agencies"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/#contact-info"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/our-work-1/"
+  to = "/our-impact"
+  status = "301"
+  force = true
+
+  
+
+  [[redirects]]
+  from = "/board-of-directors"
+  to = "/about/our-leadership"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/our-diversity-and-inclusion"
+  to = "/about/our-culture"
+  status = "301"
+  force = true
+
+  [[redirects]]
+  from = "/staff"
+  to = "/about/our-leadership"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/211-services"
+  to = "/our-impact/community-resiliency#up-211"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/volunteer-individual"
+  to = "/get-involved/individuals"
+  status = "301"
+  force = true
+
+  [[redirects]]
+  from = "/history"
+  to = "/about/values-history"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/programs"
+  to = "/get-involved"
+  status = "301"
+  force = true
+
+
+  [[redirects]]
+  from = "/faqs"
+  to = "/our-impact#faqs"
+  status = "301"
+  force = true
+
+  [[redirects]]
+  from = "/safety-net-funding"
+  to = "/our-impact/financial-security/safety-net-funding"
+  status = "301"
+  force = true
+
+
+[[redirects]]
+  from = "/campaign-toolkit"
+  to = "/get-involved/partner/campaign-toolkit"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/alice-report"
+  to = "/our-impact/financial-security#alice-report-heading"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/familywize-service"
+  to = "/our-impact/financial-security/single-care-service"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/uwmc-rfp-2025"
+  to = "/"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/fy21-22-form-990"
+  to = "/#current-irs-form-990"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/donor-privacy-policy"
+  to = "/#donor-privacy-policy"
+  status = "301"
+  force = true
+
+  [[redirects]]
+  from = "/real-stories"
+  to = "/#our-impact-carousel"
+  status = "301"
+  force = true
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "https://api.uwmqt.org/wp-content/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "*/wp-content/*"
+  to = "https://api.uwmqt.org/wp-content/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+
+

@@ -13,7 +13,6 @@ import netlify from '@astrojs/netlify';
 
 import mdx from '@astrojs/mdx';
 
-import sentry from '@sentry/astro';
 
 import partytown from '@astrojs/partytown';
 
