@@ -7,11 +7,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import { financialSecurityAccordionContent } from "@/config/financialSecurityAccordion";
+import config from "@/config/financialSecurityAccordion";
 import LearnMoreBtn from "./LearnMoreBtn";
 
 const FinancialSecurityAccordion: React.FC = () => {
-  const items = financialSecurityAccordionContent.items;
+  const items = config.items;
   const [value, setValue] = React.useState("");
 
   return (

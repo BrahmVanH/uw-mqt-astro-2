@@ -8,7 +8,7 @@ import Layout from '@/layouts/DefaultLayout.astro';
 
 import FourPillarsHero, { type Props as HeroProps, Pillar, createProps as createHeroProps } from '@/components/FourPillarsHero.astro';
 import HowToContribute, { type Props as HowToContributeProps, createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
-import FinancialSecurityAccordion from '@/components/FinancialSecurityAccordion';
+import FinancialSecurityAccordion from '@/components/FinancialSecurityAccordion.svelte';
 import type { FinancialSecurityPageQueryResponse } from '@/types';
 import AliceReport, { createProps as createAliceReportProps } from '@/components/AliceReport.astro';
 import { onError } from '@/lib/error';
@@ -63,7 +63,7 @@ const aliceReportProps = createAliceReportProps(pageContent);
 
 		<section aria-labelledby='financial-section'>
 			<h2 id='financial-section' class='sr-only'>Financial Security Resources</h2>
-			<FinancialSecurityAccordion client:visible />
+			<FinancialSecurityAccordion client:visible='svelte' />
 		</section>
 
 		<section aria-labelledby='contribute-section'>
