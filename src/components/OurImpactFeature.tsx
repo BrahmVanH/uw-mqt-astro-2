@@ -9,16 +9,14 @@
 //   pillars: FeaturePillar[]
 // }
 
-export {}
-
-
+export {};
 
 // import * as React from "react";
 // import type {
 //   ImpactCarouselFieldsCarouselItemsItem2,
 //   ImpactCarouselFieldsCarouselItemsItem3,
 //   RootQueryToImpactCarouselConnection,
-// } from "@/__generated__/types";
+// } from "@/types/__generated__/types";
 // import { getStringPreview } from "@/lib/utils";
 // import LearnMoreBtn from "./LearnMoreBtn";
 // import placeholderImg from "@/image/placeholder.svg";
@@ -107,7 +105,7 @@ export {}
 //   return (
 //     <section className="w-full ">
 //       <div className="w-full flex flex-row">
-//         {/* 
+//         {/*
 //       {bgImgSrc && (
 //         <img
 //         className="absolute  w-full h-full   object-cover row-start-1  row-span-5 col-start-1 col-span-3  z-1"

@@ -16,7 +16,7 @@ const EventsCard: React.FC<Props> = ({ event, index }) => {
         {event.image && (
           <img
             src={event.image}
-            alt={event.imageAlt || ""}
+            alt={event.imageAlt ?? ""}
             loading="lazy"
             decoding="async"
           />
