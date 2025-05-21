@@ -1,0 +1,26 @@
+---
+import DonateBtn from './DonateBtn';
+---
+
+<a
+	href='/donate'
+	target='_blank'
+	rel='noopener noreferrer'
+	id='persistent-donate'
+	class='fixed top-[-100%] rounded-xl left-[5%] 2xl:left-[5%] z-50 w-min transition-all duration-300 shadow-lg text-primary-blue-2 focus:outline-none focus:ring-2 focus:ring-primary-blue-2'
+	aria-label='Make a donation'>
+	<DonateBtn size='xl' />
+</a>
+<script>
+	const btn = document.getElementById('persistent-donate');
+
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 60 && window.innerWidth > 1536) {
+			btn?.style.setProperty('top', '33%');
+		} else if (window.scrollY > 60 && window.innerWidth > 1024) {
+			btn?.style.setProperty('top', '36%');
+		} else {
+			btn?.style.setProperty('top', '-100%');
+		}
+	});
+</script>

@@ -1,0 +1,95 @@
+---
+import type { RootQueryToGirlScoutsComponentConnection } from '@/__generated__/types';
+import { Image } from 'astro:assets';
+import LearnMoreBtn from './LearnMoreBtn';
+import { getDefaultProps, onImageError } from '@/lib/error';
+import { supportsWebP } from '@/lib/utils';
+
+export interface Props {
+	title: string;
+	text: string;
+	img1: string;
+	img1Alt: string;
+	img2: string;
+	img2Alt: string;
+	bg: string;
+	bgMobile?: string;
+	bgMobileAlt?: string;
+	link1: string;
+	link1Text: string;
+	link2: string;
+	link2Text: string;
+}
+
+export function createProps(wpContent: RootQueryToGirlScoutsComponentConnection): Props {
+	if (!wpContent?.nodes[0]?.girlScoutsComponentFields) {
+		return getDefaultProps<Props>('GirlScouts', Astro);
+	}
+
+	const root = wpContent.nodes[0].girlScoutsComponentFields;
+
+	return {
+		title: root?.title ?? '',
+		text: root?.text ?? '',
+		img1: root?.image1?.node?.sourceUrl ?? onImageError('missing image one in girls scouts component').src,
+		img1Alt: root?.image1?.node?.altText ?? 'placeholder image',
+		img2: root?.image2?.node?.sourceUrl ?? onImageError('missing image two in girl scouts component').src,
+		img2Alt: root?.image2?.node?.altText ?? 'placeholder image',
+		bg: root?.bg?.node?.sourceUrl ?? onImageError('missing img two in girl scouts component').src,
+		link1: root?.link1 ?? '',
+		link1Text: root?.linkText1 ?? '',
+		link2: root?.link2 ?? '',
+		link2Text: root?.linkText2 ?? '',
+	};
+}
+
+const { title, text, img1, img1Alt, img2, img2Alt, bg, link1, link1Text, link2, link2Text } = Astro.props;
+
+const useWebp = supportsWebP(Astro.request);
+---
+
+<section class='relative w-full grid grid-cols-2 grid-rows-3 p-0 overflow-hidden' aria-labelledby='girl-scouts-title'>
+	<div class='z-0 col-start-1 aspect-auto w-full row-start-1 row-span-3 col-end-3 sm:col-end-2' aria-hidden='true'>
+		<Image loading='lazy' decoding='async' class='w-full h-full' inferSize={true} src={bg} alt='' role='presentation' />
+	</div>
+	<div class={`z-20 col-start-1 col-end-3 sm:col-end-2 justify-end row-start-1 row-span-1 text-right justify-self-end items-end w-full flex flex-col text-white my-4 px-2 md:px-4`}>
+		{
+			title && (
+				<h2 id='girl-scouts-title' class='text-lg lg:text-2xl text-balance'>
+					{title}
+				</h2>
+			)
+		}
+		{text && <p class='lg:max-w-[75%] my-2 text-sm md:text-lg font-body leading-relaxed'>{text}</p>}
+		<div class='flex flex-col items-end lg:items-center lg:flex-row gap-2'>
+			{title && link1 && link1Text && <LearnMoreBtn className='md:mr-2' size='md' useBg={false} text={link1Text} color='white' href={link1} ariaLabel={link1Text} />}
+			{title && link2 && link2Text && <LearnMoreBtn size='md' useBg={false} text={link2Text} color='white' href={link2} ariaLabel={link2Text} />}
+		</div>
+	</div>
+	{
+		img1 && (
+			<Image
+				loading='lazy'
+				decoding='async'
+				format={useWebp ? 'webp' : 'jpg'}
+				class={'absolute z-0 col-start-2 col-end-3 hidden sm:block w-full max-w-1/2 aspect-auto p-0 row-start-1 row-span-3  m-0 '}
+				width={500}
+				height={500}
+				src={img1}
+				alt={img1Alt}
+			/>
+		)
+	}
+	{
+		img2 && (
+			<Image
+				loading='lazy'
+				decoding='async'
+				class={'absolute z-10 col-start-2 hidden sm:block max-w-[100px] md:max-w-[200px] aspect-auto  p-0 row-start-3 row-span-1 col-emd-3 justify-self-end mr-8  '}
+				inferSize={true}
+				src={img2}
+				alt={img2Alt}
+			/>
+		)
+	}
+</section>

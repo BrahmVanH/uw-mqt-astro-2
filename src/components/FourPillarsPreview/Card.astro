@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import LearnMoreBtn from '../LearnMoreBtn';
+import type { FourPillarsPreviewCardContent } from './index.astro';
+import { getDefaultProps } from '@/lib/error';
+import { supportsWebP } from '@/lib/utils';
+
+export interface Props {
+	index: number;
+	pillar: FourPillarsPreviewCardContent;
+}
+
+const { pillar, index } = Astro.props;
+
+const useWebp = supportsWebP(Astro.request);
+
+if (!pillar) {
+	return getDefaultProps<Props>('FourPillarsPreviewCard', Astro);
+}
+
+const getImgLocationClasses = (index: number) => {
+	return index % 2 === 0 ? 'col-start-1' : 'col-start-2';
+};
+
+const getBgLocationClasses = (index: number) => {
+	return index % 2 === 0 ? 'col-start-1 sm:col-start-2 scale-x-[-1] sm:scale-x-100' : 'col-start-1 sm:col-start-1'; // Added sm:col-start-1 to explicitly set column for larger viewports
+};
+
+const getTextLocationClasses = (index: number) => {
+	return index % 2 === 0
+		? 'col-start-2 row-start-3 text-right sm:text-left justify-self-end sm:justify-self-start self-end z-[100] [&>h1]:self-end sm:[&>h1]:self-start pb-3 pr-3 sm:pr-0 sm:pl-3 md:pb-4 lg:pl-4 xl:pl-8 xl:pb-8'
+		: 'col-start-2 sm:col-start-1 row-start-1 text-right justify-self-end self-start items-end pt-3 pr-3 md:pt-4 lg:pr-4 xl:pr-8 xl:pt-8';
+};
+
+const textLocationClasses = getTextLocationClasses(index);
+const bgLocationClasses = getBgLocationClasses(index);
+const imgLocationClasses = getImgLocationClasses(index);
+---
+
+<article class='relative w-full grid grid-cols-2 grid-rows-3 text-nowrap p-0 overflow-hidden'>
+	{
+		imgLocationClasses && (
+			<div class={`${imgLocationClasses} hidden sm:block row-start-1 row-span-3 col-span-1`}>
+				<Image
+					loading='lazy'
+					decoding='async'
+					format={useWebp ? 'webp' : 'jpg'}
+					class='w-full aspect-auto p-0 m-0'
+					inferSize={true}
+					src={pillar.img}
+					alt={pillar.alt}
+					loading='lazy'
+					decoding='async'
+				/>
+			</div>
+		)
+	}
+
+	<div class={`${bgLocationClasses} row-start-1 row-span-3 col-span-2 sm:col-span-1`} aria-hidden='true'>
+		<Image loading='lazy' decoding='async' class='w-full aspect-auto max-w-full m-0' inferSize={true} src={pillar.bg} alt='' role='presentation' loading='lazy' decoding='async' />
+	</div>
+
+	<div class={`${textLocationClasses} absolute w-min h-min row-span-1 col-span-1 flex flex-col text-white`}>
+		{pillar.title && <h3 class='w-min text-lg lg:text-xl 2xl:text-3xl font-heading'>{pillar.title}</h3>}
+		{pillar.text && <p class='w-min my-1 text-sm md:text-lg font-body leading-relaxed'>{pillar.text}</p>}
+		{
+			pillar.title && (
+				<LearnMoreBtn className='self-end sm:self-auto' size='md' useBg={false} text='Learn more' color='white' href={pillar.link} ariaLabel={`Learn more about our impact in ${pillar.title}`} />
+			)
+		}
+	</div>
+</article>

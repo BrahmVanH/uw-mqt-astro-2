@@ -1,0 +1,53 @@
+---
+import type { RootQueryToOurImpactHomePageConnection } from '@/__generated__/types';
+import LearnMoreBtn from './LearnMoreBtn';
+import ResponsiveImage from './ResponsiveImage.astro';
+import { formatHeroHeadingText } from '@/lib/utils';
+import { getDefaultProps, onImageError } from '@/lib/error';
+
+export interface Props {
+	bgUrl: string;
+	bgMobileUrl: string;
+	buttonText: string;
+	text: string;
+	title: string;
+	bgAlt: string;
+	bgMobileAlt: string;
+}
+
+export function createProps(wpContent: RootQueryToOurImpactHomePageConnection): Props {
+	if (!wpContent?.nodes[0]?.ourImpactFields) {
+		return getDefaultProps<Props>('OurImpactHero', Astro);
+	}
+
+	const root = wpContent?.nodes[0]?.ourImpactFields;
+
+	return {
+		bgUrl: root?.bg?.node?.sourceUrl ?? onImageError('missing bg image in our impact hero').src,
+		bgMobileUrl: root?.bgMobile?.node?.sourceUrl ?? onImageError('missing bg mobile image in our impact hero').src,
+		buttonText: root?.buttonText ?? '',
+		text: root?.text ?? '',
+		title: root?.title?.toUpperCase() ?? '',
+		bgAlt: root?.bg?.node?.altText ?? 'Placeholder image',
+		bgMobileAlt: root?.bgMobile?.node?.altText ?? 'Placeholder image',
+	};
+}
+
+const { bgUrl, bgMobileUrl, buttonText, text, title, bgAlt, bgMobileAlt } = Astro.props;
+---
+
+<div class='w-full grid grid-cols-5 grid-rows-3 relative' aria-label={'Our Impact Hero Section'}>
+	<div class='col-span-5 row-span-3'>
+		{bgMobileUrl && bgUrl && <ResponsiveImage className='w-full h-full  object-cover ' mobileImgUrl={bgMobileUrl} desktopImgUrl={bgUrl} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} />}
+	</div>
+	<div
+		class='col-start-1 col-end-6 row-start-3 row-end-3 md:col-start-1 md:col-end-4 sm:row-start-1 sm:row-span-3 row-span-1 h-3/4 w-full max-w-[600px] sm:w-auto flex flex-col justify-end lg:justify-center items-start justify-self-start self-center text-left text-white lg:ml-8 px-4 md:p-2 xl:p-6 absolute inset-0 z-10 [&>*]:mt-4'>
+		{title && <h1 class='mt-6 sm:mt-0 text-2xl xl:text-3xl 2xl:text-4xl font-heading w-full'>{formatHeroHeadingText(title)}</h1>}
+		{text && <p class='hidden md:block max-w-[80%] xl:max-w-full text-md font-body text-wrap'>{text}</p>}
+		{
+			buttonText && (
+				<LearnMoreBtn size='lg' useBg={false} className='w-full  text-left lg:hover:underline' text={buttonText} href='/our-impact' ariaLabel={'Learn more about our impact'} color='white' />
+			)
+		}
+	</div>
+</div>

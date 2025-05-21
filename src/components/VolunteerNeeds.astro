@@ -1,0 +1,125 @@
+---
+import { volunteerNeedsContent } from '@/config';
+import type { Config } from '@/types/volunteerNeeds';
+import LearnMoreBtn from './LearnMoreBtn';
+import { gracefullyGetDefaultProps } from '@/lib/error';
+import { Image } from 'astro:assets';
+import logo from '@/image/logo-no-text.svg';
+import { fetchGalaxyDigitalNeedsData } from '@/lib/API';
+
+interface Props extends Config {
+	needs: Need[];
+}
+
+interface Need {
+	id: string;
+	agency_id: string;
+	agency_name: string;
+	title: string;
+	volunteersNeeded: number;
+	date: string;
+	needDateType: 'on' | 'multi' | 'until';
+}
+
+export async function createProps(): Promise<Props> {
+	const { preHeading, heading, subHeading, viewNeedDetailsLinkRoot, volunteerNeedsLink, volunteerNeedsLinkText } = volunteerNeedsContent;
+	try {
+		const response = await fetchGalaxyDigitalNeedsData();
+
+		if (!response) {
+			throw new Error('No galaxy digital needs data response found');
+		}
+
+		const data = response.data;
+
+		let needs = data?.map((need: any) => {
+			return {
+				id: need?.id,
+				agency_id: need?.agency.id,
+				agency_name: need?.agency?.agency_name,
+				title: need?.need_title,
+				volunteersNeeded: parseInt(need?.need_volunteers_needed),
+				date: need?.need_date,
+				needDateType: need?.need_date_type,
+			};
+		});
+		if (!needs?.length) {
+			throw new Error('No needs found in VolunteerNeeds createProps');
+		}
+
+		return {
+			needs,
+			preHeading,
+			heading,
+			subHeading,
+			volunteerNeedsLink,
+			volunteerNeedsLinkText,
+			viewNeedDetailsLinkRoot,
+		};
+	} catch (error: any) {
+		return gracefullyGetDefaultProps<Props>(`VolunteerNeeds createProps: ${error.message}`);
+	}
+}
+
+function handleNeedDate(date: string, dateType: Need['needDateType']) {
+	if (dateType === 'multi') {
+		return 'Multiple shifts';
+	}
+	if (dateType === 'until') {
+		return 'Ongoing';
+	}
+	if (!date || date.toLowerCase() === 'invalid date' || date === '0000-00-00 00:00:00') {
+		return 'Date TBD';
+	}
+	// For single date needs, show the actual date
+	return new Date(date).toDateString();
+}
+
+const { needs, heading, subHeading, viewNeedDetailsLinkRoot, volunteerNeedsLink, volunteerNeedsLinkText } = Astro.props;
+---
+
+<section class='w-full mt-2 lg:mt-4' aria-labelledby='volunteer-needs-heading'>
+	<div class='w-[80%] mx-auto flex flex-col lg:grid lg:grid-cols-2'>
+		<div class='text-left flex flex-col lg:mt-4 lg:mr-2 space-y-2 h-full'>
+			<h2 id='volunteer-needs-heading' class='text-xl lg:text-2xl text-primary-blue-2'>{heading}</h2>
+			<p class='text-md my-[2rem] font-semibold'>{subHeading}</p>
+			<LearnMoreBtn href={volunteerNeedsLink} text={volunteerNeedsLinkText} className='my-[2rem]' color='blue' size='md' ariaLabel='link to volunteer needs page' />
+			<div class='flex justify-center mt-2 lg:mt-4' aria-hidden='true'>
+				<Image
+					loading='lazy'
+					decoding='async'
+					format='svg'
+					src={logo}
+					alt='United Way Logo'
+					height={200}
+					width={200}
+					class='hidden lg:block w-[150px] aspect-auto mx-auto lg:mx-0'
+					role='presentation'
+				/>
+			</div>
+		</div>
+		<div>
+			<ul role='list' class='w-full mt-1 sm:mt-2 grid grid-rows-[1fr,auto] max-h-[60vh] overflow-y-auto scrollbar-hide border-l-2 border-tertiary-black-3'>
+				{
+					needs?.map((need) => (
+						<li class='flex flex-col w-full p-2 pl-4 border-b-2 border-tertiary-black-3'>
+							<time class='text-sm lg:text-md text-tertiary-black-1'>{handleNeedDate(need.date, need.needDateType)}</time>
+							<h3 class='text-lg lg:text-xl text-primary-blue-2 my-[1px] md:my-[2px]'>{need.title}</h3>
+							<p class='text-sm lg:text-md text-tertiary-black-1 leading-relaxed'>{need.agency_name}</p>
+							<p class='text-xs lg:text-sm text-tertiary-black-1 leading-relaxed'>{need.volunteersNeeded} volunteers needed</p>
+							<LearnMoreBtn
+								href={`${viewNeedDetailsLinkRoot}${need.id}`}
+								text='Learn More'
+								className='mt-2 ml-2 focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue-2'
+								openInNewTab={true}
+								color='black'
+								size='md'
+								ariaLabel={`Learn more about volunteering with ${need.agency_name}`}
+							/>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,57 @@
+---
+import { formatHeroHeadingText } from '@/lib/utils';
+import ResponsiveImage from './ResponsiveImage.astro';
+import type { RootQueryToFourPillarsHeroComponentConnection } from '@/__generated__/types';
+import { getDefaultProps, onImageError } from '@/lib/error';
+
+export enum Pillar {
+	HEALTHY_COMMUNITY = 'healthyCommunity',
+	COMMUNITY_RESILIENCY = 'communityResiliency',
+	FINANCIAL_SECURITY = 'financialSecurity',
+	YOUTH_OPPORTUNITY = 'youthOpportunity',
+}
+
+export interface Props {
+	bg: string;
+	title: string;
+	text: string;
+	bgMobile: string;
+	bgAlt: string;
+	bgMobileAlt: string;
+}
+
+export function createProps(wpContent: RootQueryToFourPillarsHeroComponentConnection, pageName: Pillar): Props {
+	if (!wpContent?.nodes[0]?.fourPillarsHeroComponentFields) {
+		return getDefaultProps<Props>('FourPillarsHero', Astro);
+	}
+
+	const root = wpContent?.nodes[0]?.fourPillarsHeroComponentFields;
+	return {
+		bg: root?.[pageName]?.bg?.node?.sourceUrl ?? onImageError('missing bg img createProps FourPillarsHero').src,
+		title: root?.[pageName]?.title ?? '',
+		text: root?.[pageName]?.text ?? '',
+		bgMobile: root?.[pageName]?.bgMobile?.node?.sourceUrl ?? onImageError('missing bgMobile img createProps FourPillarsHero').src,
+		bgAlt: root?.[pageName]?.bg?.node?.altText ?? '',
+		bgMobileAlt: root?.[pageName]?.bgMobile?.node?.altText ?? '',
+	};
+}
+const { bg, title, text, bgMobile, bgAlt, bgMobileAlt } = Astro.props;
+---
+
+<section class='w-full relative grid grid-rows-9 grid-cols-10 bg-primary-blue-4' aria-label={`${title} Hero Section`}>
+	<div class='inset-0 w-full aspect-auto row-start-1 row-span-10 col-start-1 col-span-10'>
+		{bgMobile && bg && <ResponsiveImage className='w-full h-full object-cover' mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} />}
+	</div>
+	<div
+		class='absolute row-start-7 lg:row-start-4 row-end-11 md:row-end-9 col-start-1 lg:col-start-6 col-end-11 lg:col-end-11 self-center justify-self-center flex flex-col justify-center items-center lg:items-end inset-0 z-10 text-center text-nowrap lg:text-left text-white'>
+		{
+			title && (
+				<div class='flex flex-col items-end'>
+					<p class='text-xs sm:text-sm md:text-md font-heading font-bold'>Focus Area</p>
+					<h1 class='text-xl sm:text-2xl 2xl:text-3xl text-primary-yellow-2   text-center xl:text-left'>{formatHeroHeadingText(title)}</h1>
+				</div>
+			)
+		}
+		{text && <p class='text-sm sm:text-md font-medium  text-center mt-1'>{text}</p>}
+	</div>
+</section>

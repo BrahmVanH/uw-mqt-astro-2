@@ -1,0 +1,65 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage, inferRemoteSize } from 'astro:assets';
+import { onError, onImageError } from '@/lib/error';
+import { supportsWebP } from '@/lib/utils';
+
+interface Props {
+	mobileImgUrl: string | ImageMetadata;
+	desktopImgUrl: string | ImageMetadata;
+	desktopAlt: string;
+	mobileAlt: string;
+	className?: string;
+}
+
+const { mobileImgUrl, desktopImgUrl, className, desktopAlt, mobileAlt } = Astro.props;
+const useWebp = supportsWebP(Astro.request);
+
+let mobileWidth, mobileHeight, desktopWidth, desktopHeight;
+
+try {
+	if (typeof mobileImgUrl === 'string') {
+		const mobileDimensions = await inferRemoteSize(mobileImgUrl).catch(() => ({ width: 800, height: 600 }));
+		mobileWidth = mobileDimensions.width;
+		mobileHeight = mobileDimensions.height;
+	}
+} catch (error: any) {
+	onError('Failed to infer mobile image dimensions:', error);
+	mobileWidth = 800;
+	mobileHeight = 600;
+}
+
+try {
+	if (typeof desktopImgUrl === 'string') {
+		const desktopDimensions = await inferRemoteSize(desktopImgUrl).catch(() => ({ width: 1920, height: 1080 }));
+		desktopWidth = desktopDimensions.width;
+		desktopHeight = desktopDimensions.height;
+	}
+} catch (error: any) {
+	onError('Failed to infer desktop image dimensions:', error);
+	desktopWidth = 1920;
+	desktopHeight = 1080;
+}
+
+const mobileImg = await getImage({
+	src: mobileImgUrl,
+	format: useWebp ? 'webp' : 'jpg',
+	width: mobileWidth ?? 800,
+	height: mobileHeight ?? 600,
+	alt: mobileAlt ?? 'placeholder',
+});
+
+const desktopImg = await getImage({
+	src: desktopImgUrl,
+	format: useWebp ? 'webp' : 'jpg',
+	width: desktopWidth ?? 1920,
+	height: desktopHeight ?? 1080,
+	alt: desktopAlt ?? 'placeholder',
+});
+---
+
+<picture>
+	<source type='image/webp' media='(max-width: 1023px)' srcset={mobileImg?.src} />
+	<source type='image/webp' media='(min-width: 1024px)' srcset={desktopImg?.src} />
+	<img class={className ?? ''} loading='lazy' decoding='async' src={desktopImg?.src ?? onImageError('missing desktop img src in responsive image component').src} alt={desktopAlt ?? mobileAlt ?? ''} />
+</picture>

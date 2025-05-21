@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import LearnMoreBtn from './LearnMoreBtn';
+import type { RootQueryToVitaTaxPrepConnection } from '@/__generated__/types';
+import { onImageError } from '@/lib/error';
+
+export interface Props {
+	img: string;
+	imgAlt: string;
+	title: string;
+	text: string;
+	link: string;
+	linkText: string;
+	linkTwo: string;
+	linkTextTwo: string;
+}
+
+export function createProps(wpContent: RootQueryToVitaTaxPrepConnection): Props {
+	const vitaTaxPrep = wpContent.nodes[0].vITATaxPrepFields;
+	return {
+		img: vitaTaxPrep?.image?.node?.sourceUrl ?? onImageError('missing image in Vita Tax Prep component').src,
+		imgAlt: vitaTaxPrep?.image?.node?.altText ?? 'placeholder image',
+		title: vitaTaxPrep?.title ?? '',
+		text: vitaTaxPrep?.text ?? '',
+		link: vitaTaxPrep?.link ?? '',
+		linkText: vitaTaxPrep?.linkText ?? '',
+		linkTwo: vitaTaxPrep?.linkTwo ?? '',
+		linkTextTwo: vitaTaxPrep?.linkTextTwo ?? '',
+	};
+}
+
+const { img, imgAlt, title, text, link, linkText, linkTwo, linkTextTwo } = Astro.props;
+---
+
+<section class='w-full flex items-center justify-center mt-2 lg:mt-4'>
+	<div class='w-[80%] flex flex-col-reverse lg:flex-row lg:space-x-2 items-center justify-center'>
+		<div class='lg:w-1/2 flex flex-col items-center lg:items-end space-y-2 text-center lg:text-right text-pretty mt-2 lg:mt-0'>
+			<h2 class='text-2xl'>{title}</h2>
+			<p class='text-lg'>{text}</p>
+			<div class='flex flex-row items-center space-x-2'>
+				<LearnMoreBtn size='md' text={linkText} href={link} ariaLabel={`Learn more about ${title}`} color='blue' />
+				{linkTwo !== '' && linkTextTwo && <LearnMoreBtn size='md' text={linkTextTwo} href={linkTwo} ariaLabel={`Learn more about ${title}`} color='blue' />}
+			</div>
+		</div>
+		<div class='w-full lg:w-1/2 flex items-center justify-center'>
+			<Image loading='lazy' decoding='async' src={img} format='jpg' height={400} width={400} alt={imgAlt} class='aspect-auto' />
+		</div>
+	</div>
+</section>

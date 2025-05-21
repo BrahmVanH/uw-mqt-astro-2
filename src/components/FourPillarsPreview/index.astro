@@ -1,0 +1,64 @@
+---
+import type { AcfMediaItemConnectionEdge, RootQueryToFourPillarsPreviewConnection } from '@/__generated__/types';
+import Card from './Card.astro';
+import { getDefaultProps, onImageError } from '@/lib/error';
+import Loading from '../Loading.astro';
+
+export interface FourPillarsPreviewCardContent {
+	title: string;
+	text: string;
+	img: string;
+	alt: string;
+	bg: string;
+	link: string;
+}
+
+export interface Props {
+	fourPillarsContent: FourPillarsPreviewCardContent[];
+}
+
+export function createProps(wpContent: RootQueryToFourPillarsPreviewConnection): Props {
+	if (!wpContent?.nodes[0]?.fourPillarsPreviewFields) {
+		return getDefaultProps<Props>('FourPillarsPreview', Astro);
+	}
+
+	const root = wpContent?.nodes[0]?.fourPillarsPreviewFields;
+
+	const pillars = root?.pillars ?? {};
+
+	const FOUR_PILLARS_NAMES = ['healthyCommunity', 'youthOpportunity', 'financialSecurity', 'communityResiliency'];
+
+	// Turn object from wordpress into an array of four pillars objects
+	const pillarsArray: FourPillarsPreviewCardContent[] = FOUR_PILLARS_NAMES.map((pillar) => {
+		return {
+			title: (pillars[`${pillar}Title` as keyof typeof pillars] as string)?.toUpperCase() ?? '',
+			text: (pillars[`${pillar}Text` as keyof typeof pillars] as string) ?? '',
+			img: (pillars[`${pillar}Img` as keyof typeof pillars] as AcfMediaItemConnectionEdge)?.node?.sourceUrl ?? onImageError('missing image in four pillars preview').src,
+			alt: (pillars[`${pillar}Img` as keyof typeof pillars] as AcfMediaItemConnectionEdge)?.node?.altText ?? 'placeholder image',
+			bg: (pillars[`${pillar}Bg` as keyof typeof pillars] as AcfMediaItemConnectionEdge)?.node?.sourceUrl ?? onImageError('missing bg image in four pillars preview').src,
+			link: (pillars[`${pillar}Link` as keyof typeof pillars] as string) ?? '',
+		};
+	});
+
+	return {
+		fourPillarsContent: pillarsArray,
+	};
+}
+
+const { fourPillarsContent } = Astro.props;
+---
+
+{!fourPillarsContent && <Loading />}
+<section class='w-full' role='region'>
+	<h2 class='sr-only'>Our Four Pillars</h2>
+	<ul class='w-full flex flex-col list-none p-0 m-0'>
+		{
+			fourPillarsContent &&
+				fourPillarsContent.map((pillar: FourPillarsPreviewCardContent, index: number) => (
+					<li class='w-full'>
+						<Card index={index} pillar={pillar} />
+					</li>
+				))
+		}
+	</ul>
+</section>

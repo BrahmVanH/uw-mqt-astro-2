@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import LearnMoreBtn from './LearnMoreBtn';
+import type { RootQueryToNorthwoodsAirLifelineConnection } from '@/__generated__/types';
+import { onImageError } from '@/lib/error';
+
+export interface Props {
+	img: string;
+	imgAlt: string;
+	title: string;
+	text: string;
+	link: string;
+	linkText: string;
+	bg?: string;
+	bgAlt?: string;
+}
+
+export function createProps(wpContent: RootQueryToNorthwoodsAirLifelineConnection): Props {
+	const nwaRoot = wpContent.nodes[0].northwoodsAirLifelineFields;
+	return {
+		img: nwaRoot?.image?.node?.sourceUrl ?? onImageError('missing image in Vita Tax Prep component').src,
+		imgAlt: nwaRoot?.image?.node?.altText ?? 'placeholder image',
+		title: nwaRoot?.title ?? '',
+		text: nwaRoot?.text ?? '',
+		link: nwaRoot?.link ?? '',
+		linkText: nwaRoot?.linkText ?? '',
+		bg: nwaRoot?.bg?.node?.sourceUrl ?? '',
+		bgAlt: nwaRoot?.bg?.node?.altText ?? '',
+	};
+}
+
+const { img, imgAlt, title, text, link, linkText } = Astro.props;
+---
+
+<section class='w-full flex items-center justify-center my-4'>
+	<div class='w-[80%] flex flex-col-reverse lg:flex-row lg:space-x-2 items-center justify-center'>
+		<div class='w-full lg:w-1/2 flex items-center justify-center'>
+			<Image loading='lazy' decoding='async' src={img} format='jpg' height={600} width={400} alt={imgAlt} class='w-[600px] aspect-auto' />
+		</div>
+		<div class='lg:w-1/2 flex flex-col items-center lg:items-start space-y-2 text-center lg:text-left text-pretty my-2 lg:my-0'>
+			<h2 class='text-2xl'>{title}</h2>
+			<p class='text-lg'>{text}</p>
+			<LearnMoreBtn size='md' text={linkText} href={link} ariaLabel={`Learn more about ${title}`} color='blue' />
+		</div>
+	</div>
+</section>

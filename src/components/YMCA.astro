@@ -1,0 +1,64 @@
+---
+import type { RootQueryToYmcaComponentConnection } from '@/__generated__/types';
+import { Image } from 'astro:assets';
+import LearnMoreBtn from './LearnMoreBtn';
+import { getDefaultProps, onImageError } from '@/lib/error';
+import { supportsWebP } from '@/lib/utils';
+
+export interface Props {
+	title: string;
+	text: string;
+	link1: string;
+	linkText1: string;
+	link2: string;
+	linkText2: string;
+	img: string;
+	imgAlt: string;
+	brandImg: string;
+	brandImgAlt: string;
+}
+
+export function createProps(wpContent: RootQueryToYmcaComponentConnection): Props {
+	if (!wpContent?.nodes[0]?.yMCAComponentFields) {
+		return getDefaultProps<Props>('YMCA createProps', Astro);
+	}
+	const root = wpContent?.nodes[0]?.yMCAComponentFields;
+
+	return {
+		title: root?.title ?? '',
+		text: root?.text ?? '',
+		link1: root?.link1 ?? '',
+		linkText1: root?.linkText1 ?? '',
+		link2: root?.link2 ?? '',
+		linkText2: root?.linkText2 ?? '',
+		img: root?.image?.node?.sourceUrl ?? onImageError('missing image in YMCA component').src,
+		imgAlt: root?.image?.node?.altText ?? '',
+		brandImg: root?.brandImg?.node?.sourceUrl ?? onImageError('missing brand image in YMCA component').src,
+		brandImgAlt: root?.brandImg?.node?.altText ?? '',
+	};
+}
+
+const { title, text, link1, linkText1, link2, linkText2, img, imgAlt, brandImg, brandImgAlt } = Astro.props;
+
+const useWebp = supportsWebP(Astro.request);
+---
+
+<section class='w-full max-w-[80%] mx-auto flex flex-col-reverse lg:flex-row justify-center items-center space-y-2 lg:space-y-0 last:mb-4 lg:mb-0 my-2'>
+	<div class='w-[50%] flex flex-col justify-center items-center'>
+		<div class='flex flex-row justify-center items-center mt-2 lg:mt-0'>
+			<h2 class='text-lg lg:text-xl xl:text-2xl text-primary-blue-2'>{title}</h2>
+			<Image loading='lazy' decoding='async' format={useWebp ? 'webp' : 'jpg'} class='w-7 lg:hidden ml-2' inferSize={true} src={brandImg} alt={brandImgAlt} />
+		</div>
+		<div class='flex flex-col-reverse items-center lg:flex-row'>
+			<p class='text-md xl:text-lg lg:w-[80%] my-4 leading-normal'>{text}</p>
+			<Image loading='lazy' decoding='async' format={useWebp ? 'webp' : 'jpg'} class='hidden lg:block w-7 lg:w-11 self-start ml-4' inferSize={true} src={brandImg} alt={brandImgAlt} />
+		</div>
+		<div class='flex flex-row justify-start items-center'>
+			{link1 && <LearnMoreBtn className='mr-2' size='md' useBg={false} text={linkText1} color='blue' href={link1} ariaLabel={`Learn more about ${title}`} />}
+			{link2 && <LearnMoreBtn size='md' useBg={false} text={linkText2} color='blue' href={link2} ariaLabel={`Learn more about ${title}`} />}
+		</div>
+	</div>
+	<div class='lg:w-[50%] flex justify-end items-center'>
+		<Image loading='lazy' decoding='async' class={'w-[90%] max-w-[600px] aspect-auto'} inferSize={true} src={img} alt={imgAlt} />
+	</div>
+</section>

@@ -1,0 +1,124 @@
+---
+import { SEO as SEOComponent, type Props as SEOProps } from 'astro-seo';
+import { SEOConfig } from '../config';
+
+const defaultImageFile = new URL(SEOConfig.defaultImage, Astro.url);
+
+interface Props {
+	seo?: SEOProps;
+}
+
+const { seo } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<SEOComponent
+	title={seo?.title}
+	canonical={canonicalURL}
+	openGraph={{
+		basic: {
+			url: canonicalURL,
+			title: seo?.title ?? SEOConfig.siteName,
+			type: 'website',
+			image: defaultImageFile.toString(),
+		},
+		image: {
+			url: defaultImageFile.toString(),
+			secureUrl: defaultImageFile.toString(),
+			alt: '',
+			height: 1200,
+			width: 800,
+		},
+	}}
+	extend={{
+		meta: [
+			{
+				name: 'og:locale',
+				content: 'en_US',
+			},
+			{
+				name: 'og:description',
+				content: seo?.description ?? SEOConfig.defaultDescription,
+			},
+			{
+				name: 'og:site_name',
+				content: SEOConfig.siteName,
+			},
+			{
+				name: 'description',
+				content: seo?.description ?? SEOConfig.defaultDescription,
+			},
+			{
+				name: 'geo.region',
+				content: SEOConfig.organization.address.addressRegion,
+			},
+			{
+				name: 'geo.placename',
+				content: 'Marquette County',
+			},
+		],
+		link: [
+			{
+				rel: 'icon',
+				href: '/favicon.ico',
+			},
+		],
+	}}
+/>
+
+<!-- Structured Data for Organization (NGO) -->
+<script
+	type='application/ld+json'
+	set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'NGO',
+		name: SEOConfig.siteName,
+		url: Astro.site?.toString(),
+		logo: new URL(SEOConfig.defaultImage, Astro.site).toString(),
+		sameAs: SEOConfig.organization.socialLinks,
+		address: {
+			'@type': 'PostalAddress',
+			...SEOConfig.organization.address,
+		},
+		telephone: SEOConfig.organization.contact.telephone,
+		email: SEOConfig.organization.contact.email,
+		description: seo?.description ?? SEOConfig.defaultDescription,
+		nonprofitStatus: 'Nonprofit501c3',
+		foundingDate: SEOConfig.organization.foundingDate,
+		keywords: SEOConfig.organization.keywords,
+	})}
+/>
+
+<!-- Structured Data for Local Business -->
+<script
+	type='application/ld+json'
+	set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'LocalBusiness',
+		name: SEOConfig.siteName,
+		image: new URL(SEOConfig.defaultImage, Astro.site).toString(),
+		url: Astro.site?.toString(),
+		address: {
+			'@type': 'PostalAddress',
+			...SEOConfig.organization.address,
+		},
+		geo: {
+			'@type': 'GeoCoordinates',
+			...SEOConfig.organization.geoCoordinates,
+		},
+		telephone: SEOConfig.organization.contact.telephone,
+		openingHours: SEOConfig.organization.openingHours,
+	})}
+/>
+
+<!-- WebSite Structured Data -->
+<script
+	type='application/ld+json'
+	set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: SEOConfig.siteName,
+		url: Astro.site?.toString(),
+	})}
+/>

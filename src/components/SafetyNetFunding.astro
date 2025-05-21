@@ -1,0 +1,19 @@
+---
+import { safetyNetFundingContent } from '@/config';
+import LearnMoreBtn from './LearnMoreBtn';
+
+const { title, text, link, linkText, link2 } = safetyNetFundingContent;
+---
+
+<section class='flex flex-col pl-8 mt-8' aria-labelledby='safety-net-title'>
+	<div class='flex flex-row'>
+		<h2 id='safety-net-title' class='text-[85px] font-semibold text-primary-blue-2'>{title}</h2>
+	</div>
+	<div class='ml-8 w-full'>
+		<p class='mt-4 mb-7 text-md lg:text-lg leading-relaxed w-[75%]'>{text}</p>
+		<div class='flex flex-col gap-4'>
+			<LearnMoreBtn href={link} text={linkText} ariaLabel='link to safety net funding page' size='lg' color='blue' />
+			<LearnMoreBtn href={link2} openInNewTab={true} ariaLabel='link to safety net funding application' size='lg' color='blue' />
+		</div>
+	</div>
+</section>

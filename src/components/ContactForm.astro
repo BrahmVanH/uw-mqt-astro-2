@@ -1,0 +1,37 @@
+---
+import LearnMoreBtn from './LearnMoreBtn';
+---
+
+<section class='w-full bg-primary-blue-1 text-white py-8' aria-labelledby='contact-title'>
+	<div class='w-[80%] mx-auto'>
+		<h2 id='contact-title' class='text-2xl mx-auto my-4 w-min text-nowrap'>Reach Out</h2>
+		<p class='w-3/4 mx-auto text-md text-center leading-relaxed'>We would like to hear from you. Please send us a message by filling out the form below.</p>
+		<form
+			action='https://formspree.io/f/xnqoqzqk'
+			method='POST'
+			class='flex flex-col justify-center items-center [&>textarea]:bg-primary-blue-2 [&>textarea]:rounded-sm [&>input]:bg-primary-blue-2 [&>input]:w-full [&>input]:rounded-2xl [&>input]:h-5 [&>label]:mt-2 [&>label]:self-start'
+			novalidate>
+			<div class='w-full'>
+				<label for='name'>First Name<span class='sr-only'>(Required)</span></label>
+				<input type='text' id='name' name='name' required aria-required='true' minlength='2' />
+			</div>
+			<div class='w-full'>
+				<label for='lname'>Last Name<span class='sr-only'>(Required)</span></label>
+				<input type='text' id='lname' name='lname' required aria-required='true' minlength='2' />
+			</div>
+			<div class='w-full'>
+				<label for='email'>Email<span class='sr-only'>(Required)</span></label>
+				<input type='email' id='email' name='email' required aria-required='true' />
+			</div>
+			<div class='w-full'>
+				<label for='subject'>Subject<span class='sr-only'>(Required)</span></label>
+				<input type='text' id='subject' name='subject' required aria-required='true' minlength='2' />
+			</div>
+			<div class='w-full'>
+				<label for='message'>Message<span class='sr-only'>(Required)</span></label>
+				<textarea id='message' name='message' class='w-full h-10' required aria-required='true'></textarea>
+			</div>
+			<button type='submit' class='mt-4'> Send Message </button>
+		</form>
+	</div>
+</section>

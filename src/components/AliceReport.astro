@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components';
+import LearnMoreBtn from './LearnMoreBtn';
+import alicePieChart from '@/image/UnitedForAlicePieChart.svg';
+import { Image } from 'astro:assets';
+
+import { aliceReportContent } from '@/config';
+
+import type { RootQueryToAliceReportPdfConnection } from '@/__generated__/types';
+
+export interface Props {
+	link1: string;
+	linkText1: string;
+}
+
+export function createProps({ aliceReportPdfs }: { aliceReportPdfs: RootQueryToAliceReportPdfConnection }): Props {
+	const link1 = aliceReportPdfs.nodes[0].aLICEReportPDFFields?.pdfFile?.node?.mediaItemUrl ?? '';
+	const linkText1 = 'Read the full pdf report';
+	return { link1, linkText1 };
+}
+const { link1, linkText1 } = Astro.props;
+
+const { heading, subheading, text, aliceStats, linkText2, link2 } = aliceReportContent;
+---
+
+<section class='relative w-full mt-4 lg:mt-8' aria-labelledby='alice-report-heading'>
+	<div class='w-[80%] mx-auto flex flex-col lg:grid grid-cols-2 grid-rows-2'>
+		<div class='flex flex-col lg:flex-row lg:col-start-1 lg:col-span-1 lg:row-span-1'>
+			<div class='flex flex-col'>
+				<div class='contents'>
+					<h2 id='alice-report-heading' class='text-xl lg:text-2xl'>{heading}</h2>
+					<p class='text-lg lg:text-xl font-bold text-pretty leading-relaxed'>{subheading}</p>
+				</div>
+				<div class='w-full'>
+					<p class='text-md lg:text-lg my-2 leading-relaxed'>{aliceStats.text}</p>
+					<ul role='list' class='text-sm lg:text-md space-y-2'>
+						{
+							aliceStats?.stats.map((stat) => (
+								<li class='flex items-center gap-2 leading-relaxed'>
+									<span class='sr-only'>•</span>
+									<Icon name='bullet' size={24} class='max-h-1 max-w-1' aria-hidden='true' />
+									<p>{stat}</p>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class='lg:col-start-2 row-start-1 row-span-2 [&>*]:mx-auto lg:mt-7'>
+			<Image src={alicePieChart} alt='United For Alice Pie Chart' class='lg:absolute lg:max-w-[500px] aspect-auto object-cover' loading='lazy' decoding='async' />
+		</div>
+		<div class='mt-2 lg:col-start-1 row-start-2 row-span-1'>
+			<p class='text-lg font-medium text-pretty'>{text}</p>
+			<div class='col-start-1 col-span-2 row-start-3 flex flex-col sm:flex-row items-start sm::flex-row mt-4'>
+				<LearnMoreBtn className='mb-1 lg:mb-0 sm:mx-2 lg:mx-4' href={link1} text={linkText1} color='black' size='md' openInNewTab={true} ariaLabel={'Read the ALICE Report PDF'} />
+				<LearnMoreBtn href={link2} text={linkText2} color='black' size='md' openInNewTab={true} ariaLabel={'Visit the interactive ALICE Report web page'} />
+			</div>
+		</div>
+	</div>
+</section>

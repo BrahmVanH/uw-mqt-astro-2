@@ -1,0 +1,66 @@
+---
+import type { RootQueryToHowToContributeComponentConnection } from '@/__generated__/types';
+import { getDefaultProps } from '@/lib/error';
+
+export interface Props {
+	buttonContent: ButtonContent[];
+}
+
+export interface ButtonContent {
+	title: string;
+	text: string;
+	href: string;
+}
+
+const { buttonContent } = Astro.props;
+
+export function createProps(wpContent: RootQueryToHowToContributeComponentConnection): Props {
+	if (!wpContent?.nodes[0]?.howToContributeComponentFields) {
+		return getDefaultProps<Props>('HowToContribute', Astro);
+	}
+
+	const root = wpContent?.nodes[0]?.howToContributeComponentFields;
+
+	const buttonsArray: Props['buttonContent'] = Object.keys(root).map((key) => {
+		const content = root[key as keyof typeof root];
+		if (typeof content === 'object' && content !== null) {
+			return {
+				href: content.link ?? '',
+				text: content.text ?? '',
+				title: content.title?.toUpperCase() ?? '',
+			} as ButtonContent;
+		}
+		return getDefaultProps<ButtonContent>('HowToContributeBtnContent', Astro);
+	});
+
+	return {
+		buttonContent: buttonsArray,
+	};
+}
+
+const getButtonClass = (index: number) => {
+	switch (index) {
+		case 0:
+			return 'bg-primary-blue-2';
+		case 1:
+			return 'bg-primary-blue-1';
+		case 2:
+			return 'bg-primary-blue-3';
+		default:
+			return 'bg-primary-blue-2';
+	}
+};
+---
+
+<section class='w-full mt-2 lg:mt-4 mb-2'>
+	<div class='w-[90%] mx-auto grid grid-cols-1 grid-rows-3 sm:grid-cols-3 sm:grid-rows-1 justify-center items-center'>
+		{
+			buttonContent?.map((button, i) => (
+				<a class={`${getButtonClass(i)}   w-full h-full text-white lg:hover:scale-[.98] lg:hover:transition-all p-4`} href={button.href}>
+					<h2 class=' text-lg sm:text-xl lg:text-2xl'>{button?.title?.toUpperCase()}</h2>
+					<p class=' text-sm sm:text-md mt-2 lg:mt-4'>{button?.text}</p>
+				</a>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,239 @@
+---
+import xBlue from '@/icons/x-blue.svg';
+import Button from './ui/Button.astro';
+---
+
+<div id='consent-banner' class='fixed bottom-0 left-0 right-0 w-full z-[1000] p-2 bg-white/70 hidden' role='dialog' aria-labelledby='consent-message' aria-describedby='consent-message'>
+	<div class='relative w-full rounded-xs border p-4 bg-white/95'>
+		<div class='flex flex-col lg:flex-row items-center justify-between text-sm [&_p]:leading-relaxed'>
+			<span id='consent-message' class='text-md lg:text-lg'>
+				We use essential cookies for security and functionality. You can choose to enable analytics cookies to help us improve your experience.
+			</span>
+			<div class='flex flex-col sm:flex-row gap-2 mt-1 lg:mt-0 lg:ml-4'>
+				<Button id='view-policy' variant='outline' size='sm'> View Policy </Button>
+				<Button id='accept-essential' variant='outline' size='sm'> Essential Only </Button>
+				<Button id='accept-all' variant='privacy' size='sm'> Accept All </Button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<dialog
+	id='privacy-dialog'
+	tabindex='-1'
+	class='z-50 w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-2 lg:p-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-[6px] max-h-[80vh] overflow-y-auto'>
+	<button autofocus id='close-dialog' type='button' class='absolute right-4 top-4 opacity-70 bg-transparent hover:opacity-100 focus:outline-none'>
+		<img class='bg-transparent aspect-auto' src={xBlue.src} height={20} width={18} alt='close icon' loading="lazy" decoding="async" />
+		<span class='sr-only'>Close</span>
+	</button>
+	<div class='prose prose-sm max-w-none'>
+		<h2>Privacy Policy & Cookie Consent</h2>
+
+		<h2>Essential Technical Features</h2>
+		<p>We use certain technical features that are necessary for the security and basic functionality of our website. These features are always active and include:</p>
+		<ul>
+			<li><strong>Rate Limiting</strong>: We monitor the frequency of page visits, especially for our donation page, to prevent abuse and ensure fair access for all users.</li>
+			<li>
+				<strong>Error Monitoring</strong>: We use <a href='https://sentry.io' target='_blank' rel='noreferrer noopener'>Sentry</a>
+				to track technical errors that occur on our website. This helps us identify and fix issues quickly to maintain a stable service.
+			</li>
+			<li><strong>Basic Cookie Storage</strong>: Essential cookies required for the website's ability to function properly.</li>
+		</ul>
+		<p>These features collect minimal technical data and are used solely for security and functionality purposes. By using our website, you consent to these essential features.</p>
+
+		<h2>Optional Analytics (Google Analytics)</h2>
+		<p>We offer the option to help us improve our website through analytics tracking. This is completely optional and includes:</p>
+		<ul>
+			<li><strong>Website Usage Analytics</strong>: Understanding how visitors use our website</li>
+			<li><strong>Performance Monitoring</strong>: Measuring website loading times and performance</li>
+			<li><strong>Navigation Patterns</strong>: Learning which content is most useful to visitors</li>
+		</ul>
+		<p>If you consent to analytics, we will use Google Analytics with the following limited scope:</p>
+		<ul>
+			<li>analytics_storage: To analyze website usage patterns</li>
+			<li>functionality_storage: To maintain your analytics preferences</li>
+		</ul>
+		<p>We do NOT enable:</p>
+		<ul>
+			<li>Ad personalization</li>
+			<li>Advertising cookies</li>
+			<li>Cross-site tracking</li>
+			<li>Remarketing features</li>
+		</ul>
+
+		<h3>Your Choices</h3>
+		<p>You have two options:</p>
+		<ol>
+			<li>
+				<strong>Basic Consent (Default)</strong>
+				<ul>
+					<li>Includes only essential technical features</li>
+					<li>Required for website security and functionality</li>
+					<li>Minimal data collection</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Full Consent</strong>
+				<ul>
+					<li>Includes everything in Basic Consent</li>
+					<li>Adds Google Analytics tracking</li>
+					<li>Helps us improve website experience</li>
+					<li>No advertising or personalization features</li>
+				</ul>
+			</li>
+		</ol>
+		<p>You can change your preferences at any time through our cookie settings panel.</p>
+	</div>
+</dialog>
+
+<style>
+	dialog[open] {
+		display: grid;
+		position: fixed;
+		left: 50%;
+		top: 70%;
+	}
+
+	dialog::backdrop {
+		background-color: var(--tertiary-black-4);
+		opacity: 0.5;
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const CONSENT_SETTINGS_KEY = 'userConsent';
+		const banner = document.getElementById('consent-banner');
+		const dialog = document.getElementById('privacy-dialog') as HTMLDialogElement;
+		const viewPolicyBtn = document.getElementById('view-policy');
+		const acceptEssentialBtn = document.getElementById('accept-essential');
+		const acceptAllBtn = document.getElementById('accept-all');
+		const closeDialogBtn = document.getElementById('close-dialog');
+		const body = document.body;
+		const html = document.documentElement;
+
+		function updateConsent(settings: {
+			functionality_storage: string;
+			security_storage: string;
+			analytics_storage: string;
+			ad_storage: string;
+			ad_user_data: string;
+			ad_personalization: string;
+			personalization_storage: string;
+		}) {
+			// Store settings in both cookie and localStorage
+			document.cookie = `userConsent=${encodeURIComponent(JSON.stringify(settings))}; path=/; max-age=31536000; SameSite=Strict`;
+			try {
+				localStorage.setItem(CONSENT_SETTINGS_KEY, JSON.stringify(settings));
+			} catch (e) {
+				console.error('Failed to save to localStorage:', e);
+			}
+		}
+
+		// Check for existing consent
+		const hasConsent = () => {
+			try {
+				const localStorageConsent = localStorage.getItem(CONSENT_SETTINGS_KEY);
+				const cookieConsent = document.cookie.split('; ').find((row) => row.startsWith('userConsent='));
+
+				return localStorageConsent || cookieConsent;
+			} catch (e) {
+				console.error('Error checking consent:', e);
+				return false;
+			}
+		};
+
+		// Initial visibility check
+		const initializeBanner = () => {
+			if (!hasConsent() && banner) {
+				banner.style.display = 'block';
+				banner.classList.remove('hidden');
+			} else if (banner) {
+				banner.classList.add('hidden');
+				banner.style.display = 'none';
+			}
+		};
+
+		// Run initial check
+		initializeBanner();
+
+		// Handle accept essential only
+		acceptEssentialBtn?.addEventListener('click', () => {
+			updateConsent({
+				functionality_storage: 'granted',
+				security_storage: 'granted',
+				analytics_storage: 'denied',
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				personalization_storage: 'denied',
+			});
+			if (banner) {
+				banner.classList.add('hidden');
+				banner.style.display = 'none';
+			}
+		});
+
+		// Handle accept all
+		acceptAllBtn?.addEventListener('click', () => {
+			updateConsent({
+				functionality_storage: 'granted',
+				security_storage: 'granted',
+				analytics_storage: 'granted',
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				personalization_storage: 'denied',
+			});
+			if (banner) {
+				banner.classList.add('hidden');
+				banner.style.display = 'none';
+			}
+		});
+
+		// Handle view policy button
+		viewPolicyBtn?.addEventListener('click', () => {
+			body?.classList.add('overflow-hidden');
+			html?.classList.add('overflow-hidden');
+			dialog?.showModal();
+		});
+
+		// Handle dialog close
+		closeDialogBtn?.addEventListener('click', () => {
+			body?.classList.remove('overflow-hidden');
+			html?.classList.remove('overflow-hidden');
+			dialog?.close();
+		});
+
+		// Close dialog when clicking outside
+		dialog?.addEventListener('click', (e) => {
+			e?.preventDefault();
+			e?.stopPropagation();
+			const target = e.target as HTMLElement;
+			if (target.id === 'privacy-dialog') {
+				body?.classList.remove('overflow-hidden');
+				html?.classList.remove('overflow-hidden');
+				dialog.close();
+			}
+		});
+
+		// Handle keyboard navigation
+		banner?.addEventListener('keydown', function (e) {
+			e?.preventDefault();
+			e?.stopPropagation();
+			if (e.key === 'Tab') {
+				const focusableElements = banner.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+				const firstElement = focusableElements[0];
+				const lastElement = focusableElements[focusableElements.length - 1];
+
+				if (e.shiftKey && document.activeElement === firstElement) {
+					(lastElement as HTMLElement).focus();
+					e.preventDefault();
+				} else if (!e.shiftKey && document.activeElement === lastElement) {
+					(firstElement as HTMLElement).focus();
+					e.preventDefault();
+				}
+			}
+		});
+	});
+</script>

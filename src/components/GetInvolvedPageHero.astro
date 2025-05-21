@@ -1,0 +1,46 @@
+---
+import type { RootQueryToGetInvolvedHeroConnection } from '@/__generated__/types';
+import ResponsiveImage from './ResponsiveImage.astro';
+import { formatHeroHeadingText } from '@/lib/utils';
+import { getDefaultProps, onImageError } from '@/lib/error';
+
+export interface Props {
+	bgUrl: string;
+	bgAlt: string;
+	bgMobileUrl: string;
+	bgMobileAlt: string;
+	title: string;
+	text: string;
+}
+
+interface GraphQLContent extends RootQueryToGetInvolvedHeroConnection {}
+
+export function createProps(graphQLContent: GraphQLContent): Props {
+	if (!graphQLContent) {
+		return getDefaultProps<Props>('GetInvolvedPageHero', Astro);
+	}
+	const root = graphQLContent?.nodes[0].getInvolvedHeroFields;
+
+	return {
+		bgUrl: root?.bg?.node?.sourceUrl ?? onImageError('missing bg image get involved hero').src,
+		bgAlt: root?.bg?.node?.altText ?? 'Placeholder image',
+		title: root?.title ?? '',
+		text: root?.text ?? '',
+		bgMobileUrl: root?.bgMobile?.node?.sourceUrl ?? onImageError('missing bg mobile image get involved hero').src,
+		bgMobileAlt: root?.bgMobile?.node?.altText ?? 'Placeholder image',
+	};
+}
+const { bgUrl, title, text, bgMobileAlt, bgMobileUrl, bgAlt } = Astro.props;
+---
+
+<div class='w-full h-full grid grid-cols-10 grid-rows-5 relative' aria-label={'Our Impact Hero Section'}>
+	<div class='col-span-10 row-span-5'>
+		{bgMobileUrl && bgUrl && <ResponsiveImage className='w-full h-full  object-cover ' mobileImgUrl={bgMobileUrl} desktopImgUrl={bgUrl} mobileAlt={bgMobileAlt} desktopAlt={bgAlt} />}
+	</div>
+	<div
+		class=`absolute col-start-1 lg:col-start-4 col-span-10 lg:col-span-4 mx-auto row-start-4 row-span-2 w-full  
+		flex flex-col justify-center lg:justify-end  items-start justify-self-start self-center text-center text-white  inset-0 z-10 [&>*]:mt-2 lg:[&>*]:mt-4`>
+		{title && <h1 class='sm:mt-0 text-2xl lg:3xl 2xl:text-4xl font-heading w-full text-nowrap'>{formatHeroHeadingText(title)}</h1>}
+		{text && <p class='hidden sm:block max-w-[80%] xl:max-w-full mx-auto text-md font-medium text-wrap'>{text}</p>}
+	</div>
+</div>

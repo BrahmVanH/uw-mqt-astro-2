@@ -1,0 +1,44 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro';
+import { formatHeroHeadingText } from '@/lib/utils';
+import type { RootQueryToPartnerPageHeroConnection } from '@/__generated__/types';
+import { getDefaultProps } from '@/lib/error';
+
+export interface Props {
+	title: string;
+	text: string;
+	bg: string;
+	bgAlt: string;
+	bgMobile: string;
+	bgMobileAlt: string;
+}
+
+export function createProps(wpContent: RootQueryToPartnerPageHeroConnection): Props {
+	if (!wpContent?.nodes[0]?.partnerPageHeroFields) {
+		return getDefaultProps<Props>('PartnerPageHero', Astro);
+	}
+
+	const root = wpContent?.nodes[0].partnerPageHeroFields;
+
+	return {
+		title: root?.title?.toUpperCase() as string,
+		text: root?.text as string,
+		bg: root?.bg?.node?.sourceUrl as string,
+		bgAlt: root?.bg?.node?.altText as string,
+		bgMobile: root?.bgMobile?.node?.sourceUrl as string,
+		bgMobileAlt: root?.bgMobile?.node?.altText as string,
+	};
+}
+const { title, text, bg, bgMobile, bgAlt, bgMobileAlt } = Astro.props;
+---
+
+<section class='w-full relative grid grid-rows-9 grid-cols-10' aria-label={'Our Impact Hero Section'}>
+	<div class='inset-0 w-full h-full row-start-1 row-span-9 col-start-1 col-span-10'>
+		{bgMobile && bg && <ResponsiveImage className='w-full h-full object-cover' mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} />}
+	</div>
+	<div
+		class='absolute row-start-7 lg:row-start-6 xl:row-start-7 row-span-2 col-start-1 lg:col-start-7 col-span-10 lg:col-span-4 self-center justify-self-center inset-0 z-10 flex flex-col items-center justify-end text-left text-white'>
+		{title && <h1 class='text-xl sm:text-2xl font-heading w-min text-nowrap text-center xl:text-left lg:text-wrap xl:text-nowrap xl:pr-2 lg:pt-2 xl:pt-0'>{formatHeroHeadingText(title)}</h1>}
+		{text && <p class='text-sm lg:text-lg text-nowrap font-medium text-center mt-2 xl:mt-4'>{text}</p>}
+	</div>
+</section>

@@ -1,0 +1,71 @@
+<!-- Initialize dataLayer first -->
+<script type='text/partytown' is:inline>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('consent', 'default', {
+		functionality_storage: 'granted', // Essential
+		security_storage: 'granted', // For rate limiting
+		ad_user_data: 'denied', // Google Ads - denied by default
+		personalization_storage: 'denied', // Google Personalization - denied by default
+	});
+</script>
+
+<!-- Load GTM with defer -->
+<script type='text/partytown' defer src='https://www.googletagmanager.com/gtag/js?id=G-895GM9HCBS'></script>
+
+<!-- Basic GTM configuration -->
+<script type='text/partytown' is:inline>
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+	gtag('config', 'G-895GM9HCBS');
+</script>
+
+<!-- Consent management -->
+<script type='text/partytown' is:inline>
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	try {
+		const initialConsent = {
+			functionality_storage: 'granted',
+			security_storage: 'granted',
+			analytics_storage: 'denied',
+			ad_personalization: 'denied',
+			ad_storage: 'denied',
+			ad_user_data: 'denied',
+			personalization_storage: 'denied',
+		};
+
+		// Set initial consent
+		gtag('consent', 'default', initialConsent);
+
+		// Simplified consent update function
+		window.updateConsent = function (newSettings) {
+			try {
+				gtag('consent', 'update', newSettings);
+				localStorage.setItem('userConsent', JSON.stringify(newSettings));
+				document.cookie = `userConsent=${encodeURIComponent(JSON.stringify(newSettings))}; path=/; max-age=31536000; SameSite=Strict`;
+			} catch (e) {
+				console.error('Consent update failed:', e);
+			}
+		};
+
+		// Load stored consent on DOMContentLoaded
+		document.addEventListener('DOMContentLoaded', function () {
+			try {
+				const stored = localStorage.getItem('userConsent');
+				if (stored) {
+					window.updateConsent(JSON.parse(stored));
+				}
+			} catch (e) {
+				console.error('Failed to load stored consent:', e);
+			}
+		});
+	} catch (e) {
+		console.error('GTM initialization error:', e);
+	}
+</script>

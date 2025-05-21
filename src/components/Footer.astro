@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import logo from '@/image/logo-no-text.svg';
+import { Icon } from 'astro-icon/components';
+
+import up211Logo from '@/image/upper-peninsula-211.jpg';
+
+import type { Config } from '@/types/footer';
+
+import { UPCAP_211_SERVICES_URL } from '@/lib/constants';
+import Loading from './Loading.astro';
+
+export interface Props extends Config {}
+
+const { informationLinks, socials, contactInfo } = Astro.props;
+---
+
+{!informationLinks && !contactInfo && socials && <Loading />}
+
+<footer class='bg-primary-blue-2 text-white p-8 [&>*]:mt-4 last:mb-4'>
+	<div class='w-full flex flex-col md:flex-row md:justify-between'>
+		<a class='content' data-astro-prefetch='viewport' href='/'>
+			<Image loading='lazy' decoding='async' width={100} height={100} src={logo} alt='logo' class='max-w-[75px] lg:max-w-[100px]' />
+		</a>
+		<div class='flex flex-row w-full justify-evenly md:justify-normal md:w-min mt-8 md:mt-0 [&>*]:ml-4 last:mr-4'>
+			{
+				socials.map((social) => (
+					<a data-astro-prefetch='viewport' href={social.link}>
+						<Icon name={social.icon} class='h-6 w-6' />
+					</a>
+				))
+			}
+		</div>
+	</div>
+	<div class='flex flex-col md:flex-row md:flex-wrap'>
+		<div class='md:w-1/5 my-auto text-md flex flex-col [&>*]:mt-4 last:mb-4 text-left'>
+			<div>
+				<a data-astro-prefetch='viewport' href={contactInfo?.googleMapsUrl} class='hover:underline' rel='noopener' target='_blank'>
+					<p>United Way Marquette</p>
+					<p>{contactInfo?.streetAddress}</p>
+
+					<p>{`${contactInfo?.city}, ${contactInfo?.state} ${contactInfo?.zip}`}</p>
+				</a>
+			</div>
+			<a id='contact-info' data-astro-prefetch='viewport' href={`tel:${contactInfo?.phoneNumber}`} class='hover:underline' rel='noopener' target='_blank'>
+				<p>{contactInfo?.phoneNumber}</p>
+			</a>
+		</div>
+		<div
+			class='w-4/5 pt-4 flex flex-wrap flex-col md:flex-row justify-evenly [&>div]:border-white [&>div]:border-t-2 md:[&>div]:border-0 md:border-white md:border-t-2 [&>div>*]:mt-4 [&>div]:last:mb-4 [&>div]:flex [&>div]:flex-col'>
+			<div>
+				<p class='text-lg font-bold'>About</p>
+				<a data-astro-prefetch='viewport' href='/about/our-culture'>Our Culture</a>
+				<a data-astro-prefetch='viewport' href='/about/our-leadership'>Our Leadership</a>
+				<a data-astro-prefetch='viewport' href='/about/values-history'>Our Values & History</a>
+			</div>
+			<div id='information-links'>
+				<p class='text-lg font-bold'>Information Links</p>
+				{
+					informationLinks?.map((link) => (
+						<a id={link.text.toLowerCase().split(' ').join('-')} data-astro-prefetch='viewport' href={`${link.url}`} target='_blank' rel='noopener'>
+							{link.text}
+						</a>
+					))
+				}
+			</div>
+			<div>
+				<p class='text-lg font-bold'>Connect With 211</p>
+				<a data-astro-prefetch='viewport' href={UPCAP_211_SERVICES_URL} rel='noopener noreferrer' target='_blank'>
+					<Image loading='lazy' decoding='async' src={up211Logo} alt='211 logo' class='w-[200px]' />
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class='w-full flex flex-row text-xs sm:text-sm'>
+		<p>
+			&copy; {new Date().getFullYear()}
+		</p>
+		<a data-astro-prefetch='viewport' class='ml-1' href='/'>United Way of Marquette County</a>
+	</div>
+</footer>

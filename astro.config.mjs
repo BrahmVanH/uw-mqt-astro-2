@@ -3,7 +3,6 @@ import { defineConfig, envField } from 'astro/config';
 
 import react from '@astrojs/react';
 
-import tailwind from '@astrojs/tailwind';
 
 import icon from 'astro-icon';
 
@@ -119,7 +118,6 @@ export default defineConfig({
 				plugins: [['babel-plugin-react-compiler']],
 			},
 		}),
-		tailwind({ applyBaseStyles: false }),
 		icon(),
 		sitemap(),
 		mdx(),

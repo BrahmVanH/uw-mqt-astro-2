@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon/components';
+import { onError } from '@/lib/error';
+
+import type { Card } from '@/types/weAreYourLocal';
+import { WeAreYourLocalContent } from '@/config';
+
+const isValidCard = (card: any): card is Card => {
+	return typeof card.title === 'string' && typeof card.text === 'string' && typeof card.icon === 'string' && typeof card.headingBgColor === 'string' && typeof card.iconColor === 'string';
+};
+
+const cards = WeAreYourLocalContent.cards;
+
+if (!cards || !cards.every(isValidCard)) {
+	return onError('WeAreYourLocal', Astro);
+}
+---
+
+<section class='flex flex-col xl:grid grid-cols-3 grid-rows-1 gap-2 max-w-[80%] mx-auto items-center' aria-labelledby='local-impact-heading'>
+	{
+		cards?.map(({ title, icon, text, headingBgColor, iconColor }) => (
+			<article class='self-start flex flex-col justify-center items-center text-center p-0'>
+				<div class:list={['text-white w-full py-4 px-2 text-nowrap', `bg-${headingBgColor}`]}>
+					<h2 id='local-impact-heading' class='text-lg lg:text-xl leading-relaxed'>
+						{title.toUpperCase()}
+					</h2>
+				</div>
+				<div class='mt-4' aria-hidden='true'>
+					<Icon name={icon} class:list={['text-lg md:text-[7.5rem]', `text-${iconColor}`]} />
+				</div>
+				<div class='text-black my-4'>
+					<p class='text-sm sm:text-md leading-relaxed'>{text}</p>
+				</div>
+			</article>
+		))
+	}
+</section>
