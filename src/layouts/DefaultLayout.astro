@@ -9,7 +9,6 @@ import SEO from '@/components/SEO.astro';
 import { createProps } from '@/config/footer';
 import Gtag from '@/components/Gtag.astro';
 import ConsentBanner from '@/components/ConsentBanner.astro';
-import '@/styles/global.css';
 import '@/styles/microtip.css';
 import '@fontsource/antonio/400.css';
 import '@fontsource/antonio/500.css';
@@ -20,6 +19,8 @@ import '@fontsource/palanquin/400.css';
 import '@fontsource/palanquin/500.css';
 import '@fontsource/palanquin/600.css';
 import '@fontsource/palanquin/700.css';
+
+import '@/styles/global.css';
 
 interface Props {
 	title: string;
@@ -53,17 +54,16 @@ const path = Astro.url.pathname;
 		<SEO seo={{ title }} />
 	</head>
 	<body>
-		<Nav path={path} socials={socials} client:visible />
+		<Nav path={path} socials={socials} client:load />
 		<PersistentDonateBtn />
 		<slot />
-		<Footer {...footerProps} />
+		<!-- <Footer {...footerProps} /> -->
 		<ConsentBanner />
 	</body>
 </html>
 
 <script>
 	document.addEventListener('DOMContentLoaded', async () => {
-
 		try {
 			const { checkAndGetUrlFocusElement } = await import('@/lib/utils');
 			const { elementIds } = await import('@/lib/constants');
@@ -88,7 +88,6 @@ const path = Astro.url.pathname;
 					}, 500);
 				}
 			}
-		} catch (error) {
-		}
+		} catch (error) {}
 	});
 </script>

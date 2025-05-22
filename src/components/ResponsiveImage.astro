@@ -1,5 +1,5 @@
 ---
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata, UnresolvedImageTransform } from 'astro';
 import { getImage, inferRemoteSize } from 'astro:assets';
 import { onError, onImageError } from '@/lib/error';
 import { supportsWebP } from '@/lib/utils';
@@ -42,7 +42,7 @@ try {
 }
 
 const mobileImg = await getImage({
-	src: mobileImgUrl,
+	src: mobileImgUrl as UnresolvedImageTransform['src'],
 	format: useWebp ? 'webp' : 'jpg',
 	width: mobileWidth ?? 800,
 	height: mobileHeight ?? 600,
@@ -50,7 +50,7 @@ const mobileImg = await getImage({
 });
 
 const desktopImg = await getImage({
-	src: desktopImgUrl,
+	src: desktopImgUrl as UnresolvedImageTransform['src'],
 	format: useWebp ? 'webp' : 'jpg',
 	width: desktopWidth ?? 1920,
 	height: desktopHeight ?? 1080,
