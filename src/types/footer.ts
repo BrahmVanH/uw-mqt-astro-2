@@ -1,4 +1,5 @@
 import type { RootQueryToCurrent990FormPdfConnection, RootQueryToUwContactInfoConnection, UwContactInformationFields } from '@/types/__generated__/types';
+import type { SocialLink } from './socialsIconStrip';
 
 export interface Config {
 	informationLinks?: InformationLink[];
@@ -14,11 +15,6 @@ export interface InformationLink {
 	querySubField: string;
 }
 
-export interface SocialLink {
-	link?: string;
-	icon: string;
-	queryField: string;
-}
 
 export enum SocialsFields {
 	facebookLink = 'facebookLink',

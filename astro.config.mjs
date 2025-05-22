@@ -131,7 +131,6 @@ export default defineConfig({
 			},
 		}),
 		svelte(),
-		svelteSVG(),
 		partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
 	],
 
