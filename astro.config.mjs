@@ -3,6 +3,7 @@ import { defineConfig, envField } from 'astro/config';
 
 import react from '@astrojs/react';
 
+import svelte from '@astrojs/svelte';
 
 import icon from 'astro-icon';
 
@@ -12,8 +13,9 @@ import netlify from '@astrojs/netlify';
 
 import mdx from '@astrojs/mdx';
 
-
 import partytown from '@astrojs/partytown';
+
+import sentry from '@sentry/astro';
 
 // const strippedWPUrl =
 //   process.env.WP_URL_SRVR?.replace("https://", "") ??
@@ -128,6 +130,8 @@ export default defineConfig({
 				authToken: process.env.SENTRY_AUTH_TOKEN,
 			},
 		}),
+		svelte(),
+		svelteSVG(),
 		partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
 	],
 

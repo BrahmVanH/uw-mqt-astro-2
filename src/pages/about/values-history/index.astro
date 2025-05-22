@@ -3,7 +3,7 @@ export const prerender = false;
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
-import HistoryOfAccordion from '@/components/HistoryOfAccordion';
+import HistoryOfAccordion from '@/components/HistoryOfAccordion.svelte';
 import { getValuesHistoryContent } from '@/config';
 
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -52,7 +52,7 @@ const { heading, subheading, ourMission, ourValues } = content;
 					<Image loading='lazy' decoding='async' src={imageThree?.src} alt={imageThree?.alt} width={imageThree?.width} height={imageThree?.height} class='w-full h-96 object-cover col-span-2' />
 				)
 			}
-			<HistoryOfAccordion className='col-span-2' client:visible />
+			<HistoryOfAccordion className='col-span-2' client:visible='svelte' />
 		</div>
 	</main>
 </DefaultLayout>

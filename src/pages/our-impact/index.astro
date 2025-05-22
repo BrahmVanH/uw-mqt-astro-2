@@ -10,7 +10,8 @@ import OurImpactStats, { createProps as createImpactStatsProps } from '@/compone
 import FourPillarsCards, { createProps as createFourPillarsPreviewProps } from '@/components/FourPillarsPreview/index.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import type { OurImpactPageQueryResponse } from '@/types';
-import FrequentlyAskedQuestions, { createProps as createFAQProps } from '@/components/FrequentlyAskedQuestionsAccordion';
+import FAQs from '@/components/FAQs.svelte';
+import { createProps as createFaqsProps } from '@/config/faqs';
 import { onError } from '@/lib/error';
 
 // if (import.meta.env.PROD) {
@@ -41,7 +42,7 @@ const howToContributeProps = createHowToContributeProps(howToContributeContent);
 const ourImpactStatsContent = pageContent?.impactStatistics;
 
 const ourImpactStatsProps = createImpactStatsProps(ourImpactStatsContent);
-const faqProps = createFAQProps(pageContent?.faqs);
+const faqProps = createFaqsProps(pageContent?.faqs);
 ---
 
 <Layout title={'Our Impact | United Way Marquette County'}>
@@ -66,7 +67,7 @@ const faqProps = createFAQProps(pageContent?.faqs);
 
 			<section aria-labelledby='faq-title'>
 				<h2 id='faq-title' class='sr-only'>Frequently Asked Questions</h2>
-				<FrequentlyAskedQuestions {...faqProps} client:visible />
+				<FAQs {...faqProps} client:visible='svelte' />
 			</section>
 		</div>
 	</main>

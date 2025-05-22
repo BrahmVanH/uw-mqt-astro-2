@@ -45,6 +45,7 @@
 		"@graphql-codegen/client-preset": "^4.8.1",
 		"@graphql-codegen/typescript": "^4.1.6",
 		"@graphql-codegen/typescript-operations": "^4.6.1",
+		"@iconify/svelte": "^5.0.0",
 		"@lucide/svelte": "^0.482.0",
 		"bits-ui": "^1.5.3",
 		"tailwind-variants": "^1.0.0",
