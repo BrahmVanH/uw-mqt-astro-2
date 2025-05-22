@@ -13,7 +13,8 @@ import type { CommunityResiliencyPageQueryResponse } from '@/types';
 import AliceReport, { createProps as createAliceReportProps } from '@/components/AliceReport.astro';
 import { onError } from '@/lib/error';
 // import SeniorCenter, { createProps as createSeniorCenterProps } from '@/components/SeniorCenter.astro';
-import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel';
+import OurImpactCarousel from '@/components/OurImpactCarousel.svelte';
+import { createProps as createImpactCarouselProps } from '@/config/ourImpactCarousel';
 // if (import.meta.env.PROD) {
 // 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
 // }
@@ -66,7 +67,7 @@ const impactCarouselProps = createImpactCarouselProps(impactCarouselContent);
 
 		<section aria-labelledby='impact-section'>
 			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} />
+			<OurImpactCarousel {...impactCarouselProps} client:load='svelte' />
 		</section>
 
 		<section aria-labelledby='contribute-section'>

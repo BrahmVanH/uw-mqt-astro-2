@@ -8,7 +8,8 @@ import Layout from '@/layouts/DefaultLayout.astro';
 import PartnersTicker, { createProps as createPartnersTickerProps } from '@/components/PartnersTicker.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import YourHelpMatters from '@/components/YourHelpMatters.astro';
-import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel';
+import OurImpactCarousel from '@/components/OurImpactCarousel.svelte';
+import { createProps as createImpactCarouselProps } from '@/config/ourImpactCarousel';
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 
 import type { Maybe, PartnersTickerItem, PartnersTickerItemFields } from '@/types/__generated__/types';
@@ -83,12 +84,7 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 
 		<section aria-labelledby='impact-section'>
 			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:visible />
+			<OurImpactCarousel {...impactCarouselProps} client:visible='svelte' />
 		</section>
-
-		<section aria-labelledby='contribute-section'>
-			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
-			<HowToContribute {...howToContributeProps} />
-		</section>
-	</main>
-</Layout>
+	</main></Layout
+>

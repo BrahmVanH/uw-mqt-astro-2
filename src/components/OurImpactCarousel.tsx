@@ -71,9 +71,7 @@ const OurImpactCarousel: React.FC<Props> = ({ carouselItems }) => {
 			</h2>
 			<div className='relative z-20 w-full mx-auto row-start-1 col-span-3 flex flex-col lg:flex-row justify-center items-start bg-transparent'>
 				<div className='w-full lg:w-1/2 h-auto'>
-					{selectedItem.image && (
-						<img src={selectedItem.image} alt={selectedItem.imageAlt} className='shadow-lg object-cover aspect-auto mx-auto max-h-[400px]' loading='lazy' decoding='async' height={400} width={400} />
-					)}
+						<img src={selectedItem.image ?? placeholderImg} alt={selectedItem.imageAlt} className='shadow-lg object-cover aspect-auto mx-auto max-h-[400px]' loading='lazy' decoding='async' height={400} width={400} />
 				</div>
 				<article className='w-full lg:w-1/2 p-0 lg:p-6 mb-4 lg:ml-2'>
 					<h3 className='text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4'>{selectedItem?.title}</h3>
