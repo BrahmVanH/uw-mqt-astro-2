@@ -1,5 +1,5 @@
-<script lang="ts">
-	interface Props {
+<script lang="ts" module>
+	export interface Props {
 		href: string;
 		color: 'black' | 'white' | 'blue' | 'purple';
 		className?: string;
@@ -8,6 +8,9 @@
 		size: 'sm' | 'md' | 'lg' | 'xl';
 		openInNewTab?: boolean;
 	}
+</script>
+<script lang="ts">
+
 
 	let { href, color = 'black', className, ariaLabel, text = 'Learn more', size = 'md', openInNewTab = true }: Props = $props();
 
@@ -34,6 +37,8 @@
 	aria-label={ariaLabel}
 	rel={openInNewTab ? 'noopener noreferrer' : ''}
 	target={openInNewTab ? '_blank' : ''}
+	data-astro-prefetch="tap"
+
 >
 	{text}
 </a>

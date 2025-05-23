@@ -12,19 +12,16 @@ import { cn, isExternalUrl } from '@/lib/utils';
 import navContent from '@/config/nav';
 
 import type { NavTab } from '@/types/nav';
-import MobileNav from './MobileNav';
-import type { SocialLink } from '@/types/socialsIconStrip';
 
 interface Props {
 	path: string;
-	socials: SocialLink[];
 }
 
 interface NavItemAccordionProps {
 	link: NavTab;
 }
 
-const Nav: React.FC<Props> = ({ path, socials }) => {
+const Nav: React.FC<Props> = ({ path }) => {
 	const bgColor = path === '/' ? 'transparent' : 'white';
 
 	const { navTabs, commonStyles } = navContent;
@@ -38,7 +35,7 @@ const Nav: React.FC<Props> = ({ path, socials }) => {
 							<img loading='lazy' decoding='async' className='h-[50px] xl:h-[75px] w-auto mt-1 lg:mt-2 font-heading object-cover' src={logo.src} alt='United Way Logo' width={200} height={100} />
 						)}
 					</NavigationMenuLink>
-					<MobileNav socials={socials} />
+					{/* <MobileNav socials={socials} /> */}
 					<NavigationMenuList className='hidden lg:flex' role='menubar'>
 						{navTabs.map(({ title, href, navTabs }) => (
 							<NavigationMenuItem key={title} role='none'>
@@ -139,7 +136,7 @@ const NavItemAccordion: React.FC<NavItemAccordionProps> = ({ link }) => {
 				</AccordionTrigger>
 				<AccordionContent className={`${commonStyles.accordionContent} animate-slide-right`} role='menu'>
 					<div className='flex flex-col bg-transparent'>
-						<ul role='menu'>
+						<ul>
 							{link.navTabs?.map(({ href, title }) => (
 								<ListItem
 									data-astro-prefetch

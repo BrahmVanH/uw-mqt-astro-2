@@ -16,14 +16,25 @@
 	});
 
 	export type Side = VariantProps<typeof sheetVariants>["side"];
+
+	
 </script>
 
 <script lang="ts">
 	import { Dialog as SheetPrimitive } from "bits-ui";
-	import XIcon from "@lucide/svelte/icons/x";
 	import type { Snippet } from "svelte";
 	import SheetOverlay from "./sheet-overlay.svelte";
+
+	import arrowLeftBlue from "@/icons/arrow-left-blue.svg";
+import xBlue from "@/icons/x-blue.svg";
+
+
 	import { cn, type WithoutChildrenOrChild } from "@/lib/utils.js";
+	import type { NavTab } from "@/types/nav";
+
+	
+
+
 
 	let {
 		ref = $bindable(null),
@@ -31,11 +42,17 @@
 		side = "right",
 		portalProps,
 		children,
+		tabSetBreadcrumbs,
+		showGoBackButton,
+		handleGoBack,
 		...restProps
 	}: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
 		portalProps?: SheetPrimitive.PortalProps;
 		side?: Side;
 		children: Snippet;
+		tabSetBreadcrumbs: NavTab[][];
+		showGoBackButton?: boolean;
+		handleGoBack?: () => void;
 	} = $props();
 </script>
 
@@ -48,10 +65,31 @@
 		{...restProps}
 	>
 		{@render children?.()}
-		<SheetPrimitive.Close
-			class="ring-offset-background focus-visible:ring-ring rounded-xs focus-visible:outline-hidden absolute right-4 top-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none"
-		>
-			<XIcon class="size-4" />
+		{#if tabSetBreadcrumbs.length > 1}
+			<button class="absolute top-4 left-4" onclick={handleGoBack}>
+				<img
+					loading="lazy"
+					decoding="async"
+					src={arrowLeftBlue.src}
+					height={24}
+					width={22}
+					alt="go back icon"
+					color="white"
+					class="bg-transparent aspect-auto"
+				/>
+				<span class="sr-only">Go back</span>
+			</button>
+		{/if}
+		<SheetPrimitive.Close class="absolute right-4 top-4  ">
+			<img
+				loading="lazy"
+				decoding="async"
+				class="bg-transparent aspect-auto"
+				src={xBlue.src}
+				height={20}
+				width={18}
+				alt="close icon"
+			/>
 			<span class="sr-only">Close</span>
 		</SheetPrimitive.Close>
 	</SheetPrimitive.Content>
