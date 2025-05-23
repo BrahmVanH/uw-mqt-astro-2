@@ -55,7 +55,7 @@ const path = Astro.url.pathname;
 		<SEO seo={{ title }} />
 	</head>
 	<body>
-		<Nav path={path} socials={socials} client:load />
+		<Nav path={path}  client:load />
 		<MobileNav socials={socials} client:load="svelte" />
 		<PersistentDonateBtn />
 		<slot />

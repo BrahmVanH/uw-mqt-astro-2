@@ -4,5 +4,35 @@
 		"plaintext": false,
 		"markdown": false,
 		"scminput": false
-	}
+	},
+  "editor.formatOnSave": true,
+  
+  // Enable ESLint formatting on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  
+  // Set ESLint as the default formatter for all supported file types
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  // Format settings for different file types
+  // Avoid conflicts with Prettier
+  "svelte.enable-ts-plugin": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
