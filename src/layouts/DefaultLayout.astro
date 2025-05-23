@@ -57,7 +57,7 @@ const path = Astro.url.pathname;
 		<Nav path={path} socials={socials} client:load />
 		<PersistentDonateBtn />
 		<slot />
-		<!-- <Footer {...footerProps} /> -->
+		<Footer {...footerProps} />
 		<ConsentBanner />
 	</body>
 </html>
