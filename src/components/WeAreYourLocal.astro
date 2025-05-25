@@ -20,13 +20,13 @@ if (!cards || !cards.every(isValidCard)) {
 	{
 		cards?.map(({ title, icon, text, headingBgColor, iconColor }) => (
 			<article class='self-start flex flex-col justify-center items-center text-center p-0'>
-				<div class:list={['text-white w-full py-4 px-2 text-nowrap', `bg-${headingBgColor}`]}>
+				<div class:list={['text-white w-full py-4 px-2 text-nowrap']} style={{ backgroundColor: `var(--${headingBgColor})` }}>
 					<h2 id='local-impact-heading' class='text-lg lg:text-xl leading-relaxed'>
 						{title.toUpperCase()}
 					</h2>
 				</div>
 				<div class='mt-4' aria-hidden='true'>
-					<Icon name={icon} class:list={['text-lg md:text-[7.5rem]', `text-${iconColor}`]} />
+					<Icon name={icon} class:list={['text-lg md:text-[7.5rem]']} style={{ color: `var(--${iconColor})` }} />
 				</div>
 				<div class='text-black my-4'>
 					<p class='text-sm sm:text-md leading-relaxed'>{text}</p>

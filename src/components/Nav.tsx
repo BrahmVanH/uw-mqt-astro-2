@@ -28,7 +28,7 @@ const Nav: React.FC<Props> = ({ path }) => {
 
 	return (
 		<nav>
-			<NavigationMenu className={`w-full h-8 px-2 lg:px-4 py-4 lg:py-5 z-50 bg-${bgColor} top-0`}>
+			<NavigationMenu className={`w-full px-2 lg:px-4 py-4 lg:py-5 z-50 bg-${bgColor} top-0`}>
 				<div className='w-full flex flex-row justify-between items-center text-lg'>
 					<NavigationMenuLink data-astro-prefetch className='flex items-center' href='/'>
 						{logo.src && (

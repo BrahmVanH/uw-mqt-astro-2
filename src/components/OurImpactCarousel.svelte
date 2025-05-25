@@ -75,6 +75,7 @@
 				aria-controls={`carousel-item-${index}`}
 				onclick={() => handleSelectItem(item)}
 				class={`
+							cursor-pointer
               snap-center
               shrink-0
               w-[65vw] md:w-[45vw]

@@ -19,6 +19,8 @@
 
 	let { socials }: Props = $props();
 
+	let open = $state(false);
+
 	const { navTabs } = config;
 
 	let tabSetBreadcrumbs = $state<NavTab[][]>([]);
@@ -37,11 +39,9 @@
 	};
 </script>
 
-<Sheet>
-	<SheetTrigger class="absolute lg:hidden right-4 top-3">
-		<Button variant={'outline'} class="text-2xl border-0 shadow-none p-0 h-min" aria-label="Open navigation menu" aria-haspopup="true">
-			<img loading="lazy" decoding="async" class="w-[24px] text-primary-blue-2 font-semibold" src={hamburgerMenuIcon.src} alt="Menu" />
-		</Button>
+<Sheet bind:open>
+	<SheetTrigger class="absolute lg:hidden right-4 top-3 text-2xl border-0 shadow-none p-0 h-min" aria-label="Open navigation menu" aria-haspopup="true">
+		<img loading="lazy" decoding="async" class="w-[24px] text-primary-blue-2 font-semibold" src={hamburgerMenuIcon.src} alt="Menu" />
 	</SheetTrigger>
 	<SheetContent
 		showGoBackButton={showGoBackBtn}

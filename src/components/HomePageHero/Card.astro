@@ -21,7 +21,7 @@ const mobileText = text.split('.')[0];
 	]}>
 	<div class:list={['flex flex-col justify-center items-center space-y-2 lg:mr-1', index === 0 ? 'w-full lg:w-1/2' : 'w-full']}>
 		{title && <h3 class='text-xl mt-1 lg:mt-0 font-bold'>{title}</h3>}
-		{text && <p class:list={['hidden lg:block w-full text-pretty leading-relaxed', index === 0 ? 'text-md' : 'text-lg']}>{index === 0 ? text : mobileText}</p>}
+		{text && <p class:list={['hidden lg:block max-w-[80%] w-full text-pretty leading-relaxed', index === 0 ? 'text-md' : 'text-lg']}>{index === 0 ? text : mobileText}</p>}
 		{mobileText && <p class='lg:hidden w-full sm:w-[75%] md:w-[50%] text-md text-medium text-pretty leading-relaxed'>{mobileText}</p>}
 		<div class='flex flex-col xl:flex-row flex-wrap items-center justify-center w-full gap-2' role='group' aria-label={`Actions for ${title}`}>
 			{linkText && link && <LearnMoreBtn size='md' text={linkText} href={link} color='blue' openInNewTab={false} ariaLabel={linkText} />}

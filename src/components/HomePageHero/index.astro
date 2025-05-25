@@ -72,7 +72,7 @@ const headingWithNewLine2ndWord = addNewLineAfterNthWord(heading, 2);
 	<ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='absolute top-0 left-0 w-full h-full object-cover max-w-[1800px] mx-auto z-0' />
 
 	<div class='relative z-10 w-full max-w-[1800px] mx-auto'>
-		<div class='features-grid px-1 xs:px-4 pb-2 lg:py-8' role='list'>
+		<div class:list={[features?.length > 1 ? 'features-grid' : 'features-flex', 'px-1 xs:px-4 pb-2 lg:py-8']} role='list'>
 			{
 				features &&
 					features.map((feature, i) => (
@@ -97,6 +97,11 @@ const headingWithNewLine2ndWord = addNewLineAfterNthWord(heading, 2);
 </section>
 
 <style>
+	.features-flex {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 	.features-grid {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
