@@ -7,7 +7,7 @@ import navContent from "@/config/nav";
 import type { NavTab } from "@/types/nav";
 import ButtonOrLink from "./ButtonOrLink";
 import type { SocialLink } from "@/types/socialsIconStrip";
-import SocialMediaIconStrip from "./SocialMediaIconStrip";
+import SocialMediaIconStrip from ".ediaIconStrip";
 import logo from "@/image/logo-no-text.svg";
 export interface Props {
   socials: SocialLink[];

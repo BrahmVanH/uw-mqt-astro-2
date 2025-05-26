@@ -1,0 +1,76 @@
+---
+import Statistic from './Statistic.svelte';
+import type { RootQueryToImpactStatisticConnection } from '@/types/__generated__/types';
+import { getDefaultProps } from '@/lib/error';
+
+export interface UWGalleryItem {
+	image?: string;
+	imageAlt?: string;
+	link?: string;
+	text?: string;
+}
+
+export interface IStatistic {
+	unit: string;
+	value: string | number;
+	text?: string;
+}
+
+export interface StatisticProps extends IStatistic {
+	start: number;
+	duration?: number;
+	index?: number;
+	'aria-label'?: string;
+}
+
+interface Props {
+	stats: IStatistic[];
+	gallery?: UWGalleryItem[];
+}
+
+export function createProps(wpContent: RootQueryToImpactStatisticConnection): Props {
+	if (!wpContent?.nodes[0]?.ourImpactStatisticFields) {
+		return getDefaultProps<Props>('OurImpactStats', Astro);
+	}
+
+	const root = wpContent?.nodes[0]?.ourImpactStatisticFields;
+
+	const stats = root?.stats ?? {};
+	// const gallery = root?.gallery ?? {};
+
+	// Turn object from wordpress into an array of stats objects
+	const statsArray: IStatistic[] = Array.from({ length: 6 }, (_, i) => ({
+		unit: (stats[`unit${i + 1}` as keyof typeof stats] as string) ?? '',
+		value: (stats[`value${i + 1}` as keyof typeof stats] as string) ?? '',
+		text: (stats[`text${i + 1}` as keyof typeof stats] as string) ?? '',
+	}));
+
+	//  Turn object from wordpress into an array of gallery objects
+	// const statsGalleryArray: UWGalleryItem[] = Array.from({ length: 3 }, (_, i) => ({
+	// 	image: (gallery[`image${i + 1}` as keyof typeof gallery] as AcfMediaItemConnectionEdge)?.node?.sourceUrl ?? onImageError('missing image in our impact stats').src,
+	// 	imageAlt: (gallery[`image${i + 1}` as keyof typeof gallery] as AcfMediaItemConnectionEdge)?.node?.altText ?? 'placeholder image',
+	// 	link: (gallery[`link${i + 1}` as keyof typeof gallery] as string) ?? '',
+	// 	text: (gallery[`text${i + 1}` as keyof typeof gallery] as string) ?? '',
+	// }));
+
+	return {
+		stats: statsArray,
+	};
+}
+
+const { stats } = Astro.props;
+---
+
+<section class='bg-primary-red-4 w-full flex flex-col relative text-tertiary-black-1 [&>*]:mt-4 pb-4' aria-labelledby='impact-stats-heading'>
+	<h2 id='impact-stats-heading' class='sr-only'>Our Impact Statistics</h2>
+	<div role='list' class='flex flex-col justify-center items-center lg:flex-row md:justify-evenly [&>*]:mt-4 lg:[&>*]:mt-0 lg:[&>*]:ml-2 lg:last:mr-2'>
+		{
+			stats &&
+				stats.map((stat, index) => (
+					<div role='listitem'>
+						<Statistic client:visible index={index} unit={stat.unit} text={stat.text} value={stat.value} start={0} />
+					</div>
+				))
+		}
+	</div>
+</section>

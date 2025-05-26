@@ -1,9 +1,57 @@
+<script lang="ts" module>
+	export function createProps(wpContent: RootQueryToImpactCarouselConnection): Props {
+		if (!wpContent || !wpContent.nodes || wpContent?.nodes?.length === 0 || !wpContent.nodes[0]?.impactCarouselFields) {
+			return getDefaultProps<Props>('impactCarousel createProps');
+		}
+		const root = wpContent?.nodes[0]?.impactCarouselFields;
+
+		const carouselItemsObj = root?.carouselItems;
+
+		if (!carouselItemsObj) {
+			return getDefaultProps<Props>('impactCarousel createProps carouselItemsObj');
+		}
+
+		const carouselItemsArr = Object.keys(carouselItemsObj)
+			.map((key) => carouselItemsObj[key as keyof typeof carouselItemsObj])
+			.filter((item): item is ImpactCarouselFieldsCarouselItemsItem2 | ImpactCarouselFieldsCarouselItemsItem3 => item !== null && item !== undefined);
+		const carouselItems = carouselItemsArr
+			.map((item) => ({
+				title: item?.title as string,
+				text: item?.text as string,
+				image: item?.image?.node?.sourceUrl ?? '',
+				imageAlt: item?.image?.node?.altText ?? 'placeholder image',
+				link: item?.link ?? '',
+				linkText: item?.linkText ?? '',
+			}))
+			.filter((item) => item.title && item.text)
+			.reverse();
+
+		return {
+			carouselItems,
+		};
+	}
+
+	export interface Props {
+		carouselItems: CarouselItem[];
+	}
+
+	export interface CarouselItem {
+		title: string;
+		text: string;
+		image: string;
+		imageAlt: string;
+		link?: string;
+		linkText?: string;
+	}
+</script>
+
 <script lang="ts">
 	import { getStringPreview } from '@/lib/utils';
 	import LearnMoreBtn from './LearnMoreBtn.svelte';
 	import placeholderImg from '@/image/placeholder.svg';
 
-	import type { CarouselItem, Props } from '@/types/ourImpactCarousel';
+	import type { ImpactCarouselFieldsCarouselItemsItem2, ImpactCarouselFieldsCarouselItemsItem3, RootQueryToImpactCarouselConnection } from '@/types/__generated__/types';
+	import { getDefaultProps } from '@/lib/error';
 
 	// Imported types
 	// interface Props {
@@ -74,14 +122,12 @@
 				aria-selected={selectedItem.title === item.title}
 				aria-controls={`carousel-item-${index}`}
 				onclick={() => handleSelectItem(item)}
-				class={`
-							cursor-pointer
-              snap-center
-              shrink-0
-              w-[65vw] md:w-[45vw]
-              transition-all duration-300 border-primary-blue-4 border-2
-              ${selectedItem.title === item.title ? 'ring-2 ring-primary-blue-2 transform scale-95' : 'hover:shadow-sm'}
-            `}
+				class="cursor-pointer snap-center shrink-0 w-[65vw] md:w-[45vw] transition-all duration-300 border-primary-blue-4 border-2"
+				class:ring-2={selectedItem.title === item.title}
+				class:ring-primary-blue-2={selectedItem.title === item.title}
+				class:transform={selectedItem.title === item.title}
+				class:scale-95={selectedItem.title === item.title}
+				class:hover:shadow-sm={selectedItem.title !== item.title}
 			>
 				<div class="w-full h-full p-1 lg:p-2 flex flex-row items-center">
 					<div class="w-1/2 h-auto">

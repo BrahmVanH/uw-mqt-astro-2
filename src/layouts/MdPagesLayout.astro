@@ -49,7 +49,7 @@ const path = Astro.url.pathname;
 </html>
 <body>
 	<main>
-		<Nav path={path} socials={footerProps.socials} client:visible />
+		<Nav path={path} client:visible />
 		<ContentCollectionsHero heading={frontmatter.title} subheading={frontmatter.description} />
 		<slot />
 		<Footer {...footerProps} />

@@ -11,13 +11,13 @@ export interface Card {
 }
 
 export enum HeadingBgColor {
-  YELLOW = "primary-yellow-2",
-  BLUE = "primary-blue-2",
-  RED = "primary-red-2",
+  YELLOW = "var(--primary-yellow-2)",
+  BLUE = "var(--primary-blue-2)",
+  RED = "var(--primary-red-1)",
 }
 
 export enum IconColor {
-  YELLOW = "primary-yellow-1",
-  BLUE = "primary-blue-1",
-  RED = "primary-red-1",
+  YELLOW = "var(--primary-yellow-1)",
+  BLUE = "var(--primary-blue-1)",
+  RED = "var(--primary-red-2)",
 }

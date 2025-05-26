@@ -6,14 +6,13 @@ import getPageContent, { getAuthTokens } from '@/lib/API';
 import Layout from '@/layouts/DefaultLayout.astro';
 
 import PartnersTicker, { createProps as createPartnersTickerProps } from '@/components/PartnersTicker.astro';
-import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStats/index.astro';
+import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStatsSvelte/index.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import WeAreYourLocal from '@/components/WeAreYourLocal.astro';
 import YourHelpMatters from '@/components/YourHelpMatters.astro';
 import type { Maybe, PartnersTickerItem, PartnersTickerItemFields } from '@/types/__generated__/types';
 import type { HomePageQueryResponse } from '@/types';
-import OurImpactCarousel from '@/components/OurImpactCarousel.svelte';
-import { createProps as createImpactCarouselProps } from '@/config/ourImpactCarousel';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel.svelte';
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 import { onError } from '@/lib/error';
 import HomePageHero, { createProps as createHeroProps } from '@/components/HomePageHero/index.astro';
@@ -45,8 +44,8 @@ const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTi
 	.filter(
 		(
 			// filter for undefined values
-			partner: Maybe<PartnersTickerItemFields> | undefined
-		): partner is PartnersTickerItemFields => !!partner
+			partner: Maybe<PartnersTickerItemFields> | undefined,
+		): partner is PartnersTickerItemFields => !!partner,
 	);
 
 const partnerTickerItems = createPartnersTickerProps(partnerTickerContent);
@@ -131,9 +130,14 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 			<YourHelpMatters />
 		</section>
 
+		<section aria-labelledby='stats-section'>
+			<h2 id='stats-section' class='sr-only'>Impact Statistics</h2>
+			<OurImpactStats {...ourImpactStatsProps} />
+		</section>
+
 		<section aria-labelledby='impact-section'>
 			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:load='svelte' />
+			<OurImpactCarousel {...impactCarouselProps} client:visible />
 		</section>
 
 		<section aria-labelledby='volunteer-section'>
@@ -149,11 +153,6 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 		<section aria-labelledby='local-section'>
 			<h2 id='local-section' class='sr-only'>Local Impact</h2>
 			<WeAreYourLocal />
-		</section>
-
-		<section aria-labelledby='stats-section'>
-			<h2 id='stats-section' class='sr-only'>Impact Statistics</h2>
-			<OurImpactStats {...ourImpactStatsProps} />
 		</section>
 	</main>
 </Layout>

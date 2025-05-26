@@ -16,7 +16,7 @@ const Statistic: React.FC<StatisticProps> = ({
     >
       <div className="flex flex-col items-center justify-between text-center">
         <p
-          className="text-xl lg:text-2xl font-bold text-tertiary-black-1 font-heading"
+          className="text-lg lg:text-xl font-bold text-tertiary-black-1 font-heading"
           aria-live="polite"
         >
           {value && (

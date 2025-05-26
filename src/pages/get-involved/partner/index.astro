@@ -9,8 +9,7 @@ import PartnerPageHero, { createProps as createHeroProps } from '@/components/Pa
 import PartnersTicker, { createProps as createPartnersTickerProps } from '@/components/PartnersTicker.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import YourHelpMatters from '@/components/YourHelpMatters.astro';
-import OurImpactCarousel from '@/components/OurImpactCarousel.svelte';
-import { createProps as createImpactCarouselProps } from '@/config/ourImpactCarousel';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel.svelte';
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 
 import type { Maybe, PartnersTickerItem, PartnersTickerItemFields } from '@/types/__generated__/types';
@@ -41,8 +40,8 @@ const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTi
 	.filter(
 		(
 			// filter for undefined values
-			partner: Maybe<PartnersTickerItemFields> | undefined
-		): partner is PartnersTickerItemFields => !!partner
+			partner: Maybe<PartnersTickerItemFields> | undefined,
+		): partner is PartnersTickerItemFields => !!partner,
 	);
 
 const partnerTickerItems = createPartnersTickerProps(partnerTickerContent);
@@ -84,7 +83,7 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 
 		<section aria-labelledby='impact-section'>
 			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:visible='svelte' />
+			<OurImpactCarousel {...impactCarouselProps} client:visible />
 		</section>
 
 		<section aria-labelledby='contribute-section'>

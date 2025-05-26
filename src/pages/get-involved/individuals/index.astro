@@ -6,8 +6,7 @@ import getPageContent from '@/lib/API';
 import Layout from '@/layouts/DefaultLayout.astro';
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 import IndividualsPageHero, { createProps as createHeroProps } from '@/components/IndividualsPageHero.astro';
-import OurImpactCarousel from '@/components/OurImpactCarousel.svelte';
-import { createProps as createImpactCarouselProps } from '@/config/ourImpactCarousel';
+import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel.svelte';
 import type { IndividualsPageQueryResponse } from '@/types';
 
 // if (import.meta.env.PROD) {
@@ -43,7 +42,7 @@ const impactCarouselProps = createImpactCarouselProps(impactCarouselContent);
 
 		<section aria-labelledby='impact-section'>
 			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:load='svelte' />
+			<OurImpactCarousel {...impactCarouselProps} client:visible />
 		</section>
 	</main>
 </Layout>

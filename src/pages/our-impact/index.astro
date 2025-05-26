@@ -6,7 +6,7 @@ import getPageContent from '@/lib/API';
 // component imports
 import Layout from '@/layouts/DefaultLayout.astro';
 import OurImpactPageHero, { createProps as createHeroProps } from '@/components/OurImpactPageHero.astro';
-import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStats/index.astro';
+import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStatsSvelte/index.astro';
 import FourPillarsCards, { createProps as createFourPillarsPreviewProps } from '@/components/FourPillarsPreview/index.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import type { OurImpactPageQueryResponse } from '@/types';
@@ -67,7 +67,7 @@ const faqProps = createFaqsProps(pageContent?.faqs);
 
 			<section aria-labelledby='faq-title'>
 				<h2 id='faq-title' class='sr-only'>Frequently Asked Questions</h2>
-				<FAQs {...faqProps} client:visible='svelte' />
+				<FAQs {...faqProps} client:visible />
 			</section>
 		</div>
 	</main>

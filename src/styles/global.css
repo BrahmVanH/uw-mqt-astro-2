@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -74,15 +75,7 @@
   --font-heading: "Antonio", sans-serif;
   --font-body: "Palanquin", sans-serif;
   --font-donate-form: "IBM Plex Sans", sans-serif;
-  
-  /* Font sizes */
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 20px;
-  --font-size-xl: 30px;
-  --font-size-2xl: 44px;
-  --font-size-3xl: 60px;
-  --font-size-4xl: 85px;
+
 }
 
 .dark {
@@ -154,13 +147,13 @@
   --radius-xl: calc(var(--radius) + 4px);
   
   /* Font sizes */
-  --font-size-sm: var(--font-size-sm);
-  --font-size-md: var(--font-size-md);
-  --font-size-lg: var(--font-size-lg);
-  --font-size-xl: var(--font-size-xl);
-  --font-size-2xl: var(--font-size-2xl);
-  --font-size-3xl: var(--font-size-3xl);
-  --font-size-4xl: var(--font-size-4xl);
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 30px;
+  --text-2xl: 44px;
+  --text-3xl: 60px;
+  --text-4xl: 85px;
   
   /* Core color mappings */
   --color-background: var(--background);
