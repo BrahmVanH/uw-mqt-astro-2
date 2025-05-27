@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import Footer, { type Props as FooterProps } from '@/components/Footer.astro';
-import Nav from '@/components/Nav';
+import Nav from '@/components/Nav/index.svelte';
 import PersistentDonateBtn from '@/components/PersistentDonateBtn.astro';
 import SEO from '@/components/SEO.astro';
 
@@ -55,7 +55,7 @@ const path = Astro.url.pathname;
 		<SEO seo={{ title }} />
 	</head>
 	<body>
-		<Nav path={path}  client:load />
+		<Nav path={path} client:load />
 		<MobileNav socials={socials} client:load />
 		<PersistentDonateBtn />
 		<slot />

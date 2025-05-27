@@ -45,10 +45,10 @@ Brahm Van Houzen
   ## Technologies
 
 - Astro
+- Svelte
 - React
 - TailwindCSS
 - GraphQL
-- ShadCN
 - TypeScript
 - Stripe
 
