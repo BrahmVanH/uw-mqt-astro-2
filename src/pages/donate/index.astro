@@ -5,7 +5,7 @@ import DonationForm from '@/components/DonationForm';
 import * as Sentry from '@sentry/astro';
 import DonateLayout from '@/layouts/DonateLayout.astro';
 import { donateContent } from '@/config';
-import LearnMoreBtn from '@/components/LearnMoreBtn';
+import LearnMoreBtn from '@/components/LearnMoreBtn.svelte';
 
 if (Astro.request.method === 'POST') {
 	try {
@@ -88,7 +88,7 @@ if (Astro.request.method === 'POST') {
 				subscriptionId: subscription.id,
 				clientSecret: (subscription.latest_invoice as any).payment_intent?.client_secret,
 			}),
-			{ status: 200 }
+			{ status: 200 },
 		);
 	} catch (error) {
 		Sentry.captureException(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);

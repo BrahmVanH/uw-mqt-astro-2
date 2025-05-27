@@ -23,13 +23,13 @@
 </script>
 
 <nav>
-	<NavigationMenu.Root class="relative z-50  bg-{bgColor} w-full flex flex-1 items-center justify-between text-lg px-2 lg:px-4 py-1">
+	<NavigationMenu.Root class="relative z-50  bg-{bgColor} w-full hidden lg:flex flex-1 items-center justify-between text-lg px-2 lg:px-4 py-1">
 		<a data-astro-prefetch class="flex items-center" href="/">
 			{#if logo.src}
 				<img loading="lazy" decoding="async" class="h-[50px] xl:h-[75px] w-auto font-heading object-cover" src={logo.src} alt="United Way Logo" width={200} height={100} />
 			{/if}
 		</a>
-		<NavigationMenu.List class="hidden lg:flex group lg:flex-1 list-none lg:items-center lg:justify-center space-x-8" role="menubar">
+		<NavigationMenu.List class="flex group lg:flex-1 list-none lg:items-center lg:justify-center space-x-8" role="menubar">
 			{#each navTabs as { title, href, navTabs: nts }}
 				{#if !nts}
 					<NavigationMenu.Item>

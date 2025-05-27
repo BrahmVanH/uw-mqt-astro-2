@@ -1,0 +1,12 @@
+---
+import Button from './ui/Button.astro';
+
+export interface Props {
+	className?: string;
+	size: 'sm' | 'lg' | 'xl' | 'icon';
+}
+
+const { className, size } = Astro.props;
+---
+
+<Button variant='donate' size={size} class={className}> DONATE </Button>
