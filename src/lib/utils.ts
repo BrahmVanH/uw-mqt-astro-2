@@ -3,6 +3,9 @@ import { twMerge } from 'tailwind-merge';
 import { APP_ROOT_URL_CLNT } from 'astro:env/client';
 import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
+import type { LatLng } from 'leaflet';
+import type { FoodPantry, FoodPantryGeoFeatureCollection } from '@/types';
+import type { Feature, Position } from 'geojson';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -32,6 +35,17 @@ export function getStringPreview(text: string, length: number = 200): string {
 // replaces the word "and" with an ampersand in a text string
 export function formatHeroHeadingText(text: string): string {
 	return text.toLocaleLowerCase().replace(' and ', ' & ').toUpperCase();
+}
+
+export function capitalizeFirstLetter(string: string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function capitalizeFirstLetters(string: string) {
+	return string
+		.split(" ")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
 }
 
 // checks if the browser supports webp images
@@ -100,6 +114,105 @@ export const flyAndScale = (node: Element, params: FlyAndScaleParams = { y: -8, 
 		easing: cubicOut,
 	};
 };
+
+
+export const getGeoJsonGroupCenter = (coordinates: number[][]) => {
+	// const positions = geoJsonRouteData.features[0].geometry.coordinates;
+	const latitudes = coordinates.map((position: Position) => position[1]);
+	const longitudes = coordinates.map((position: Position) => position[0]);
+
+	const minLat = Math.min(...latitudes);
+	const maxLat = Math.max(...latitudes);
+	const minLon = Math.min(...longitudes);
+	const maxLon = Math.max(...longitudes);
+
+	const center = { lat: (maxLat + minLat) / 2, lng: (maxLon + minLon) / 2 };
+	return center;
+};
+
+// calculate distance between two coordinates using Haversine formula returns distance in miles
+export const getDistance = (coord1: LatLng, coord2: LatLng) => {
+	// Earth's radius in meters
+	const R = 6371e3;
+
+	const lat1 = (coord1.lat * Math.PI) / 180;
+	const lat2 = (coord2.lat * Math.PI) / 180;
+	const deltaLat = ((coord2.lat - coord1.lat) * Math.PI) / 180;
+	const deltaLon = ((coord2.lng - coord1.lng) * Math.PI) / 180;
+
+	const a =
+		Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+		Math.cos(lat1) *
+		Math.cos(lat2) *
+		Math.sin(deltaLon / 2) *
+		Math.sin(deltaLon / 2);
+	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+	const distance = R * c;
+	const distanceInMiles = distance * 0.000621371;
+
+	return distanceInMiles;
+};
+
+export const pantriesToPantryFeatures = (
+	pantries: FoodPantry[],
+): FoodPantryGeoFeatureCollection => {
+	let id = 0;
+	const features = pantries.map((pantry) => {
+		id++;
+		return {
+			type: "Feature",
+			properties: {
+				id,
+				name: pantry.name,
+				street: pantry.address.street,
+				city: pantry.address.city,
+				state: pantry.address.state,
+				zip: pantry.address.zip,
+				phone: pantry.phone,
+				email: pantry.email,
+				website: pantry.website,
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [pantry.geo.lng, pantry.geo.lat],
+			},
+			id: pantry.name.toLowerCase().split(".").join(" ").split(" ").join("-"),
+		} as Feature;
+	});
+
+	return {
+		type: "FeatureCollection",
+		features,
+	};
+};
+
+export const sortPantriesByClosest = (
+	center: LatLng | null,
+	pantries: FoodPantry[] | undefined,
+): FoodPantry[] => {
+	if (center && pantries) {
+		const { lat, lng } = center;
+
+		const sorted = [...pantries].sort((a, b) => {
+			const distanceA = getDistance(
+				{ lat: a.geo.lat, lng: a.geo.lng } as LatLng,
+				{ lat, lng } as LatLng,
+			);
+			const distanceB = getDistance(
+				{ lat: b.geo.lat, lng: b.geo.lng } as LatLng,
+				{ lat, lng } as LatLng,
+			);
+
+			// Sort closest first
+			return distanceA - distanceB;
+		});
+
+		return sorted;
+	}
+	return pantries ?? [];
+};
+
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,12 +1,12 @@
 import { isServer } from '../environment';
 import { getDefaultPageProps, getDefaultProps, gracefullyGetDefaultProps, onError } from '../error';
-import { getContentQuery } from './helpers';
+import { getContentDev, getContentQuery, getPageContentDev } from './helpers';
 import { WP_URL_SRVR, WP_URL_SRVR_PROD, WP_API_USERNAME, WP_API_PASSWORD, YOOPERS_UNITED_API_TOKEN, YOOPERS_UNITED_API_ROOT_URL } from 'astro:env/server';
 import type { YoopersUnitedNeedsFetchResponse } from '@/types/index';
 
 import { WP_URL_CLNT } from 'astro:env/client';
 import { getOrRefreshTokens, getRedis } from '../redis';
-import { gql } from 'graphql-request';
+import { gql } from 'graphql-tag';
 
 interface CacheOptions {
 	ttl?: number;
@@ -168,8 +168,11 @@ export async function getCachedData<T>(key: string, fetchFn: () => Promise<T>, o
 	}
 }
 
+
+
 export default async function getPageContent(path: string, variables = {}) {
 	const query = getContentQuery(path);
+	// getContentDev(path)
 	if (!query) {
 		throw new Error('No query found for path "' + path + '"');
 	}
@@ -178,6 +181,10 @@ export default async function getPageContent(path: string, variables = {}) {
 
 	try {
 		if (!import.meta.env.PROD) {
+
+			// const data = getPageContentDev(path)
+
+
 			const response = await fetch(`${WP_URL_SRVR}/graphql`, {
 				method: 'POST',
 				headers: {
@@ -195,6 +202,7 @@ export default async function getPageContent(path: string, variables = {}) {
 			if (!data || data?.errors) {
 				throw new Error(data?.errors[0]?.message);
 			}
+
 
 			return data;
 		}
@@ -240,8 +248,15 @@ export async function getContent(query: string, variables = {}) {
 	const queryName = query.split('{')[0].split('query')[1].trim();
 	const cacheKey = `componentContent:${queryName}:${JSON.stringify(variables)}`;
 
+	// Redirect to get local data from json file. 
+	// Uncomment block and comment out try...catch block to use local data
+	// if (!import.meta.env.PROD) {
+	// 	const devData = getContentDev(cacheKey);
+	// 	return devData;
+	// }
 	try {
 		if (!import.meta.env.PROD) {
+
 			const response = await fetch(`${wpUrl}/graphql`, {
 				method: 'POST',
 				headers: {

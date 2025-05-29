@@ -1,0 +1,21 @@
+---
+import { config } from '@/config/aliceDataDescription';
+const { heading, text, metrics, link, linkText } = config;
+---
+
+<div class='w-[80%] mx-auto p-4 [&>*]:mb-2'>
+	<h3 class='text-xl'>{heading}</h3>
+	<p>{text}</p>
+	<ul class='list-disc'>
+		{
+			metrics.map((m) => (
+				<li class='text-xs ml-4'>
+					<p class=' text-md'>
+						<span class='font-bold'>{m.title + ': '}</span>
+						<span class='ml-1'>{m.text}</span>
+					</p>
+				</li>
+			))
+		}
+	</ul>
+</div>

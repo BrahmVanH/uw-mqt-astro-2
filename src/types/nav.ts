@@ -8,6 +8,7 @@ export interface Config {
     accordionContent: string;
   };
   navTabs: NavTab[];
+  helpfulLinks: NavTab[]
 }
 
 export interface NavTab {

@@ -1,0 +1,55 @@
+---
+export const prerender = false;
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import AliceIntro from '@/components/AliceIntro.astro';
+import AliceStats from '@/components/AliceStats';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import ErrorDisplay from '@/components/ErrorDisplay';
+import AliceHero from '@/components/AliceHero.astro';
+import AliceHub from '@/components/AliceHub/index.svelte';
+import ErrorBoundarySvelte from '@/components/ErrorBoundary.svelte';
+import ErrorDisplaySvelte from '@/components/ErrorDisplay.svelte';
+
+import type { UserGeo } from '@/types';
+
+export enum CategoryContainerDisplayOptions {
+	hidden = 'hidden',
+	visible = '',
+}
+
+const country = Astro.request.headers.get('x-user-country') || 'unknown';
+const city = Astro.request.headers.get('x-user-city') || 'unknown';
+const region = Astro.request.headers.get('x-user-region') || 'unknown';
+const latitude = parseFloat(Astro.request.headers.get('x-user-lat') || '46.5440');
+const longitude = parseFloat(Astro.request.headers.get('x-user-lng') || '-87.3994');
+
+const geoData: UserGeo = {
+	success: country !== 'unknown',
+	latitude,
+	longitude,
+	country,
+	city,
+	region,
+	fallback:
+		country === 'unknown'
+			? {
+					latitude: 46.544, // Downtown Marquette as fallback
+					longitude: -87.3994,
+					country: 'US',
+				}
+			: {},
+};
+---
+
+<DefaultLayout title='ALICE'>
+	<main class='max-w-[1800px]'>
+		<AliceHero />
+		<AliceIntro />
+		<ErrorBoundary client:load fallback={ErrorDisplay}>
+			<AliceStats client:visible />
+		</ErrorBoundary>
+		<ErrorBoundarySvelte client:load fallback={ErrorDisplaySvelte}>
+			<AliceHub client:only='svelte' userGeoData={geoData} />
+		</ErrorBoundarySvelte>
+	</main>
+</DefaultLayout>

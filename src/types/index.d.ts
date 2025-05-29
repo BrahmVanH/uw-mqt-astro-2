@@ -202,3 +202,4 @@ export interface GTagConsentSettings {
 	ad_personalization: string;
 	personalization_storage: string;
 }
+

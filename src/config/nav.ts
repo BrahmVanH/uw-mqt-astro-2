@@ -94,6 +94,13 @@ const config: Config = {
       ],
     },
   ],
+  helpfulLinks: [
+    {
+      title: "United for ALICE",
+      href: "/united-for-alice",
+
+    }
+  ]
 };
 
 export default config;

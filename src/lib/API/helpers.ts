@@ -15,6 +15,9 @@ import {
   agenciesPageQuery,
 } from "./queries";
 
+import devDataJson from '@/lib/dist/redis-cache.json'
+
+
 export const getContentQuery = (path: string) => {
   if (path !== "/") path = removeTrailingSlash(path);
 
@@ -51,7 +54,23 @@ export const getContentQuery = (path: string) => {
       return homePageQuery;
   }
 };
+export const getPageContentDev = (path: string) => {
+  const devPathArr = removeTrailingSlash(path).split("");
+  devPathArr.shift();
+  const devPath = devPathArr.join("");
+  const devData = JSON.parse(JSON.stringify(devDataJson));
 
+  const dataKey = `pageContent:/${devPath}:{}`;
+  const pageData = devData[dataKey];
+  return pageData.value;
+
+
+};
+
+export const getContentDev = (componentName: string) => {
+  const devData = JSON.parse(JSON.stringify(devDataJson));
+  return devData[componentName].value;
+}
 const removeTrailingSlash = (path: string) => {
   return path.replace(/\/$/, "");
 };
