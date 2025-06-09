@@ -3,7 +3,8 @@ export const prerender = false;
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
-import HistoryOfAccordion from '@/components/HistoryOfAccordion.svelte';
+import HistoryOfAccordionSvelte from '@/components/HistoryOfAccordion.svelte';
+import HistoryOfAccordion from '@/components/HistoryOfAccordion.astro';
 import { getValuesHistoryContent } from '@/config';
 
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -21,7 +22,7 @@ const { heading, subheading, ourMission, ourValues } = content;
 <DefaultLayout title='Our Values & History | United Way of Marquette County'>
 	<main class='content'>
 		<ContentCollectionsHero heading={heading} subheading={subheading} />
-		<div class='flex flex-col items-center text-center md:text-left lg:grid grid-cols-2 gap-4 mx-auto my-8 max-w-[80%]'>
+		<div class='flex flex-col items-center text-center md:text-left lg:grid grid-cols-2 gap-4 mx-auto my-8 max-w-[80%] space-y-4'>
 			<div class='flex flex-col items-center md:items-start text-black'>
 				{ourMission.title && <h2 class='text-lg lg:text-2xl lg:my-2 text-primary-blue-2'>{ourMission.title}</h2>}
 				{ourMission.text && <p class='w-[80%] text-md lg:text-lg m-0'>{ourMission.text}</p>}
@@ -52,7 +53,7 @@ const { heading, subheading, ourMission, ourValues } = content;
 					<Image loading='lazy' decoding='async' src={imageThree?.src} alt={imageThree?.alt} width={imageThree?.width} height={imageThree?.height} class='w-full h-96 object-cover col-span-2' />
 				)
 			}
-			<HistoryOfAccordion className='col-span-2' client:visible />
+			<HistoryOfAccordion className='col-span-2' />
 		</div>
 	</main>
 </DefaultLayout>

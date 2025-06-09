@@ -1,0 +1,36 @@
+<svg viewBox="0 0 50 82" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for gradients -->
+  <defs>
+    <linearGradient id="pinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0044b5" />
+      <stop offset="100%" stop-color="#21296b" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Pin body -->
+  <path d="M25,2 
+           C11.2,2 0,13.2 0,27 
+           C0,37.5 17.5,61 25,80 
+           C32.5,61 50,37.5 50,27 
+           C50,13.2 38.8,2 25,2 z" 
+        fill="#0044b5" />
+        
+  <!-- Same path with gradient fill -->
+  <path d="M25,2 
+           C11.2,2 0,13.2 0,27 
+           C0,37.5 17.5,61 25,80 
+           C32.5,61 50,37.5 50,27 
+           C50,13.2 38.8,2 25,2 z" 
+        fill="url(#pinGradient)" 
+        stroke="rgba(0, 70, 139, 1)" 
+        stroke-width="1" />
+  
+  <!-- Inner circle -->
+  <circle cx="25" cy="27" r="12" fill="#21296b" stroke="#0044b5" stroke-width="1" />
+  
+  <!-- Highlight effect -->
+  <circle cx="25" cy="27" r="10" fill="#a7d2ff" opacity="0.3" />
+  
+  <!-- Center dot -->
+  <circle cx="25" cy="27" r="4" fill="#a7d2ff" />
+</svg>

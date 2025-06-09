@@ -117,7 +117,7 @@
 				{#each categories.filter((c) => !UNAVAILABLE_CATEGORIES.includes(c.name)) as { name, color, icon, subCategories }}
 					<button
 						class={cn(
-							'w-min flex items-center justify-end rounded-sm text-lg p-0 px-3 overflow-hidden transition-all duration-150',
+							'w-min flex items-center justify-end rounded-sm text-lg p-0 px-3 overflow-hidden transition-all duration-150 hover:cursor-pointer',
 							`text-${color} ring-${color}`,
 							activeCategory === name ? 'ring-2 focus:ring-2' : '',
 						)}

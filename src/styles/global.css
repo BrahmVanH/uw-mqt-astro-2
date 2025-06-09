@@ -381,4 +381,350 @@
         var(--tertiary-black-3) 0%,
         var(--tertiary-black-4) 100%);
   }
+
+  .animate-accordion-up {
+    transition: max-height 400ms ease-out, border 0ms 400ms linear;
+  }
+
+  .animate-accordion-down {
+    transition: max-height 400ms ease-out, border 0ms linear;
+  }
+
+  .accordion-trigger {
+    max-height: 500px;
+    @apply animate-accordion-up
+  }
+
+  .accordion-trigger[open] {
+    max-height: 800px;
+    @apply animate-accordion-down;
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .card-decal::before {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    top: -15px;
+    left: -15px;
+    height: 100%;
+    width: 17px;
+    border-radius: 32px;
+    opacity: 0.9;
+  }
+
+  .card-decal[data-category="housing"]::before {
+    background: var(--primary-blue-1);
+  }
+
+  .card-decal[data-category="food"]::before {
+    background: var(--primary-yellow-2);
+  }
+
+  .card-decal[data-category="childcare"]::before {
+    background: var(--primary-yellow-1);
+  }
+
+  .card-decal[data-category="transportation"]::before {
+    background: var(--primary-red-1);
+  }
+
+  .card-decal[data-category="taxes"]::before {
+    background: var(--secondary-green-2);
+  }
+
+  .card-decal:hover {
+    .circles-unite-animation-circle-1 {
+      animation: circle-1-to-center 1s ease-out forwards;
+      transform: translate(-5%, 0%);
+      background-color: transparent;
+    }
+
+    .circles-unite-animation-circle-2 {
+      animation: circle-2-to-center 1s ease-out forwards;
+      transform: translate(-5%, 0%);
+      background-color: transparent;
+    }
+
+    .circles-unit-animation-anchor-wrapper::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .circles-unite-animation-circle-1 {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -10px;
+    left: 0;
+    transform: translate(10%, 20%);
+    background-color: var(--primary-yellow-4);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    opacity: 0.95;
+    animation: fadeIn 0.5s ease-in;
+    transition:
+      transform 0.5s ease-out,
+      background-color 0.5s ease-out;
+  }
+
+  .circles-unite-animation-circle-2 {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -10px;
+    left: 0;
+    transform: translate(-30%, -20%);
+    background-color: var(--primary-blue-4);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    opacity: 0.85;
+    animation: fadeIn 0.5s ease-in;
+
+    transition:
+      transform 0.5s ease-out,
+      background-color 0.5s ease-out;
+  }
+
+  .circles-unit-animation-anchor-wrapper::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-blue-2);
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+  }
+
+  @keyframes circle-1-to-center {
+    to {
+      transform: translate(-5%, 0%);
+      background-color: transparent;
+    }
+
+    from {
+      transform: translate(10%, 20%);
+      background-color: var(--primary-yellow-4);
+    }
+  }
+
+  @keyframes circle-2-to-center {
+    to {
+      transform: translate(-5%, 0%);
+      background-color: transparent;
+    }
+
+    from {
+      transform: translate(-30%, -20%);
+      background-color: var(--primary-blue-4);
+    }
+  }
+
+  .animate-left {
+    animation-delay: 0.2s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translateX(-120%);
+  }
+
+  .animate-back {
+    animation: right 0.5s;
+    animation-delay: 0s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  @keyframes left {
+    100% {
+      transform: translateX(-120%);
+    }
+  }
+
+  @keyframes right {
+    0% {
+      transform: translateX(-120%);
+    }
+
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes exit {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes enterBack {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleDown {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    to {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes scaleDownExit {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  @keyframes scaleUpEnter {
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Staggered animation for lists */
+  .stagger-fade-in>* {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+  }
+
+  .stagger-fade-in>*:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-fade-in>*:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-fade-in>*:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-fade-in>*:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-fade-in>*:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  .stagger-fade-in>*:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  .stagger-fade-in>*:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+
+  .stagger-fade-in>*:nth-child(8) {
+    animation-delay: 0.8s;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .recharts-wrapper {
+    position: absolute;
+  }
+
+
 }

@@ -72,7 +72,7 @@
 		<div class="circles-unite-animation-container relative text-primary-blue-2 mx-auto my-auto text-sm lg:text-md flex items-center justify-center p-0" aria-label="Learn more about this program">
 			<div class="circles-unite-animation-circle-1"></div>
 			<div class="circles-unite-animation-circle-2"></div>
-			<div class="circles-unit-animation-anchor-wrapper z-[1000]">
+			<div class="circles-unite-animation-anchor-wrapper z-[1000]">
 				<a href={program.link} class="text-center mx-auto font-semibold font-body no-underline" rel="noopener noreferrer" target="_blank"> Learn more </a>
 			</div>
 		</div>

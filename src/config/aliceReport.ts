@@ -9,8 +9,8 @@ const config: Config = {
   aliceStats: {
     text: "Of Michigan's 4,056,442 households in 2022…",
     stats: [
-      "13% earned below the Federal Poverty Level (FPL)",
-      "28% were ALICE, in households that earned above the FPL but not enough to afford the basics in the communities where they live",
+      "14% earned below the Federal Poverty Level (FPL)",
+      "27% were ALICE, in households that earned above the FPL but not enough to afford the basics in the communities where they live",
       "Together, 41% of households in Michigan were below the ALICE Threshold (poverty + ALICE divided by total households)",
     ],
   },

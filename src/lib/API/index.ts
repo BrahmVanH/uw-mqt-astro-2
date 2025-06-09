@@ -318,6 +318,59 @@ export async function fetchGalaxyDigitalNeedsData() {
 
 	const cacheKey = 'yoopersUnitedNeedsData';
 	try {
+		if (import.meta.env.DEV) {
+
+			const params = new URLSearchParams({
+				per_page: '100',
+				page: '7',
+				need_status: 'active',
+				show_inactive: 'No',
+				sort: 'desc',
+				sort_by: 'date',
+
+			});
+
+			const response = await fetch(`${YOOPERS_UNITED_API_ROOT_URL}/needs?${params.toString()}?since_id=853211`, {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+					Authorization: auth,
+				},
+			})
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+
+
+			const responseData = await response.json();
+
+			if (!responseData?.data || !Array.isArray(responseData?.data)) {
+				throw new Error('Invalid response format');
+			}
+
+
+
+			const today = new Date();
+			today.setHours(0, 0, 0, 0);
+
+			const validNeeds = responseData.data
+				.filter((need: any) => {
+					const needDate = new Date(need.need_date);
+					needDate.setHours(0, 0, 0, 0);
+					return !isNaN(needDate.getTime()) && need.agency.agency_name !== 'Sample Agency' && (need.need_date_type === 'until' || need.need_date_type === 'multi' || needDate >= today);
+				})
+				.slice(0, 10);
+
+			if (!validNeeds) {
+				throw new Error('No yoopers united galaxy digital data found');
+			}
+
+			return validNeeds;
+
+		}
+
 		const data = await getCachedData(cacheKey, async () => {
 			const response = await fetch(`${YOOPERS_UNITED_API_ROOT_URL}/needs?per_page=100&page=7&need_status=active&show_inactive=No&sort=desc&sort_by=date`, {
 				method: 'GET',

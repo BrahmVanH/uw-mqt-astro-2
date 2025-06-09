@@ -99,6 +99,10 @@ const config: Config = {
       title: "United for ALICE",
       href: "/united-for-alice",
 
+    },
+    {
+      title: "Single Care Service",
+      href: "/our-impact/financial-security/single-care-service"
     }
   ]
 };

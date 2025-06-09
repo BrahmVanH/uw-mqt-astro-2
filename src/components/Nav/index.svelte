@@ -6,6 +6,7 @@
 	import LearnMoreBtn from '@/components/LearnMoreBtn.svelte';
 	import Accordion from './Accordion.svelte';
 	import ListItem from './ListItem.svelte';
+	import Breadcrumb from './Breadcrumb.svelte';
 
 	import { cn, isExternalUrl } from '@/lib/utils';
 
@@ -111,7 +112,7 @@
 				/>
 			</div>
 		</div>
-		<div class=" flex flex-row justify-end border-b-2 border-primary-blue-3">
+		<!-- <div class=" flex flex-row justify-end border-b-2 border-primary-blue-3">
 			<NavigationMenu.List class={cn(helpfulLinksGridColsClass, ' w-1/2   grid  group  lg:flex-1 list-none lg:items-center lg:justify-center space-x-4')}>
 				{#each helpfulLinks as { title, href }}
 					<NavigationMenu.Item>
@@ -120,6 +121,21 @@
 							class={cn('group inline-flex h-min w-max items-center justify-center uppercase text-sm  px-4 py-1  transition-colors ')}
 							{href}
 							role="menuitem"
+						>
+							{title}
+						</NavigationMenu.Link>
+					</NavigationMenu.Item>
+				{/each}
+			</NavigationMenu.List>
+		</div> -->
+		<div class="flex flex-row justify-between  bg-gradient-to-b from-white to-gray-50/30 border-b border-gray-200/40 px-8">
+			<Breadcrumb {path} />
+			<NavigationMenu.List class="flex items-center gap-6 px-6 py-3 font-semibold">
+				{#each helpfulLinks as { title, href }}
+					<NavigationMenu.Item>
+						<NavigationMenu.Link
+							class="relative text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary-blue-2 after:transition-all after:duration-300 hover:after:w-full"
+							{href}
 						>
 							{title}
 						</NavigationMenu.Link>

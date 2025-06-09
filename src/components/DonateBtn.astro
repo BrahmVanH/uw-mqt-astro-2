@@ -9,4 +9,4 @@ export interface Props {
 const { className, size } = Astro.props;
 ---
 
-<Button variant='donate' size={size} class={className}> DONATE </Button>
+<Button variant='donate' size={size} class:list={['cursor-pointer', className]}> DONATE </Button>

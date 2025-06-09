@@ -25,7 +25,7 @@
 	import arrowLeftBlue from '@/icons/arrow-left-blue.svg';
 	import type { Snippet } from 'svelte';
 	import SheetOverlay from './sheet-overlay.svelte';
-	import { cn, type WithoutChildrenOrChild } from '@/lib/utils.js';
+	import { cn, type WithoutChildrenOrChild } from '@/lib/utils';
 	import type { NavTab } from '@/types/nav';
 
 	let {

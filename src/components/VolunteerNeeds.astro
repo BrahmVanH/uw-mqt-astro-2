@@ -30,7 +30,7 @@ export async function createProps(): Promise<Props> {
 			throw new Error('No galaxy digital needs data response found');
 		}
 
-		const data = response.data;
+		const data = response;
 
 		let needs = data?.map((need: any) => {
 			return {
@@ -42,7 +42,8 @@ export async function createProps(): Promise<Props> {
 				date: need?.need_date,
 				needDateType: need?.need_date_type,
 			};
-		});
+		}).reverse();
+		
 		if (!needs?.length) {
 			throw new Error('No needs found in VolunteerNeeds createProps');
 		}
