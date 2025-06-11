@@ -183,7 +183,7 @@ export default async function getPageContent(path: string, variables = {}) {
 		if (import.meta.env.PROD) {
 
 			// const data = getPageContentDev(path)
-
+			console.log("WP_URL_SVR: ", WP_URL_SRVR)
 
 			const response = await fetch(`${WP_URL_SRVR}/graphql`, {
 				method: 'POST',
@@ -192,6 +192,8 @@ export default async function getPageContent(path: string, variables = {}) {
 				},
 				body: JSON.stringify({ query, variables }),
 			});
+
+			console.log("response in API getPageContent: ", response);
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
