@@ -5,7 +5,8 @@ import LearnMoreBtn from './LearnMoreBtn.svelte';
 import { gracefullyGetDefaultProps } from '@/lib/error';
 import { Image } from 'astro:assets';
 import logo from '@/image/logo-no-text.svg';
-import { fetchGalaxyDigitalNeedsData } from '@/lib/API';
+import { getGalaxyDigitalNeedsData } from '@/lib/API';
+import type { YoopersUnitedNeed } from '@/types';
 
 interface Props extends Config {
 	needs: Need[];
@@ -24,26 +25,29 @@ interface Need {
 export async function createProps(): Promise<Props> {
 	const { preHeading, heading, subHeading, viewNeedDetailsLinkRoot, volunteerNeedsLink, volunteerNeedsLinkText } = volunteerNeedsContent;
 	try {
-		const response = await fetchGalaxyDigitalNeedsData();
+		const response = await getGalaxyDigitalNeedsData();
 
 		if (!response) {
 			throw new Error('No galaxy digital needs data response found');
 		}
+		console.log('response: ', response);
 
-		const data = response;
+		const data: YoopersUnitedNeed[] = response.data;
 
-		let needs = data?.map((need: any) => {
-			return {
-				id: need?.id,
-				agency_id: need?.agency.id,
-				agency_name: need?.agency?.agency_name,
-				title: need?.need_title,
-				volunteersNeeded: parseInt(need?.need_volunteers_needed),
-				date: need?.need_date,
-				needDateType: need?.need_date_type,
-			};
-		}).reverse();
-		
+		let needs = data
+			?.map((need: any) => {
+				return {
+					id: need?.id,
+					agency_id: need?.agency.id,
+					agency_name: need?.agency?.agency_name,
+					title: need?.need_title,
+					volunteersNeeded: parseInt(need?.need_volunteers_needed),
+					date: need?.need_date,
+					needDateType: need?.need_date_type,
+				};
+			})
+			.reverse();
+
 		if (!needs?.length) {
 			throw new Error('No needs found in VolunteerNeeds createProps');
 		}
