@@ -326,7 +326,6 @@ export async function fetchGalaxyDigitalNeedsData() {
 			show_inactive: 'No',
 			sort: 'desc',
 			sort_by: 'date',
-			since_id: '853211'
 
 		});
 
