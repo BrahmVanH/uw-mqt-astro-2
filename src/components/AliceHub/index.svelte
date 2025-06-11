@@ -121,7 +121,7 @@
 						)}
 						onclick={(e) => handleSetActiveCategory(e, name, subCategories)}
 					>
-						<img class="w-3 p-0" src={btnIcons[icon]} alt="{name} icon" />
+						<img class="w-5 p-0" src={btnIcons[icon]} alt="{name} icon" />
 						<!-- <span class="iconify {icon} w-4 h-4"></span> -->
 						<p class="font-bold text-lg">{capitalizeFirstLetter(name)}</p>
 					</button>
