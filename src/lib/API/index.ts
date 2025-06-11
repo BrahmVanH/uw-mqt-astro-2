@@ -180,10 +180,9 @@ export default async function getPageContent(path: string, variables = {}) {
 	let data;
 
 	try {
-		if (import.meta.env.PROD) {
+		if (!import.meta.env.PROD) {
 
 			// const data = getPageContentDev(path)
-			console.log("WP_URL_SVR: ", WP_URL_SRVR)
 
 			const response = await fetch(`${WP_URL_SRVR}/graphql`, {
 				method: 'POST',
@@ -211,6 +210,10 @@ export default async function getPageContent(path: string, variables = {}) {
 
 		const cacheKey = `pageContent:${path}:${JSON.stringify(variables)}`;
 		const auth = await getOrRefreshTokens();
+		console.log("auth: ", auth);
+
+		console.log("WP_URL_SVR_PROD: ", WP_URL_SRVR_PROD)
+
 
 		data = await getCachedData(cacheKey, async () => {
 			const response = await fetch(`${WP_URL_SRVR_PROD}/graphql`, {
@@ -257,7 +260,7 @@ export async function getContent(query: string, variables = {}) {
 	// 	return devData;
 	// }
 	try {
-		if (import.meta.env.PROD) {
+		if (!import.meta.env.PROD) {
 
 			const response = await fetch(`${wpUrl}/graphql`, {
 				method: 'POST',
