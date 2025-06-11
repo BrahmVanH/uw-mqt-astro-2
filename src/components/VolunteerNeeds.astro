@@ -30,7 +30,6 @@ export async function createProps(): Promise<Props> {
 		if (!response) {
 			throw new Error('No galaxy digital needs data response found');
 		}
-		console.log('response: ', response);
 
 		const data: YoopersUnitedNeed[] = response.data;
 

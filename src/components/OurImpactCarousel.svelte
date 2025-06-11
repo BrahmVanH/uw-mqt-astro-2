@@ -1,5 +1,4 @@
 <script lang="ts" module>
-	import ScrollArea from './../../node_modules/bits-ui/dist/bits/scroll-area/components/scroll-area.svelte';
 	export function createProps(wpContent: RootQueryToImpactCarouselConnection): Props {
 		if (!wpContent || !wpContent.nodes || wpContent?.nodes?.length === 0 || !wpContent.nodes[0]?.impactCarouselFields) {
 			return getDefaultProps<Props>('impactCarousel createProps');
@@ -141,5 +140,3 @@
 		{/each}
 	</div>
 </section>
-
-
