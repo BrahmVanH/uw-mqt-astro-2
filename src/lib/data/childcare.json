@@ -1,0 +1,54 @@
+[
+  {
+    "name": "MI Child Development & Care Program",
+    "provider": "Michigan Department of Lifelong Education, Advancement, and Potential",
+    "description": "The Office of Child Development and Care (CDC) supports low-income working families by providing access to affordable, high-quality early care and afterschool programs by supporting numerous efforts designed to assess and improve the level of quality across the spectrum of Michigan's early learning and care settings.",
+    "link": "https://www.michigan.gov/mileap/early-childhood-education/early-learners-and-care/cdc",
+    "serviceAreas": ["all"],
+    "requirements": [
+      "Child under 13 (or up to 18 with special needs)",
+      "Valid need for care (work, education, or treatment program)",
+      "Income eligibility (expanded recently - up to 185% of federal poverty level)",
+      "This program provides payment assistance to help eligible parents pay for child care, with parents qualifying if they are working, attending education/training, or participating in approved counseling/treatment programs"
+    ],
+    "type": ["childcare"]
+  },
+  {
+    "name": "MI Great Start Readiness Program (GSRP)",
+    "provider": "Michigan Department of Lifelong Education, Advancement, and Potential",
+    "description": "Michigan's free PreK program for eligible four-year-olds. Ranked #1 in the U.S., it's a safe place where children learn how to get along with others, share, take turns, and make friends. Math, reading, and thinking skills are taught every day through fun, hands-on activities.",
+    "link": "https://www.michigan.gov/mileap/early-childhood-education/early-learners-and-care/gsrp",
+    "serviceAreas": ["all"],
+    "requirements": [
+      "Those who do not qualify for or do not have access to Head Start"
+    ],
+    "type": ["childcare"]
+  },
+  {
+    "name": "Early Head Start Program",
+    "provider": "Alger-Marquette Community Action",
+    "description": "Early Head Start is a free federal program that provides support to low-income families of infants and toddlers under the age of 3 and pregnant women. The program provides a wide range of high-quality education, health, nutrition, family support, and social services to enrolled infants and toddlers, pregnant women and their families.",
+    "link": "https://www.communityactionam.org/head-start",
+    "serviceAreas": ["alger", "marquette"],
+    "requirements": [],
+    "type": ["childcare"]
+  },
+  {
+    "name": "Head Start Preschool Program",
+    "provider": "Alger-Marquette Community Action",
+    "description": "Preschool education program offering a developmentally appropriate curriculum for 3 and 4 year olds",
+    "link": "https://www.communityactionam.org/early-head-start",
+    "serviceAreas": ["alger", "marquette"],
+    "requirements": [],
+    "type": ["childcare"]
+  },
+  {
+    "name": "4C of the UP (Child Care Coordinating Council)",
+    "provider": "Great Start to Quality",
+    "description": "This organization supports child care providers and helps families locate care.",
+    "link": "https://greatstarttoquality.org/upper-peninsula-resource-center/",
+    "serviceAreas": ["all"],
+    "requirements": [],
+    "type": ["childcare"]
+  }
+]

@@ -58,12 +58,22 @@ export const getStaticPaths = (async () => {
 		// 	props: { page },
 		// }));
 
-		return pages.map((page: any) => ({
-			params: { slug: page.slug.split('/').filter(Boolean) },
-			props: { page },
-		}));
+		return pages.map((page: any) => {
+			const slug: string = page.slug;
+			if (slug && slug.includes('/')) {
+				return {
+					params: { slug: slug.split('/').filter(Boolean) },
+					props: { page },
+				};
+			} else {
+				return {
+					params: { slug: slug },
+					props: { page },
+				};
+			}
+		});
 	} catch (error) {
-		console.error('Error in getting static content in about/[...slug]: ', error);
+		console.error('Error in getting static content in about/static/[...slug]: ', error);
 		return [];
 	}
 }) satisfies GetStaticPaths;

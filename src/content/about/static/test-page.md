@@ -1,6 +1,6 @@
 ---
 title: test page
-slug: test-page
+slug: testPage
 description: test
 ---
 

@@ -1,11 +1,11 @@
-import AliceHousingIcon from '@/icons/alice-housing.svg';
-import ChildCareIcon from '@/icons/alice-childcare.svg';
-import FoodIcon from '@/icons/alice-food.svg';
-import TransportationIcon from '@/icons/alice-transportation.svg';
-import TechnologyIcon from '@/icons/alice-technology.svg';
-import HealthcareIcon from '@/icons/alice-healthcare.svg';
-import TaxesIcon from '@/icons/alice-taxes.svg';
-import MiscellaneousIcon from '@/icons/alice-misc.svg';
+import AliceHousingIcon from '@/icons/alice-housing.svg?url';
+import ChildCareIcon from '@/icons/alice-childcare.svg?url';
+import FoodIcon from '@/icons/alice-food.svg?url';
+import TransportationIcon from '@/icons/alice-transportation.svg?url';
+import TechnologyIcon from '@/icons/alice-technology.svg?url';
+import HealthcareIcon from '@/icons/alice-healthcare.svg?url';
+import TaxesIcon from '@/icons/alice-taxes.svg?url';
+import MiscellaneousIcon from '@/icons/alice-misc.svg?url';
 
 import { CategoryColors, CategoryIcons, CategoryNames, type Config } from '@/types/aliceHub';
 /**

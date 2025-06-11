@@ -95,7 +95,7 @@ export default defineConfig({
         },
     },
 
-    site: process.env.SITE || 'https://uwmqt.org',
+    site: import.meta.env.SITE || 'https://uwmqt.org',
     output: 'server',
 
     // vite: {
@@ -117,7 +117,7 @@ export default defineConfig({
     prefetch: true,
 
     image: {
-        domains: [`${process.env.WP_URL_SRVR_PROD ?? 'https://api.uwmqt.org'}`],
+        domains: [`${import.meta.env.WP_URL_SRVR_PROD ?? 'https://api.uwmqt.org'}`],
     },
 
     integrations: [
@@ -130,10 +130,10 @@ export default defineConfig({
         sitemap(),
         mdx(),
         sentry({
-            dsn: process.env.SENTRY_DSN,
+            dsn: import.meta.env.SENTRY_DSN,
             sourceMapsUploadOptions: {
                 project: 'uw-mqt',
-                authToken: process.env.SENTRY_AUTH_TOKEN,
+                authToken: import.meta.env.SENTRY_AUTH_TOKEN,
             },
         }),
         svelte({

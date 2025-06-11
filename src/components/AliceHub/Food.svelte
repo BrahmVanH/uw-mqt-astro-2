@@ -1,5 +1,5 @@
 <script lang="ts">
-	import programs from '@/lib/devData/food-programs.json';
+	import programs from '@/lib/data/food-programs.json';
 	import ProgramCard from './ProgramCard.svelte';
 	import { CategoryNames, type AliceHubProgram } from '@/types/aliceHub';
 	import type { UserGeo } from '@/types/alice';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import programs from "@/lib/devData/childcare.json";
+  import programs from "@/lib/data/childcare.json";
   import ProgramCard from "./ProgramCard.svelte";
 
   import { CategoryNames } from "@/types/aliceHub";
