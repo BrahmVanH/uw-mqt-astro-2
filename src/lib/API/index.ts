@@ -326,10 +326,11 @@ export async function fetchGalaxyDigitalNeedsData() {
 			show_inactive: 'No',
 			sort: 'desc',
 			sort_by: 'date',
+			since_id: '853211'
 
 		});
 
-		const response = await fetch(`${YOOPERS_UNITED_API_ROOT_URL}/needs?${params.toString()}?since_id=853211`, {
+		const response = await fetch(`${YOOPERS_UNITED_API_ROOT_URL}/needs?${params.toString()}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
