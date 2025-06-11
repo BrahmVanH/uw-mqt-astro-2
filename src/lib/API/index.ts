@@ -180,7 +180,7 @@ export default async function getPageContent(path: string, variables = {}) {
 	let data;
 
 	try {
-		if (!import.meta.env.PROD) {
+		if (import.meta.env.PROD) {
 
 			// const data = getPageContentDev(path)
 
@@ -255,7 +255,7 @@ export async function getContent(query: string, variables = {}) {
 	// 	return devData;
 	// }
 	try {
-		if (!import.meta.env.PROD) {
+		if (import.meta.env.PROD) {
 
 			const response = await fetch(`${wpUrl}/graphql`, {
 				method: 'POST',
