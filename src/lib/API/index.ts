@@ -96,6 +96,8 @@ export async function refreshAuthToken(refreshToken: string): Promise<AuthTokens
 				},
 			}),
 		});
+
+		console.log("refreshAuthToken response: ", response);
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
@@ -140,6 +142,7 @@ export async function getCachedData<T>(key: string, fetchFn: () => Promise<T>, o
 			const cachedData = await retryOperation(() => redis.get(key), retryAttempts);
 			if (typeof cachedData === 'string' && cachedData.trim().startsWith('{')) {
 				try {
+					console.log("cachedData: ", JSON.parse(cachedData))
 					return JSON.parse(cachedData);
 				} catch (parseError) {
 					onError(`Error parsing cached data: ${parseError}`);
