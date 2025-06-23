@@ -58,7 +58,6 @@ export async function getOrRefreshTokens(): Promise<AuthTokens["authToken"]> {
       return tokens.authToken;
     }
 
-    console.log("auth token: ", authToken)
 
     return authToken as string;
   } catch (error: any) {

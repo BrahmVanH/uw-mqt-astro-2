@@ -7,6 +7,7 @@ import type { YoopersUnitedNeed, YoopersUnitedNeedsFetchResponse } from '@/types
 import { WP_URL_CLNT } from 'astro:env/client';
 import { getOrRefreshTokens, getRedis } from '../redis';
 import { gql } from 'graphql-tag';
+import { sanitizeHTML } from './sanitize';
 
 interface CacheOptions {
 	ttl?: number;
@@ -97,7 +98,6 @@ export async function refreshAuthToken(refreshToken: string): Promise<AuthTokens
 			}),
 		});
 
-		console.log("refreshAuthToken response: ", response);
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
@@ -142,7 +142,6 @@ export async function getCachedData<T>(key: string, fetchFn: () => Promise<T>, o
 			const cachedData = await retryOperation(() => redis.get(key), retryAttempts);
 			if (typeof cachedData === 'string' && cachedData.trim().startsWith('{')) {
 				try {
-					console.log("cachedData: ", JSON.parse(cachedData))
 					return JSON.parse(cachedData);
 				} catch (parseError) {
 					onError(`Error parsing cached data: ${parseError}`);
@@ -195,7 +194,6 @@ export default async function getPageContent(path: string, variables = {}) {
 				body: JSON.stringify({ query, variables }),
 			});
 
-			console.log("response in API getPageContent: ", response);
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
@@ -213,9 +211,7 @@ export default async function getPageContent(path: string, variables = {}) {
 
 		const cacheKey = `pageContent:${path}:${JSON.stringify(variables)}`;
 		const auth = await getOrRefreshTokens();
-		console.log("auth: ", auth);
 
-		console.log("WP_URL_SVR_PROD: ", WP_URL_SRVR_PROD)
 
 
 		data = await getCachedData(cacheKey, async () => {
@@ -319,21 +315,25 @@ export async function getContent(query: string, variables = {}) {
 }
 
 export async function fetchGalaxyDigitalNeedsData() {
-
+	const now = new Date()
+	const nowMinus3M = new Date(now);
+	nowMinus3M.setMonth(now.getMonth() - 3)
 	const auth = `Bearer ${YOOPERS_UNITED_API_TOKEN}`;
 	if (!auth) {
 		throw new Error('No token found');
 	}
 
+
 	try {
 
 		const params = new URLSearchParams({
 			per_page: '100',
-			page: '7',
+			page: '1',
 			need_status: 'active',
 			show_inactive: 'No',
-			sort: 'desc',
+			sort: 'asc',
 			sort_by: 'date',
+			since_created: nowMinus3M.toISOString()
 
 		});
 
@@ -353,6 +353,7 @@ export async function fetchGalaxyDigitalNeedsData() {
 
 		const responseData = await response.json();
 
+
 		if (!responseData?.data || !Array.isArray(responseData?.data)) {
 			throw new Error('Invalid response format');
 		}
@@ -368,15 +369,24 @@ export async function fetchGalaxyDigitalNeedsData() {
 				needDate.setHours(0, 0, 0, 0);
 				return !isNaN(needDate.getTime()) && need.agency.agency_name !== 'Sample Agency' && (need.need_date_type === 'until' || need.need_date_type === 'multi' || needDate >= today);
 			})
-			.slice(0, 10);
+			.slice(0, 10)
+			.map((need: YoopersUnitedNeed) => {
+				const sanitized_need_body = sanitizeHTML(need.need_body)
+				return {
+					...need,
+					need_body: sanitized_need_body
+				} as YoopersUnitedNeed
+			})
+			.reverse();
 
 		if (!validNeeds) {
 			throw new Error('No yoopers united galaxy digital data found');
 		}
 
+
 		return { data: validNeeds }
-	} catch (error) {
-		return getDefaultProps<YoopersUnitedNeedsFetchResponse>('VolunteerNeeds fetchGalaxyDigitalNeedsData');
+	} catch (err) {
+		return getDefaultProps<YoopersUnitedNeedsFetchResponse>(`VolunteerNeeds fetchGalaxyDigitalNeedsData: ${err}`);
 	}
 }
 

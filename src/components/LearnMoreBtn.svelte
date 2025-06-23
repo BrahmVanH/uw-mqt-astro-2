@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	export interface Props {
-		href: string;
+		href?: string;
 		color: 'black' | 'white' | 'blue' | 'purple';
 		className?: string;
 		ariaLabel: string;
@@ -9,9 +9,8 @@
 		openInNewTab?: boolean;
 	}
 </script>
+
 <script lang="ts">
-
-
 	let { href, color = 'black', className, ariaLabel, text = 'Learn more', size = 'md', openInNewTab = true }: Props = $props();
 
 	const buttonStyles = {
@@ -23,7 +22,7 @@
 
 	const sizeStyles = {
 		sm: 'text-xs lg:text-sm rounded-lg px-1 py-[1px] border-[3px]',
-		md: 'text-sm lg:text-md rounded-lg px-2 py-0 border-[3px]',
+		md: ' rounded-lg px-2 py-0 border-[3px]',
 		lg: 'text-md lg:text-lg px-4 py-2 border-[4px]',
 		xl: 'text-xl lg:text-2xl rounded-lg px-8 py-3 border-[5px]',
 	};
@@ -38,7 +37,6 @@
 	rel={openInNewTab ? 'noopener noreferrer' : ''}
 	target={openInNewTab ? '_blank' : ''}
 	data-astro-prefetch="tap"
-
 >
 	{text}
 </a>

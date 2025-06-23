@@ -1,0 +1,230 @@
+---
+interface Props {
+	triggerText: string;
+	triggerClass?: string;
+	class?: string;
+}
+
+const { triggerText = 'Learn More', triggerClass = '', class: className = '' } = Astro.props;
+
+// Generate unique IDs for this instance
+const id = `hovercard-${Math.random().toString(36).substring(2, 9)}`;
+const triggerId = `${id}-trigger`;
+const contentId = `${id}-content`;
+---
+
+<div class={`hovercard-root ${className || ''}`}>
+	<button
+		id={triggerId}
+		class:list={[
+			'hovercard-trigger',
+			'w-min text-nowrap leading-none uppercase font-semibold font-body no-underline rounded-lg lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md',
+			'bg-transparent border-black text-black lg:hover:bg-black/5 lg:active:bg-black/10',
+			'text-sm lg:text-md rounded-lg px-2 py-0 border-[3px]',
+			triggerClass,
+		]}
+		aria-haspopup='dialog'
+		aria-expanded='false'
+		aria-controls={contentId}>
+		{triggerText}
+	</button>
+	<div
+		id={contentId}
+		class='hovercard-content fixed top-1/2 left-1/2 z-[999] hidden max-w-[85vw] md:max-w-[66vw] max-h-[85vh] md:max-h-[75vh] bg-white border-2 border-border rounded-[var(--radius)] shadow-2xl backdrop-blur-lg transition-all duration-300 ease-out'
+		role='dialog'
+		aria-labelledby={triggerId}
+		aria-hidden='true'>
+		<div class='hovercard-content-inner p-6 w-full h-full overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent'>
+			<div class='space-y-4 text-foreground'>
+				<slot />
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	/* Root element */
+	.hovercard-root {
+		position: relative;
+		display: inline-block;
+	}
+
+	/* Trigger button */
+	.hovercard-trigger {
+		cursor: pointer;
+	}
+
+	.hovercard-trigger:focus {
+		outline: 2px solid oklch(var(--ring));
+		outline-offset: 2px;
+	}
+
+	/* HoverCard content */
+	.hovercard-content {
+		transform: translate(-50%, -50%) scale(0.95);
+		opacity: 0;
+		background: linear-gradient(135deg, oklch(var(--background)) 0%, oklch(var(--card)) 100%);
+		border-color: oklch(var(--border));
+		color: oklch(var(--foreground));
+		box-shadow:
+			0 25px 50px -12px rgba(0, 0, 0, 0.25),
+			0 0 0 1px oklch(var(--border) / 0.05),
+			0 0 40px oklch(var(--primary) / 0.05);
+	}
+
+	.hovercard-content[aria-hidden='false'] {
+		display: block !important;
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	/* Custom scrollbar for webkit browsers */
+	.scrollbar-thin::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-thumb {
+		background: oklch(var(--muted));
+		border-radius: 3px;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+		background: oklch(var(--muted-foreground));
+	}
+
+	/* Enhanced content styling */
+	.hovercard-content-inner h1,
+	.hovercard-content-inner h2,
+	.hovercard-content-inner h3,
+	.hovercard-content-inner h4 {
+		color: oklch(var(--primary-blue-2));
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	.hovercard-content-inner h3 {
+		font-size: 1.25rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.hovercard-content-inner p {
+		color: oklch(var(--foreground));
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.hovercard-content-inner a {
+		color: oklch(var(--primary-blue-1));
+		text-decoration: underline;
+		text-decoration-color: oklch(var(--primary-blue-1) / 0.3);
+		text-underline-offset: 2px;
+		transition: all 0.2s ease;
+	}
+
+	.hovercard-content-inner a:hover {
+		color: oklch(var(--primary-blue-2));
+		text-decoration-color: oklch(var(--primary-blue-2));
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.hovercard-content {
+			max-width: 95vw;
+			max-height: 90vh;
+		}
+
+		.hovercard-content-inner {
+			padding: 1rem;
+		}
+	}
+
+	/* Animation for better UX */
+	.hovercard-content::before {
+		content: '';
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		right: -2px;
+		bottom: -2px;
+		background: linear-gradient(45deg, oklch(var(--primary-blue-1) / 0.1), oklch(var(--primary-blue-2) / 0.1));
+		border-radius: inherit;
+		z-index: -1;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.hovercard-content[aria-hidden='false']::before {
+		opacity: 1;
+	}
+</style>
+
+<script define:vars={{ id, triggerId, contentId }}>
+	// Get elements
+	const trigger = document.getElementById(triggerId);
+	const content = document.getElementById(contentId);
+
+	if (trigger && content) {
+		// Open on hover with delay
+		let hoverTimeout;
+		let leaveTimeout;
+
+		trigger.addEventListener('mouseenter', () => {
+			clearTimeout(leaveTimeout);
+			hoverTimeout = setTimeout(() => {
+				openHoverCard();
+			}, 300); // 300ms delay before opening
+		});
+
+		trigger.addEventListener('mouseleave', () => {
+			clearTimeout(hoverTimeout);
+			leaveTimeout = setTimeout(() => {
+				// Only close if the mouse is not over the content
+				if (!isMouseOverContent) {
+					closeHoverCard();
+				}
+			}, 200);
+		});
+
+		// Track if mouse is over content
+		let isMouseOverContent = false;
+
+		content.addEventListener('mouseenter', () => {
+			isMouseOverContent = true;
+			clearTimeout(leaveTimeout);
+		});
+
+		content.addEventListener('mouseleave', () => {
+			isMouseOverContent = false;
+			closeHoverCard();
+		});
+
+		// Close hovercard when clicking outside
+		document.addEventListener('click', (event) => {
+			const isOpen = content.getAttribute('aria-hidden') === 'false';
+			if (isOpen && !content.contains(event.target) && event.target !== trigger) {
+				closeHoverCard();
+			}
+		});
+
+		// Close hovercard on Escape key
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && content.getAttribute('aria-hidden') === 'false') {
+				closeHoverCard();
+			}
+		});
+
+		function openHoverCard() {
+			content.setAttribute('aria-hidden', 'false');
+			trigger.setAttribute('aria-expanded', 'true');
+		}
+
+		function closeHoverCard() {
+			content.setAttribute('aria-hidden', 'true');
+			trigger.setAttribute('aria-expanded', 'false');
+		}
+	}
+</script>
