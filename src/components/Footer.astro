@@ -17,7 +17,7 @@ const { informationLinks, socials, contactInfo } = Astro.props;
 
 {!informationLinks && !contactInfo && socials && <Loading />}
 
-<footer class='bg-primary-blue-2 text-white p-8 [&>*]:mt-4 last:mb-4'>
+<footer class='bg-primary-blue-2 text-white p-8 mt-4 [&>*]:mt-4 last:mb-4'>
 	<div class='w-full flex flex-col md:flex-row md:justify-between'>
 		<a class='content' data-astro-prefetch='viewport' href='/'>
 			<Image loading='lazy' decoding='async' width={100} height={100} src={logo} alt='logo' class='max-w-[75px] lg:max-w-[100px]' />
