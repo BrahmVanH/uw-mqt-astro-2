@@ -35,9 +35,8 @@ export async function createProps(): Promise<Props> {
 
 		const data: YoopersUnitedNeed[] = response.data;
 
-		console.log('data: ', data);
 
-		let needs = data?.map((need: any) => {
+		let needs = data?.map((need) => {
 			return {
 				id: need?.id,
 				agency_id: need?.agency.id,
@@ -47,7 +46,7 @@ export async function createProps(): Promise<Props> {
 				volunteersNeeded: parseInt(need?.need_volunteers_needed),
 				date: need?.need_date,
 				needDateType: need?.need_date_type,
-			};
+			} as Need;
 		});
 
 		if (!needs?.length) {

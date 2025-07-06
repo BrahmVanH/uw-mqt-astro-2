@@ -1,4 +1,4 @@
-import type { Feature, FeatureCollection } from "geojson";
+
 
 export interface UserGeo {
   success: boolean;
@@ -7,13 +7,11 @@ export interface UserGeo {
   latitude: number;
   longitude: number;
   region: string;
-  fallback:
-  | {}
-  | {
-    latitude: UserGeo["latitude"];
-    longitude: UserGeo["longitude"];
-    country: UserGeo["country"];
-  };
+  fallback: {
+    latitude: UserGeo["latitude"] | undefined;
+    longitude: UserGeo["longitude"] | undefined;
+    country: UserGeo["country"] | undefined;
+  } | undefined;
 }
 
 export type ParagraphWithLink = {
@@ -60,7 +58,6 @@ export enum ServiceAreas {
   ALL = "all",
 }
 
-export interface FoodPantryGeoFeatureCollection extends FeatureCollection { }
 
 export type FoodPantry = {
   name: string;

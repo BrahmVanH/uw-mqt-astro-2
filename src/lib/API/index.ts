@@ -200,11 +200,11 @@ export default async function getPageContent(path: string, variables = {}) {
 			}
 
 			data = await response.json();
+
 			data = data.data;
 			if (!data || data?.errors) {
 				throw new Error(data?.errors[0]?.message);
 			}
-
 
 			return data;
 		}

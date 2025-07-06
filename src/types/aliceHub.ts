@@ -51,6 +51,7 @@ export enum CategoryIcons {
 
 export type AliceHubProgram = {
   name: string;
+  category: CategoryNames;
   provider: string;
   description: string;
   link?: string;

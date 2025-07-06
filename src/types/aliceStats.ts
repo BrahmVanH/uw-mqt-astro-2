@@ -7,7 +7,7 @@ export interface Config {
 	householdSurvivalBudget: HouseholdSurvivalBudget;
 }
 
-type AliceStatsCardContent = {
+export type AliceStatsCardContent = {
 	heading: string;
 	textWithPopover: string;
 	popoverText: string;

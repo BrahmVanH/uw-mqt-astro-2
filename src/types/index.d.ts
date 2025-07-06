@@ -24,6 +24,9 @@ import type {
 	RootQueryToIndividualsPageHeroConnection,
 	RootQueryToMediaItemConnection,
 	RootQueryToFourPillarsPreviewConnection,
+	RootQueryToFoodPantryConnection,
+	RootQueryToAliceStatsConnection,
+	RootQueryToAliceHubProgramConnection,
 	// RootQueryToSeniorCenterConnection,
 } from '@/types/__generated__/types';
 import type AliceReport from '@/components/AliceReport.astro';
@@ -117,6 +120,11 @@ export interface OurLeadershipPageQueryResponse {
 	mediaItem1: RootQueryToMediaItemConnection;
 	mediaItem2: RootQueryToMediaItemConnection;
 	mediaItem3: RootQueryToMediaItemConnection;
+}
+
+export interface AlicePageQueryResponse {
+	allAliceStats: RootQueryToAliceStatsConnection;
+	aliceHubPrograms: RootQueryToAliceHubProgramConnection;
 }
 
 export interface YoopersUnitedNeedsFetchResponse {

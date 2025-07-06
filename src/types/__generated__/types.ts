@@ -431,6 +431,283 @@ export type AdminCostsPdfFields_Fields = {
   pdfFile?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
+/** The aliceHubProgram type */
+export type AliceHubProgram = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfAliceHubProgramFields & {
+  __typename?: 'AliceHubProgram';
+  /** Fields of the AliceHubProgramFields ACF Field Group */
+  aliceHubProgramFields?: Maybe<AliceHubProgramFields>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  aliceHubProgramId: Scalars['Int']['output'];
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<AliceHubProgramToAliceHubProgramConnection>;
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the ContentNode type and the ContentType type */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String']['output'];
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** Post publishing date. */
+  date?: Maybe<Scalars['String']['output']>;
+  /** The publishing date set in GMT. */
+  dateGmt?: Maybe<Scalars['String']['output']>;
+  /** The desired slug of the post */
+  desiredSlug?: Maybe<Scalars['String']['output']>;
+  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /** The RSS enclosure for the object */
+  enclosure?: Maybe<Scalars['String']['output']>;
+  /** Connection between the ContentNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** Whether the alice_hub_program object is password protected. */
+  hasPassword?: Maybe<Scalars['Boolean']['output']>;
+  /** The globally unique identifier of the alice_hub_program object. */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is a node in the preview state */
+  isPreview?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The user that most recently edited the node */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /** The permalink of the post */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  modified?: Maybe<Scalars['String']['output']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<AliceHubProgramToParentConnectionEdge>;
+  /** The password for the alice_hub_program object. */
+  password?: Maybe<Scalars['String']['output']>;
+  /** Connection between the AliceHubProgram type and the aliceHubProgram type */
+  preview?: Maybe<AliceHubProgramToPreviewConnectionEdge>;
+  /** The database id of the preview node */
+  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the object is a node in the preview state */
+  previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The current status of the object */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The template assigned to the node */
+  template?: Maybe<ContentTemplate>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The aliceHubProgram type */
+export type AliceHubProgramAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceHubProgram type */
+export type AliceHubProgramEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceHubProgram type */
+export type AliceHubProgramEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceHubProgram type */
+export type AliceHubProgramTitleArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** A paginated collection of aliceHubProgram Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of aliceHubProgram Nodes */
+export type AliceHubProgramConnection = {
+  /** A list of edges (relational context) between RootQuery and connected aliceHubProgram Nodes */
+  edges: Array<AliceHubProgramConnectionEdge>;
+  /** A list of connected aliceHubProgram Nodes */
+  nodes: Array<AliceHubProgram>;
+  /** Information about pagination in a connection. */
+  pageInfo: AliceHubProgramConnectionPageInfo;
+};
+
+/** Represents a connection to a aliceHubProgram. Contains both the aliceHubProgram Node and metadata about the relationship. */
+export type AliceHubProgramConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected aliceHubProgram Node */
+  node: AliceHubProgram;
+};
+
+/** Pagination metadata specific to &quot;AliceHubProgramConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;AliceHubProgramConnectionEdge&quot; Nodes. */
+export type AliceHubProgramConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;AliceHubProgramFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceHubProgramFields = AcfFieldGroup & AcfFieldGroupFields & AliceHubProgramFields_Fields & {
+  __typename?: 'AliceHubProgramFields';
+  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;AliceHubProgramFields&quot; Field Group */
+  category?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Enter a detailed description of the program */
+  description?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Enter a website link for more information (optional) */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Enter the name of the program */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Enter the organization or entity providing this program */
+  provider?: Maybe<Scalars['String']['output']>;
+  /** Enter program requirements, one per line */
+  requirements?: Maybe<Scalars['String']['output']>;
+  /** Enter service areas, one per line */
+  serviceAreas?: Maybe<Scalars['String']['output']>;
+  /** Enter program types, one per line (optional) */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceHubProgramFields&quot; Field Group */
+export type AliceHubProgramFields_Fields = {
+  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;AliceHubProgramFields&quot; Field Group */
+  category?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Enter a detailed description of the program */
+  description?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Enter a website link for more information (optional) */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Enter the name of the program */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Enter the organization or entity providing this program */
+  provider?: Maybe<Scalars['String']['output']>;
+  /** Enter program requirements, one per line */
+  requirements?: Maybe<Scalars['String']['output']>;
+  /** Enter service areas, one per line */
+  serviceAreas?: Maybe<Scalars['String']['output']>;
+  /** Enter program types, one per line (optional) */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Identifier types for retrieving a specific AliceHubProgram. Specifies which unique attribute is used to find an exact AliceHubProgram. */
+export enum AliceHubProgramIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+export type AliceHubProgramToAliceHubProgramConnection = AliceHubProgramConnection & Connection & {
+  __typename?: 'AliceHubProgramToAliceHubProgramConnection';
+  /** Edges for the AliceHubProgramToAliceHubProgramConnection connection */
+  edges: Array<AliceHubProgramToAliceHubProgramConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<AliceHubProgram>;
+  /** Information about pagination in a connection. */
+  pageInfo: AliceHubProgramToAliceHubProgramConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type AliceHubProgramToAliceHubProgramConnectionEdge = AliceHubProgramConnectionEdge & Edge & {
+  __typename?: 'AliceHubProgramToAliceHubProgramConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: AliceHubProgram;
+};
+
+/** Pagination metadata specific to &quot;AliceHubProgramToAliceHubProgramConnection&quot; collections. Provides cursors and flags for navigating through sets of AliceHubProgramToAliceHubProgramConnection Nodes. */
+export type AliceHubProgramToAliceHubProgramConnectionPageInfo = AliceHubProgramConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'AliceHubProgramToAliceHubProgramConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+export type AliceHubProgramToParentConnectionEdge = AliceHubProgramConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'AliceHubProgramToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: AliceHubProgram;
+};
+
+/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+export type AliceHubProgramToPreviewConnectionEdge = AliceHubProgramConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'AliceHubProgramToPreviewConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: AliceHubProgram;
+};
+
 /** The aliceReportPage type */
 export type AliceReportPage = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfAliceReportPageFields & {
   __typename?: 'AliceReportPage';
@@ -839,6 +1116,1153 @@ export type AliceReportPdfToPreviewConnectionEdge = AliceReportPdfConnectionEdge
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: AliceReportPdf;
+};
+
+/** The aliceStats type */
+export type AliceStats = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfAliceStatsFields & {
+  __typename?: 'AliceStats';
+  /** Fields of the AliceStatsFields ACF Field Group */
+  aliceStatsFields?: Maybe<AliceStatsFields>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  aliceStatsId: Scalars['Int']['output'];
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<AliceStatsToAliceStatsConnection>;
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the ContentNode type and the ContentType type */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String']['output'];
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** Post publishing date. */
+  date?: Maybe<Scalars['String']['output']>;
+  /** The publishing date set in GMT. */
+  dateGmt?: Maybe<Scalars['String']['output']>;
+  /** The desired slug of the post */
+  desiredSlug?: Maybe<Scalars['String']['output']>;
+  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /** The RSS enclosure for the object */
+  enclosure?: Maybe<Scalars['String']['output']>;
+  /** Connection between the ContentNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** Whether the alice_stats object is password protected. */
+  hasPassword?: Maybe<Scalars['Boolean']['output']>;
+  /** The globally unique identifier of the alice_stats object. */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is a node in the preview state */
+  isPreview?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The user that most recently edited the node */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /** The permalink of the post */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  modified?: Maybe<Scalars['String']['output']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<AliceStatsToParentConnectionEdge>;
+  /** The password for the alice_stats object. */
+  password?: Maybe<Scalars['String']['output']>;
+  /** Connection between the AliceStats type and the aliceStats type */
+  preview?: Maybe<AliceStatsToPreviewConnectionEdge>;
+  /** The database id of the preview node */
+  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the object is a node in the preview state */
+  previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The current status of the object */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The template assigned to the node */
+  template?: Maybe<ContentTemplate>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The aliceStats type */
+export type AliceStatsAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceStats type */
+export type AliceStatsEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceStats type */
+export type AliceStatsEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The aliceStats type */
+export type AliceStatsTitleArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** A paginated collection of aliceStats Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of aliceStats Nodes */
+export type AliceStatsConnection = {
+  /** A list of edges (relational context) between RootQuery and connected aliceStats Nodes */
+  edges: Array<AliceStatsConnectionEdge>;
+  /** A list of connected aliceStats Nodes */
+  nodes: Array<AliceStats>;
+  /** Information about pagination in a connection. */
+  pageInfo: AliceStatsConnectionPageInfo;
+};
+
+/** Represents a connection to a aliceStats. Contains both the aliceStats Node and metadata about the relationship. */
+export type AliceStatsConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected aliceStats Node */
+  node: AliceStats;
+};
+
+/** Pagination metadata specific to &quot;AliceStatsConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;AliceStatsConnectionEdge&quot; Nodes. */
+export type AliceStatsConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;AliceStatsFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFields = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFields_Fields & {
+  __typename?: 'AliceStatsFields';
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFields&quot; Field Group */
+  content?: Maybe<AliceStatsFieldsContent>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFields&quot; Field Group */
+  countyStats?: Maybe<AliceStatsFieldsCountyStats>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsContent&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsContent = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsContent_Fields & {
+  __typename?: 'AliceStatsFieldsContent';
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  heading?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  linkText?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem1?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem2?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem3?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  popoverText?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  text2?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  text3?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  textWithPopover?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsContent&quot; Field Group */
+export type AliceStatsFieldsContent_Fields = {
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  heading?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  linkText?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem1?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem2?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  listItem3?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  popoverText?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  text2?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  text3?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsContent&quot; Field Group */
+  textWithPopover?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStats&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStats = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStats_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStats';
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  alger?: Maybe<AliceStatsFieldsCountyStatsAlger>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  baraga?: Maybe<AliceStatsFieldsCountyStatsBaraga>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  chippewa?: Maybe<AliceStatsFieldsCountyStatsChippewa>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  delta?: Maybe<AliceStatsFieldsCountyStatsDelta>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  dickinson?: Maybe<AliceStatsFieldsCountyStatsDickinson>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  goegebic?: Maybe<AliceStatsFieldsCountyStatsGoegebic>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  houghton?: Maybe<AliceStatsFieldsCountyStatsHoughton>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  iron?: Maybe<AliceStatsFieldsCountyStatsIron>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  kewenaw?: Maybe<AliceStatsFieldsCountyStatsKewenaw>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  luce?: Maybe<AliceStatsFieldsCountyStatsLuce>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  mackinac?: Maybe<AliceStatsFieldsCountyStatsMackinac>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  marquette?: Maybe<AliceStatsFieldsCountyStatsMarquette>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  menominee?: Maybe<AliceStatsFieldsCountyStatsMenominee>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  ontonagon?: Maybe<AliceStatsFieldsCountyStatsOntonagon>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  overall?: Maybe<AliceStatsFieldsCountyStatsOverall>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  schoolcraft?: Maybe<AliceStatsFieldsCountyStatsSchoolcraft>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsAlger = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsAlger_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsAlger';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+export type AliceStatsFieldsCountyStatsAlger_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsAlger&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsBaraga = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsBaraga_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsBaraga';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+export type AliceStatsFieldsCountyStatsBaraga_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsBaraga&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsChippewa = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsChippewa_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsChippewa';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+export type AliceStatsFieldsCountyStatsChippewa_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsChippewa&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsDelta = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsDelta_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsDelta';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+export type AliceStatsFieldsCountyStatsDelta_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDelta&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsDickinson = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsDickinson_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsDickinson';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+export type AliceStatsFieldsCountyStatsDickinson_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsDickinson&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsGoegebic = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsGoegebic_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsGoegebic';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+export type AliceStatsFieldsCountyStatsGoegebic_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsGoegebic&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsHoughton = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsHoughton_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsHoughton';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+export type AliceStatsFieldsCountyStatsHoughton_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsHoughton&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsIron = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsIron_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsIron';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+export type AliceStatsFieldsCountyStatsIron_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsIron&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsKewenaw = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsKewenaw_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsKewenaw';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+export type AliceStatsFieldsCountyStatsKewenaw_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsKewenaw&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsLuce = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsLuce_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsLuce';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+export type AliceStatsFieldsCountyStatsLuce_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsLuce&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsMackinac = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsMackinac_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsMackinac';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+export type AliceStatsFieldsCountyStatsMackinac_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMackinac&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsMarquette = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsMarquette_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsMarquette';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+export type AliceStatsFieldsCountyStatsMarquette_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMarquette&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsMenominee = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsMenominee_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsMenominee';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+export type AliceStatsFieldsCountyStatsMenominee_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsMenominee&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsOntonagon = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsOntonagon_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsOntonagon';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+export type AliceStatsFieldsCountyStatsOntonagon_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOntonagon&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsOverall = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsOverall_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsOverall';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+export type AliceStatsFieldsCountyStatsOverall_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsOverall&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type AliceStatsFieldsCountyStatsSchoolcraft = AcfFieldGroup & AcfFieldGroupFields & AliceStatsFieldsCountyStatsSchoolcraft_Fields & {
+  __typename?: 'AliceStatsFieldsCountyStatsSchoolcraft';
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+export type AliceStatsFieldsCountyStatsSchoolcraft_Fields = {
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  aboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  belowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  belowFpl?: Maybe<Scalars['Float']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentAboveAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentBelowAlice?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  percentBelowFpl?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStatsSchoolcraft&quot; Field Group */
+  totalHouseholds?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+export type AliceStatsFieldsCountyStats_Fields = {
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  alger?: Maybe<AliceStatsFieldsCountyStatsAlger>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  baraga?: Maybe<AliceStatsFieldsCountyStatsBaraga>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  chippewa?: Maybe<AliceStatsFieldsCountyStatsChippewa>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  delta?: Maybe<AliceStatsFieldsCountyStatsDelta>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  dickinson?: Maybe<AliceStatsFieldsCountyStatsDickinson>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  goegebic?: Maybe<AliceStatsFieldsCountyStatsGoegebic>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  houghton?: Maybe<AliceStatsFieldsCountyStatsHoughton>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  iron?: Maybe<AliceStatsFieldsCountyStatsIron>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  kewenaw?: Maybe<AliceStatsFieldsCountyStatsKewenaw>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  luce?: Maybe<AliceStatsFieldsCountyStatsLuce>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  mackinac?: Maybe<AliceStatsFieldsCountyStatsMackinac>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  marquette?: Maybe<AliceStatsFieldsCountyStatsMarquette>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  menominee?: Maybe<AliceStatsFieldsCountyStatsMenominee>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  ontonagon?: Maybe<AliceStatsFieldsCountyStatsOntonagon>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  overall?: Maybe<AliceStatsFieldsCountyStatsOverall>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFieldsCountyStats&quot; Field Group */
+  schoolcraft?: Maybe<AliceStatsFieldsCountyStatsSchoolcraft>;
+};
+
+/** Interface representing fields of the ACF &quot;AliceStatsFields&quot; Field Group */
+export type AliceStatsFields_Fields = {
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFields&quot; Field Group */
+  content?: Maybe<AliceStatsFieldsContent>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;AliceStatsFields&quot; Field Group */
+  countyStats?: Maybe<AliceStatsFieldsCountyStats>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+};
+
+/** Identifier types for retrieving a specific AliceStats. Specifies which unique attribute is used to find an exact AliceStats. */
+export enum AliceStatsIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Connection between the AliceStats type and the aliceStats type */
+export type AliceStatsToAliceStatsConnection = AliceStatsConnection & Connection & {
+  __typename?: 'AliceStatsToAliceStatsConnection';
+  /** Edges for the AliceStatsToAliceStatsConnection connection */
+  edges: Array<AliceStatsToAliceStatsConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<AliceStats>;
+  /** Information about pagination in a connection. */
+  pageInfo: AliceStatsToAliceStatsConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type AliceStatsToAliceStatsConnectionEdge = AliceStatsConnectionEdge & Edge & {
+  __typename?: 'AliceStatsToAliceStatsConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: AliceStats;
+};
+
+/** Pagination metadata specific to &quot;AliceStatsToAliceStatsConnection&quot; collections. Provides cursors and flags for navigating through sets of AliceStatsToAliceStatsConnection Nodes. */
+export type AliceStatsToAliceStatsConnectionPageInfo = AliceStatsConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'AliceStatsToAliceStatsConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the AliceStats type and the aliceStats type */
+export type AliceStatsToParentConnectionEdge = AliceStatsConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'AliceStatsToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: AliceStats;
+};
+
+/** Connection between the AliceStats type and the aliceStats type */
+export type AliceStatsToPreviewConnectionEdge = AliceStatsConnectionEdge & Edge & OneToOneConnection & {
+  __typename?: 'AliceStatsToPreviewConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: AliceStats;
 };
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
@@ -2559,9 +3983,13 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   AdminCostsPdf = 'ADMIN_COSTS_PDF',
   /** The Type of Content object */
+  AliceHubProgram = 'ALICE_HUB_PROGRAM',
+  /** The Type of Content object */
   AliceReportPage = 'ALICE_REPORT_PAGE',
   /** The Type of Content object */
   AliceReportPdf = 'ALICE_REPORT_PDF',
+  /** The Type of Content object */
+  AliceStats = 'ALICE_STATS',
   /** The Type of Content object */
   Attachment = 'ATTACHMENT',
   /** The Type of Content object */
@@ -2574,6 +4002,8 @@ export enum ContentTypeEnum {
   DonorPrivacyPdf = 'DONOR_PRIVACY_PDF',
   /** The Type of Content object */
   Faqs = 'FAQS',
+  /** The Type of Content object */
+  FoodPantry = 'FOOD_PANTRY',
   /** The Type of Content object */
   FourPillarsHero = 'FOUR_PILLARS_HERO',
   /** The Type of Content object */
@@ -2781,6 +4211,70 @@ export type CreateAdminCostPdfPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
+/** Input for the createAliceHubProgramCustom mutation. */
+export type CreateAliceHubProgramCustomInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Input for creating an Alice Hub Program */
+  input: CreateAliceHubProgramInputCustom;
+};
+
+/** The payload for the createAliceHubProgramCustom mutation. */
+export type CreateAliceHubProgramCustomPayload = {
+  __typename?: 'CreateAliceHubProgramCustomPayload';
+  /** The created Alice Hub Program */
+  aliceHubProgram?: Maybe<AliceHubProgram>;
+  /** The client mutation ID */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the createAliceHubProgram mutation. */
+export type CreateAliceHubProgramInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for creating an Alice Hub Program */
+export type CreateAliceHubProgramInputCustom = {
+  /** The category of the program */
+  category: Scalars['String']['input'];
+  /** The description of the program */
+  description: Scalars['String']['input'];
+  /** Optional link for the program */
+  link?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the program */
+  name: Scalars['String']['input'];
+  /** The provider of the program */
+  provider: Scalars['String']['input'];
+  /** Requirements (newline separated) */
+  requirements?: InputMaybe<Scalars['String']['input']>;
+  /** Service areas (newline separated) */
+  serviceAreas?: InputMaybe<Scalars['String']['input']>;
+  /** Program types (newline separated) */
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createAliceHubProgram mutation. */
+export type CreateAliceHubProgramPayload = {
+  __typename?: 'CreateAliceHubProgramPayload';
+  /** The Post object mutation type. */
+  aliceHubProgram?: Maybe<AliceHubProgram>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
 /** Input for the createAliceReportPage mutation. */
 export type CreateAliceReportPageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -2833,6 +4327,33 @@ export type CreateAliceReportPdfPayload = {
   __typename?: 'CreateAliceReportPdfPayload';
   /** The Post object mutation type. */
   aliceReportPdf?: Maybe<AliceReportPdf>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the createAliceStats mutation. */
+export type CreateAliceStatsInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createAliceStats mutation. */
+export type CreateAliceStatsPayload = {
+  __typename?: 'CreateAliceStatsPayload';
+  /** The Post object mutation type. */
+  aliceStats?: Maybe<AliceStats>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
@@ -3038,6 +4559,78 @@ export type CreateFaqPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   faq?: Maybe<Faq>;
+};
+
+/** Input for the createFoodPantryCustom mutation. */
+export type CreateFoodPantryCustomInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Input for creating a Food Pantry */
+  input: CreateFoodPantryInputCustom;
+};
+
+/** The payload for the createFoodPantryCustom mutation. */
+export type CreateFoodPantryCustomPayload = {
+  __typename?: 'CreateFoodPantryCustomPayload';
+  /** The client mutation ID */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created Food Pantry */
+  foodPantry?: Maybe<FoodPantry>;
+};
+
+/** Input for the createFoodPantry mutation. */
+export type CreateFoodPantryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for creating a Food Pantry */
+export type CreateFoodPantryInputCustom = {
+  /** The address as JSON string */
+  address: Scalars['String']['input'];
+  /** The contact person info as JSON string */
+  contact: Scalars['String']['input'];
+  /** The donation info as JSON string */
+  donate: Scalars['String']['input'];
+  /** The email address */
+  email: Scalars['String']['input'];
+  /** Flags/tags (newline separated) */
+  flags?: InputMaybe<Scalars['String']['input']>;
+  /** Geographic coordinates as JSON string */
+  geo: Scalars['String']['input'];
+  /** Simple hours text */
+  hoursSimple?: InputMaybe<Scalars['String']['input']>;
+  /** Structured hours as JSON string */
+  hoursStructured?: InputMaybe<Scalars['String']['input']>;
+  /** Hours type: structured or simple */
+  hoursType: Scalars['String']['input'];
+  /** The name of the food pantry */
+  name: Scalars['String']['input'];
+  /** The phone number */
+  phone: Scalars['String']['input'];
+  /** The website URL */
+  website: Scalars['String']['input'];
+};
+
+/** The payload for the createFoodPantry mutation. */
+export type CreateFoodPantryPayload = {
+  __typename?: 'CreateFoodPantryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The Post object mutation type. */
+  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the createFourPillarsHeroComponent mutation. */
@@ -4480,6 +6073,29 @@ export type DeleteAdminCostPdfPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
 };
 
+/** Input for the deleteAliceHubProgram mutation. */
+export type DeleteAliceHubProgramInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the aliceHubProgram to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** The payload for the deleteAliceHubProgram mutation. */
+export type DeleteAliceHubProgramPayload = {
+  __typename?: 'DeleteAliceHubProgramPayload';
+  /** The object before it was deleted */
+  aliceHubProgram?: Maybe<AliceHubProgram>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+};
+
 /** Input for the deleteAliceReportPage mutation. */
 export type DeleteAliceReportPageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -4520,6 +6136,29 @@ export type DeleteAliceReportPdfPayload = {
   __typename?: 'DeleteAliceReportPdfPayload';
   /** The object before it was deleted */
   aliceReportPdf?: Maybe<AliceReportPdf>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+};
+
+/** Input for the deleteAliceStats mutation. */
+export type DeleteAliceStatsInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the aliceStats to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** The payload for the deleteAliceStats mutation. */
+export type DeleteAliceStatsPayload = {
+  __typename?: 'DeleteAliceStatsPayload';
+  /** The object before it was deleted */
+  aliceStats?: Maybe<AliceStats>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The ID of the deleted object */
@@ -4679,6 +6318,29 @@ export type DeleteFaqPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The object before it was deleted */
   faq?: Maybe<Faq>;
+};
+
+/** Input for the deleteFoodPantry mutation. */
+export type DeleteFoodPantryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the foodPantry to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** The payload for the deleteFoodPantry mutation. */
+export type DeleteFoodPantryPayload = {
+  __typename?: 'DeleteFoodPantryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The object before it was deleted */
+  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the deleteFourPillarsHeroComponent mutation. */
@@ -6082,6 +7744,470 @@ export type FaqToPreviewConnectionEdge = Edge & FaqConnectionEdge & OneToOneConn
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: Faq;
+};
+
+/** The foodPantry type */
+export type FoodPantry = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfFoodPantryFields & {
+  __typename?: 'FoodPantry';
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<FoodPantryToFoodPantryConnection>;
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the ContentNode type and the ContentType type */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String']['output'];
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** Post publishing date. */
+  date?: Maybe<Scalars['String']['output']>;
+  /** The publishing date set in GMT. */
+  dateGmt?: Maybe<Scalars['String']['output']>;
+  /** The desired slug of the post */
+  desiredSlug?: Maybe<Scalars['String']['output']>;
+  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /** The RSS enclosure for the object */
+  enclosure?: Maybe<Scalars['String']['output']>;
+  /** Connection between the ContentNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /** Fields of the FoodPantryFields ACF Field Group */
+  foodPantryFields?: Maybe<FoodPantryFields>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  foodPantryId: Scalars['Int']['output'];
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** Whether the food_pantry object is password protected. */
+  hasPassword?: Maybe<Scalars['Boolean']['output']>;
+  /** The globally unique identifier of the food_pantry object. */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is a node in the preview state */
+  isPreview?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The user that most recently edited the node */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /** The permalink of the post */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  modified?: Maybe<Scalars['String']['output']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<FoodPantryToParentConnectionEdge>;
+  /** The password for the food_pantry object. */
+  password?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FoodPantry type and the foodPantry type */
+  preview?: Maybe<FoodPantryToPreviewConnectionEdge>;
+  /** The database id of the preview node */
+  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the object is a node in the preview state */
+  previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The current status of the object */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The template assigned to the node */
+  template?: Maybe<ContentTemplate>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The foodPantry type */
+export type FoodPantryAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The foodPantry type */
+export type FoodPantryEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The foodPantry type */
+export type FoodPantryEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The foodPantry type */
+export type FoodPantryTitleArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** A paginated collection of foodPantry Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of foodPantry Nodes */
+export type FoodPantryConnection = {
+  /** A list of edges (relational context) between RootQuery and connected foodPantry Nodes */
+  edges: Array<FoodPantryConnectionEdge>;
+  /** A list of connected foodPantry Nodes */
+  nodes: Array<FoodPantry>;
+  /** Information about pagination in a connection. */
+  pageInfo: FoodPantryConnectionPageInfo;
+};
+
+/** Represents a connection to a foodPantry. Contains both the foodPantry Node and metadata about the relationship. */
+export type FoodPantryConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected foodPantry Node */
+  node: FoodPantry;
+};
+
+/** Pagination metadata specific to &quot;FoodPantryConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;FoodPantryConnectionEdge&quot; Nodes. */
+export type FoodPantryConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;FoodPantryFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFields = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFields_Fields & {
+  __typename?: 'FoodPantryFields';
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  address?: Maybe<FoodPantryFieldsAddress>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  contact?: Maybe<FoodPantryFieldsContact>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  donate?: Maybe<FoodPantryFieldsDonate>;
+  /** Enter the email address */
+  email?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Enter flags/tags, one per line (optional) */
+  flags?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  geo?: Maybe<FoodPantryFieldsGeo>;
+  /** Enter hours as free text */
+  hoursSimple?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  hoursStructured?: Maybe<FoodPantryFieldsHoursStructured>;
+  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  hoursType?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Enter the name of the food pantry */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Enter the phone number */
+  phone?: Maybe<Scalars['String']['output']>;
+  /** Enter the website URL */
+  website?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;FoodPantryFieldsAddress&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFieldsAddress = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsAddress_Fields & {
+  __typename?: 'FoodPantryFieldsAddress';
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  city?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  po?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  state?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  street?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  zip?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFieldsAddress&quot; Field Group */
+export type FoodPantryFieldsAddress_Fields = {
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  city?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  po?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  state?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  street?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
+  zip?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;FoodPantryFieldsContact&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFieldsContact = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsContact_Fields & {
+  __typename?: 'FoodPantryFieldsContact';
+  /** Field of the &quot;email&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  email?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  phone?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFieldsContact&quot; Field Group */
+export type FoodPantryFieldsContact_Fields = {
+  /** Field of the &quot;email&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  email?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
+  phone?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;FoodPantryFieldsDonate&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFieldsDonate = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsDonate_Fields & {
+  __typename?: 'FoodPantryFieldsDonate';
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsDonate&quot; Field Group */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Enter donation messages, one per line */
+  message?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFieldsDonate&quot; Field Group */
+export type FoodPantryFieldsDonate_Fields = {
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsDonate&quot; Field Group */
+  link?: Maybe<Scalars['String']['output']>;
+  /** Enter donation messages, one per line */
+  message?: Maybe<Scalars['String']['output']>;
+};
+
+/** The &quot;FoodPantryFieldsGeo&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFieldsGeo = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsGeo_Fields & {
+  __typename?: 'FoodPantryFieldsGeo';
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
+  lat?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
+  lng?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFieldsGeo&quot; Field Group */
+export type FoodPantryFieldsGeo_Fields = {
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
+  lat?: Maybe<Scalars['Float']['output']>;
+  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
+  lng?: Maybe<Scalars['Float']['output']>;
+};
+
+/** The &quot;FoodPantryFieldsHoursStructured&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
+export type FoodPantryFieldsHoursStructured = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsHoursStructured_Fields & {
+  __typename?: 'FoodPantryFieldsHoursStructured';
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  f?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  m?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  sa?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  su?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  t?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  th?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  w?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+export type FoodPantryFieldsHoursStructured_Fields = {
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  f?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  m?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  sa?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  su?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  t?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  th?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
+  w?: Maybe<Scalars['String']['output']>;
+};
+
+/** Interface representing fields of the ACF &quot;FoodPantryFields&quot; Field Group */
+export type FoodPantryFields_Fields = {
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  address?: Maybe<FoodPantryFieldsAddress>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  contact?: Maybe<FoodPantryFieldsContact>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  donate?: Maybe<FoodPantryFieldsDonate>;
+  /** Enter the email address */
+  email?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the field group
+   * @deprecated Use __typename instead
+   */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Enter flags/tags, one per line (optional) */
+  flags?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  geo?: Maybe<FoodPantryFieldsGeo>;
+  /** Enter hours as free text */
+  hoursSimple?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  hoursStructured?: Maybe<FoodPantryFieldsHoursStructured>;
+  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
+  hoursType?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Enter the name of the food pantry */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Enter the phone number */
+  phone?: Maybe<Scalars['String']['output']>;
+  /** Enter the website URL */
+  website?: Maybe<Scalars['String']['output']>;
+};
+
+/** Identifier types for retrieving a specific FoodPantry. Specifies which unique attribute is used to find an exact FoodPantry. */
+export enum FoodPantryIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Connection between the FoodPantry type and the foodPantry type */
+export type FoodPantryToFoodPantryConnection = Connection & FoodPantryConnection & {
+  __typename?: 'FoodPantryToFoodPantryConnection';
+  /** Edges for the FoodPantryToFoodPantryConnection connection */
+  edges: Array<FoodPantryToFoodPantryConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FoodPantry>;
+  /** Information about pagination in a connection. */
+  pageInfo: FoodPantryToFoodPantryConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FoodPantryToFoodPantryConnectionEdge = Edge & FoodPantryConnectionEdge & {
+  __typename?: 'FoodPantryToFoodPantryConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: FoodPantry;
+};
+
+/** Pagination metadata specific to &quot;FoodPantryToFoodPantryConnection&quot; collections. Provides cursors and flags for navigating through sets of FoodPantryToFoodPantryConnection Nodes. */
+export type FoodPantryToFoodPantryConnectionPageInfo = FoodPantryConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FoodPantryToFoodPantryConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the FoodPantry type and the foodPantry type */
+export type FoodPantryToParentConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
+  __typename?: 'FoodPantryToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: FoodPantry;
+};
+
+/** Connection between the FoodPantry type and the foodPantry type */
+export type FoodPantryToPreviewConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
+  __typename?: 'FoodPantryToPreviewConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: FoodPantry;
 };
 
 /** The fourPillarsHeroComponent type */
@@ -10957,7 +13083,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = AdminCostPdf | AliceReportPage | AliceReportPdf | CampaignToolkitAsset | Category | Current990FormPdf | CustomPage | DonorPrivacyPolicyPdf | Faq | FourPillarsHeroComponent | FourPillarsPreview | GetInvolvedHero | GiftAcceptancePolicyPdf | GirlScoutsComponent | HeroComponentOurImpactPage | HomePageHero | HowToContributeComponent | ImpactCarousel | ImpactStatistic | IndividualsPageHero | MobileFoodPantryComponent | NorthwoodsAirLifeline | OurImpactHomePage | Page | PartnerPageHero | PartnersTickerItem | Post | PostFormat | SeniorCenter | Tag | UwContactInfo | ValuesHistory | VitaTaxPrep | YmcaComponent;
+export type MenuItemObjectUnion = AdminCostPdf | AliceHubProgram | AliceReportPage | AliceReportPdf | AliceStats | CampaignToolkitAsset | Category | Current990FormPdf | CustomPage | DonorPrivacyPolicyPdf | Faq | FoodPantry | FourPillarsHeroComponent | FourPillarsPreview | GetInvolvedHero | GiftAcceptancePolicyPdf | GirlScoutsComponent | HeroComponentOurImpactPage | HomePageHero | HowToContributeComponent | ImpactCarousel | ImpactStatistic | IndividualsPageHero | MobileFoodPantryComponent | NorthwoodsAirLifeline | OurImpactHomePage | Page | PartnerPageHero | PartnersTickerItem | Post | PostFormat | SeniorCenter | Tag | UwContactInfo | ValuesHistory | VitaTaxPrep | YmcaComponent;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -15411,10 +17537,16 @@ export type RootMutation = {
   __typename?: 'RootMutation';
   /** The createAdminCostPdf mutation */
   createAdminCostPdf?: Maybe<CreateAdminCostPdfPayload>;
+  /** The createAliceHubProgram mutation */
+  createAliceHubProgram?: Maybe<CreateAliceHubProgramPayload>;
+  /** The createAliceHubProgramCustom mutation */
+  createAliceHubProgramCustom?: Maybe<CreateAliceHubProgramCustomPayload>;
   /** The createAliceReportPage mutation */
   createAliceReportPage?: Maybe<CreateAliceReportPagePayload>;
   /** The createAliceReportPdf mutation */
   createAliceReportPdf?: Maybe<CreateAliceReportPdfPayload>;
+  /** The createAliceStats mutation */
+  createAliceStats?: Maybe<CreateAliceStatsPayload>;
   /** The createCampaignToolkitAsset mutation */
   createCampaignToolkitAsset?: Maybe<CreateCampaignToolkitAssetPayload>;
   /** The createCategory mutation */
@@ -15429,6 +17561,10 @@ export type RootMutation = {
   createDonorPrivacyPolicyPdf?: Maybe<CreateDonorPrivacyPolicyPdfPayload>;
   /** The createFaq mutation */
   createFaq?: Maybe<CreateFaqPayload>;
+  /** The createFoodPantry mutation */
+  createFoodPantry?: Maybe<CreateFoodPantryPayload>;
+  /** The createFoodPantryCustom mutation */
+  createFoodPantryCustom?: Maybe<CreateFoodPantryCustomPayload>;
   /** The createFourPillarsHeroComponent mutation */
   createFourPillarsHeroComponent?: Maybe<CreateFourPillarsHeroComponentPayload>;
   /** The createFourPillarsPreview mutation */
@@ -15485,10 +17621,14 @@ export type RootMutation = {
   createYmcaComponent?: Maybe<CreateYmcaComponentPayload>;
   /** The deleteAdminCostPdf mutation */
   deleteAdminCostPdf?: Maybe<DeleteAdminCostPdfPayload>;
+  /** The deleteAliceHubProgram mutation */
+  deleteAliceHubProgram?: Maybe<DeleteAliceHubProgramPayload>;
   /** The deleteAliceReportPage mutation */
   deleteAliceReportPage?: Maybe<DeleteAliceReportPagePayload>;
   /** The deleteAliceReportPdf mutation */
   deleteAliceReportPdf?: Maybe<DeleteAliceReportPdfPayload>;
+  /** The deleteAliceStats mutation */
+  deleteAliceStats?: Maybe<DeleteAliceStatsPayload>;
   /** The deleteCampaignToolkitAsset mutation */
   deleteCampaignToolkitAsset?: Maybe<DeleteCampaignToolkitAssetPayload>;
   /** The deleteCategory mutation */
@@ -15503,6 +17643,8 @@ export type RootMutation = {
   deleteDonorPrivacyPolicyPdf?: Maybe<DeleteDonorPrivacyPolicyPdfPayload>;
   /** The deleteFaq mutation */
   deleteFaq?: Maybe<DeleteFaqPayload>;
+  /** The deleteFoodPantry mutation */
+  deleteFoodPantry?: Maybe<DeleteFoodPantryPayload>;
   /** The deleteFourPillarsHeroComponent mutation */
   deleteFourPillarsHeroComponent?: Maybe<DeleteFourPillarsHeroComponentPayload>;
   /** The deleteFourPillarsPreview mutation */
@@ -15575,10 +17717,14 @@ export type RootMutation = {
   sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
   /** The updateAdminCostPdf mutation */
   updateAdminCostPdf?: Maybe<UpdateAdminCostPdfPayload>;
+  /** The updateAliceHubProgram mutation */
+  updateAliceHubProgram?: Maybe<UpdateAliceHubProgramPayload>;
   /** The updateAliceReportPage mutation */
   updateAliceReportPage?: Maybe<UpdateAliceReportPagePayload>;
   /** The updateAliceReportPdf mutation */
   updateAliceReportPdf?: Maybe<UpdateAliceReportPdfPayload>;
+  /** The updateAliceStats mutation */
+  updateAliceStats?: Maybe<UpdateAliceStatsPayload>;
   /** The updateCampaignToolkitAsset mutation */
   updateCampaignToolkitAsset?: Maybe<UpdateCampaignToolkitAssetPayload>;
   /** The updateCategory mutation */
@@ -15593,6 +17739,8 @@ export type RootMutation = {
   updateDonorPrivacyPolicyPdf?: Maybe<UpdateDonorPrivacyPolicyPdfPayload>;
   /** The updateFaq mutation */
   updateFaq?: Maybe<UpdateFaqPayload>;
+  /** The updateFoodPantry mutation */
+  updateFoodPantry?: Maybe<UpdateFoodPantryPayload>;
   /** The updateFourPillarsHeroComponent mutation */
   updateFourPillarsHeroComponent?: Maybe<UpdateFourPillarsHeroComponentPayload>;
   /** The updateFourPillarsPreview mutation */
@@ -15659,6 +17807,18 @@ export type RootMutationCreateAdminCostPdfArgs = {
 
 
 /** The root mutation */
+export type RootMutationCreateAliceHubProgramArgs = {
+  input: CreateAliceHubProgramInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateAliceHubProgramCustomArgs = {
+  input: CreateAliceHubProgramCustomInput;
+};
+
+
+/** The root mutation */
 export type RootMutationCreateAliceReportPageArgs = {
   input: CreateAliceReportPageInput;
 };
@@ -15667,6 +17827,12 @@ export type RootMutationCreateAliceReportPageArgs = {
 /** The root mutation */
 export type RootMutationCreateAliceReportPdfArgs = {
   input: CreateAliceReportPdfInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateAliceStatsArgs = {
+  input: CreateAliceStatsInput;
 };
 
 
@@ -15709,6 +17875,18 @@ export type RootMutationCreateDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationCreateFaqArgs = {
   input: CreateFaqInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFoodPantryArgs = {
+  input: CreateFoodPantryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFoodPantryCustomArgs = {
+  input: CreateFoodPantryCustomInput;
 };
 
 
@@ -15881,6 +18059,12 @@ export type RootMutationDeleteAdminCostPdfArgs = {
 
 
 /** The root mutation */
+export type RootMutationDeleteAliceHubProgramArgs = {
+  input: DeleteAliceHubProgramInput;
+};
+
+
+/** The root mutation */
 export type RootMutationDeleteAliceReportPageArgs = {
   input: DeleteAliceReportPageInput;
 };
@@ -15889,6 +18073,12 @@ export type RootMutationDeleteAliceReportPageArgs = {
 /** The root mutation */
 export type RootMutationDeleteAliceReportPdfArgs = {
   input: DeleteAliceReportPdfInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteAliceStatsArgs = {
+  input: DeleteAliceStatsInput;
 };
 
 
@@ -15931,6 +18121,12 @@ export type RootMutationDeleteDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationDeleteFaqArgs = {
   input: DeleteFaqInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteFoodPantryArgs = {
+  input: DeleteFoodPantryInput;
 };
 
 
@@ -16151,6 +18347,12 @@ export type RootMutationUpdateAdminCostPdfArgs = {
 
 
 /** The root mutation */
+export type RootMutationUpdateAliceHubProgramArgs = {
+  input: UpdateAliceHubProgramInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateAliceReportPageArgs = {
   input: UpdateAliceReportPageInput;
 };
@@ -16159,6 +18361,12 @@ export type RootMutationUpdateAliceReportPageArgs = {
 /** The root mutation */
 export type RootMutationUpdateAliceReportPdfArgs = {
   input: UpdateAliceReportPdfInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateAliceStatsArgs = {
+  input: UpdateAliceStatsInput;
 };
 
 
@@ -16201,6 +18409,12 @@ export type RootMutationUpdateDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationUpdateFaqArgs = {
   input: UpdateFaqInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateFoodPantryArgs = {
+  input: UpdateFoodPantryInput;
 };
 
 
@@ -16383,6 +18597,15 @@ export type RootQuery = {
   adminCostPdfBy?: Maybe<AdminCostPdf>;
   /** Connection between the RootQuery type and the adminCostPdf type */
   adminCostPdfs?: Maybe<RootQueryToAdminCostPdfConnection>;
+  /** An object of the aliceHubProgram Type.  */
+  aliceHubProgram?: Maybe<AliceHubProgram>;
+  /**
+   * A aliceHubProgram object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  aliceHubProgramBy?: Maybe<AliceHubProgram>;
+  /** Connection between the RootQuery type and the aliceHubProgram type */
+  aliceHubPrograms?: Maybe<RootQueryToAliceHubProgramConnection>;
   /** An object of the aliceReportPage Type.  */
   aliceReportPage?: Maybe<AliceReportPage>;
   /**
@@ -16401,6 +18624,15 @@ export type RootQuery = {
   aliceReportPdfBy?: Maybe<AliceReportPdf>;
   /** Connection between the RootQuery type and the aliceReportPdf type */
   aliceReportPdfs?: Maybe<RootQueryToAliceReportPdfConnection>;
+  /** An object of the aliceStats Type.  */
+  aliceStats?: Maybe<AliceStats>;
+  /**
+   * A aliceStats object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  aliceStatsBy?: Maybe<AliceStats>;
+  /** Connection between the RootQuery type and the aliceStats type */
+  allAliceStats?: Maybe<RootQueryToAliceStatsConnection>;
   /** Entry point to get all settings for the site */
   allSettings?: Maybe<Settings>;
   /** An object of the campaignToolkitAsset Type.  */
@@ -16466,6 +18698,15 @@ export type RootQuery = {
   faqBy?: Maybe<Faq>;
   /** Connection between the RootQuery type and the faq type */
   faqs?: Maybe<RootQueryToFaqConnection>;
+  /** Connection between the RootQuery type and the foodPantry type */
+  foodPantries?: Maybe<RootQueryToFoodPantryConnection>;
+  /** An object of the foodPantry Type.  */
+  foodPantry?: Maybe<FoodPantry>;
+  /**
+   * A foodPantry object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  foodPantryBy?: Maybe<FoodPantry>;
   /** An object of the fourPillarsHeroComponent Type.  */
   fourPillarsHeroComponent?: Maybe<FourPillarsHeroComponent>;
   /**
@@ -16773,6 +19014,33 @@ export type RootQueryAdminCostPdfsArgs = {
 
 
 /** The root entry point into the Graph */
+export type RootQueryAliceHubProgramArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<AliceHubProgramIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryAliceHubProgramByArgs = {
+  aliceHubProgramId?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryAliceHubProgramsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToAliceHubProgramConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
 export type RootQueryAliceReportPageArgs = {
   asPreview?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['ID']['input'];
@@ -16822,6 +19090,33 @@ export type RootQueryAliceReportPdfsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToAliceReportPdfConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryAliceStatsArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<AliceStatsIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryAliceStatsByArgs = {
+  aliceStatsId?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryAllAliceStatsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToAliceStatsConnectionWhereArgs>;
 };
 
 
@@ -17025,6 +19320,33 @@ export type RootQueryFaqsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToFaqConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFoodPantriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFoodPantryConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFoodPantryArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FoodPantryIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFoodPantryByArgs = {
+  foodPantryId?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  uri?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -17956,6 +20278,77 @@ export type RootQueryToAdminCostPdfConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** Connection between the RootQuery type and the aliceHubProgram type */
+export type RootQueryToAliceHubProgramConnection = AliceHubProgramConnection & Connection & {
+  __typename?: 'RootQueryToAliceHubProgramConnection';
+  /** Edges for the RootQueryToAliceHubProgramConnection connection */
+  edges: Array<RootQueryToAliceHubProgramConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<AliceHubProgram>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToAliceHubProgramConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToAliceHubProgramConnectionEdge = AliceHubProgramConnectionEdge & Edge & {
+  __typename?: 'RootQueryToAliceHubProgramConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: AliceHubProgram;
+};
+
+/** Pagination metadata specific to &quot;RootQueryToAliceHubProgramConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToAliceHubProgramConnection Nodes. */
+export type RootQueryToAliceHubProgramConnectionPageInfo = AliceHubProgramConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToAliceHubProgramConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToAliceHubProgramConnection connection */
+export type RootQueryToAliceHubProgramConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** Connection between the RootQuery type and the aliceReportPage type */
 export type RootQueryToAliceReportPageConnection = AliceReportPageConnection & Connection & {
   __typename?: 'RootQueryToAliceReportPageConnection';
@@ -18062,6 +20455,77 @@ export type RootQueryToAliceReportPdfConnectionPageInfo = AliceReportPdfConnecti
 
 /** Arguments for filtering the RootQueryToAliceReportPdfConnection connection */
 export type RootQueryToAliceReportPdfConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the RootQuery type and the aliceStats type */
+export type RootQueryToAliceStatsConnection = AliceStatsConnection & Connection & {
+  __typename?: 'RootQueryToAliceStatsConnection';
+  /** Edges for the RootQueryToAliceStatsConnection connection */
+  edges: Array<RootQueryToAliceStatsConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<AliceStats>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToAliceStatsConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToAliceStatsConnectionEdge = AliceStatsConnectionEdge & Edge & {
+  __typename?: 'RootQueryToAliceStatsConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: AliceStats;
+};
+
+/** Pagination metadata specific to &quot;RootQueryToAliceStatsConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToAliceStatsConnection Nodes. */
+export type RootQueryToAliceStatsConnectionPageInfo = AliceStatsConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToAliceStatsConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToAliceStatsConnection connection */
+export type RootQueryToAliceStatsConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -18761,6 +21225,77 @@ export type RootQueryToFaqConnectionPageInfo = FaqConnectionPageInfo & PageInfo 
 
 /** Arguments for filtering the RootQueryToFaqConnection connection */
 export type RootQueryToFaqConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the RootQuery type and the foodPantry type */
+export type RootQueryToFoodPantryConnection = Connection & FoodPantryConnection & {
+  __typename?: 'RootQueryToFoodPantryConnection';
+  /** Edges for the RootQueryToFoodPantryConnection connection */
+  edges: Array<RootQueryToFoodPantryConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FoodPantry>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFoodPantryConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFoodPantryConnectionEdge = Edge & FoodPantryConnectionEdge & {
+  __typename?: 'RootQueryToFoodPantryConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FoodPantry;
+};
+
+/** Pagination metadata specific to &quot;RootQueryToFoodPantryConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToFoodPantryConnection Nodes. */
+export type RootQueryToFoodPantryConnectionPageInfo = FoodPantryConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFoodPantryConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFoodPantryConnection connection */
+export type RootQueryToFoodPantryConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -22353,6 +24888,37 @@ export type UpdateAdminCostPdfPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
+/** Input for the updateAliceHubProgram mutation. */
+export type UpdateAliceHubProgramInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the aliceHubProgram object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateAliceHubProgram mutation. */
+export type UpdateAliceHubProgramPayload = {
+  __typename?: 'UpdateAliceHubProgramPayload';
+  /** The Post object mutation type. */
+  aliceHubProgram?: Maybe<AliceHubProgram>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
 /** Input for the updateAliceReportPage mutation. */
 export type UpdateAliceReportPageInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -22413,6 +24979,37 @@ export type UpdateAliceReportPdfPayload = {
   __typename?: 'UpdateAliceReportPdfPayload';
   /** The Post object mutation type. */
   aliceReportPdf?: Maybe<AliceReportPdf>;
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+/** Input for the updateAliceStats mutation. */
+export type UpdateAliceStatsInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the aliceStats object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateAliceStats mutation. */
+export type UpdateAliceStatsPayload = {
+  __typename?: 'UpdateAliceStatsPayload';
+  /** The Post object mutation type. */
+  aliceStats?: Maybe<AliceStats>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
@@ -22642,6 +25239,37 @@ export type UpdateFaqPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   faq?: Maybe<Faq>;
+};
+
+/** Input for the updateFoodPantry mutation. */
+export type UpdateFoodPantryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the foodPantry object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFoodPantry mutation. */
+export type UpdateFoodPantryPayload = {
+  __typename?: 'UpdateFoodPantryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The Post object mutation type. */
+  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the updateFourPillarsHeroComponent mutation. */
@@ -25248,6 +27876,18 @@ export type WithAcfAdminCostsPdfFields = {
   adminCostsPDFFields?: Maybe<AdminCostsPdfFields>;
 };
 
+/** Provides access to fields of the &quot;AliceHubProgramFields&quot; ACF Field Group via the &quot;aliceHubProgramFields&quot; field */
+export type WithAcfAliceHubProgramFields = {
+  /** Fields of the AliceHubProgramFields ACF Field Group */
+  aliceHubProgramFields?: Maybe<AliceHubProgramFields>;
+};
+
+/** Provides access to fields of the &quot;AliceStatsFields&quot; ACF Field Group via the &quot;aliceStatsFields&quot; field */
+export type WithAcfAliceStatsFields = {
+  /** Fields of the AliceStatsFields ACF Field Group */
+  aliceStatsFields?: Maybe<AliceStatsFields>;
+};
+
 /** Provides access to fields of the &quot;CampaignToolkitAssetFields&quot; ACF Field Group via the &quot;campaignToolkitAssetFields&quot; field */
 export type WithAcfCampaignToolkitAssetFields = {
   /** Fields of the CampaignToolkitAssetFields ACF Field Group */
@@ -25276,6 +27916,12 @@ export type WithAcfDonorPrivacyPolicyPdfFields = {
 export type WithAcfFaqFields = {
   /** Fields of the FAQFields ACF Field Group */
   fAQFields?: Maybe<FaqFields>;
+};
+
+/** Provides access to fields of the &quot;FoodPantryFields&quot; ACF Field Group via the &quot;foodPantryFields&quot; field */
+export type WithAcfFoodPantryFields = {
+  /** Fields of the FoodPantryFields ACF Field Group */
+  foodPantryFields?: Maybe<FoodPantryFields>;
 };
 
 /** Provides access to fields of the &quot;FourPillarsHeroComponentFields&quot; ACF Field Group via the &quot;fourPillarsHeroComponentFields&quot; field */
@@ -25724,3 +28370,53 @@ export type RefreshTokenMutationVariables = Exact<{
 
 
 export type RefreshTokenMutation = { __typename?: 'RootMutation', refreshJwtAuthToken?: { __typename?: 'RefreshJwtAuthTokenPayload', authToken?: string | null } | null };
+
+export type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FooterQueryQuery = { __typename?: 'RootQuery', current990FormPdfs?: { __typename?: 'RootQueryToCurrent990FormPdfConnection', nodes: Array<{ __typename?: 'Current990FormPdf', current990FormPDFFields?: { __typename?: 'Current990FormPDFFields', pdfFile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null }> } | null, donorPrivacyPolicyPdfs?: { __typename?: 'RootQueryToDonorPrivacyPolicyPdfConnection', nodes: Array<{ __typename?: 'DonorPrivacyPolicyPdf', donorPrivacyPolicyPDFFields?: { __typename?: 'DonorPrivacyPolicyPDFFields', pdfFile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null }> } | null, giftAcceptancePolicyPdfs?: { __typename?: 'RootQueryToGiftAcceptancePolicyPdfConnection', nodes: Array<{ __typename?: 'GiftAcceptancePolicyPdf', giftAcceptancePolicyPDFFields?: { __typename?: 'GiftAcceptancePolicyPDFFields', pdfFile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null }> } | null, adminCostPdfs?: { __typename?: 'RootQueryToAdminCostPdfConnection', nodes: Array<{ __typename?: 'AdminCostPdf', adminCostsPDFFields?: { __typename?: 'AdminCostsPDFFields', pdfFile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null }> } | null, uwContactInfos?: { __typename?: 'RootQueryToUwContactInfoConnection', nodes: Array<{ __typename?: 'UwContactInfo', uWContactInformationFields?: { __typename?: 'UWContactInformationFields', facebookLink?: string | null, fieldGroupName?: string | null, googleMapsUrl?: string | null, instagramLink?: string | null, linkedinLink?: string | null, phoneNumber?: string | null, state?: string | null, streetAddress?: string | null, zip?: string | null, city?: string | null } | null }> } | null };
+
+export type CampaignToolkitPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CampaignToolkitPageQueryQuery = { __typename?: 'RootQuery', campaignToolkitAssets?: { __typename?: 'RootQueryToCampaignToolkitAssetConnection', nodes: Array<{ __typename?: 'CampaignToolkitAsset', campaignToolkitAssetFields?: { __typename?: 'CampaignToolkitAssetFields', pledgeForm?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null, radioPsaAudio?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null, radioPsaTranscript?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null, workplacePacket?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null, collageImages?: { __typename?: 'CampaignToolkitAssetFieldsCollageImages', image1?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image2?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image3?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image4?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image5?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image6?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image7?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null } | null } | null }> } | null };
+
+export type GetInvolvedPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetInvolvedPageQuery = { __typename?: 'RootQuery', getInvolvedHeroes?: { __typename?: 'RootQueryToGetInvolvedHeroConnection', nodes: Array<{ __typename?: 'GetInvolvedHero', getInvolvedHeroFields?: { __typename?: 'GetInvolvedHeroFields', text?: string | null, title?: string | null, bgMobile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, bg?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null } | null }> } | null };
+
+export type HealthyCommunityPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HealthyCommunityPageQuery = { __typename?: 'RootQuery', mobileFoodPantryComponents?: { __typename?: 'RootQueryToMobileFoodPantryComponentConnection', nodes: Array<{ __typename?: 'MobileFoodPantryComponent', mobileFoodPantryComponentFields?: { __typename?: 'MobileFoodPantryComponentFields', buttonText?: string | null, link?: string | null, text?: string | null, title?: string | null, image?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, bgMobile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null } | null }> } | null };
+
+export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HomePageQuery = { __typename?: 'RootQuery', homePageHeroes?: { __typename?: 'RootQueryToHomePageHeroConnection', nodes: Array<{ __typename?: 'HomePageHero', homePageHeroFields?: { __typename?: 'HomePageHeroFields', heading?: string | null, subheading?: string | null, bg?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, bgMobile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, feature1?: { __typename?: 'HomePageHeroFieldsFeature1', link?: string | null, text?: string | null, linkText?: string | null, secondLink?: string | null, secondLinkText?: string | null, title?: string | null, optionalMediaLabel?: string | null, image?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, optionalMedia?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null, feature2?: { __typename?: 'HomePageHeroFieldsFeature2', link?: string | null, linkText?: string | null, secondLink?: string | null, secondLinkText?: string | null, text?: string | null, title?: string | null, optionalMediaLabel?: string | null, image?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, optionalMedia?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null, feature3?: { __typename?: 'HomePageHeroFieldsFeature3', link?: string | null, linkText?: string | null, secondLink?: string | null, secondLinkText?: string | null, text?: string | null, title?: string | null, optionalMediaLabel?: string | null, image?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, optionalMedia?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', mediaItemUrl?: string | null } } | null } | null } | null }> } | null };
+
+export type OurCulturePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type OurCulturePageQuery = { __typename?: 'RootQuery', mediaItem1?: { __typename?: 'RootQueryToMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null }> } | null, mediaItem2?: { __typename?: 'RootQueryToMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null }> } | null };
+
+export type OurLeadershipPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type OurLeadershipPageQuery = { __typename?: 'RootQuery', mediaItem1?: { __typename?: 'RootQueryToMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null }> } | null, mediaItem2?: { __typename?: 'RootQueryToMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null }> } | null, mediaItem3?: { __typename?: 'RootQueryToMediaItemConnection', nodes: Array<{ __typename?: 'MediaItem', mediaItemUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null }> } | null };
+
+export type PartnerPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PartnerPageQuery = { __typename?: 'RootQuery', partnerPageHeroes?: { __typename?: 'RootQueryToPartnerPageHeroConnection', nodes: Array<{ __typename?: 'PartnerPageHero', partnerPageHeroFields?: { __typename?: 'PartnerPageHeroFields', text?: string | null, title?: string | null, bg?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null } } | null, bgMobile?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null } } | null } | null }> } | null };
+
+export type ValuesHistoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ValuesHistoryQuery = { __typename?: 'RootQuery', valuesHistories?: { __typename?: 'RootQueryToValuesHistoryConnection', nodes: Array<{ __typename?: 'ValuesHistory', valuesAndHistoryFields?: { __typename?: 'ValuesAndHistoryFields', imageAlt1?: string | null, imageAlt2?: string | null, imageAlt3?: string | null, image1?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image2?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, image3?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null } | null }> } | null };
+
+export type YouthOpportunityPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type YouthOpportunityPageQuery = { __typename?: 'RootQuery', ymcaComponents?: { __typename?: 'RootQueryToYmcaComponentConnection', nodes: Array<{ __typename?: 'YmcaComponent', yMCAComponentFields?: { __typename?: 'YMCAComponentFields', link1?: string | null, link2?: string | null, linkText1?: string | null, text?: string | null, linkText2?: string | null, title?: string | null, brandImg?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null, altText?: string | null } } | null, image?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, sourceUrl?: string | null } } | null } | null }> } | null };

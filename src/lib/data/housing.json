@@ -1,124 +1,135 @@
 [
 	{
-		"name": "First Generation Down Payment Assistance",
-		"provider": "MI State Housing Development Authority",
-		"description": "Becoming a homeowner isn't easy, especially if no one in your family has owned a home before. That's why MSHDA's First-Generation Down Payment Assistance Program is here to help. This limited-time pilot program offers up to $25,000 to first-generation homebuyers to cover down payment, closing costs, and prepaid escrows. Available statewide, it's designed to make homeownership more accessible and set families up for long-term success.",
-		"link": "https://www.michigan.gov/mshda/pathway-to-housing/firstgendpa",
-		"serviceAreas": ["all"],
-		"requirements": ["Must be first-generation home buyer", "Must complete home-buyer education", "See provider website for complete eligibility criteria"],
-		"type": ["miscellaneous"]
+			"name": "First Generation Down Payment Assistance",
+			"provider": "MI State Housing Development Authority",
+			"description": "Becoming a homeowner isn't easy, especially if no one in your family has owned a home before. That's why MSHDA's First-Generation Down Payment Assistance Program is here to help. This limited-time pilot program offers up to $25,000 to first-generation homebuyers to cover down payment, closing costs, and prepaid escrows. Available statewide, it's designed to make homeownership more accessible and set families up for long-term success.",
+			"link": "https://www.michigan.gov/mshda/pathway-to-housing/firstgendpa",
+			"serviceAreas": ["all"],
+			"requirements": ["Must be first-generation home buyer", "Must complete home-buyer education", "See provider website for complete eligibility criteria"],
+			"type": ["miscellaneous"],
+			"category": "housing"
 	},
 	{
-		"name": "Homeowner Rehabilitation program",
-		"provider": "Marquette County",
-		"description": "The Marquette County Planning Division administers the Marquette County Housing Rehabilitation Program to provide assistance to homeowners in Marquette County to help ensure their residence is safe, habitable, and livable. By providing home repair assistance to qualified homeowners, we are able to improve the housing stock, strengthen the local tax base, implement energy efficiency standards, and help residents age in place.",
-		"link": "https://www.co.marquette.mi.us/departments/planning/homeowner_rehabilitation_program.php",
-		"serviceAreas": ["marquette"],
-		"requirements": [
-			"Property must be owner occupied and located in Marquette County",
-			"single-family dwelling",
-			"Must qualify at %80 of the area median income (see provider website)",
-			"Must be current on mortgage, property taxes, and property insurance",
-			"Cannot be on leased land",
-			"Applicant must live in the home for at least a year prior to applying"
-		],
-		"type": ["home rehabilitation"]
+			"name": "Homeowner Rehabilitation program",
+			"provider": "Marquette County",
+			"description": "The Marquette County Planning Division administers the Marquette County Housing Rehabilitation Program to provide assistance to homeowners in Marquette County to help ensure their residence is safe, habitable, and livable. By providing home repair assistance to qualified homeowners, we are able to improve the housing stock, strengthen the local tax base, implement energy efficiency standards, and help residents age in place.",
+			"link": "https://www.co.marquette.mi.us/departments/planning/homeowner_rehabilitation_program.php",
+			"serviceAreas": ["marquette"],
+			"requirements": [
+					"Property must be owner occupied and located in Marquette County",
+					"single-family dwelling",
+					"Must qualify at %80 of the area median income (see provider website)",
+					"Must be current on mortgage, property taxes, and property insurance",
+					"Cannot be on leased land",
+					"Applicant must live in the home for at least a year prior to applying"
+			],
+			"type": ["home rehabilitation"],
+			"category": "housing"
 	},
 	{
-		"name": "Alger County Home Rehabilitation Program",
-		"provider": "Alger-Marquette Community Action",
-		"description": "On behalf of Alger County, CAAM administers the Alger County Home Rehabilitation Program. This program is available only to homeowners who reside in Alger County. Eligible improvements are limited to emergency home repairs that pose a serious and immediate threat to the health or welfare of the household and/or community, the existing conditions are of recent origin or recently became urgent (generally within the last 18 months), repairs do not disrupt any lead paint on the property, the recipient is unable to finance the activity on his/her own, and other sources of funding are not available.",
-		"link": "https://www.communityactionam.org/home-repairs",
-		"serviceAreas": ["alger"],
-		"requirements": ["Must be a homeowner residing in Alger County", "Limited to emergency home repairs (see provider website)"],
-		"type": ["home rehabilitation"]
+			"name": "Alger County Home Rehabilitation Program",
+			"provider": "Alger-Marquette Community Action",
+			"description": "On behalf of Alger County, CAAM administers the Alger County Home Rehabilitation Program. This program is available only to homeowners who reside in Alger County. Eligible improvements are limited to emergency home repairs that pose a serious and immediate threat to the health or welfare of the household and/or community, the existing conditions are of recent origin or recently became urgent (generally within the last 18 months), repairs do not disrupt any lead paint on the property, the recipient is unable to finance the activity on his/her own, and other sources of funding are not available.",
+			"link": "https://www.communityactionam.org/home-repairs",
+			"serviceAreas": ["alger"],
+			"requirements": ["Must be a homeowner residing in Alger County", "Limited to emergency home repairs (see provider website)"],
+			"type": ["home rehabilitation"],
+			"category": "housing"
 	},
 	{
-		"name": "Home Repair Loans and Grants",
-		"provider": "US Department of Agriculture",
-		"description": "",
-		"link": "https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-repair-loans-grants-25",
-		"serviceAreas": ["all"],
-		"requirements": [
-			"Be a homeowner and occupy the residence",
-			"Be unable to obtain affordable credit elsewhere",
-			"Have a household income that does not exceed the very low limit by county (see provider website)",
-			"For grants, be age 62 or older"
-		],
-		"type": ["home rehabilitation"]
+			"name": "Home Repair Loans and Grants",
+			"provider": "US Department of Agriculture",
+			"description": "",
+			"link": "https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-repair-loans-grants-25",
+			"serviceAreas": ["all"],
+			"requirements": [
+					"Be a homeowner and occupy the residence",
+					"Be unable to obtain affordable credit elsewhere",
+					"Have a household income that does not exceed the very low limit by county (see provider website)",
+					"For grants, be age 62 or older"
+			],
+			"type": ["home rehabilitation"],
+			"category": "housing"
 	},
 	{
-		"name": "Homeless Assistance Program",
-		"provider": "Menominee-Delta-Schoolcraft Community Action Agency",
-		"description": "Our homeless service staff work with anyone who is literally homeless (living in a shelter, street, car, etc.) and may also work with people who are at imminent risk of homeless due to a pending eviction.",
-		"link": "https://www.mdscaa.org/our-services/homeless-assistance-program",
-		"serviceAreas": ["menominee", "delta", "schoolcraft"],
-		"requirements": [
-			"The program serves anyone who is currently homeless and may also work with people who are at imminent risk of homeless due to a pending eviction. Eligible people earn 0-30% of the Area Median Income and receive help with case management services and potentially receive financial assistance such as security deposit and short to medium term rental assistance."
-		],
-		"type": ["rent", "miscellaneous"]
+			"name": "Homeless Assistance Program",
+			"provider": "Menominee-Delta-Schoolcraft Community Action Agency",
+			"description": "Our homeless service staff work with anyone who is literally homeless (living in a shelter, street, car, etc.) and may also work with people who are at imminent risk of homeless due to a pending eviction.",
+			"link": "https://www.mdscaa.org/our-services/homeless-assistance-program",
+			"serviceAreas": ["menominee", "delta", "schoolcraft"],
+			"requirements": [
+					"The program serves anyone who is currently homeless and may also work with people who are at imminent risk of homeless due to a pending eviction. Eligible people earn 0-30% of the Area Median Income and receive help with case management services and potentially receive financial assistance such as security deposit and short to medium term rental assistance."
+			],
+			"type": ["rent", "miscellaneous"],
+			"category": "housing"
 	},
 	{
-		"name": "MI Home Energy Rebates",
-		"provider": "State of Michigan",
-		"description": "A program that offers rebates for qualifying energy efficiency upgrades and equipment for your home.",
-		"link": "https://mienergyrebates.clearesult.com/",
-		"serviceAreas": ["all"],
-		"requirements": ["See provider website for information"],
-		"type": ["utilities", "miscellaneous"]
+			"name": "MI Home Energy Rebates",
+			"provider": "State of Michigan",
+			"description": "A program that offers rebates for qualifying energy efficiency upgrades and equipment for your home.",
+			"link": "https://mienergyrebates.clearesult.com/",
+			"serviceAreas": ["all"],
+			"requirements": ["See provider website for information"],
+			"type": ["utilities", "miscellaneous"],
+			"category": "housing"
 	},
 	{
-		"name": "UPPCO ALICE Program",
-		"provider": "Upper Michigan Power Company",
-		"description": "A program that provides electric energy assistance, energy education, Department of Energy Home Energy Scores, and limited weatherization for Upper Michigan Power Company (UPPCO) customers in the Asset Limited, Income Constrained, Employed (ALICE) population.",
-		"link": "https://superiorwatersheds.org/energy-conservation",
-		"serviceAreas": ["all"],
-		"requirements": ["Must be an UPPCO Customer", "Reside in Upper Peninsula of Michigan", "Household FPL between 151%-200%", "Income verified by SWP", "Utility bill must show past due charges"],
-		"type": ["utilities"]
+			"name": "UPPCO ALICE Program",
+			"provider": "Upper Michigan Power Company",
+			"description": "A program that provides electric energy assistance, energy education, Department of Energy Home Energy Scores, and limited weatherization for Upper Michigan Power Company (UPPCO) customers in the Asset Limited, Income Constrained, Employed (ALICE) population.",
+			"link": "https://superiorwatersheds.org/energy-conservation",
+			"serviceAreas": ["all"],
+			"requirements": ["Must be an UPPCO Customer", "Reside in Upper Peninsula of Michigan", "Household FPL between 151%-200%", "Income verified by SWP", "Utility bill must show past due charges"],
+			"type": ["utilities"],
+			"category": "housing"
 	},
 	{
-		"name": "MI Impact Program",
-		"provider": "Michigan Department of Labor and Economic Opportunity",
-		"description": "A COVID recovery program that provides utility assistance for heat, electric, water, sewer, and waste, with the intent to reduce energy and utility burdens, thereby allowing households in need of assistance to redirect funds for other necessities. This program is designed to offset necessary living expenses; approved households are encouraged to spend funds that would have been allocated for utilities to instead buy healthy food, medication, car repairs, and other necessities. MI Impact funding is administered by the Michigan Department of Labor and Economic Opportunity.",
-		"link": "https://superiorwatersheds.org/energy-conservation",
-		"serviceAreas": ["all"],
-		"requirements": [
-			"Reside in Upper Peninsula of Michigan",
-			"Income verified by SER or SWP (If your household is at or below 150% of the Federal Poverty Level, you must first apply for State Emergency Relief)",
-			"Utility bill must be at least one day past due or deliverable fuel level must be at or below 25% of capacity"
-		],
-		"type": ["utilities"]
+			"name": "MI Impact Program",
+			"provider": "Michigan Department of Labor and Economic Opportunity",
+			"description": "A COVID recovery program that provides utility assistance for heat, electric, water, sewer, and waste, with the intent to reduce energy and utility burdens, thereby allowing households in need of assistance to redirect funds for other necessities. This program is designed to offset necessary living expenses; approved households are encouraged to spend funds that would have been allocated for utilities to instead buy healthy food, medication, car repairs, and other necessities. MI Impact funding is administered by the Michigan Department of Labor and Economic Opportunity.",
+			"link": "https://superiorwatersheds.org/energy-conservation",
+			"serviceAreas": ["all"],
+			"requirements": [
+					"Reside in Upper Peninsula of Michigan",
+					"Income verified by SER or SWP (If your household is at or below 150% of the Federal Poverty Level, you must first apply for State Emergency Relief)",
+					"Utility bill must be at least one day past due or deliverable fuel level must be at or below 25% of capacity"
+			],
+			"type": ["utilities"],
+			"category": "housing"
 	},
 	{
-		"name": "Michigan Energy Assistance Program (MEAP)",
-		"provider": "Michigan Public Service Commission and MDHHS",
-		"description": "A crisis assistance program that provides energy assistance and energy services to households who have been approved for State Emergency Relief (SER) through the Michigan Department of Health and Human Services (MDHHS). Approved households may be eligible for energy education, Department of Energy Home Energy Scores, limited weatherization, direct heat and electric payments, deliverable fuel deliveries, and/or enrollment in affordable payment plans. MEAP funding is administered by the Michigan Public Service Commission and MDHHS.",
-		"link": "https://superiorwatersheds.org/energy-conservation",
-		"serviceAreas": ["all"],
-		"requirements": [
-			"Reside in Upper Peninsula of Michigan",
-			"SER Approved with household FPL between 0% - 150%",
-			"Utility bill must show past due charges or deliverable fuel level must be at or below 25% of capacity"
-		],
-		"type": ["utilities"]
+			"name": "Michigan Energy Assistance Program (MEAP)",
+			"provider": "Michigan Public Service Commission and MDHHS",
+			"description": "A crisis assistance program that provides energy assistance and energy services to households who have been approved for State Emergency Relief (SER) through the Michigan Department of Health and Human Services (MDHHS). Approved households may be eligible for energy education, Department of Energy Home Energy Scores, limited weatherization, direct heat and electric payments, deliverable fuel deliveries, and/or enrollment in affordable payment plans. MEAP funding is administered by the Michigan Public Service Commission and MDHHS.",
+			"link": "https://superiorwatersheds.org/energy-conservation",
+			"serviceAreas": ["all"],
+			"requirements": [
+					"Reside in Upper Peninsula of Michigan",
+					"SER Approved with household FPL between 0% - 150%",
+					"Utility bill must show past due charges or deliverable fuel level must be at or below 25% of capacity"
+			],
+			"type": ["utilities"],
+			"category": "housing"
 	},
 	{
-		"name": "Weatherization Assistance Program",
-		"provider": "Menominee Delta Schoolcraft Community Action",
-		"description": "The low-income Home Weatherization Program is a free service funded by the Federal Department of Energy(DOE). The program provides free energy conservation services for eligible low-income households. If eligible our agency performs the necessary inspections and contracts with qualified, licensed and insured private contractors to complete the work. These services reduce energy use and lower utility bills, thus creating more self-sufficient households.",
-		"link": "https://www.mdscaa.org/our-services/weatherization%2Fenergy-services-",
-		"serviceAreas": ["menominee", "delta", "schoolcraft"],
-		"requirements": ["Visit provider website for information"],
-		"type": ["utilities"]
+			"name": "Weatherization Assistance Program",
+			"provider": "Menominee Delta Schoolcraft Community Action",
+			"description": "The low-income Home Weatherization Program is a free service funded by the Federal Department of Energy(DOE). The program provides free energy conservation services for eligible low-income households. If eligible our agency performs the necessary inspections and contracts with qualified, licensed and insured private contractors to complete the work. These services reduce energy use and lower utility bills, thus creating more self-sufficient households.",
+			"link": "https://www.mdscaa.org/our-services/weatherization%2Fenergy-services-",
+			"serviceAreas": ["menominee", "delta", "schoolcraft"],
+			"requirements": ["Visit provider website for information"],
+			"type": ["utilities"],
+			"category": "housing"
 	},
 	{
-		"name": "Utility and Water Assistance",
-		"provider": "Menominee Delta Schoolcraft Community Action",
-		"description": "Water Affordability Program is a temporary emergency program to help low-income households pay overdue water and wastewater bills. Michigan received emergency funding from Congress to administer this program. This program is available to low-income homeowners or renters. Funding is administered through MDHHS to Community Action Agencies (CAAs) statewide until September 30, 2027, unless depleted prior to that date.",
-		"link": "https://www.mdscaa.org/our-services/utility-and-water-assistance",
-		"serviceAreas": ["menominee", "delta", "schoolcraft"],
-		"requirements": ["Account must be residential", "Be in arrears or disconnect status", "Be under 200% FPL and/or actively receiving -FIP/TANF, -FAP/SNAP, -SER, or -SSI"],
-		"type": ["utilities"]
+			"name": "Utility and Water Assistance",
+			"provider": "Menominee Delta Schoolcraft Community Action",
+			"description": "Water Affordability Program is a temporary emergency program to help low-income households pay overdue water and wastewater bills. Michigan received emergency funding from Congress to administer this program. This program is available to low-income homeowners or renters. Funding is administered through MDHHS to Community Action Agencies (CAAs) statewide until September 30, 2027, unless depleted prior to that date.",
+			"link": "https://www.mdscaa.org/our-services/utility-and-water-assistance",
+			"serviceAreas": ["menominee", "delta", "schoolcraft"],
+			"requirements": ["Account must be residential", "Be in arrears or disconnect status", "Be under 200% FPL and/or actively receiving -FIP/TANF, -FAP/SNAP, -SER, or -SSI"],
+			"type": ["utilities"],
+			"category": "housing"
 	},
 	{
 		"name": "Water Assistance Program",
@@ -127,6 +138,7 @@
 		"link": "https://www.dicsami.org/programs/water-assistance-program/",
 		"serviceAreas": ["dickinson", "iron"],
 		"requirements": ["Must reside in Iron or Dickinson Counties", "Must have metered water service", "Must be income eligible based on criteria on provider website"],
-		"type": ["utilities"]
-	}
+		"type": ["utilities"],
+		"category": "housing"
+}
 ]

@@ -2,7 +2,7 @@ import type {
   Config,
   ValuesHistoryPageQueryResponse,
 } from "@/types/valuesHistory";
-import { valuesHistoryPageQuery } from "@/lib/API/queries";
+import { valuesHistoryPageQuery } from "@/lib/API/queries/pages";
 import { getContent } from "@/lib/API";
 import { getDefaultProps } from "@/lib/error";
 

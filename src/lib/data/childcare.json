@@ -11,7 +11,8 @@
       "Income eligibility (expanded recently - up to 185% of federal poverty level)",
       "This program provides payment assistance to help eligible parents pay for child care, with parents qualifying if they are working, attending education/training, or participating in approved counseling/treatment programs"
     ],
-    "type": ["childcare"]
+    "type": ["childcare"],
+    "category": "childcare"
   },
   {
     "name": "MI Great Start Readiness Program (GSRP)",
@@ -22,7 +23,8 @@
     "requirements": [
       "Those who do not qualify for or do not have access to Head Start"
     ],
-    "type": ["childcare"]
+    "type": ["childcare"],
+    "category": "childcare"
   },
   {
     "name": "Early Head Start Program",
@@ -31,7 +33,8 @@
     "link": "https://www.communityactionam.org/head-start",
     "serviceAreas": ["alger", "marquette"],
     "requirements": [],
-    "type": ["childcare"]
+    "type": ["childcare"],
+    "category": "childcare"
   },
   {
     "name": "Head Start Preschool Program",
@@ -40,7 +43,8 @@
     "link": "https://www.communityactionam.org/early-head-start",
     "serviceAreas": ["alger", "marquette"],
     "requirements": [],
-    "type": ["childcare"]
+    "type": ["childcare"],
+    "category": "childcare"
   },
   {
     "name": "4C of the UP (Child Care Coordinating Council)",
@@ -49,6 +53,7 @@
     "link": "https://greatstarttoquality.org/upper-peninsula-resource-center/",
     "serviceAreas": ["all"],
     "requirements": [],
-    "type": ["childcare"]
+    "type": ["childcare"],
+    "category": "childcare"
   }
 ]

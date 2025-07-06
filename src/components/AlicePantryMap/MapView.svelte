@@ -1,10 +1,9 @@
 <script lang="ts">
 	import * as L from 'leaflet';
 	import Skeleton from '../ui/skeleton/skeleton.svelte';
-	import type { FoodPantryGeoFeatureCollection } from '@/types/alice';
 	import { onDestroy, onMount } from 'svelte';
 	import 'leaflet/dist/leaflet.css';
-	import type { Feature, Point } from 'geojson';
+	import type { Feature, FeatureCollection, Point } from 'geojson';
 	import { getDistance } from '@/lib/utils';
 
 	let {
@@ -15,7 +14,7 @@
 		selectedPantryId,
 	}: {
 		mapCenter: L.LatLng;
-		pantries: FoodPantryGeoFeatureCollection;
+		pantries: FeatureCollection;
 		userDefinedLocation: L.LatLng;
 		handleSelectPantry: (pantry: Point) => void;
 		selectedPantryId: string | null;

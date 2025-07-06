@@ -7,19 +7,19 @@ import {
   getAllCountyNames,
 } from "@/config/aliceStats";
 import {
+  type AliceStatsCardContent,
+  type CountyStats,
   type FmtdChartData,
+  type FmtdChartDataRecord,
   type HouseholdSurvivalBudgetCategories,
 } from "@/types/aliceStats";
 import { capitalizeFirstLetter, cn } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import SkeletonText from "../Skeleton/Text";
 import SkeletonPieChart from "../Skeleton/PieChart";
+import type { AliceStatsFieldsContent, RootQueryToAliceStatsConnection } from "@/types/__generated__/types";
+import { getDefaultProps } from "@/lib/error";
 
-const ALICE_STATS_BY_COUNTY = formatCountyStatsForChart(
-  config.countyAliceStats,
-);
-
-const COUNTY_NAMES = getAllCountyNames(config.countyAliceStats);
 
 const CountyButton = React.memo(
   ({
@@ -35,7 +35,7 @@ const CountyButton = React.memo(
   }) => {
     const buttonClass = React.useMemo(() => {
       return cn(
-        "border-2 rounded-[64px] text-xs text-nowrap min-w-fit px-1 py-1 ml-1 focus:ring-0",
+        "border-2 rounded-[64px] text-xs text-nowrap min-w-fit px-1 py-1 ml-1 cursor-pointer focus:ring-0",
         isSelected
           ? selectionIndex === 0
             ? "bg-primary-blue-4"
@@ -99,13 +99,64 @@ const ChartDisplay = React.memo(
 );
 
 ChartDisplay.displayName = "ChartDisplay";
+
+interface Props {
+  countyNames: string[];
+  statsByCounty: FmtdChartDataRecord;
+  content: AliceStatsCardContent;
+}
+
+
+export function createProps(wpContent: RootQueryToAliceStatsConnection): Props {
+  if (!wpContent?.nodes[0]?.aliceStatsFields) {
+    return getDefaultProps<Props>('AliceStats');
+  }
+
+  const root = wpContent?.nodes[0]?.aliceStatsFields;
+  const statsWpContent = root?.content ?? ({} as AliceStatsFieldsContent);
+
+  const listItems: string[] = [];
+  for (let i = 1; i < 5; i++) {
+    if (!statsWpContent[`listItem${i}` as keyof typeof statsWpContent]) {
+      break;
+    }
+    listItems.push(statsWpContent[`listItem${i}` as keyof typeof statsWpContent] as string);
+  }
+  const content: AliceStatsCardContent = {
+    heading: statsWpContent?.heading ?? '',
+    textWithPopover: statsWpContent.textWithPopover ?? '',
+    popoverText: statsWpContent.popoverText ?? '',
+    linkText: statsWpContent.linkText ?? '',
+    link: statsWpContent.link ?? '',
+    text2: statsWpContent.text2 ?? '',
+    text3: statsWpContent.text3 ?? '',
+    listItems: listItems,
+  };
+
+  if (!root?.countyStats) {
+    return getDefaultProps<Props>('AliceStats');
+  }
+  const countyNames = root?.countyStats ? Object.keys(root.countyStats) : [];
+
+  const counties: CountyStats[] = Object.values(root.countyStats)
+    ?.map((c, i) => {
+      if (typeof c !== 'string') {
+        return { ...c, county: countyNames[i] } as CountyStats;
+      }
+    })
+    .filter((c) => c !== undefined);
+  const statsByCounty = formatCountyStatsForChart(counties);
+
+  return { countyNames, content, statsByCounty };
+}
+
 /**
  *
  * Display component for ALICE Stats pertaining to Michigan and Central Upper Peninsula
  *
  * @returns React component with text and interactive pie chart display
  */
-const AliceStats: React.FC = () => {
+const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) => {
   // State management
   const [overallStats, setOverallStats] = React.useState<FmtdChartData | null>(
     null,
@@ -119,19 +170,17 @@ const AliceStats: React.FC = () => {
   >([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
-  // Memoize content from config
-  const { content } = config;
 
   /**
    * Set initial states for overall and active county ALICE stats
    */
   const initialize = React.useCallback(() => {
-    if (ALICE_STATS_BY_COUNTY) {
-      setOverallStats(ALICE_STATS_BY_COUNTY["overall"]);
+    if (statsByCounty) {
+      setOverallStats(statsByCounty["overall"]);
     }
 
     if (currentCounty) {
-      setActiveCountyStats([ALICE_STATS_BY_COUNTY[currentCounty]]);
+      setActiveCountyStats([statsByCounty[currentCounty]]);
     }
   }, [currentCounty]);
 
@@ -169,14 +218,14 @@ const AliceStats: React.FC = () => {
           } else if (prev.includes(countyName)) {
             return prevStats.filter((c) => c.county !== countyName);
           } else if (prev.length < 1) {
-            return [ALICE_STATS_BY_COUNTY[countyName]];
+            return [statsByCounty[countyName]];
           } else if (prev.length < 2) {
-            return [...prevStats, ALICE_STATS_BY_COUNTY[countyName]];
+            return [...prevStats, statsByCounty[countyName]];
           } else {
             return [
               prevStats[0],
               prevStats[1],
-              ALICE_STATS_BY_COUNTY[countyName],
+              statsByCounty[countyName],
             ].filter((_, i) => i < 3);
           }
         });
@@ -196,7 +245,7 @@ const AliceStats: React.FC = () => {
   // no counties are selected
   React.useEffect(() => {
     if (!overallStats && activeCountyStats.length < 3) {
-      setOverallStats(ALICE_STATS_BY_COUNTY["overall"]);
+      setOverallStats(statsByCounty["overall"]);
     } else if (activeCountyStats.length > 2) {
       setOverallStats(null);
     }
@@ -220,7 +269,7 @@ const AliceStats: React.FC = () => {
 
   const countyButtons = React.useMemo(
     () =>
-      COUNTY_NAMES.map((name: string, i) => (
+      countyNames.map((name: string, i) => (
         <CountyButton
           key={name}
           name={name}

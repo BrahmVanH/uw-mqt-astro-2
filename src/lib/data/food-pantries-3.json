@@ -1,1058 +1,1128 @@
 [
-	{
-		"name": "Escanaba Salvation Army Pantry",
-		"geo": {
-			"lat": 45.744169,
-			"lng": -87.074558
-		},
-		"address": {
-			"street": "3001 South 5th Ave.",
-			"city": "Escanaba",
-			"po": "",
-			"state": "MI",
-			"zip": "49829"
-		},
-		"phone": "9067860590",
-		"email": "wum.escanaba@usc.salvationarmy.org",
-		"contact": {
-			"name": "Doug Winters",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://centralusa.salvationarmy.org/escanaba/",
-		"donate": {
-			"link": "https://give.salvationarmyusa.org/give/164006/#!/donation/checkout",
-			"message": ["Food donations can be made during operational hours"]
-		},
-		"flags": ["Client choice pantry", "Income eligibility determined by TEFAP", "Limited to Delta, Schoolcraft, and Menominee residents"],
-		"hours": {
-			"m": "9:00am-12:00pm, 1:00pm-3:30pm",
-			"t": "",
-			"w": "",
-			"th": "9:00am-12:00pm, 1:00pm-3:30pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Escanaba Seventh Day Adventist Pantry",
-		"geo": {
-			"lat": 45.750831,
-			"lng": -87.069233
-		},
-		"address": {
-			"street": "210 S. Lincoln Rd",
-			"city": "Escanaba",
-			"po": "",
-			"state": "MI",
-			"zip": "49829"
-		},
-		"phone": "9067860887",
-		"email": "myplan109@yahoo.com",
-		"contact": {
-			"name": "Robin",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.facebook.com/EscanabaACS/",
-		"donate": {
-			"link": "https://adventistgiving.org/donate/ANFFIL",
-			"message": []
-		},
-		"flags": [],
-		"hours": {
-			"m": "1:00pm-4:00pm",
-			"t": "",
-			"w": "",
-			"th": "",
-			"f": "1:00pm-4:00pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Escanaba SVdP Pantry",
-		"geo": {
-			"lat": 45.745417,
-			"lng": -87.059772
-		},
-		"address": {
-			"street": "115 N. 8th St.",
-			"city": "Escanaba",
-			"po": "",
-			"state": "MI",
-			"zip": "49829"
-		},
-		"phone": "9067891434",
-		"email": "stvincentdepaul1014@yahoo.com",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": "9067862808"
-		},
-		"website": "https://www.facebook.com/SVdPEskyServiceCenter/",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Hot lunch on wed 11:30-1pm"],
-		"hours": {
-			"m": "10:00am-2:00pm",
-			"t": "",
-			"w": "10:00am-2:00pm",
-			"th": "",
-			"f": "10:00am-2:00pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Bay College Student Pantry Bay DeNoc",
-		"geo": {
-			"lat": 45.779554,
-			"lng": -87.068893
-		},
-		"address": {
-			"street": "2001 N Lincoln Road",
-			"city": "Escanaba",
-			"po": "",
-			"state": "MI",
-			"zip": "49829"
-		},
-		"phone": "9062174014",
-		"email": "FoodPantryESC@baycollege.edu",
-		"contact": {
-			"name": "Kari Menunier",
-			"email": "kari.meunier@baycollege.edu",
-			"phone": ""
-		},
-		"website": "https://mybay.baycollege.edu/ICS/Current_Students/Academic_Support/Food_Pantry/Food_Pantry_Blog.jnz?portlet=Free-form_Content",
-		"donate": {
-			"link": "",
-			"message": ["Community donations"]
-		},
-		"flags": ["Students only", "Please call for appointment"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Escanaba Senior Center",
-		"geo": {
-			"lat": 45.746532,
-			"lng": -87.089953
-		},
-		"address": {
-			"street": "225 N 21st Street",
-			"city": "Escanaba",
-			"po": "",
-			"state": "MI",
-			"zip": "49829"
-		},
-		"phone": "9067868850",
-		"email": "",
-		"contact": {
-			"name": "Jamie",
-			"email": "",
-			"phone": "9067867080"
-		},
-		"website": "https://www.mdscaa.org/c",
-		"donate": {
-			"link": "https://www.mdscaa.org/donate",
-			"message": []
-		},
-		"flags": ["TEFAP only", "Please call ahead to make appointment"],
-		"hours": {
-			"m": "",
-			"t": "1:00pm-3:00pm",
-			"w": "",
-			"th": "",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "All Saints SVdP Pantry",
-		"geo": {
-			"lat": 45.850891,
-			"lng": -87.026756
-		},
-		"address": {
-			"street": "816 Delta Ave.",
-			"city": "Gladstone",
-			"po": "",
-			"state": "MI",
-			"zip": "49837"
-		},
-		"phone": "9064281234",
-		"email": "svdpgladstonere@yahoo.com",
-		"contact": {
-			"name": "",
-			"email": "svdpgladstonere@yahoo.com",
-			"phone": ""
-		},
-		"website": "https://www.facebook.com/StVincentdePaulGladstone/",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": {
-			"m": "11:00am-1:45pm",
-			"t": "",
-			"w": "11:00am-1:45pm",
-			"th": "",
-			"f": "11:00am-1:45pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Gladstone Senior Center",
-		"geo": {
-			"lat": 45.853647,
-			"lng": -87.022547
-		},
-		"address": {
-			"street": "303 N. 8th St",
-			"city": "Gladstone",
-			"po": "",
-			"state": "MI",
-			"zip": "49837"
-		},
-		"phone": "9064282201",
-		"email": "",
-		"contact": {
-			"name": "Jamie",
-			"email": "",
-			"phone": "9067867080"
-		},
-		"website": "https://www.mdscaa.org/c",
-		"donate": {
-			"link": "https://www.mdscaa.org/donate",
-			"message": []
-		},
-		"flags": ["TEFAP only", "Please call ahead to make appointment"],
-		"hours": {
-			"m": "",
-			"t": "1:00pm-3:00pm",
-			"w": "",
-			"th": "",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Faith Lutheran Church Food Pantry",
-		"geo": {
-			"lat": 46.045117,
-			"lng": -87.127875
-		},
-		"address": {
-			"street": "",
-			"city": "Rock",
-			"po": "PO Box 227",
-			"state": "MI",
-			"zip": "49880"
-		},
-		"phone": "9063566225",
-		"email": "faithlc.rock@gmail.com",
-		"contact": {
-			"name": "Lucy",
-			"email": "",
-			"phone": "9063566225"
-		},
-		"website": "https://www.facebook.com/faithinrock/",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Check facebook for food pantry dates"],
-		"hours": ""
-	},
-	{
-		"name": "Iron Mountain SVdP Pantry",
-		"geo": {
-			"lat": 45.823478,
-			"lng": -88.066142
-		},
-		"address": {
-			"street": "117 West A Street",
-			"city": "Iron Mountain",
-			"po": "",
-			"state": "MI",
-			"zip": "49801"
-		},
-		"phone": "9067790749",
-		"email": "svdpimfoodpantry@gmail.com",
-		"contact": {
-			"name": "",
-			"email": "svdpimfoodpantry@gmail.com",
-			"phone": ""
-		},
-		"website": "https://www.svdpironmountain.org/food-pantry",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": {
-			"m": "9:00am-12:00pm",
-			"t": "9:00am-12:00pm (call for appointment)",
-			"w": "9:00am-12:00pm",
-			"th": "9:00am-12:00pm (call for appointment)",
-			"f": "9:00am-12:00pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "First Evangelical Lutheran Church",
-		"geo": {
-			"lat": 45.809651,
-			"lng": -88.067156
-		},
-		"address": {
-			"street": "1210 S Stephenson Ave",
-			"city": "Iron Mountain",
-			"po": "",
-			"state": "MI",
-			"zip": "49801"
-		},
-		"phone": "9067740133",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.firstevangelicallutheranchurch.org/",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Appointment only, call ahead"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Bay West Student Food Community",
-		"geo": {
-			"lat": 45.814372,
-			"lng": -88.104743
-		},
-		"address": {
-			"street": "2801 US 2",
-			"city": "Iron Mountain",
-			"po": "",
-			"state": "MI",
-			"zip": "49801"
-		},
-		"phone": "9063023006",
-		"email": "FoodPantryIM@baycollege.edu",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://mybay.baycollege.edu/ICS/Current_Students/Academic_Support/Food_Pantry/Food_Pantry_Blog.jnz?portlet=Free-form_Content",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Students only", "Please call ahead for appointment"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Denim Heart Thrift and Pantry",
-		"geo": {
-			"lat": 45.810413,
-			"lng": -88.063453
-		},
-		"address": {
-			"street": "621 N Hooper St.",
-			"city": "Kingsford",
-			"po": "",
-			"state": "MI",
-			"zip": "49802"
-		},
-		"phone": "9067670132",
-		"email": "",
-		"contact": {
-			"name": "Christina Ureta",
-			"email": "cureta@dicsami.org",
-			"phone": "9067742256"
-		},
-		"website": "https://www.dicsami.org/programs/denim-heart-thrift-pantry/",
-		"donate": {
-			"link": "https://www.dicsami.org/donate/",
-			"message": ["Accepts food donations T 10a to 11:30a"]
-		},
-		"flags": [],
-		"hours": {
-			"m": "",
-			"t": "1:00pm-2:30pm",
-			"w": "10:30am-12:30pm",
-			"th": "1:00pm-2:30pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Kingsford Salvation Army Pantry",
-		"geo": {
-			"lat": 45.800881,
-			"lng": -88.072742
-		},
-		"address": {
-			"street": "145 Roseland Street",
-			"city": "Kingsford",
-			"po": "",
-			"state": "MI",
-			"zip": "49802"
-		},
-		"phone": "9067795717",
-		"email": "tara.coss@usc.salvationarmy.org",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://centralusa.salvationarmy.org/dickinsoncounty/cure-hunger/",
-		"donate": {
-			"link": "https://centralusa.salvationarmy.org/dickinsoncounty/cure-hunger/",
-			"message": []
-		},
-		"flags": ["Please call for appointment"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Maranatha Assembly of God",
-		"geo": {
-			"lat": 45.792581,
-			"lng": -88.067798
-		},
-		"address": {
-			"street": "917 Pyle Drive",
-			"city": "Kingsford",
-			"po": "",
-			"state": "MI",
-			"zip": "49802"
-		},
-		"phone": "9067747877",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.maranathaag.org/maranatha-messengers-2/",
-		"donate": {
-			"link": "https://www.maranathaag.org/online-giving/",
-			"message": []
-		},
-		"flags": ["Requires household income verification"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Norway Food Pantry",
-		"geo": {
-			"lat": 45.792519,
-			"lng": -87.906143
-		},
-		"address": {
-			"street": "130 O Dill Drive",
-			"city": "Norway",
-			"po": "",
-			"state": "MI",
-			"zip": "49870"
-		},
-		"phone": "9062829752",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.gracemethodistnorway.org/#block-yui_3_17_2_1_1713715570413_3986",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Families in need", "No documentation required", "Outside of hours help can be found by phone call"],
-		"hours": {
-			"m": "",
-			"t": "",
-			"w": "10:00am-12:00pm",
-			"th": "",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "St Barbara & St Mary SVdP Pantry",
-		"geo": {
-			"lat": 45.788645,
-			"lng": -87.913437
-		},
-		"address": {
-			"street": "431 Main St.",
-			"city": "Norway",
-			"po": "",
-			"state": "MI",
-			"zip": "49870"
-		},
-		"phone": "9065637302",
-		"email": "stvincentstore@norwaymi.com",
-		"contact": {
-			"name": "Rosemary Kmiec",
-			"email": "stvincentstore@norwaymi.com",
-			"phone": "9065637302"
-		},
-		"website": "https://www.facebook.com/p/St-Vincent-de-Paul-Norway-100064176673621/",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Limited to residents of Norway, MI"],
-		"hours": {
-			"m": "",
-			"t": "9:00am-11:00am",
-			"w": "9:00am-11:00am",
-			"th": "9:00am-11:00am",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Guardian Angels SVdP Pantry",
-		"geo": {
-			"lat": 46.097152,
-			"lng": -88.333637
-		},
-		"address": {
-			"street": "11 N Fifth St.",
-			"city": "Crystal Falls",
-			"po": "",
-			"state": "MI",
-			"zip": "49920"
-		},
-		"phone": "9068740171",
-		"email": "",
-		"contact": {
-			"name": "Teresa Pool",
-			"email": "Teresa.ollila@yahoo.com",
-			"phone": "9062843575"
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": {
-			"m": "",
-			"t": "10:00am-12:00pm",
-			"w": "",
-			"th": "10:00am-12:00pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "St Agnes & St Cecilia SVdP Pantry",
-		"geo": {
-			"lat": 46.095173,
-			"lng": -88.638512
-		},
-		"address": {
-			"street": "313 Genesee St.",
-			"city": "Iron River",
-			"po": "",
-			"state": "MI",
-			"zip": "49935"
-		},
-		"phone": "9062659390",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Offers emergency food provisions"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "St Anthony SVdP Pantry",
-		"geo": {
-			"lat": 46.281962,
-			"lng": -87.437519
-		},
-		"address": {
-			"street": "111 N. Pine St.",
-			"city": "Gwinn",
-			"po": "PO Box 766",
-			"state": "MI",
-			"zip": "49841"
-		},
-		"phone": "9063462402",
-		"email": "",
-		"contact": {
-			"name": "Chris Adams",
-			"email": "",
-			"phone": "9063465235"
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["TEFAP"],
-		"hours": {
-			"m": "",
-			"t": "1:00pm-3:00pm",
-			"w": "",
-			"th": "1:00pm-3:00pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Hope Free Church",
-		"geo": {
-			"lat": 46.502321,
-			"lng": -87.662943
-		},
-		"address": {
-			"street": "795 North Lake Drive",
-			"city": "Ishpeming",
-			"po": "",
-			"state": "MI",
-			"zip": "49849"
-		},
-		"phone": "9064855714",
-		"email": "secretary@hopefreelutheran.org",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Please call ahead for information"],
-		"hours": "3rd Monday of the month 9:00am-11:00am"
-	},
-	{
-		"name": "St John SVdP Pantry",
-		"geo": {
-			"lat": 46.487923,
-			"lng": -87.667512
-		},
-		"address": {
-			"street": "322 Cleveland",
-			"city": "Ishpeming",
-			"po": "PO Box #2",
-			"state": "MI",
-			"zip": "49849"
-		},
-		"phone": "9064864237",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://ishpemingcatholic.com/help",
-		"donate": {
-			"link": "https://ishpemingcatholic.com/give",
-			"message": []
-		},
-		"flags": ["Limited to 1 visit per month", "No appointment needed"],
-		"hours": {
-			"m": "1:00pm-3:00pm",
-			"t": "",
-			"w": "10:00am-12:00pm",
-			"th": "",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Mother Olga Food Pantry",
-		"geo": {
-			"lat": 46.491438,
-			"lng": -87.659126
-		},
-		"address": {
-			"street": "700 E. North st",
-			"city": "Ishpeming",
-			"po": "",
-			"state": "MI",
-			"zip": "49849"
-		},
-		"phone": "9063600664",
-		"email": "dbays3625@yahoo.com",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["After-hours apt by phone call"],
-		"hours": {
-			"m": "5:00pm-6:00pm",
-			"t": "",
-			"w": "",
-			"th": "",
-			"f": "",
-			"sa": "6:00pm-7:00pm",
-			"su": "12:30pm-1:30pm"
-		}
-	},
-	{
-		"name": "NMU Marquette Ending Hunger",
-		"geo": {
-			"lat": 46.562835,
-			"lng": -87.403587
-		},
-		"address": {
-			"street": "1401 Presque Isle",
-			"city": "Marquette",
-			"po": "",
-			"state": "MI",
-			"zip": "49855"
-		},
-		"phone": "",
-		"email": "foodpantry@nmu.edu",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://nmu.edu/dso/nmu-food-pantry",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Restricted to students", "Call for appointment"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Marquette & Ishpeming Salvation Army Pantry",
-		"geo": {
-			"lat": 46.542173,
-			"lng": -87.402843
-		},
-		"address": {
-			"street": "1009 W. Baraga",
-			"city": "Marquette",
-			"po": "",
-			"state": "MI",
-			"zip": "49855"
-		},
-		"phone": "9062262241",
-		"email": "bill.brutto@usc.salvationarmy.org",
-		"contact": {
-			"name": "Bill Brutto",
-			"email": "",
-			"phone": "9062262241"
-		},
-		"website": "https://centralusa.salvationarmy.org/marquettecountymi/programs-and-services/#Basic-Needs",
-		"donate": {
-			"link": "https://give.salvationarmyusa.org/give/164006/#!/donation/checkout",
-			"message": ["Call for emergency food assistance", "Donate through Meijer Simply Give program"]
-		},
-		"flags": [],
-		"hours": {
-			"m": "9:00am-11:30am & 1:00pm-3:30pm",
-			"t": "",
-			"w": "",
-			"th": "9:00am-11:30am & 1:00pm-3:30pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Marquette SVdP Pantry",
-		"geo": {
-			"lat": 46.569482,
-			"lng": -87.390825
-		},
-		"address": {
-			"street": "2119 Presque Isle Ave.",
-			"city": "Marquette",
-			"po": "",
-			"state": "MI",
-			"zip": "49855"
-		},
-		"phone": "9062263840",
-		"email": "",
-		"contact": {
-			"name": "Bob Barton",
-			"email": "rbarton221@outlook.com",
-			"phone": "9062262311"
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": ["Donate monetarily via Meijer Simply Give program", "Food donations accepted"]
-		},
-		"flags": [],
-		"hours": {
-			"m": "1:00pm-4:00pm",
-			"t": "",
-			"w": "1:00pm-4:00pm",
-			"th": "",
-			"f": "1:00pm-4:00pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Silver Creek Thrift Community Food Pantry",
-		"geo": {
-			"lat": 46.534582,
-			"lng": -87.460125
-		},
-		"address": {
-			"street": "219 Silver Creek Rd",
-			"city": "Marquette",
-			"po": "",
-			"state": "MI",
-			"zip": "49855"
-		},
-		"phone": "9062732473",
-		"email": "jim@silvercreekchurch.org",
-		"contact": {
-			"name": "Kay Bammert",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": [
-				"Application: No form, basic questionnaire based on Feeding America Guidlines",
-				"Clients free to take what they need after checking in",
-				"Accepts all non-parishale food donations",
-				"No income or residence restrictions",
-				"Food purchased through feeding america west michigan & local walmart",
-				"Stocked twice weekly",
-				"Donations can be made at checkout at Thrift Store"
-			]
-		},
-		"flags": [],
-		"hours": ""
-	},
-	{
-		"name": "Negaunee SVdP Pantry",
-		"geo": {
-			"lat": 46.502127,
-			"lng": -87.605843
-		},
-		"address": {
-			"street": "211 Iron St.",
-			"city": "Negaunee",
-			"po": "",
-			"state": "MI",
-			"zip": "49866"
-		},
-		"phone": "9063614240",
-		"email": "",
-		"contact": {
-			"name": "Steve",
-			"email": "fperucco@gmail.com",
-			"phone": "9064754284"
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "St Augustine SVdP Pantry",
-		"geo": {
-			"lat": 46.409784,
-			"lng": -87.979126
-		},
-		"address": {
-			"street": "322 Kloman Ave",
-			"city": "Republic",
-			"po": "",
-			"state": "MI",
-			"zip": "49879"
-		},
-		"phone": "9063768207",
-		"email": "",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": ["Limit one visit per month"],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "Alger Community Food Pantry",
-		"geo": {
-			"lat": 46.411372,
-			"lng": -86.643853
-		},
-		"address": {
-			"street": "414 E. Munising Ave.",
-			"city": "Munising",
-			"po": "",
-			"state": "MI",
-			"zip": "49862"
-		},
-		"phone": "9064502390",
-		"email": "algercommunityfoodpantry@gmail.com",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.facebook.com/algercommunityfoodpantry",
-		"donate": {
-			"link": "",
-			"message": ["Acquires food through donations, canned food drives", "Covers free Altran bus trans to food pantry"]
-		},
-		"flags": ["Eligibility - alger county resident", "Must complete request for items needed, name & address, self-declared need"],
-		"hours": {
-			"m": "",
-			"t": "12:00pm-3:30pm",
-			"w": "",
-			"th": "12:00pm-3:30pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Munising SVdP Pantry",
-		"geo": {
-			"lat": 46.410876,
-			"lng": -86.650837
-		},
-		"address": {
-			"street": "413 Maple St.",
-			"city": "Munising",
-			"po": "",
-			"state": "MI",
-			"zip": "49862"
-		},
-		"phone": "9063873496",
-		"email": "svdp@svdpup.org",
-		"contact": {
-			"name": "",
-			"email": "",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": {
-			"m": "12:00pm-3:00pm",
-			"t": "",
-			"w": "12:00pm-3:00pm",
-			"th": "",
-			"f": "12:00pm-3:00pm",
-			"sa": "",
-			"su": ""
-		}
-	},
-	{
-		"name": "Good Neighbor Services",
-		"geo": {
-			"lat": 45.957462,
-			"lng": -86.249736
-		},
-		"address": {
-			"street": "200 Deer St.",
-			"city": "Manistique",
-			"po": "",
-			"state": "MI",
-			"zip": "49854"
-		},
-		"phone": "9063413927",
-		"email": "goodneighbor1@hotmail.com",
-		"contact": {
-			"name": "Margo",
-			"email": "",
-			"phone": ""
-		},
-		"website": "https://www.facebook.com/profile.php?id=100064867233440",
-		"donate": {
-			"link": "",
-			"message": []
-		},
-		"flags": [],
-		"hours": "By appointment only"
-	},
-	{
-		"name": "St Francis de Sales SVdP Pantry",
-		"geo": {
-			"lat": 45.957018,
-			"lng": -86.246921
-		},
-		"address": {
-			"street": "231 S. Cedar St.",
-			"city": "Manistique",
-			"po": "PO Box 351",
-			"state": "MI",
-			"zip": "49854"
-		},
-		"phone": "9063418181",
-		"email": "",
-		"contact": {
-			"name": "Kay Cousino",
-			"email": "kaylee1944@gmail.com",
-			"phone": ""
-		},
-		"website": "",
-		"donate": {
-			"link": "",
-			"message": ["FAWM recipient", "UPCAP recipient", "Accepts public donation"]
-		},
-		"flags": [],
-		"hours": {
-			"m": "10:00am-3:00pm",
-			"t": "10:00am-3:00pm",
-			"w": "",
-			"th": "10:00am-3:00pm",
-			"f": "",
-			"sa": "",
-			"su": ""
-		}
-	}
+  {
+    "name": "Escanaba Salvation Army Pantry",
+    "geo": {
+      "lat": 45.739132,
+      "lng": -87.090126
+    },
+    "address": {
+      "street": "3001 South 5th Ave.",
+      "city": "Escanaba",
+      "po": "",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "phone": "9067860590",
+    "email": "wum.escanaba@usc.salvationarmy.org",
+    "contact": {
+      "name": "Doug Winters",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://centralusa.salvationarmy.org/escanaba/",
+    "donate": {
+      "link": "https://give.salvationarmyusa.org/give/164006/#!/donation/checkout",
+      "message": [
+        "Food donations can be made during operational hours"
+      ]
+    },
+    "flags": [
+      "Client choice pantry",
+      "Income eligibility determined by TEFAP",
+      "Limited to Delta, Schoolcraft, and Menominee residents"
+    ],
+    "hours": {
+      "m": "9:00am-12:00pm, 1:00pm-3:30pm",
+      "t": "",
+      "w": "",
+      "th": "9:00am-12:00pm, 1:00pm-3:30pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Escanaba Seventh Day Adventist Pantry",
+    "geo": {
+      "lat": 45.744255,
+      "lng": -87.079735
+    },
+    "address": {
+      "street": "210 S. Lincoln Rd",
+      "city": "Escanaba",
+      "po": "",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "phone": "9067860887",
+    "email": "myplan109@yahoo.com",
+    "contact": {
+      "name": "Robin",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.facebook.com/EscanabaACS/",
+    "donate": {
+      "link": "https://adventistgiving.org/donate/ANFFIL",
+      "message": []
+    },
+    "flags": [],
+    "hours": {
+      "m": "1:00pm-4:00pm",
+      "t": "",
+      "w": "",
+      "th": "",
+      "f": "1:00pm-4:00pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Escanaba SVdP Pantry",
+    "geo": {
+      "lat": 45.746492,
+      "lng": -87.058499
+    },
+    "address": {
+      "street": "115 N. 8th St.",
+      "city": "Escanaba",
+      "po": "",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "phone": "9067891434",
+    "email": "stvincentdepaul1014@yahoo.com",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": "9067862808"
+    },
+    "website": "https://www.facebook.com/SVdPEskyServiceCenter/",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Hot lunch on wed 11:30-1pm"
+    ],
+    "hours": {
+      "m": "10:00am-2:00pm",
+      "t": "",
+      "w": "10:00am-2:00pm",
+      "th": "",
+      "f": "10:00am-2:00pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Bay College Student Pantry Bay DeNoc",
+    "geo": {
+      "lat": 45.770065,
+      "lng": -87.080795
+    },
+    "address": {
+      "street": "2001 N Lincoln Road",
+      "city": "Escanaba",
+      "po": "",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "phone": "9062174014",
+    "email": "FoodPantryESC@baycollege.edu",
+    "contact": {
+      "name": "Kari Menunier",
+      "email": "kari.meunier@baycollege.edu",
+      "phone": ""
+    },
+    "website": "https://mybay.baycollege.edu/ICS/Current_Students/Academic_Support/Food_Pantry/Food_Pantry_Blog.jnz?portlet=Free-form_Content",
+    "donate": {
+      "link": "",
+      "message": [
+        "Community donations"
+      ]
+    },
+    "flags": [
+      "Students only",
+      "Please call for appointment"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Escanaba Senior Center",
+    "geo": {
+      "lat": 45.747158,
+      "lng": -87.077156
+    },
+    "address": {
+      "street": "225 N 21st Street",
+      "city": "Escanaba",
+      "po": "",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "phone": "9067868850",
+    "email": "",
+    "contact": {
+      "name": "Jamie",
+      "email": "",
+      "phone": "9067867080"
+    },
+    "website": "https://www.mdscaa.org/c",
+    "donate": {
+      "link": "https://www.mdscaa.org/donate",
+      "message": []
+    },
+    "flags": [
+      "TEFAP only",
+      "Please call ahead to make appointment"
+    ],
+    "hours": {
+      "m": "",
+      "t": "1:00pm-3:00pm",
+      "w": "",
+      "th": "",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "All Saints SVdP Pantry",
+    "geo": {
+      "lat": 45.847977,
+      "lng": -87.020127
+    },
+    "address": {
+      "street": "816 Delta Ave.",
+      "city": "Gladstone",
+      "po": "",
+      "state": "MI",
+      "zip": "49837"
+    },
+    "phone": "9064281234",
+    "email": "svdpgladstonere@yahoo.com",
+    "contact": {
+      "name": "",
+      "email": "svdpgladstonere@yahoo.com",
+      "phone": ""
+    },
+    "website": "https://www.facebook.com/StVincentdePaulGladstone/",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": {
+      "m": "11:00am-1:45pm",
+      "t": "",
+      "w": "11:00am-1:45pm",
+      "th": "",
+      "f": "11:00am-1:45pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Gladstone Senior Center",
+    "geo": {
+      "lat": 45.849653,
+      "lng": -87.019183
+    },
+    "address": {
+      "street": "303 N. 8th St",
+      "city": "Gladstone",
+      "po": "",
+      "state": "MI",
+      "zip": "49837"
+    },
+    "phone": "9064282201",
+    "email": "",
+    "contact": {
+      "name": "Jamie",
+      "email": "",
+      "phone": "9067867080"
+    },
+    "website": "https://www.mdscaa.org/c",
+    "donate": {
+      "link": "https://www.mdscaa.org/donate",
+      "message": []
+    },
+    "flags": [
+      "TEFAP only",
+      "Please call ahead to make appointment"
+    ],
+    "hours": {
+      "m": "",
+      "t": "1:00pm-3:00pm",
+      "w": "",
+      "th": "",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Faith Lutheran Church Food Pantry",
+    "geo": {
+      "lat": 46.06884,
+      "lng": -87.16597
+    },
+    "address": {
+      "street": "",
+      "city": "Rock",
+      "po": "PO Box 227",
+      "state": "MI",
+      "zip": "49880"
+    },
+    "phone": "9063566225",
+    "email": "faithlc.rock@gmail.com",
+    "contact": {
+      "name": "Lucy",
+      "email": "",
+      "phone": "9063566225"
+    },
+    "website": "https://www.facebook.com/faithinrock/",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Check facebook for food pantry dates"
+    ],
+    "hours": ""
+  },
+  {
+    "name": "Iron Mountain SVdP Pantry",
+    "geo": {
+      "lat": 45.818281,
+      "lng": -88.067891
+    },
+    "address": {
+      "street": "117 West A Street",
+      "city": "Iron Mountain",
+      "po": "",
+      "state": "MI",
+      "zip": "49801"
+    },
+    "phone": "9067790749",
+    "email": "svdpimfoodpantry@gmail.com",
+    "contact": {
+      "name": "",
+      "email": "svdpimfoodpantry@gmail.com",
+      "phone": ""
+    },
+    "website": "https://www.svdpironmountain.org/food-pantry",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": {
+      "m": "9:00am-12:00pm",
+      "t": "9:00am-12:00pm (call for appointment)",
+      "w": "9:00am-12:00pm",
+      "th": "9:00am-12:00pm (call for appointment)",
+      "f": "9:00am-12:00pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "First Evangelical Lutheran Church",
+    "geo": {
+      "lat": 45.810211,
+      "lng": -88.059326
+    },
+    "address": {
+      "street": "1210 S Stephenson Ave",
+      "city": "Iron Mountain",
+      "po": "",
+      "state": "MI",
+      "zip": "49801"
+    },
+    "phone": "9067740133",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.firstevangelicallutheranchurch.org/",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Appointment only, call ahead"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Bay West Student Food Community",
+    "geo": {
+      "lat": 45.944778,
+      "lng": -87.966426
+    },
+    "address": {
+      "street": "2801 US 2",
+      "city": "Iron Mountain",
+      "po": "",
+      "state": "MI",
+      "zip": "49801"
+    },
+    "phone": "9063023006",
+    "email": "FoodPantryIM@baycollege.edu",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://mybay.baycollege.edu/ICS/Current_Students/Academic_Support/Food_Pantry/Food_Pantry_Blog.jnz?portlet=Free-form_Content",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Students only",
+      "Please call ahead for appointment"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Denim Heart Thrift and Pantry",
+    "geo": {
+      "lat": 45.800044,
+      "lng": -88.076123
+    },
+    "address": {
+      "street": "621 N Hooper St.",
+      "city": "Kingsford",
+      "po": "",
+      "state": "MI",
+      "zip": "49802"
+    },
+    "phone": "9067670132",
+    "email": "",
+    "contact": {
+      "name": "Christina Ureta",
+      "email": "cureta@dicsami.org",
+      "phone": "9067742256"
+    },
+    "website": "https://www.dicsami.org/programs/denim-heart-thrift-pantry/",
+    "donate": {
+      "link": "https://www.dicsami.org/donate/",
+      "message": [
+        "Accepts food donations T 10a to 11:30a"
+      ]
+    },
+    "flags": [],
+    "hours": {
+      "m": "",
+      "t": "1:00pm-2:30pm",
+      "w": "10:30am-12:30pm",
+      "th": "1:00pm-2:30pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Kingsford Salvation Army Pantry",
+    "geo": {
+      "lat": 45.79533,
+      "lng": -88.07915
+    },
+    "address": {
+      "street": "145 Roseland Street",
+      "city": "Kingsford",
+      "po": "",
+      "state": "MI",
+      "zip": "49802"
+    },
+    "phone": "9067795717",
+    "email": "tara.coss@usc.salvationarmy.org",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://centralusa.salvationarmy.org/dickinsoncounty/cure-hunger/",
+    "donate": {
+      "link": "https://centralusa.salvationarmy.org/dickinsoncounty/cure-hunger/",
+      "message": []
+    },
+    "flags": [
+      "Please call for appointment"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Maranatha Assembly of God",
+    "geo": {
+      "lat": 45.803647,
+      "lng": -88.083285
+    },
+    "address": {
+      "street": "917 Pyle Drive",
+      "city": "Kingsford",
+      "po": "",
+      "state": "MI",
+      "zip": "49802"
+    },
+    "phone": "9067747877",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.maranathaag.org/maranatha-messengers-2/",
+    "donate": {
+      "link": "https://www.maranathaag.org/online-giving/",
+      "message": []
+    },
+    "flags": [
+      "Requires household income verification"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Norway Food Pantry",
+    "geo": {
+      "lat": 45.791384,
+      "lng": -87.926217
+    },
+    "address": {
+      "street": "130 O Dill Drive",
+      "city": "Norway",
+      "po": "",
+      "state": "MI",
+      "zip": "49870"
+    },
+    "phone": "9062829752",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.gracemethodistnorway.org/#block-yui_3_17_2_1_1713715570413_3986",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Families in need",
+      "No documentation required",
+      "Outside of hours help can be found by phone call"
+    ],
+    "hours": {
+      "m": "",
+      "t": "",
+      "w": "10:00am-12:00pm",
+      "th": "",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "St Barbara & St Mary SVdP Pantry",
+    "geo": {
+      "lat": 45.784698,
+      "lng": -87.907724
+    },
+    "address": {
+      "street": "431 Main St.",
+      "city": "Norway",
+      "po": "",
+      "state": "MI",
+      "zip": "49870"
+    },
+    "phone": "9065637302",
+    "email": "stvincentstore@norwaymi.com",
+    "contact": {
+      "name": "Rosemary Kmiec",
+      "email": "stvincentstore@norwaymi.com",
+      "phone": "9065637302"
+    },
+    "website": "https://www.facebook.com/p/St-Vincent-de-Paul-Norway-100064176673621/",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Limited to residents of Norway, MI"
+    ],
+    "hours": {
+      "m": "",
+      "t": "9:00am-11:00am",
+      "w": "9:00am-11:00am",
+      "th": "9:00am-11:00am",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Guardian Angels SVdP Pantry",
+    "geo": {
+      "lat": 46.170599,
+      "lng": -88.346074
+    },
+    "address": {
+      "street": "11 N Fifth St.",
+      "city": "Crystal Falls",
+      "po": "",
+      "state": "MI",
+      "zip": "49920"
+    },
+    "phone": "9068740171",
+    "email": "",
+    "contact": {
+      "name": "Teresa Pool",
+      "email": "Teresa.ollila@yahoo.com",
+      "phone": "9062843575"
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": {
+      "m": "",
+      "t": "10:00am-12:00pm",
+      "w": "",
+      "th": "10:00am-12:00pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "St Agnes & St Cecilia SVdP Pantry",
+    "geo": {
+      "lat": 46.091345,
+      "lng": -88.641905
+    },
+    "address": {
+      "street": "313 Genesee St.",
+      "city": "Iron River",
+      "po": "",
+      "state": "MI",
+      "zip": "49935"
+    },
+    "phone": "9062659390",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Offers emergency food provisions"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "St Anthony SVdP Pantry",
+    "geo": {
+      "lat": 46.2791,
+      "lng": -87.439131
+    },
+    "address": {
+      "street": "111 N. Pine St.",
+      "city": "Gwinn",
+      "po": "PO Box 766",
+      "state": "MI",
+      "zip": "49841"
+    },
+    "phone": "9063462402",
+    "email": "",
+    "contact": {
+      "name": "Chris Adams",
+      "email": "",
+      "phone": "9063465235"
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "TEFAP"
+    ],
+    "hours": {
+      "m": "",
+      "t": "1:00pm-3:00pm",
+      "w": "",
+      "th": "1:00pm-3:00pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Hope Free Church",
+    "geo": {
+      "lat": 46.487385,
+      "lng": -87.707161
+    },
+    "address": {
+      "street": "795 North Lake Drive",
+      "city": "Ishpeming",
+      "po": "",
+      "state": "MI",
+      "zip": "49849"
+    },
+    "phone": "9064855714",
+    "email": "secretary@hopefreelutheran.org",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Please call ahead for information"
+    ],
+    "hours": "3rd Monday of the month 9:00am-11:00am"
+  },
+  {
+    "name": "St John SVdP Pantry",
+    "geo": {
+      "lat": 46.489796,
+      "lng": -87.665301
+    },
+    "address": {
+      "street": "322 Cleveland",
+      "city": "Ishpeming",
+      "po": "PO Box #2",
+      "state": "MI",
+      "zip": "49849"
+    },
+    "phone": "9064864237",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://ishpemingcatholic.com/help",
+    "donate": {
+      "link": "https://ishpemingcatholic.com/give",
+      "message": []
+    },
+    "flags": [
+      "Limited to 1 visit per month",
+      "No appointment needed"
+    ],
+    "hours": {
+      "m": "1:00pm-3:00pm",
+      "t": "",
+      "w": "10:00am-12:00pm",
+      "th": "",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Mother Olga Food Pantry",
+    "geo": {
+      "lat": 46.493808,
+      "lng": -87.663904
+    },
+    "address": {
+      "street": "700 E. North st",
+      "city": "Ishpeming",
+      "po": "",
+      "state": "MI",
+      "zip": "49849"
+    },
+    "phone": "9063600664",
+    "email": "dbays3625@yahoo.com",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "After-hours apt by phone call"
+    ],
+    "hours": {
+      "m": "5:00pm-6:00pm",
+      "t": "",
+      "w": "",
+      "th": "",
+      "f": "",
+      "sa": "6:00pm-7:00pm",
+      "su": "12:30pm-1:30pm"
+    }
+  },
+  {
+    "name": "NMU Marquette Ending Hunger",
+    "geo": {
+      "lat": 46.556369,
+      "lng": -87.400847
+    },
+    "address": {
+      "street": "1401 Presque Isle",
+      "city": "Marquette",
+      "po": "",
+      "state": "MI",
+      "zip": "49855"
+    },
+    "phone": "",
+    "email": "foodpantry@nmu.edu",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://nmu.edu/dso/nmu-food-pantry",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Restricted to students",
+      "Call for appointment"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Marquette & Ishpeming Salvation Army Pantry",
+    "geo": {
+      "lat": 46.544458,
+      "lng": -87.421953
+    },
+    "address": {
+      "street": "1009 W. Baraga",
+      "city": "Marquette",
+      "po": "",
+      "state": "MI",
+      "zip": "49855"
+    },
+    "phone": "9062262241",
+    "email": "bill.brutto@usc.salvationarmy.org",
+    "contact": {
+      "name": "Bill Brutto",
+      "email": "",
+      "phone": "9062262241"
+    },
+    "website": "https://centralusa.salvationarmy.org/marquettecountymi/programs-and-services/#Basic-Needs",
+    "donate": {
+      "link": "https://give.salvationarmyusa.org/give/164006/#!/donation/checkout",
+      "message": [
+        "Call for emergency food assistance",
+        "Donate through Meijer Simply Give program"
+      ]
+    },
+    "flags": [],
+    "hours": {
+      "m": "9:00am-11:30am & 1:00pm-3:30pm",
+      "t": "",
+      "w": "",
+      "th": "9:00am-11:30am & 1:00pm-3:30pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Marquette SVdP Pantry",
+    "geo": {
+      "lat": 46.568285,
+      "lng": -87.397145
+    },
+    "address": {
+      "street": "2119 Presque Isle Ave.",
+      "city": "Marquette",
+      "po": "",
+      "state": "MI",
+      "zip": "49855"
+    },
+    "phone": "9062263840",
+    "email": "",
+    "contact": {
+      "name": "Bob Barton",
+      "email": "rbarton221@outlook.com",
+      "phone": "9062262311"
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": [
+        "Donate monetarily via Meijer Simply Give program",
+        "Food donations accepted"
+      ]
+    },
+    "flags": [],
+    "hours": {
+      "m": "1:00pm-4:00pm",
+      "t": "",
+      "w": "1:00pm-4:00pm",
+      "th": "",
+      "f": "1:00pm-4:00pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Silver Creek Thrift Community Food Pantry",
+    "geo": {
+      "lat": 46.492407,
+      "lng": -87.358277
+    },
+    "address": {
+      "street": "219 Silver Creek Rd",
+      "city": "Marquette",
+      "po": "",
+      "state": "MI",
+      "zip": "49855"
+    },
+    "phone": "9062732473",
+    "email": "jim@silvercreekchurch.org",
+    "contact": {
+      "name": "Kay Bammert",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": [
+        "Application: No form, basic questionnaire based on Feeding America Guidlines",
+        "Clients free to take what they need after checking in",
+        "Accepts all non-parishale food donations",
+        "No income or residence restrictions",
+        "Food purchased through feeding america west michigan & local walmart",
+        "Stocked twice weekly",
+        "Donations can be made at checkout at Thrift Store"
+      ]
+    },
+    "flags": [],
+    "hours": ""
+  },
+  {
+    "name": "Negaunee SVdP Pantry",
+    "geo": {
+      "lat": 46.49868,
+      "lng": -87.609612
+    },
+    "address": {
+      "street": "211 Iron St.",
+      "city": "Negaunee",
+      "po": "",
+      "state": "MI",
+      "zip": "49866"
+    },
+    "phone": "9063614240",
+    "email": "",
+    "contact": {
+      "name": "Steve",
+      "email": "fperucco@gmail.com",
+      "phone": "9064754284"
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "St Augustine SVdP Pantry",
+    "geo": {
+      "lat": 46.40688,
+      "lng": -87.97819
+    },
+    "address": {
+      "street": "322 Kloman Ave",
+      "city": "Republic",
+      "po": "",
+      "state": "MI",
+      "zip": "49879"
+    },
+    "phone": "9063768207",
+    "email": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [
+      "Limit one visit per month"
+    ],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "Alger Community Food Pantry",
+    "geo": {
+      "lat": 46.40878,
+      "lng": -86.648755
+    },
+    "address": {
+      "street": "414 E. Munising Ave.",
+      "city": "Munising",
+      "po": "",
+      "state": "MI",
+      "zip": "49862"
+    },
+    "phone": "9064502390",
+    "email": "algercommunityfoodpantry@gmail.com",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.facebook.com/algercommunityfoodpantry",
+    "donate": {
+      "link": "",
+      "message": [
+        "Acquires food through donations, canned food drives",
+        "Covers free Altran bus trans to food pantry"
+      ]
+    },
+    "flags": [
+      "Eligibility - alger county resident",
+      "Must complete request for items needed, name & address, self-declared need"
+    ],
+    "hours": {
+      "m": "",
+      "t": "12:00pm-3:30pm",
+      "w": "",
+      "th": "12:00pm-3:30pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Munising SVdP Pantry",
+    "geo": {
+      "lat": 46.408055,
+      "lng": -86.656021
+    },
+    "address": {
+      "street": "413 Maple St.",
+      "city": "Munising",
+      "po": "",
+      "state": "MI",
+      "zip": "49862"
+    },
+    "phone": "9063873496",
+    "email": "svdp@svdpup.org",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": {
+      "m": "12:00pm-3:00pm",
+      "t": "",
+      "w": "12:00pm-3:00pm",
+      "th": "",
+      "f": "12:00pm-3:00pm",
+      "sa": "",
+      "su": ""
+    }
+  },
+  {
+    "name": "Good Neighbor Services",
+    "geo": {
+      "lat": 45.963904,
+      "lng": -86.253831
+    },
+    "address": {
+      "street": "200 Deer St.",
+      "city": "Manistique",
+      "po": "",
+      "state": "MI",
+      "zip": "49854"
+    },
+    "phone": "9063413927",
+    "email": "goodneighbor1@hotmail.com",
+    "contact": {
+      "name": "Margo",
+      "email": "",
+      "phone": ""
+    },
+    "website": "https://www.facebook.com/profile.php?id=100064867233440",
+    "donate": {
+      "link": "",
+      "message": []
+    },
+    "flags": [],
+    "hours": "By appointment only"
+  },
+  {
+    "name": "St Francis de Sales SVdP Pantry",
+    "geo": {
+      "lat": 45.955669,
+      "lng": -86.246235
+    },
+    "address": {
+      "street": "231 S. Cedar St.",
+      "city": "Manistique",
+      "po": "PO Box 351",
+      "state": "MI",
+      "zip": "49854"
+    },
+    "phone": "9063418181",
+    "email": "",
+    "contact": {
+      "name": "Kay Cousino",
+      "email": "kaylee1944@gmail.com",
+      "phone": ""
+    },
+    "website": "",
+    "donate": {
+      "link": "",
+      "message": [
+        "FAWM recipient",
+        "UPCAP recipient",
+        "Accepts public donation"
+      ]
+    },
+    "flags": [],
+    "hours": {
+      "m": "10:00am-3:00pm",
+      "t": "10:00am-3:00pm",
+      "w": "",
+      "th": "10:00am-3:00pm",
+      "f": "",
+      "sa": "",
+      "su": ""
+    }
+  }
 ]

@@ -1,5 +1,5 @@
 import type { Config, FooterComponentQueryResponse, InformationLink, SocialLink } from '@/types/footer';
-import { footerQuery } from '@/lib/API/queries';
+import { footerQuery } from '@/lib/API/queries/';
 import { getContent } from '@/lib/API';
 
 import type { Props } from '@/components/Footer.astro';

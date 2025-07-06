@@ -2,7 +2,7 @@
 export const prerender = false;
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import AliceIntro from '@/components/AliceIntro.astro';
-import AliceStats from '@/components/AliceStats';
+import AliceStats, { createProps as createStatsProps } from '@/components/AliceStats';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorDisplay from '@/components/ErrorDisplay';
 import AliceHero from '@/components/AliceHero.astro';
@@ -10,7 +10,14 @@ import AliceHub from '@/components/AliceHub/index.svelte';
 import ErrorBoundarySvelte from '@/components/ErrorBoundary.svelte';
 import ErrorDisplaySvelte from '@/components/ErrorDisplay.svelte';
 
-import type { UserGeo } from '@/types';
+import { type AliceStatsCardContent, type CountyStats, type FmtdChartData, type FmtdChartDataRecord, type HouseholdSurvivalBudgetCategories } from '@/types/aliceStats';
+
+import type { UserGeo } from '@/types/alice';
+import getPageContent from '@/lib/API';
+import { getDefaultProps, onError } from '@/lib/error';
+import type { AlicePageQueryResponse } from '@/types';
+import type { AliceStatsFieldsContent, RootQueryToAliceStatsConnection } from '@/types/__generated__/types';
+import { formatCountyStatsForChart, getAllCountyNames } from '@/config/aliceStats';
 
 export enum CategoryContainerDisplayOptions {
 	hidden = 'hidden',
@@ -37,8 +44,30 @@ const geoData: UserGeo = {
 					longitude: -87.3994,
 					country: 'US',
 				}
-			: {},
+			: undefined,
 };
+
+const path = Astro.url.pathname;
+const queryResponse = await getPageContent(path);
+if (!queryResponse) {
+	onError('No data returned from the server home page query', Astro);
+}
+
+const pageContent: AlicePageQueryResponse = queryResponse;
+
+if (!pageContent) {
+	onError('No data returned from the server home page query', Astro);
+}
+
+console.log('pageContent: ', pageContent);
+
+interface Props {
+	countyNames: string[];
+	statsByCounty: FmtdChartDataRecord;
+	content: AliceStatsCardContent;
+}
+
+const aliceStatsProps = createStatsProps(pageContent.allAliceStats);
 ---
 
 <DefaultLayout title='ALICE'>
@@ -46,7 +75,7 @@ const geoData: UserGeo = {
 		<AliceHero />
 		<AliceIntro />
 		<ErrorBoundary client:load fallback={ErrorDisplay}>
-			<AliceStats client:visible />
+			<AliceStats {...aliceStatsProps} client:visible />
 		</ErrorBoundary>
 		<ErrorBoundarySvelte client:load fallback={ErrorDisplaySvelte}>
 			<AliceHub client:only='svelte' userGeoData={geoData} />

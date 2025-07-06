@@ -1,48 +1,54 @@
 [
 	{
-		"name": "Supplemental Nutritional Assistance Program",
-		"provider": "MDHHS",
-		"description": "Temporary food assistance for eligible low-income families and individuals is available from the U.S. Department of Agriculture",
-		"link": "https://www.michigan.gov/mdhhs/assistance-programs/food",
-		"serviceAreas": ["all"],
-		"requirements": ["Visit provider website for information"]
+			"name": "Supplemental Nutritional Assistance Program",
+			"provider": "MDHHS",
+			"description": "Temporary food assistance for eligible low-income families and individuals is available from the U.S. Department of Agriculture",
+			"link": "https://www.michigan.gov/mdhhs/assistance-programs/food",
+			"serviceAreas": ["all"],
+			"requirements": ["Visit provider website for information"],
+			"category": "food"
 	},
 	{
-		"name": "Women, Infants & Children",
-		"provider": "MDHHS",
-		"description": "A federally-funded Special Supplemental Nutrition Program of the Food and Nutrition Service of the United States Department of Agriculture and is administered by the Michigan Department of Health and Human Services, serving low and moderate income pregnant, breastfeeding, and postpartum women, infants, and children up to age five who are found to be at nutritional risk.",
-		"link": "https://www.michigan.gov/mdhhs/assistance-programs/wic",
-		"serviceAreas": ["all"],
-		"requirements": ["Visit provider website and click the 'Am I Eligible' button"]
+			"name": "Women, Infants & Children",
+			"provider": "MDHHS",
+			"description": "A federally-funded Special Supplemental Nutrition Program of the Food and Nutrition Service of the United States Department of Agriculture and is administered by the Michigan Department of Health and Human Services, serving low and moderate income pregnant, breastfeeding, and postpartum women, infants, and children up to age five who are found to be at nutritional risk.",
+			"link": "https://www.michigan.gov/mdhhs/assistance-programs/wic",
+			"serviceAreas": ["all"],
+			"requirements": ["Visit provider website and click the 'Am I Eligible' button"],
+			"category": "food"
 	},
 	{
-		"name": "Congregate and Carry Out Meals",
-		"provider": "Menominee Delta Schoolcraft Community Action Agency",
-		"description": "A food assistance program offered by the Senior Services division of MDSCAA for seniors who are otherwise unable to prepare or afford nutritious meals.",
-		"link": "https://www.mdscaa.org/our-services/nutrition-services-",
-		"serviceAreas": ["menominee", "delta", "schoolcraft"],
-		"requirements": ["Must be at least 60 years of age", "Must fill out annual registration form"]
+			"name": "Congregate and Carry Out Meals",
+			"provider": "Menominee Delta Schoolcraft Community Action Agency",
+			"description": "A food assistance program offered by the Senior Services division of MDSCAA for seniors who are otherwise unable to prepare or afford nutritious meals.",
+			"link": "https://www.mdscaa.org/our-services/nutrition-services-",
+			"serviceAreas": ["menominee", "delta", "schoolcraft"],
+			"requirements": ["Must be at least 60 years of age", "Must fill out annual registration form"],
+			"category": "food"
 	},
 	{
-		"name": "Commodity Supplemental Food Program",
-		"provider": "Menominee Delta Schoolcraft Community Action Agency",
-		"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
-		"link": "https://www.mdscaa.org/our-services/csfp%2Ftefap-services",
-		"serviceAreas": ["menominee", "delta", "schoolcraft"],
-		"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"]
+			"name": "Commodity Supplemental Food Program",
+			"provider": "Menominee Delta Schoolcraft Community Action Agency",
+			"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
+			"link": "https://www.mdscaa.org/our-services/csfp%2Ftefap-services",
+			"serviceAreas": ["menominee", "delta", "schoolcraft"],
+			"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"],
+			"category": "food"
 	},
 	{
-		"name": "Commodity Supplemental Food Program - DICSA",
-		"provider": "Dickinson Iron Community Services Agency",
-		"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
-		"serviceAreas": ["dickinson", "iron"],
-		"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"]
+			"name": "Commodity Supplemental Food Program - DICSA",
+			"provider": "Dickinson Iron Community Services Agency",
+			"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
+			"serviceAreas": ["dickinson", "iron"],
+			"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"],
+			"category": "food"
 	},
 	{
-		"name": "Commodity Supplemental Food Program - Alger-Marquette",
-		"provider": "Alger-Marquette Community Action",
-		"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
-		"serviceAreas": ["alger", "marquette"],
-		"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"]
+			"name": "Commodity Supplemental Food Program - Alger-Marquette",
+			"provider": "Alger-Marquette Community Action",
+			"description": "The Commodity Supplemental Food Program is a program that is designed to supplement the nutritional needs of individuals over 60 years of age.",
+			"serviceAreas": ["alger", "marquette"],
+			"requirements": ["Must be at least 60 years of age", "Must complete application form", "See provider website for income eligibility requirements"],
+			"category": "food"
 	}
 ]

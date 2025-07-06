@@ -40,3 +40,4 @@ src/lib/save-redis-cache.ts
 src/lib/redis-cache
 src/config/devData.ts
 src/lib/devData/
+src/lib/API/explore.ts

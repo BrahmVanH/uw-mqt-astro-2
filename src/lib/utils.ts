@@ -4,8 +4,8 @@ import { APP_ROOT_URL_CLNT } from 'astro:env/client';
 import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
 import type { LatLng } from 'leaflet';
-import type { FoodPantry, FoodPantryGeoFeatureCollection } from '@/types';
-import type { Feature, Position } from 'geojson';
+import type { FoodPantry } from '@/types/alice';
+import type { Feature, FeatureCollection, Position } from 'geojson';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -156,7 +156,7 @@ export const getDistance = (coord1: LatLng, coord2: LatLng) => {
 
 export const pantriesToPantryFeatures = (
 	pantries: FoodPantry[],
-): FoodPantryGeoFeatureCollection => {
+): FeatureCollection => {
 	let id = 0;
 	const features = pantries.map((pantry) => {
 		id++;

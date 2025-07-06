@@ -13,7 +13,8 @@ import {
   getInvolvedPageQuery,
   partnerPageQuery,
   agenciesPageQuery,
-} from "./queries";
+  alicePageQuery,
+} from "./queries/";
 
 // import devDataJson from '@/lib/dist/redis-cache.json'
 
@@ -48,8 +49,10 @@ export const getContentQuery = (path: string) => {
       return getInvolvedPageQuery;
     case "/get-involved/individuals":
       return individualsPageQuery;
-    case "get-involved/partner/agencies":
+    case "/get-involved/partner/agencies":
       return agenciesPageQuery;
+    case "/united-for-alice":
+      return alicePageQuery;
     default:
       return homePageQuery;
   }
