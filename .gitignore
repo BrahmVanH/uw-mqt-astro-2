@@ -41,3 +41,4 @@ src/lib/redis-cache
 src/config/devData.ts
 src/lib/devData/
 src/lib/API/explore.ts
+src/pages/wp-explorer.astro
