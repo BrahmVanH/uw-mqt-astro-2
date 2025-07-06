@@ -59,7 +59,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
   };
   const [donationType, setDonationType] = React.useState<
     "monthly" | "one-time"
-  >("monthly");
+  >("one-time");
 
   // Add ref for error announcements
   const errorRef = React.useRef<HTMLDivElement>(null);
@@ -95,9 +95,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
 
         formData.append("amount", amount);
         formData.append("isRecurring", isRecurring.toString());
-        if (isRecurring && emailInput) {
-          formData.append("email", emailInput);
-        }
+        formData.append("email", emailInput ?? "");
         const response = await fetch(window.location.href, {
           method: "POST",
           body: formData,
@@ -125,12 +123,11 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
         setIsLoading(false);
       }
     },
-    [customAmount, selectedAmount, emailInput, donationType, emailInput],
+    [customAmount, selectedAmount, emailInput, donationType],
   );
 
   const handleAmountSelect = React.useCallback((amount: number) => {
     setSelectedAmount(amount);
-    setCustomAmount(amount.toString());
   }, []);
 
   const handleCustomAmountChange = React.useCallback((e: any) => {
@@ -147,6 +144,16 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
     formWrapper?.classList.add("hidden");
     formWrapper?.classList.remove("block");
   }, []);
+
+  const handleSetDonationType = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const type = e.target.value;
+    if (type === "monthly" || type === "one-time") {
+      setDonationType(type)
+    } else {
+      setFormError("Error occurred, please try again later");
+    }
+  }, [])
 
   React.useEffect(() => {
     if (selectedAmount) {
@@ -166,6 +173,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
     window.addEventListener("resize", checkViewport);
     return () => window.removeEventListener("resize", checkViewport);
   }, []);
+
 
   return (
     <Card
@@ -230,7 +238,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
                 clientSecret,
               }}
             >
-              <PaymentForm />
+              <PaymentForm emailInput={emailInput} />
             </Elements>
           ) : (
             <form
@@ -247,11 +255,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
                     name="donationType"
                     value="monthly"
                     checked={donationType === "monthly"}
-                    onChange={(e) => {
-                      setDonationType("monthly");
-                      setSelectedAmount(null);
-                      setCustomAmount("35");
-                    }}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSetDonationType(e)}
                     className="sr-only"
                   />
                   <label
@@ -276,20 +280,16 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
                     name="donationType"
                     value="one-time"
                     checked={donationType === "one-time"}
-                    onChange={() => {
-                      setDonationType("one-time");
-                      setSelectedAmount(null);
-                      setCustomAmount("35");
-                    }}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSetDonationType(e)}
                     className="sr-only"
                   />
                   <label
                     htmlFor="one-time"
                     className={cn(
                       donateFormButtonStyles,
-                      "cursor-pointer text-center  ",
+                      "flex justify-center items-center cursor-pointer",
                       donationType === "one-time"
-                        ? "  bg-primary-yellow-4 ring-2 ring-primary-yellow-1 shadow-sm text-md shadow-primary-yellow-2"
+                        ? "  bg-primary-yellow-4 ring-2 ring-primary-yellow-1 shadow-sm  shadow-primary-yellow-2"
                         : "",
                     )}
                   >
@@ -323,7 +323,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
                 </div>
 
                 {/* Custom Amount Input */}
-                <div className="flex flex-row items-center shadow-sm shadow-tertiary-black-3 rounded-[12px] px-2 py-1 max-h-8 font-donate-form">
+                <div className="flex flex-row items-center shadow-sm shadow-tertiary-black-3 rounded-[12px] px-2 py-6 max-h-8 font-donate-form">
                   <label htmlFor="custom-amount" className="sr-only">
                     Enter custom amount
                   </label>
@@ -353,25 +353,23 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
                     USD
                   </span>
                 </div>
-                {donationType === "monthly" && (
-                  <div className="flex flex-row items-center shadow-sm shadow-tertiary-black-3 rounded-[12px] px-2 py-1 max-h-8 font-donate-form">
-                    <label htmlFor="email" className="sr-only">
-                      Email address for monthly donations
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={emailInput}
-                      required
-                      className="max-h-8 w-full text-lg lg:text-xl text-primary-blue-2 font-medium placeholder:text-md lg:placeholder:text-lg placeholder:font-semibold border-none outline-none focus:outline-none active:outline-none focus:ring-0 ring-0 active:ring-0 focus-visible:ring-0 focus-visible:outline-none appearance-none"
-                      placeholder="Email"
-                      onChange={(e) => {
-                        handleInputChange(e);
-                      }}
-                    />
-                  </div>
-                )}
+                <div className="flex flex-row items-center shadow-sm shadow-tertiary-black-3 rounded-[12px] px-2 py-6 max-h-8 font-donate-form">
+                  <label htmlFor="email" className="sr-only">
+                    Donor email address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={emailInput}
+                    required={donationType === "monthly"}
+                    className="max-h-8 w-full text-lg lg:text-xl text-primary-blue-2 font-medium placeholder:text-md lg:placeholder:text-lg placeholder:font-semibold border-none outline-none focus:outline-none active:outline-none focus:ring-0 ring-0 active:ring-0 focus-visible:ring-0 focus-visible:outline-none appearance-none"
+                    placeholder="Email"
+                    onChange={(e) => {
+                      handleInputChange(e);
+                    }}
+                  />
+                </div>
               </fieldset>
 
               {formSuccess && (
@@ -398,7 +396,10 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
   );
 };
 
-const PaymentForm: React.FC = () => {
+interface PaymentFormProps {
+  emailInput: string | undefined;
+}
+const PaymentForm: React.FC<PaymentFormProps> = ({ emailInput }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -418,12 +419,17 @@ const PaymentForm: React.FC = () => {
         const { error } = await stripe.confirmPayment({
           elements,
           confirmParams: {
-            // Fix: Remove template literal and use direct parameter name
             return_url: `${APP_ROOT_URL_CLNT}/donate/success`,
+            payment_method_data: {
+              billing_details: {
+                email: emailInput ?? "",
+
+
+              }
+            }
           },
         });
 
-        // Only set error if we get one - otherwise Stripe will handle the redirect
         if (error) {
           if (
             error.type === "card_error" ||

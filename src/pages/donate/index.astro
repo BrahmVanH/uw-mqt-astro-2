@@ -10,7 +10,7 @@ import LearnMoreBtn from '@/components/LearnMoreBtn.svelte';
 if (Astro.request.method === 'POST') {
 	try {
 		const data = await Astro.request?.formData();
-		const isRecurring = data.get('isRecurring');
+		const isRecurring = data.get('isRecurring') == 'true';
 		const amount = Number(data.get('amount'));
 		const email = isRecurring ? (data.get('email') as string) : '';
 
@@ -31,13 +31,15 @@ if (Astro.request.method === 'POST') {
 			throw new Error('Email is required for recurring donations');
 		}
 
-		if (!isRecurring && email === '') {
+		if (!isRecurring) {
 			const paymentIntent = await stripe.paymentIntents.create({
 				amount: amount * 100,
 				currency: 'usd',
 				payment_method_types: ['card'],
 				metadata: {
 					source: 'donation_form',
+					donation_type: 'one-time',
+					email: email ?? undefined,
 				},
 			});
 
@@ -62,6 +64,9 @@ if (Astro.request.method === 'POST') {
 			});
 		}
 
+		if (!customer) {
+			throw new Error('Unable to process payment - could not create new customer');
+		}
 		const price = await stripe.prices.create({
 			unit_amount: amount * 100,
 			currency: 'usd',
@@ -72,6 +77,10 @@ if (Astro.request.method === 'POST') {
 			},
 		});
 
+		if (!price) {
+			throw new Error('Unable to process payment, could not create subscription price');
+		}
+
 		const subscription = await stripe.subscriptions.create({
 			customer: customer.id,
 			items: [{ price: price.id }],
@@ -79,6 +88,7 @@ if (Astro.request.method === 'POST') {
 			payment_settings: { save_default_payment_method: 'on_subscription' },
 			expand: ['latest_invoice.payment_intent'],
 		});
+
 		if (!subscription) {
 			throw new Error('Failed to create subscription');
 		}
@@ -137,7 +147,7 @@ const { title, heading, leadershipLevelsTable, moreOptions: moreWaysToDonate } =
 		<h1 class='sr-only'>Donate to United Way</h1>
 
 		<div class='lg:w-[80%] grid xl:grid-cols-2 gap-4'>
-			<section id='infoSection' aria-labelledby='donate-info' class='flex flex-col items-center max-h-[90vh] overflow-x-visible overflow-y-scroll scroll-0 lg:pr-3'>
+			<section id='infoSection' aria-labelledby='donate-info' class='flex flex-col items-center max-h-[90vh] overflow-x-visible overflow-y-scroll scroll-0 space-y-4 lg:pr-3'>
 				<h2 id='donate-info' class='text-3xl font-bold'>{title}</h2>
 				<div class='text-lg lg:text-xl text-primary-blue-1 text-center flex flex-col items-center mt-1 lg:mt-2'>
 					<p class='leading-relaxed'>{heading}</p>
