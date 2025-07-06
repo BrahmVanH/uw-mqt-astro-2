@@ -1,3 +1,67 @@
+<script module>
+	interface Props {
+		programsByCategory: AliceHubProgramsByCategory;
+		userGeoData: UserGeo;
+	}
+
+	function destringifyWpArr(arrStr: string) {
+		if (!arrStr) {
+			return [];
+		}
+
+		if (!arrStr.includes('<br />\n')) {
+			return [arrStr];
+		}
+		const arr = arrStr.split('<br />\n');
+
+		return arr;
+	}
+
+	export function createHubPrograms(wpContent: RootQueryToAliceHubProgramConnection): Props['programsByCategory'] {
+		if (!wpContent?.nodes.length) {
+			return getDefaultProps<Props['programsByCategory']>('AliceHubPrograms');
+		}
+
+		const programNodes = wpContent?.nodes;
+
+		const programs: AliceHubProgram[] = programNodes
+			.map((n) => ({
+				...n.aliceHubProgramFields,
+				serviceAreas: destringifyWpArr(n.aliceHubProgramFields?.serviceAreas ?? ''),
+				requirements: destringifyWpArr(n.aliceHubProgramFields?.requirements ?? ''),
+			}))
+			.filter((n) => n !== undefined) as unknown as AliceHubProgram[];
+
+		if (!programs) {
+			return getDefaultProps<Props['programsByCategory']>('AliceHubPrograms');
+		}
+
+		const categories = Object.values(CategoryNames);
+		let programsByCategory: AliceHubProgramsByCategory = {} as AliceHubProgramsByCategory;
+
+		if (!programs) {
+			return getDefaultProps<Props['programsByCategory']>('AliceHubPrograms');
+		}
+
+		for (let program of programs) {
+			const category = program.category[0] as CategoryNames;
+			if (!programsByCategory[category]) {
+				programsByCategory[category] = [program];
+				continue;
+			}
+			programsByCategory[category].push(program);
+		}
+
+		for (let category of categories) {
+			if (!programsByCategory[category]) {
+				programsByCategory[category] = [];
+			}
+		}
+
+		return programsByCategory;
+	}
+</script>
+
 <script lang="ts">
 	import { Suspense, suspend } from '@svelte-drama/suspense';
 
@@ -8,13 +72,12 @@
 	import { btnIcons, config, getSubCategoryBgColor } from '../../config/aliceHub';
 	import aliceHubBg from '@/image/overlapping-blue-circle-outlines-01.svg';
 
-	import { AppError, ErrorCode } from '@/lib/error';
+	import { AppError, ErrorCode, getDefaultProps } from '@/lib/error';
 	import { capitalizeFirstLetter, cn } from '@/lib/utils';
 
-	import { CategoryNames } from '../../types/aliceHub';
+	import { CategoryNames, type AliceHubProgram, type AliceHubProgramsByCategory } from '@/types/aliceHub';
 	import type { UserGeo } from '@/types/alice';
-
-	const UNAVAILABLE_CATEGORIES = [CategoryNames.HEALTHCARE, CategoryNames.MISCELLANEOUS, CategoryNames.TAXES, CategoryNames.TECHNOLOGY, CategoryNames.TRANSPORTATION];
+	import type { RootQueryToAliceHubProgramConnection } from '@/types/__generated__/types';
 
 	// Lazy-loaded components
 
@@ -24,7 +87,14 @@
 	const ChildcareHub = import('./Childcare.svelte').then((p) => p.default);
 
 	// Props
-	let { userGeoData }: { userGeoData: UserGeo } = $props();
+	let { programsByCategory, userGeoData }: Props = $props();
+
+	let unavailableCategories: string[] = [];
+	for (const [k, v] of Object.entries(programsByCategory)) {
+		if (v.length === 0) {
+			unavailableCategories.push(k as CategoryNames);
+		}
+	}
 
 	// State management
 	let isLoading = $state<boolean>(false);
@@ -112,16 +182,16 @@
 		<div class="max-w-[1500px] w-full flex flex-row justify-center mx-auto">
 			<!-- Category Sidebar -->
 			<div class="h-min flex flex-col gap-2 mr-4 mt-4">
-				{#each categories.filter((c) => !UNAVAILABLE_CATEGORIES.includes(c.name)) as { name, color, icon, subCategories }}
+				{#each categories.filter((c) => !unavailableCategories.includes(c.name)) as { name, color, icon, subCategories }}
 					<button
 						class={cn(
-							'w-min flex items-center justify-end rounded-sm text-lg p-0 px-3 overflow-hidden transition-all duration-150 hover:cursor-pointer',
+							'w-min flex items-center justify-end rounded-sm text-lg p-0 px-3 overflow-hidden transition-all duration-150  hover:cursor-pointer',
 							`text-${color} ring-${color}`,
 							activeCategory === name ? 'ring-2 focus:ring-2' : '',
 						)}
 						onclick={(e) => handleSetActiveCategory(e, name, subCategories)}
 					>
-						<img class="w-5 p-0" src={btnIcons[icon]} alt="{name} icon" />
+						<img class="w-8 p-1" src={btnIcons[icon]} alt="{name} icon" />
 						<!-- <span class="iconify {icon} w-4 h-4"></span> -->
 						<p class="font-bold text-lg">{capitalizeFirstLetter(name)}</p>
 					</button>
@@ -184,7 +254,7 @@
 								{/snippet}
 								{#snippet children()}
 									{#await suspend(FoodHub) then FoodHub}
-										<FoodHub {userGeoData} />
+										<FoodHub programs={programsByCategory[CategoryNames.FOOD]} {userGeoData} />
 									{/await}
 								{/snippet}
 							</Suspense>
@@ -225,7 +295,7 @@
 							{/snippet}
 							{#snippet children()}
 								{#await suspend(HousingHub) then HousingHub}
-									<HousingHub filter={selectedSubCategories} />
+									<HousingHub programs={programsByCategory[CategoryNames.HOUSING]} filter={selectedSubCategories} />
 								{/await}
 							{/snippet}
 						</Suspense>
@@ -236,7 +306,7 @@
 							{/snippet}
 							{#snippet children()}
 								{#await suspend(ChildcareHub) then ChildcareHub}
-									<ChildcareHub />
+									<ChildcareHub programs={programsByCategory[CategoryNames.CHILDCARE]} />
 								{/await}
 							{/snippet}
 						</Suspense>

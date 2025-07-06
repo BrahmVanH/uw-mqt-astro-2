@@ -1,4 +1,4 @@
-import type { ParagraphWithLink } from ".";
+import type { ParagraphWithLink } from "./alice";
 
 export type Config = {
   heading: string;
@@ -59,3 +59,5 @@ export type AliceHubProgram = {
   requirements: string[];
   type?: string[];
 }
+
+export type AliceHubProgramsByCategory = Record<CategoryNames, AliceHubProgram[]>;

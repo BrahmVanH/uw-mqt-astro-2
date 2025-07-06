@@ -1,15 +1,17 @@
 <script lang="ts">
-	import programs from '@/lib/data/housing.json';
+	// import programs from '@/lib/data/housing.json';
 	import ProgramCard from './ProgramCard.svelte';
 	import { CategoryNames, type AliceHubProgram } from '@/types/aliceHub';
 
 	interface Props {
 		filter: string[];
+		programs: AliceHubProgram[] | [];
 	}
 	// Props
-	let { filter: externalFilter }: Props = $props();
+	let { filter: externalFilter, programs }: Props = $props();
 
 	let filter = $state(externalFilter || []);
+
 
 	let previousExternalFilter = $state(JSON.stringify(externalFilter || []));
 

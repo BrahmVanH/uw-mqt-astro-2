@@ -1,11 +1,15 @@
 <script lang="ts">
-	import programs from '@/lib/data/food-programs.json';
+	// import programs from '@/lib/data/food-programs.json';
 	import ProgramCard from './ProgramCard.svelte';
 	import { CategoryNames, type AliceHubProgram } from '@/types/aliceHub';
 	import type { UserGeo } from '@/types/alice';
 
+	interface Props {
+		userGeoData: UserGeo;
+		programs: AliceHubProgram[] | [];
+	}
 	// Props
-	let { userGeoData }: { userGeoData: UserGeo } = $props();
+	let { userGeoData, programs }: Props = $props();
 
 	// State
 	let filteredPrograms: AliceHubProgram[] = [...programs];

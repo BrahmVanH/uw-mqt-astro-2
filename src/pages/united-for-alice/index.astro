@@ -6,18 +6,20 @@ import AliceStats, { createProps as createStatsProps } from '@/components/AliceS
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorDisplay from '@/components/ErrorDisplay';
 import AliceHero from '@/components/AliceHero.astro';
-import AliceHub from '@/components/AliceHub/index.svelte';
+import AliceHub, { createHubPrograms } from '@/components/AliceHub/index.svelte';
 import ErrorBoundarySvelte from '@/components/ErrorBoundary.svelte';
 import ErrorDisplaySvelte from '@/components/ErrorDisplay.svelte';
 
-import { type AliceStatsCardContent, type CountyStats, type FmtdChartData, type FmtdChartDataRecord, type HouseholdSurvivalBudgetCategories } from '@/types/aliceStats';
+import type { AliceStatsCardContent, CountyStats, FmtdChartData, FmtdChartDataRecord, HouseholdSurvivalBudgetCategories } from '@/types/aliceStats';
+import type { AliceHubProgramsByCategory } from '@/types/aliceHub';
 
 import type { UserGeo } from '@/types/alice';
 import getPageContent from '@/lib/API';
 import { getDefaultProps, onError } from '@/lib/error';
 import type { AlicePageQueryResponse } from '@/types';
-import type { AliceStatsFieldsContent, RootQueryToAliceStatsConnection } from '@/types/__generated__/types';
+import type { AliceStatsFieldsContent, RootQueryToAliceHubProgramConnection, RootQueryToAliceStatsConnection } from '@/types/__generated__/types';
 import { formatCountyStatsForChart, getAllCountyNames } from '@/config/aliceStats';
+import { CategoryNames, type AliceHubProgram } from '@/types/aliceHub';
 
 export enum CategoryContainerDisplayOptions {
 	hidden = 'hidden',
@@ -59,15 +61,70 @@ if (!pageContent) {
 	onError('No data returned from the server home page query', Astro);
 }
 
-console.log('pageContent: ', pageContent);
-
 interface Props {
-	countyNames: string[];
-	statsByCounty: FmtdChartDataRecord;
-	content: AliceStatsCardContent;
+	programsByCategory: AliceHubProgramsByCategory;
 }
 
 const aliceStatsProps = createStatsProps(pageContent.allAliceStats);
+
+function destringifyWpArr(arrStr: string) {
+	if (!arrStr) {
+		return [];
+	}
+
+	if (!arrStr.includes('<br />\n')) {
+		return [arrStr];
+	}
+	const arr = arrStr.split('<br />\n');
+
+	return arr;
+}
+
+function createHubProps(wpContent: RootQueryToAliceHubProgramConnection): Props {
+	if (!wpContent?.nodes.length) {
+		return getDefaultProps<Props>('AliceHubPrograms');
+	}
+
+	const programNodes = wpContent?.nodes;
+
+	const programs: AliceHubProgram[] = programNodes
+		.map((n) => ({
+			...n.aliceHubProgramFields,
+			serviceAreas: destringifyWpArr(n.aliceHubProgramFields?.serviceAreas ?? ''),
+			requirements: destringifyWpArr(n.aliceHubProgramFields?.requirements ?? ''),
+		}))
+		.filter((n) => n !== undefined) as unknown as AliceHubProgram[];
+
+	if (!programs) {
+		return getDefaultProps<Props>('AliceHubPrograms');
+	}
+
+	const categories = Object.values(CategoryNames);
+	let programsByCategory: AliceHubProgramsByCategory = {} as AliceHubProgramsByCategory;
+
+	if (!programs) {
+		return getDefaultProps<Props>('AliceHubPrograms');
+	}
+
+	for (let program of programs) {
+		const category = program.category[0] as CategoryNames;
+		if (!programsByCategory[category]) {
+			programsByCategory[category] = [program];
+			continue;
+		}
+		programsByCategory[category].push(program);
+	}
+
+	for (let category of categories) {
+		if (!programsByCategory[category]) {
+			programsByCategory[category] = [];
+		}
+	}
+
+	return { programsByCategory };
+}
+
+const hubPrograms = createHubPrograms(pageContent.aliceHubPrograms);
 ---
 
 <DefaultLayout title='ALICE'>
@@ -78,7 +135,7 @@ const aliceStatsProps = createStatsProps(pageContent.allAliceStats);
 			<AliceStats {...aliceStatsProps} client:visible />
 		</ErrorBoundary>
 		<ErrorBoundarySvelte client:load fallback={ErrorDisplaySvelte}>
-			<AliceHub client:only='svelte' userGeoData={geoData} />
+			<AliceHub client:only='svelte' userGeoData={geoData} programsByCategory={hubPrograms} />
 		</ErrorBoundarySvelte>
 	</main>
 </DefaultLayout>

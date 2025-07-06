@@ -38,7 +38,7 @@ foodPantries {
 }`
 
 const hubPrograms = gql`
-  aliceHubPrograms {
+  aliceHubPrograms(first: 100) {
     nodes {
       aliceHubProgramFields {
         category
@@ -240,7 +240,6 @@ const aliceStats = gql`
 
 export const alicePageQuery = gql`
   query AlicePageQuery {
-    ${foodPantries}
     ${aliceStats}
     ${hubPrograms}
   }
