@@ -32,6 +32,15 @@
 			}
 		});
 	}
+
+	function formatBreadcrumbName(n: string) {
+		if (!n.includes('-')) {
+			return n;
+		}
+
+		const nameArr = n.split('-');
+		return nameArr.map((n) => capitalizeFirstLetter(n)).join(' ');
+	}
 </script>
 
 <Breadcrumb class="my-auto text-xs">
@@ -39,11 +48,11 @@
 		{#each crumbs as crumb, i}
 			{#if i === crumbs.length - 1}
 				<BreadcrumbItem class="flex items-start">
-					<BreadcrumbLink href={crumb.path}>{crumb.title}</BreadcrumbLink>
+					<BreadcrumbLink href={crumb.path}>{formatBreadcrumbName(crumb.title)}</BreadcrumbLink>
 				</BreadcrumbItem>
 			{:else}
 				<BreadcrumbItem class="flex items-start">
-					<BreadcrumbLink href={crumb.path}>{crumb.title}</BreadcrumbLink>
+					<BreadcrumbLink href={crumb.path}>{formatBreadcrumbName(crumb.title)}</BreadcrumbLink>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator class="" />
 			{/if}

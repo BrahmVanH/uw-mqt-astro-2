@@ -15,27 +15,27 @@ import Loading from "@/components/Loading.astro";
 import logo from "@/image/logo-mqt-2.svg";
 
 export function KeyToolsForCampaignLeaders({ queryData }) {
-const keyToolsContent = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields || null;
+  const keyToolsContent = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields || null;
 
-if (!keyToolsContent) {
-return getDefaultProps("No wp content found for key tools for campaign leaders");
-}
-const pledgeForm =
-keyToolsContent?.pledgeForm?.node?.mediaItemUrl ?? "";
-const radioPSAAudio =
-keyToolsContent?.radioPsaAudio?.node?.mediaItemUrl ?? "";
-const radioPSATranscript =
-keyToolsContent?.radioPsaTranscript?.node?.mediaItemUrl ?? "";
-const workplacePacket =
-keyToolsContent?.workplacePacket?.node?.mediaItemUrl ?? "";
+  if (!keyToolsContent) {
+    return getDefaultProps("No wp content found for key tools for campaign leaders");
+  }
+  const pledgeForm =
+    keyToolsContent?.pledgeForm?.node?.mediaItemUrl ?? "";
+  const radioPSAAudio =
+    keyToolsContent?.radioPsaAudio?.node?.mediaItemUrl ?? "";
+  const radioPSATranscript =
+    keyToolsContent?.radioPsaTranscript?.node?.mediaItemUrl ?? "";
+  const workplacePacket =
+    keyToolsContent?.workplacePacket?.node?.mediaItemUrl ?? "";
 
-const logoUrl = WP_URL ? `${WP_URL}${UW_MQT_LOGO_SVG_URL_ENDPOINT}` : onImageError("No WP URL found for logo campaign toolkit").src;
+  const logoUrl = WP_URL ? `${WP_URL}${UW_MQT_LOGO_SVG_URL_ENDPOINT}` : onImageError("No WP URL found for logo campaign toolkit").src;
 
-if (!logoUrl) {
-return Loading;
-}
+  if (!logoUrl) {
+    return Loading;
+  }
 
-return (
+  return (
 
     <div>
       <h2 className="uppercase text-lg lg:text-xl text-primary-blue-2 text-pretty md:text-nowrap">
@@ -46,16 +46,16 @@ return (
           <h3 className="text-lg font-bold">
             United Way of Marquette County Logo SVG
           </h3>
-        {logoUrl &&  <a className="py-0" href={logoUrl} target="_blank" rel="noopener noreferrer">
+          {logoUrl && <a className="py-0" href="/images/logo.svg" target="_blank" rel="noopener noreferrer">
             <AstroImage
-            loading="lazy"
-            decoding="async"
-              src={logoUrl}
+              loading="lazy"
+              decoding="async"
+              src={logo}
               alt="United Way of Marquette County Logo"
-              className="w-20 mt-2 mb-0 py-0 font-heading"
-             width={200}
-            height={92.8}
-            format="svg"
+              className="w-[200px] mt-2 mb-0 py-0 font-heading"
+              width={200}
+              height={92.8}
+              format="svg"
 
             />
           </a>}
@@ -84,63 +84,63 @@ return (
       </div>
     </div>
 
-);
+  );
 
 }
 
 export function Collage({ queryData }) {
   const collageImages = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields?.collageImages;
-  
+
   if (!collageImages) {
     return getDefaultProps("No wp content found for collage images");
   }
 
-// Create array of images from the collageImages object
-const images = Object.keys(collageImages)
-.filter(key => key.startsWith('image'))
-.map(key => ({
-url: collageImages[key]?.node?.sourceUrl || '',
-alt: collageImages[key]?.node?.altText || '',
-height: collageImages[key]?.node?.mediaDetails?.height || 400,
-width: collageImages[key]?.node?.mediaDetails?.width || 800,
-}))
-.filter(img => img.url);
+  // Create array of images from the collageImages object
+  const images = Object.keys(collageImages)
+    .filter(key => key.startsWith('image'))
+    .map(key => ({
+      url: collageImages[key]?.node?.sourceUrl || '',
+      alt: collageImages[key]?.node?.altText || '',
+      height: collageImages[key]?.node?.mediaDetails?.height || 400,
+      width: collageImages[key]?.node?.mediaDetails?.width || 800,
+    }))
+    .filter(img => img.url);
 
-if (!images.length) {
-return getDefaultProps("No valid images found for collage");
+  if (!images.length) {
+    return getDefaultProps("No valid images found for collage");
+  }
+
+  return (
+
+    <div className="relative grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3 min-h-[382px] xs:min-h-[448px] sm:min-h-[488px] lg:min-h-[512px] max-h-screen max-w-[1000px] xl:max-w-[1400px]">
+      <div className="absolute w-full  flex flex-wrap justify-center items-center gap-2 p-2 z-10 my-auto">
+        {images.map((img, index) => (
+          <AstroImage
+            key={index}
+            src={img.url}
+            alt={img.alt}
+            height={img.height}
+            width={img.width}
+            format="webp"
+            class={`object-cover shadow-md my-0 ${index < 2
+                ? "block"
+                : index < 3
+                  ? "hidden md:block"
+                  : index < 5
+                    ? "hidden lg:block"
+                    : index < 6
+                      ? "hidden xl:block"
+                      : "hidden 2xl:block"
+              }`}
+          />
+        ))}
+      </div>
+      <div className="h-full w-full bg-primary-blue-1" />
+      <div className="h-full w-full bg-primary-blue-2" />
+      <div className="h-full w-full bg-primary-yellow-1" />
+    </div>
+  );
 }
-
-return (
-
-<div className="relative grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3 min-h-[382px] xs:min-h-[448px] sm:min-h-[488px] lg:min-h-[512px] max-h-screen max-w-[1000px] xl:max-w-[1400px]">
-  <div className="absolute w-full  flex flex-wrap justify-center items-center gap-2 p-2 z-10 my-auto">
-    {images.map((img, index) => (
-      <AstroImage
-        key={index}
-        src={img.url}
-        alt={img.alt}
-        height={img.height}
-        width={img.width}
-        format="webp"
-        class={`object-cover shadow-md my-0 ${
-          index < 2
-            ? "block"
-            : index < 3
-              ? "hidden md:block"
-              : index < 5
-                ? "hidden lg:block"
-                : index < 6
-                  ? "hidden xl:block"
-                  : "hidden 2xl:block"
-        }`}
-      />
-    ))}
-  </div>
-  <div className="h-full w-full bg-primary-blue-1" />
-  <div className="h-full w-full bg-primary-blue-2" />
-  <div className="h-full w-full bg-primary-yellow-1" />
-</div>
-); }
 
 {props?.queryData && <Collage queryData={props?.queryData} />}
 

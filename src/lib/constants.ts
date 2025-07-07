@@ -1,5 +1,5 @@
 export const UW_MQT_LOGO_SVG_URL_ENDPOINT =
-  "/wp-content/uploads/2025/01/logo-mqt-2.jpg";
+  "https://res.cloudinary.com/doixcciwn/images/v1740446448/logo-mqt-3/logo-mqt-3.jpg?_i=AA";
 
 export const YOUR_HELP_MATTERS_COMPONENT_BG_URL_ENDPOINT =
   "/wp-content/uploads/2025/02/your-help-matters-bg-02.svg";
