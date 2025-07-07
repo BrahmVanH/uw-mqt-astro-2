@@ -35,7 +35,7 @@ const CountyButton = React.memo(
   }) => {
     const buttonClass = React.useMemo(() => {
       return cn(
-        "border-2 rounded-[64px] text-xs text-nowrap min-w-fit px-1 py-1 ml-1 cursor-pointer focus:ring-0",
+        "border-2 rounded-[64px] text-xs text-nowrap min-w-fit px-2 py-1 ml-1 cursor-pointer focus:ring-0",
         isSelected
           ? selectionIndex === 0
             ? "bg-primary-blue-4"
@@ -65,7 +65,7 @@ const ChartDisplay = React.memo(
     activeCountyStats: FmtdChartData[];
   }) => {
     return (
-      <div className={"w-full flex flex-row justify-center items-center my-2"}>
+      <div className={"w-full flex flex-col xl:flex-row justify-center items-center xl:my-2"}>
         {overallStats && (
           <PieChart
             key={overallStats.county}
@@ -282,8 +282,8 @@ const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) =>
   );
 
   return (
-    <div className="w-[80%] flex mx-auto mb-4 px-4">
-      <div className="w-1/2 text-md">
+    <div className="w-full xl:w-[80%] flex flex-col-reverse  mx-auto my-4 px-4 xl:flex-row xl:mb-4">
+      <div className="w-full xl:w-1/2 text-md mt-2 xl:mt-0">
         {isLoading ? (
           <SkeletonText />
         ) : (
@@ -302,7 +302,7 @@ const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) =>
         )}
       </div>
 
-      <div className="w-1/2 flex flex-col items-center justify-center">
+      <div className="w-full xl:w-1/2 flex flex-col items-center justify-center">
         {/* <div className={cn('w-full grid gap-4 auto-rows-min', getChartContainerStyles(activeCountyStats.length + 1))}> */}
         <h3 className="text-lg">ALICE in the Central UP</h3>
         {isLoading ? (

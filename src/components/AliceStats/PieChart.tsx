@@ -47,13 +47,13 @@ const PieChart: React.FC<Props> = ({
   county,
 }) => {
   return (
-    <Card className="flex flex-col aspect-square w-1/3 border-0">
-      <CardContent className="  ">
+    <Card className="flex flex-col xl:aspect-square w-full xl:w-1/3 border-0">
+      <CardContent className=" w-1/2 mx-auto xl:w-full ">
         <ChartContainer
           config={chartConfig as unknown as ChartConfig}
           className="mx-auto aspect-square max-h-[250px] w-full relative"
         >
-          <Chart className="relative" width={76} height={76}>
+          <Chart className="relative w-2 xl:w-full" width={76} height={76}>
             {chartConfig && (
               <ChartTooltip
                 wrapperClassName="border-2 border-primary-blue-4"
@@ -78,6 +78,7 @@ const PieChart: React.FC<Props> = ({
               />
             )}
             <Pie
+
               data={chartData}
               dataKey="total"
               nameKey="incomeLevel"

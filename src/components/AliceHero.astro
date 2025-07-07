@@ -3,20 +3,22 @@ import { Image } from 'astro:assets';
 
 // import heroBg from '@/image/get-involved-hero-bg-img-fafwm-volunteers-handoff-grapges-w-graphic-01.jpg';
 import heroBg from '@/image/alice-hero-bg-temp.jpg';
+import heroMobileBg from '@/image/alice-hero-mobile-bg-temp.jpg';
 import { formatHeroHeadingText } from '@/lib/utils';
 const heading = 'The ALICE Report';
 const text =
-  'Traditional economic measures underestimate the actual cost of basics. To better capture the reality of household costs in each Michigan county, United For ALICE provides budgets that are tailored by location and household type.';
+	'Traditional economic measures underestimate the actual cost of basics. To better capture the reality of household costs in each Michigan county, United For ALICE provides budgets that are tailored by location and household type.';
 ---
 
 <section class='w-full relative overflow-hidden' aria-label={`${heading} Hero Section`}>
-  <div class='inset-0 w-full aspect-auto'>
-    <Image width={heroBg.width} height={heroBg.height} loading='eager' decoding='async' class='w-full object-cover aspect-auto' src={heroBg} alt=' ' />
-  </div>
-  <div class='absolute h-[60vh] flex flex-col justify-end items-start inset-0 z-10 text-left text-white ml-4'>
-    <div class='w-min min-w-[50vw] backdrop-blur-sm rounded-sm my-auto p-2'>
-      {heading && <h1 class='w-min text-xl sm:text-2xl 2xl:text-3xl text-primary-yellow-2   text-center text-nowrap xl:text-left'>{formatHeroHeadingText(heading)}</h1>}
-      {text && <p class='text-sm sm:text-md font-medium m-auto  text-pretty mt-1 mx-0'>{text}</p>}
-    </div>
-  </div>
+	<div class='inset-0 w-full aspect-auto'>
+		<Image width={heroBg.width} height={heroBg.height} loading='eager' decoding='async' class='hidden lg:block w-full object-cover aspect-auto' src={heroBg} alt=' ' />
+		<Image width={heroMobileBg.width} height={heroMobileBg.height} loading='eager' decoding='async' class='lg:hidden w-full object-cover aspect-auto' src={heroMobileBg} alt=' ' />
+	</div>
+	<div class='absolute h-full xl:h-[60vh] flex flex-col justify-end items-start inset-0 z-10 text-left text-white xl:ml-4'>
+		<div class='min-w-[50vw] backdrop-blur-md rounded-sm my-auto p-2 xl:w-min'>
+			{heading && <h1 class='text-2xl 2xl:text-3xl text-primary-yellow-2  text-center text-nowrap xl:text-left xl:w-min'>{formatHeroHeadingText(heading)}</h1>}
+			{text && <p class='text-sm sm:text-md font-medium m-auto text-balanced  mt-1 mx-0 text-center xl:text-left xl:text-pretty'>{text}</p>}
+		</div>
+	</div>
 </section>
