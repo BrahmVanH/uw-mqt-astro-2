@@ -171,50 +171,61 @@
 {#if error}
 	<ErrorDisplay {error} />
 {:else}
-	<div class="relative overflow-hidden flex flex-col items-center justify-center mb-8">
+	<div
+		class="relative overflow-hidden flex flex-col items-center justify-center mb-8
+                border border-gray-200 rounded-lg shadow-sm bg-gray-50/30
+                xl:border-0 xl:shadow-none xl:bg-transparent xl:rounded-none"
+	>
 		<!-- Header -->
 		<div class="z-10 w-full max-w-[1500px] flex flex-col items-start bg-transparent text-start ml-4 mb-4 px-4 [&>p]:text-md">
 			<h1 class="text-xl">{heading}</h1>
-			<ParagraphWithLink className="w-1/2 my-2" {paragraphWithLink} />
+			<ParagraphWithLink className="w-full xl:w-1/2 my-2" {paragraphWithLink} />
 			<p>{paragraphWithLink.text2}</p>
 		</div>
 
-		<div class="max-w-[1500px] w-full flex flex-row justify-center mx-auto">
+		<div
+			class="max-w-[1500px] w-full flex flex-col xl:flex-row items-center xl:items-start justify-center mx-auto
+                    p-2 xl:p-0 rounded-md xl:rounded-none"
+		>
 			<!-- Category Sidebar -->
-			<div class="h-min flex flex-col gap-2 mr-4 mt-4">
+			<div class="h-min flex flex-row flex-wrap xl:flex-col xl:gap-2 justify-center xl:justify-start mx-2 xl:mr-4 mt-4">
 				{#each categories.filter((c) => !unavailableCategories.includes(c.name)) as { name, color, icon, subCategories }}
 					<button
 						class={cn(
-							'w-min flex items-center justify-end rounded-sm text-lg p-0 px-3 overflow-hidden transition-all duration-150  hover:cursor-pointer',
+							'w-1/4 xl:w-min flex items-center justify-center xl:justify-end rounded-sm text-md xl:text-lg p-0 px-2 mx-4 xl:mx-0 xl:px-3 xl:overflow-hidden lg:transition-all lg:duration-150 lg:hover:cursor-pointer',
 							`text-${color} ring-${color}`,
 							activeCategory === name ? 'ring-2 focus:ring-2' : '',
 						)}
 						onclick={(e) => handleSetActiveCategory(e, name, subCategories)}
 					>
 						<img class="w-8 p-1" src={btnIcons[icon]} alt="{name} icon" />
-						<!-- <span class="iconify {icon} w-4 h-4"></span> -->
-						<p class="font-bold text-lg">{capitalizeFirstLetter(name)}</p>
+						<p class="font-bold">{capitalizeFirstLetter(name)}</p>
 					</button>
 				{/each}
 			</div>
 
-			<!-- Main Content Area -->
-			<div class="alice-view relative min-w-[70vw] overflow-y-scroll flex flex-col items-center justify-center">
+			<!-- Main Content Area with subtle inset styling -->
+			<div
+				class="alice-view relative min-w-[70vw] overflow-y-scroll flex flex-col items-center justify-center
+                        bg-white/50 rounded-md shadow-inner border border-gray-100 p-3 mt-2
+                        xl:bg-transparent xl:shadow-none xl:border-0 xl:p-0 xl:mt-0"
+			>
 				{#if !isLoading && activeCategory === null}
-					<img class="absolute top-0 right-[25%] z-0 w-full h-full" src={aliceHubBg.src} alt="overlapping circle graphic" loading="lazy" decoding="async" />
+					<img class="hidden xl:block absolute right-[25%] z-0 w-full h-full" src={aliceHubBg.src} alt="overlapping circle graphic" loading="lazy" decoding="async" />
 				{/if}
 
+				<!-- Rest of your content remains the same... -->
 				<!-- Subcategory Buttons -->
-				<div class="w-full flex">
+				<div class="w-full flex justify-center mt-4 xl:mt-0 xl:justify-start">
 					{#if !isLoading}
 						<div class="flex items-center">
 							{#if displayedSubCategories.length > 0}
-								<p class="text-md">Filter:</p>
+								<p class="text-sm xl:text-md">Filter:</p>
 							{/if}
 
 							{#each displayedSubCategories as sub, i}
 								<button
-									class="border-2 rounded-[64px] text-nowrap min-w-fit px-2 py-1 ml-2 focus:ring-0
+									class="border-2 rounded-[64px] text-nowrap text-sm min-w-fit px-2 py-1 ml-2 focus:ring-0 xl:text-md
                         {selectedSubCategories.includes(sub) ? getSubCategoryBgColor(i) : ''}"
 									onclick={(e) => handleSelectedSubCategories(e, sub)}
 								>
@@ -230,17 +241,17 @@
 					{#if isLoading}
 						<LoadingSpinner />
 					{:else if activeCategory === null}
-						<div class="relative w-full min-h-[80vh] flex flex-row justify-center items-center">
-							<div class="w-[40%] flex flex-col text-center items-center">
-								<h3 class="w-full text-xl">Central Upper Peninsula ALICE Hub</h3>
-								<p class="w-3/4 mt-2 text-md">Here you will find a great many of the assistance programs offered across the CUP.</p>
+						<div class="relative w-full xl:min-h-[80vh] flex flex-col xl:flex-row justify-center items-center">
+							<div class="w-full xl:w-[40%] flex flex-col text-center items-center mb-2 xl:mb-0">
+								<h3 class="w-full text-xl text-pretty">Central Upper Peninsula ALICE Hub</h3>
+								<p class="w-3/4 my-1 xl:mt-2 text-md">Here you will find a great many of the assistance programs offered across the CUP.</p>
 							</div>
-							<div class="flex flex-row justify-center w-1/2 gap-2">
-								<div class="w-1/4 rounded-md border-4 border-primary-red-3 p-1">
+							<div class="flex flex-col xl:flex-row justify-center w-full xl:w-1/2 gap-2">
+								<div class="w-full xl:w-1/4 rounded-md border-4 border-primary-red-3 p-1">
 									<h4 class="text-lg normal-case">Get Help</h4>
 									<p>Navigate through each ALICE category on the left to view the many assistance programs offered across the UP</p>
 								</div>
-								<div class="w-1/4 rounded-md border-4 border-tertiary-purple-1 p-1">
+								<div class="w-full xl:w-1/4 rounded-md border-4 border-tertiary-purple-1 p-1">
 									<h4 class="text-lg normal-case">Give</h4>
 									<p>As you browse the various categories, please note the opportunities to donate your time or resources directly to the organizations that make these programs possible.</p>
 								</div>
