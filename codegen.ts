@@ -3,7 +3,7 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 const config: CodegenConfig = {
 	schema: [
 		{
-			'http://localhost:10011/graphql': {
+			'https://api.uwmqt.org/graphql': {
 				headers: {
 					Authorization: `Bearer ${process.env.FAUST_SECRET_KEY}`,
 				},

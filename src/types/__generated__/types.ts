@@ -3997,13 +3997,9 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Current_990FormPdf = 'CURRENT_990_FORM_PDF',
   /** The Type of Content object */
-  CustomPage = 'CUSTOM_PAGE',
-  /** The Type of Content object */
   DonorPrivacyPdf = 'DONOR_PRIVACY_PDF',
   /** The Type of Content object */
   Faqs = 'FAQS',
-  /** The Type of Content object */
-  FoodPantry = 'FOOD_PANTRY',
   /** The Type of Content object */
   FourPillarsHero = 'FOUR_PILLARS_HERO',
   /** The Type of Content object */
@@ -4040,8 +4036,6 @@ export enum ContentTypeEnum {
   PartnerPageHero = 'PARTNER_PAGE_HERO',
   /** The Type of Content object */
   Post = 'POST',
-  /** The Type of Content object */
-  SeniorCenter = 'SENIOR_CENTER',
   /** The Type of Content object */
   UwContactInfo = 'UW_CONTACT_INFO',
   /** The Type of Content object */
@@ -4474,39 +4468,6 @@ export type CreateCurrent990FormPdfPayload = {
   current990FormPdf?: Maybe<Current990FormPdf>;
 };
 
-/** Input for the createCustomPage mutation. */
-export type CreateCustomPageInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The content of the object */
-  content?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** The excerpt of the object */
-  excerpt?: InputMaybe<Scalars['String']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The ID of the parent object */
-  parentId?: InputMaybe<Scalars['ID']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** The payload for the createCustomPage mutation. */
-export type CreateCustomPagePayload = {
-  __typename?: 'CreateCustomPagePayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  customPage?: Maybe<CustomPage>;
-};
-
 /** Input for the createDonorPrivacyPolicyPdf mutation. */
 export type CreateDonorPrivacyPolicyPdfInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -4559,78 +4520,6 @@ export type CreateFaqPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   faq?: Maybe<Faq>;
-};
-
-/** Input for the createFoodPantryCustom mutation. */
-export type CreateFoodPantryCustomInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Input for creating a Food Pantry */
-  input: CreateFoodPantryInputCustom;
-};
-
-/** The payload for the createFoodPantryCustom mutation. */
-export type CreateFoodPantryCustomPayload = {
-  __typename?: 'CreateFoodPantryCustomPayload';
-  /** The client mutation ID */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The created Food Pantry */
-  foodPantry?: Maybe<FoodPantry>;
-};
-
-/** Input for the createFoodPantry mutation. */
-export type CreateFoodPantryInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** Input for creating a Food Pantry */
-export type CreateFoodPantryInputCustom = {
-  /** The address as JSON string */
-  address: Scalars['String']['input'];
-  /** The contact person info as JSON string */
-  contact: Scalars['String']['input'];
-  /** The donation info as JSON string */
-  donate: Scalars['String']['input'];
-  /** The email address */
-  email: Scalars['String']['input'];
-  /** Flags/tags (newline separated) */
-  flags?: InputMaybe<Scalars['String']['input']>;
-  /** Geographic coordinates as JSON string */
-  geo: Scalars['String']['input'];
-  /** Simple hours text */
-  hoursSimple?: InputMaybe<Scalars['String']['input']>;
-  /** Structured hours as JSON string */
-  hoursStructured?: InputMaybe<Scalars['String']['input']>;
-  /** Hours type: structured or simple */
-  hoursType: Scalars['String']['input'];
-  /** The name of the food pantry */
-  name: Scalars['String']['input'];
-  /** The phone number */
-  phone: Scalars['String']['input'];
-  /** The website URL */
-  website: Scalars['String']['input'];
-};
-
-/** The payload for the createFoodPantry mutation. */
-export type CreateFoodPantryPayload = {
-  __typename?: 'CreateFoodPantryPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the createFourPillarsHeroComponent mutation. */
@@ -5213,33 +5102,6 @@ export type CreatePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the createSeniorCenter mutation. */
-export type CreateSeniorCenterInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** The payload for the createSeniorCenter mutation. */
-export type CreateSeniorCenterPayload = {
-  __typename?: 'CreateSeniorCenterPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  seniorCenter?: Maybe<SeniorCenter>;
-};
-
 /** Input for the createTag mutation. */
 export type CreateTagInput = {
   /** The slug that the post_tag will be an alias of */
@@ -5675,328 +5537,6 @@ export type Current990FormPdfToPreviewConnectionEdge = Current990FormPdfConnecti
   node: Current990FormPdf;
 };
 
-/** The customPage type */
-export type CustomPage = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfCustomPageFields & {
-  __typename?: 'CustomPage';
-  /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
-  ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
-  /** Connection between the HierarchicalContentNode type and the ContentNode type */
-  children?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
-  /** The content of the post. */
-  content?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The name of the Content Type the node belongs to */
-  contentTypeName: Scalars['String']['output'];
-  /** Fields of the CustomPageFields ACF Field Group */
-  customPageFields?: Maybe<CustomPageFields>;
-  /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
-   */
-  customPageId: Scalars['Int']['output'];
-  /** The unique identifier stored in the database */
-  databaseId: Scalars['Int']['output'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']['output']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']['output']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']['output']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** The excerpt of the post. */
-  excerpt?: Maybe<Scalars['String']['output']>;
-  /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-  featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
-  /** The database identifier for the featured image node assigned to the content node */
-  featuredImageDatabaseId?: Maybe<Scalars['Int']['output']>;
-  /** Globally unique ID of the featured image assigned to the node */
-  featuredImageId?: Maybe<Scalars['ID']['output']>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']['output']>;
-  /** Whether the custom_page object is password protected. */
-  hasPassword?: Maybe<Scalars['Boolean']['output']>;
-  /** The globally unique identifier of the custom_page object. */
-  id: Scalars['ID']['output'];
-  /** Whether the node is a Comment */
-  isComment: Scalars['Boolean']['output'];
-  /** Whether the node is a Content Node */
-  isContentNode: Scalars['Boolean']['output'];
-  /** Whether the node represents the front page. */
-  isFrontPage: Scalars['Boolean']['output'];
-  /** Whether  the node represents the blog page. */
-  isPostsPage: Scalars['Boolean']['output'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']['output']>;
-  /** True if the node is a revision of another node */
-  isRevision?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the node is a Term */
-  isTermNode: Scalars['Boolean']['output'];
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']['output']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: Maybe<Scalars['Int']['output']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']['output']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']['output']>;
-  /** The parent of the node. The parent object can be of various types */
-  parent?: Maybe<HierarchicalContentNodeToParentContentNodeConnectionEdge>;
-  /** Database id of the parent node */
-  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
-  /** The globally unique identifier of the parent node. */
-  parentId?: Maybe<Scalars['ID']['output']>;
-  /** The password for the custom_page object. */
-  password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the CustomPage type and the customPage type */
-  preview?: Maybe<CustomPageToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']['output']>;
-  /** If the current node is a revision, this field exposes the node this is a revision of. Returns null if the node is not a revision of another node. */
-  revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
-  /** Connection between the CustomPage type and the customPage type */
-  revisions?: Maybe<CustomPageToRevisionConnection>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']['output']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']['output']>;
-  /** The template assigned to a node of content */
-  template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']['output']>;
-  /** The unique resource identifier path */
-  uri?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** The customPage type */
-export type CustomPageAncestorsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs>;
-};
-
-
-/** The customPage type */
-export type CustomPageChildrenArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs>;
-};
-
-
-/** The customPage type */
-export type CustomPageContentArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The customPage type */
-export type CustomPageEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The customPage type */
-export type CustomPageEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The customPage type */
-export type CustomPageExcerptArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The customPage type */
-export type CustomPageRevisionsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<CustomPageToRevisionConnectionWhereArgs>;
-};
-
-
-/** The customPage type */
-export type CustomPageTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** A paginated collection of customPage Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of customPage Nodes */
-export type CustomPageConnection = {
-  /** A list of edges (relational context) between RootQuery and connected customPage Nodes */
-  edges: Array<CustomPageConnectionEdge>;
-  /** A list of connected customPage Nodes */
-  nodes: Array<CustomPage>;
-  /** Information about pagination in a connection. */
-  pageInfo: CustomPageConnectionPageInfo;
-};
-
-/** Represents a connection to a customPage. Contains both the customPage Node and metadata about the relationship. */
-export type CustomPageConnectionEdge = {
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The connected customPage Node */
-  node: CustomPage;
-};
-
-/** Pagination metadata specific to &quot;CustomPageConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;CustomPageConnectionEdge&quot; Nodes. */
-export type CustomPageConnectionPageInfo = {
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;CustomPageFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type CustomPageFields = AcfFieldGroup & AcfFieldGroupFields & CustomPageFields_Fields & {
-  __typename?: 'CustomPageFields';
-  /** Enter a brief description of the page */
-  description?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Select the intended route for this page */
-  intendedRoute?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-/** Interface representing fields of the ACF &quot;CustomPageFields&quot; Field Group */
-export type CustomPageFields_Fields = {
-  /** Enter a brief description of the page */
-  description?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Select the intended route for this page */
-  intendedRoute?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-/** Identifier types for retrieving a specific CustomPage. Specifies which unique attribute is used to find an exact CustomPage. */
-export enum CustomPageIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the CustomPage type and the customPage type */
-export type CustomPageToPreviewConnectionEdge = CustomPageConnectionEdge & Edge & OneToOneConnection & {
-  __typename?: 'CustomPageToPreviewConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The node of the connection, without the edges */
-  node: CustomPage;
-};
-
-/** Connection between the CustomPage type and the customPage type */
-export type CustomPageToRevisionConnection = Connection & CustomPageConnection & {
-  __typename?: 'CustomPageToRevisionConnection';
-  /** Edges for the CustomPageToRevisionConnection connection */
-  edges: Array<CustomPageToRevisionConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<CustomPage>;
-  /** Information about pagination in a connection. */
-  pageInfo: CustomPageToRevisionConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type CustomPageToRevisionConnectionEdge = CustomPageConnectionEdge & Edge & {
-  __typename?: 'CustomPageToRevisionConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The item at the end of the edge */
-  node: CustomPage;
-};
-
-/** Pagination metadata specific to &quot;CustomPageToRevisionConnection&quot; collections. Provides cursors and flags for navigating through sets of CustomPageToRevisionConnection Nodes. */
-export type CustomPageToRevisionConnectionPageInfo = CustomPageConnectionPageInfo & PageInfo & WpPageInfo & {
-  __typename?: 'CustomPageToRevisionConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** Arguments for filtering the CustomPageToRevisionConnection connection */
-export type CustomPageToRevisionConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']['input']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']['input']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What parameter to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']['input']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']['input']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 /** An object that has a unique numeric identifier in the database. Provides consistent access to the database ID across different object types. */
 export type DatabaseIdentifier = {
   /** The unique identifier stored in the database */
@@ -6251,29 +5791,6 @@ export type DeleteCurrent990FormPdfPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
 };
 
-/** Input for the deleteCustomPage mutation. */
-export type DeleteCustomPageInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the customPage to delete */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** The payload for the deleteCustomPage mutation. */
-export type DeleteCustomPagePayload = {
-  __typename?: 'DeleteCustomPagePayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The object before it was deleted */
-  customPage?: Maybe<CustomPage>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']['output']>;
-};
-
 /** Input for the deleteDonorPrivacyPolicyPdf mutation. */
 export type DeleteDonorPrivacyPolicyPdfInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -6318,29 +5835,6 @@ export type DeleteFaqPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The object before it was deleted */
   faq?: Maybe<Faq>;
-};
-
-/** Input for the deleteFoodPantry mutation. */
-export type DeleteFoodPantryInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the foodPantry to delete */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** The payload for the deleteFoodPantry mutation. */
-export type DeleteFoodPantryPayload = {
-  __typename?: 'DeleteFoodPantryPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']['output']>;
-  /** The object before it was deleted */
-  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the deleteFourPillarsHeroComponent mutation. */
@@ -6795,29 +6289,6 @@ export type DeletePostPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The object before it was deleted */
   post?: Maybe<Post>;
-};
-
-/** Input for the deleteSeniorCenter mutation. */
-export type DeleteSeniorCenterInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the seniorCenter to delete */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** The payload for the deleteSeniorCenter mutation. */
-export type DeleteSeniorCenterPayload = {
-  __typename?: 'DeleteSeniorCenterPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']['output']>;
-  /** The object before it was deleted */
-  seniorCenter?: Maybe<SeniorCenter>;
 };
 
 /** Input for the deleteTag mutation. */
@@ -7744,470 +7215,6 @@ export type FaqToPreviewConnectionEdge = Edge & FaqConnectionEdge & OneToOneConn
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: Faq;
-};
-
-/** The foodPantry type */
-export type FoodPantry = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfFoodPantryFields & {
-  __typename?: 'FoodPantry';
-  /**
-   * The ancestors of the content node.
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  ancestors?: Maybe<FoodPantryToFoodPantryConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The name of the Content Type the node belongs to */
-  contentTypeName: Scalars['String']['output'];
-  /** The unique identifier stored in the database */
-  databaseId: Scalars['Int']['output'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']['output']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']['output']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']['output']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** Fields of the FoodPantryFields ACF Field Group */
-  foodPantryFields?: Maybe<FoodPantryFields>;
-  /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
-   */
-  foodPantryId: Scalars['Int']['output'];
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']['output']>;
-  /** Whether the food_pantry object is password protected. */
-  hasPassword?: Maybe<Scalars['Boolean']['output']>;
-  /** The globally unique identifier of the food_pantry object. */
-  id: Scalars['ID']['output'];
-  /** Whether the node is a Comment */
-  isComment: Scalars['Boolean']['output'];
-  /** Whether the node is a Content Node */
-  isContentNode: Scalars['Boolean']['output'];
-  /** Whether the node represents the front page. */
-  isFrontPage: Scalars['Boolean']['output'];
-  /** Whether  the node represents the blog page. */
-  isPostsPage: Scalars['Boolean']['output'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the node is a Term */
-  isTermNode: Scalars['Boolean']['output'];
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']['output']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']['output']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']['output']>;
-  /**
-   * The parent of the content node.
-   * @deprecated This content type is not hierarchical and typically will not have a parent
-   */
-  parent?: Maybe<FoodPantryToParentConnectionEdge>;
-  /** The password for the food_pantry object. */
-  password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the FoodPantry type and the foodPantry type */
-  preview?: Maybe<FoodPantryToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']['output']>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']['output']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']['output']>;
-  /** The template assigned to the node */
-  template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']['output']>;
-  /** The unique resource identifier path */
-  uri?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** The foodPantry type */
-export type FoodPantryAncestorsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The foodPantry type */
-export type FoodPantryEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The foodPantry type */
-export type FoodPantryEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The foodPantry type */
-export type FoodPantryTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** A paginated collection of foodPantry Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of foodPantry Nodes */
-export type FoodPantryConnection = {
-  /** A list of edges (relational context) between RootQuery and connected foodPantry Nodes */
-  edges: Array<FoodPantryConnectionEdge>;
-  /** A list of connected foodPantry Nodes */
-  nodes: Array<FoodPantry>;
-  /** Information about pagination in a connection. */
-  pageInfo: FoodPantryConnectionPageInfo;
-};
-
-/** Represents a connection to a foodPantry. Contains both the foodPantry Node and metadata about the relationship. */
-export type FoodPantryConnectionEdge = {
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The connected foodPantry Node */
-  node: FoodPantry;
-};
-
-/** Pagination metadata specific to &quot;FoodPantryConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;FoodPantryConnectionEdge&quot; Nodes. */
-export type FoodPantryConnectionPageInfo = {
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;FoodPantryFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFields = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFields_Fields & {
-  __typename?: 'FoodPantryFields';
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  address?: Maybe<FoodPantryFieldsAddress>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  contact?: Maybe<FoodPantryFieldsContact>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  donate?: Maybe<FoodPantryFieldsDonate>;
-  /** Enter the email address */
-  email?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Enter flags/tags, one per line (optional) */
-  flags?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  geo?: Maybe<FoodPantryFieldsGeo>;
-  /** Enter hours as free text */
-  hoursSimple?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  hoursStructured?: Maybe<FoodPantryFieldsHoursStructured>;
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  hoursType?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Enter the name of the food pantry */
-  name?: Maybe<Scalars['String']['output']>;
-  /** Enter the phone number */
-  phone?: Maybe<Scalars['String']['output']>;
-  /** Enter the website URL */
-  website?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;FoodPantryFieldsAddress&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFieldsAddress = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsAddress_Fields & {
-  __typename?: 'FoodPantryFieldsAddress';
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  city?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  po?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  state?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  street?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  zip?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFieldsAddress&quot; Field Group */
-export type FoodPantryFieldsAddress_Fields = {
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  city?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  po?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  state?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  street?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsAddress&quot; Field Group */
-  zip?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;FoodPantryFieldsContact&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFieldsContact = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsContact_Fields & {
-  __typename?: 'FoodPantryFieldsContact';
-  /** Field of the &quot;email&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  email?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  name?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  phone?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFieldsContact&quot; Field Group */
-export type FoodPantryFieldsContact_Fields = {
-  /** Field of the &quot;email&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  email?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  name?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsContact&quot; Field Group */
-  phone?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;FoodPantryFieldsDonate&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFieldsDonate = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsDonate_Fields & {
-  __typename?: 'FoodPantryFieldsDonate';
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsDonate&quot; Field Group */
-  link?: Maybe<Scalars['String']['output']>;
-  /** Enter donation messages, one per line */
-  message?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFieldsDonate&quot; Field Group */
-export type FoodPantryFieldsDonate_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsDonate&quot; Field Group */
-  link?: Maybe<Scalars['String']['output']>;
-  /** Enter donation messages, one per line */
-  message?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;FoodPantryFieldsGeo&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFieldsGeo = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsGeo_Fields & {
-  __typename?: 'FoodPantryFieldsGeo';
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
-  lat?: Maybe<Scalars['Float']['output']>;
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
-  lng?: Maybe<Scalars['Float']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFieldsGeo&quot; Field Group */
-export type FoodPantryFieldsGeo_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
-  lat?: Maybe<Scalars['Float']['output']>;
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsGeo&quot; Field Group */
-  lng?: Maybe<Scalars['Float']['output']>;
-};
-
-/** The &quot;FoodPantryFieldsHoursStructured&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type FoodPantryFieldsHoursStructured = AcfFieldGroup & AcfFieldGroupFields & FoodPantryFieldsHoursStructured_Fields & {
-  __typename?: 'FoodPantryFieldsHoursStructured';
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  f?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  m?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  sa?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  su?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  t?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  th?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  w?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-export type FoodPantryFieldsHoursStructured_Fields = {
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  f?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  m?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  sa?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  su?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  t?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  th?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;FoodPantryFieldsHoursStructured&quot; Field Group */
-  w?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;FoodPantryFields&quot; Field Group */
-export type FoodPantryFields_Fields = {
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  address?: Maybe<FoodPantryFieldsAddress>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  contact?: Maybe<FoodPantryFieldsContact>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  donate?: Maybe<FoodPantryFieldsDonate>;
-  /** Enter the email address */
-  email?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Enter flags/tags, one per line (optional) */
-  flags?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  geo?: Maybe<FoodPantryFieldsGeo>;
-  /** Enter hours as free text */
-  hoursSimple?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;group&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  hoursStructured?: Maybe<FoodPantryFieldsHoursStructured>;
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;FoodPantryFields&quot; Field Group */
-  hoursType?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Enter the name of the food pantry */
-  name?: Maybe<Scalars['String']['output']>;
-  /** Enter the phone number */
-  phone?: Maybe<Scalars['String']['output']>;
-  /** Enter the website URL */
-  website?: Maybe<Scalars['String']['output']>;
-};
-
-/** Identifier types for retrieving a specific FoodPantry. Specifies which unique attribute is used to find an exact FoodPantry. */
-export enum FoodPantryIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the FoodPantry type and the foodPantry type */
-export type FoodPantryToFoodPantryConnection = Connection & FoodPantryConnection & {
-  __typename?: 'FoodPantryToFoodPantryConnection';
-  /** Edges for the FoodPantryToFoodPantryConnection connection */
-  edges: Array<FoodPantryToFoodPantryConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<FoodPantry>;
-  /** Information about pagination in a connection. */
-  pageInfo: FoodPantryToFoodPantryConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type FoodPantryToFoodPantryConnectionEdge = Edge & FoodPantryConnectionEdge & {
-  __typename?: 'FoodPantryToFoodPantryConnectionEdge';
-  /**
-   * A cursor for use in pagination
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /**
-   * The item at the end of the edge
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  node: FoodPantry;
-};
-
-/** Pagination metadata specific to &quot;FoodPantryToFoodPantryConnection&quot; collections. Provides cursors and flags for navigating through sets of FoodPantryToFoodPantryConnection Nodes. */
-export type FoodPantryToFoodPantryConnectionPageInfo = FoodPantryConnectionPageInfo & PageInfo & WpPageInfo & {
-  __typename?: 'FoodPantryToFoodPantryConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** Connection between the FoodPantry type and the foodPantry type */
-export type FoodPantryToParentConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
-  __typename?: 'FoodPantryToParentConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /**
-   * The node of the connection, without the edges
-   * @deprecated This content type is not hierarchical and typically will not have a parent
-   */
-  node: FoodPantry;
-};
-
-/** Connection between the FoodPantry type and the foodPantry type */
-export type FoodPantryToPreviewConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
-  __typename?: 'FoodPantryToPreviewConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The node of the connection, without the edges */
-  node: FoodPantry;
 };
 
 /** The fourPillarsHeroComponent type */
@@ -13083,7 +12090,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = AdminCostPdf | AliceHubProgram | AliceReportPage | AliceReportPdf | AliceStats | CampaignToolkitAsset | Category | Current990FormPdf | CustomPage | DonorPrivacyPolicyPdf | Faq | FoodPantry | FourPillarsHeroComponent | FourPillarsPreview | GetInvolvedHero | GiftAcceptancePolicyPdf | GirlScoutsComponent | HeroComponentOurImpactPage | HomePageHero | HowToContributeComponent | ImpactCarousel | ImpactStatistic | IndividualsPageHero | MobileFoodPantryComponent | NorthwoodsAirLifeline | OurImpactHomePage | Page | PartnerPageHero | PartnersTickerItem | Post | PostFormat | SeniorCenter | Tag | UwContactInfo | ValuesHistory | VitaTaxPrep | YmcaComponent;
+export type MenuItemObjectUnion = AdminCostPdf | AliceHubProgram | AliceReportPage | AliceReportPdf | AliceStats | CampaignToolkitAsset | Category | Current990FormPdf | DonorPrivacyPolicyPdf | Faq | FourPillarsHeroComponent | FourPillarsPreview | GetInvolvedHero | GiftAcceptancePolicyPdf | GirlScoutsComponent | HeroComponentOurImpactPage | HomePageHero | HowToContributeComponent | ImpactCarousel | ImpactStatistic | IndividualsPageHero | MobileFoodPantryComponent | NorthwoodsAirLifeline | OurImpactHomePage | Page | PartnerPageHero | PartnersTickerItem | Post | PostFormat | Tag | UwContactInfo | ValuesHistory | VitaTaxPrep | YmcaComponent;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -17555,16 +16562,10 @@ export type RootMutation = {
   createComment?: Maybe<CreateCommentPayload>;
   /** The createCurrent990FormPdf mutation */
   createCurrent990FormPdf?: Maybe<CreateCurrent990FormPdfPayload>;
-  /** The createCustomPage mutation */
-  createCustomPage?: Maybe<CreateCustomPagePayload>;
   /** The createDonorPrivacyPolicyPdf mutation */
   createDonorPrivacyPolicyPdf?: Maybe<CreateDonorPrivacyPolicyPdfPayload>;
   /** The createFaq mutation */
   createFaq?: Maybe<CreateFaqPayload>;
-  /** The createFoodPantry mutation */
-  createFoodPantry?: Maybe<CreateFoodPantryPayload>;
-  /** The createFoodPantryCustom mutation */
-  createFoodPantryCustom?: Maybe<CreateFoodPantryCustomPayload>;
   /** The createFourPillarsHeroComponent mutation */
   createFourPillarsHeroComponent?: Maybe<CreateFourPillarsHeroComponentPayload>;
   /** The createFourPillarsPreview mutation */
@@ -17605,8 +16606,6 @@ export type RootMutation = {
   createPost?: Maybe<CreatePostPayload>;
   /** The createPostFormat mutation */
   createPostFormat?: Maybe<CreatePostFormatPayload>;
-  /** The createSeniorCenter mutation */
-  createSeniorCenter?: Maybe<CreateSeniorCenterPayload>;
   /** The createTag mutation */
   createTag?: Maybe<CreateTagPayload>;
   /** The createUser mutation */
@@ -17637,14 +16636,10 @@ export type RootMutation = {
   deleteComment?: Maybe<DeleteCommentPayload>;
   /** The deleteCurrent990FormPdf mutation */
   deleteCurrent990FormPdf?: Maybe<DeleteCurrent990FormPdfPayload>;
-  /** The deleteCustomPage mutation */
-  deleteCustomPage?: Maybe<DeleteCustomPagePayload>;
   /** The deleteDonorPrivacyPolicyPdf mutation */
   deleteDonorPrivacyPolicyPdf?: Maybe<DeleteDonorPrivacyPolicyPdfPayload>;
   /** The deleteFaq mutation */
   deleteFaq?: Maybe<DeleteFaqPayload>;
-  /** The deleteFoodPantry mutation */
-  deleteFoodPantry?: Maybe<DeleteFoodPantryPayload>;
   /** The deleteFourPillarsHeroComponent mutation */
   deleteFourPillarsHeroComponent?: Maybe<DeleteFourPillarsHeroComponentPayload>;
   /** The deleteFourPillarsPreview mutation */
@@ -17685,8 +16680,6 @@ export type RootMutation = {
   deletePost?: Maybe<DeletePostPayload>;
   /** The deletePostFormat mutation */
   deletePostFormat?: Maybe<DeletePostFormatPayload>;
-  /** The deleteSeniorCenter mutation */
-  deleteSeniorCenter?: Maybe<DeleteSeniorCenterPayload>;
   /** The deleteTag mutation */
   deleteTag?: Maybe<DeleteTagPayload>;
   /** The deleteUser mutation */
@@ -17733,14 +16726,10 @@ export type RootMutation = {
   updateComment?: Maybe<UpdateCommentPayload>;
   /** The updateCurrent990FormPdf mutation */
   updateCurrent990FormPdf?: Maybe<UpdateCurrent990FormPdfPayload>;
-  /** The updateCustomPage mutation */
-  updateCustomPage?: Maybe<UpdateCustomPagePayload>;
   /** The updateDonorPrivacyPolicyPdf mutation */
   updateDonorPrivacyPolicyPdf?: Maybe<UpdateDonorPrivacyPolicyPdfPayload>;
   /** The updateFaq mutation */
   updateFaq?: Maybe<UpdateFaqPayload>;
-  /** The updateFoodPantry mutation */
-  updateFoodPantry?: Maybe<UpdateFoodPantryPayload>;
   /** The updateFourPillarsHeroComponent mutation */
   updateFourPillarsHeroComponent?: Maybe<UpdateFourPillarsHeroComponentPayload>;
   /** The updateFourPillarsPreview mutation */
@@ -17781,8 +16770,6 @@ export type RootMutation = {
   updatePost?: Maybe<UpdatePostPayload>;
   /** The updatePostFormat mutation */
   updatePostFormat?: Maybe<UpdatePostFormatPayload>;
-  /** The updateSeniorCenter mutation */
-  updateSeniorCenter?: Maybe<UpdateSeniorCenterPayload>;
   /** The updateSettings mutation */
   updateSettings?: Maybe<UpdateSettingsPayload>;
   /** The updateTag mutation */
@@ -17861,12 +16848,6 @@ export type RootMutationCreateCurrent990FormPdfArgs = {
 
 
 /** The root mutation */
-export type RootMutationCreateCustomPageArgs = {
-  input: CreateCustomPageInput;
-};
-
-
-/** The root mutation */
 export type RootMutationCreateDonorPrivacyPolicyPdfArgs = {
   input: CreateDonorPrivacyPolicyPdfInput;
 };
@@ -17875,18 +16856,6 @@ export type RootMutationCreateDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationCreateFaqArgs = {
   input: CreateFaqInput;
-};
-
-
-/** The root mutation */
-export type RootMutationCreateFoodPantryArgs = {
-  input: CreateFoodPantryInput;
-};
-
-
-/** The root mutation */
-export type RootMutationCreateFoodPantryCustomArgs = {
-  input: CreateFoodPantryCustomInput;
 };
 
 
@@ -18011,12 +16980,6 @@ export type RootMutationCreatePostFormatArgs = {
 
 
 /** The root mutation */
-export type RootMutationCreateSeniorCenterArgs = {
-  input: CreateSeniorCenterInput;
-};
-
-
-/** The root mutation */
 export type RootMutationCreateTagArgs = {
   input: CreateTagInput;
 };
@@ -18107,12 +17070,6 @@ export type RootMutationDeleteCurrent990FormPdfArgs = {
 
 
 /** The root mutation */
-export type RootMutationDeleteCustomPageArgs = {
-  input: DeleteCustomPageInput;
-};
-
-
-/** The root mutation */
 export type RootMutationDeleteDonorPrivacyPolicyPdfArgs = {
   input: DeleteDonorPrivacyPolicyPdfInput;
 };
@@ -18121,12 +17078,6 @@ export type RootMutationDeleteDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationDeleteFaqArgs = {
   input: DeleteFaqInput;
-};
-
-
-/** The root mutation */
-export type RootMutationDeleteFoodPantryArgs = {
-  input: DeleteFoodPantryInput;
 };
 
 
@@ -18247,12 +17198,6 @@ export type RootMutationDeletePostArgs = {
 /** The root mutation */
 export type RootMutationDeletePostFormatArgs = {
   input: DeletePostFormatInput;
-};
-
-
-/** The root mutation */
-export type RootMutationDeleteSeniorCenterArgs = {
-  input: DeleteSeniorCenterInput;
 };
 
 
@@ -18395,12 +17340,6 @@ export type RootMutationUpdateCurrent990FormPdfArgs = {
 
 
 /** The root mutation */
-export type RootMutationUpdateCustomPageArgs = {
-  input: UpdateCustomPageInput;
-};
-
-
-/** The root mutation */
 export type RootMutationUpdateDonorPrivacyPolicyPdfArgs = {
   input: UpdateDonorPrivacyPolicyPdfInput;
 };
@@ -18409,12 +17348,6 @@ export type RootMutationUpdateDonorPrivacyPolicyPdfArgs = {
 /** The root mutation */
 export type RootMutationUpdateFaqArgs = {
   input: UpdateFaqInput;
-};
-
-
-/** The root mutation */
-export type RootMutationUpdateFoodPantryArgs = {
-  input: UpdateFoodPantryInput;
 };
 
 
@@ -18535,12 +17468,6 @@ export type RootMutationUpdatePostArgs = {
 /** The root mutation */
 export type RootMutationUpdatePostFormatArgs = {
   input: UpdatePostFormatInput;
-};
-
-
-/** The root mutation */
-export type RootMutationUpdateSeniorCenterArgs = {
-  input: UpdateSeniorCenterInput;
 };
 
 
@@ -18669,15 +17596,6 @@ export type RootQuery = {
   current990FormPdfBy?: Maybe<Current990FormPdf>;
   /** Connection between the RootQuery type and the current990FormPdf type */
   current990FormPdfs?: Maybe<RootQueryToCurrent990FormPdfConnection>;
-  /** An object of the customPage Type.  */
-  customPage?: Maybe<CustomPage>;
-  /**
-   * A customPage object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  customPageBy?: Maybe<CustomPage>;
-  /** Connection between the RootQuery type and the customPage type */
-  customPages?: Maybe<RootQueryToCustomPageConnection>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
   /** An object of the donorPrivacyPolicyPdf Type.  */
@@ -18698,15 +17616,6 @@ export type RootQuery = {
   faqBy?: Maybe<Faq>;
   /** Connection between the RootQuery type and the faq type */
   faqs?: Maybe<RootQueryToFaqConnection>;
-  /** Connection between the RootQuery type and the foodPantry type */
-  foodPantries?: Maybe<RootQueryToFoodPantryConnection>;
-  /** An object of the foodPantry Type.  */
-  foodPantry?: Maybe<FoodPantry>;
-  /**
-   * A foodPantry object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  foodPantryBy?: Maybe<FoodPantry>;
   /** An object of the fourPillarsHeroComponent Type.  */
   fourPillarsHeroComponent?: Maybe<FourPillarsHeroComponent>;
   /**
@@ -18910,15 +17819,6 @@ export type RootQuery = {
   registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
   /** Connection between the RootQuery type and the ContentNode type */
   revisions?: Maybe<RootQueryToRevisionsConnection>;
-  /** An object of the seniorCenter Type.  */
-  seniorCenter?: Maybe<SeniorCenter>;
-  /**
-   * A seniorCenter object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  seniorCenterBy?: Maybe<SeniorCenter>;
-  /** Connection between the RootQuery type and the seniorCenter type */
-  seniorCenters?: Maybe<RootQueryToSeniorCenterConnection>;
   /** A 0bject */
   tag?: Maybe<Tag>;
   /** Connection between the RootQuery type and the tag type */
@@ -19244,32 +18144,6 @@ export type RootQueryCurrent990FormPdfsArgs = {
 
 
 /** The root entry point into the Graph */
-export type RootQueryCustomPageArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
-  id: Scalars['ID']['input'];
-  idType?: InputMaybe<CustomPageIdType>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryCustomPageByArgs = {
-  customPageId?: InputMaybe<Scalars['Int']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  uri?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryCustomPagesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<RootQueryToCustomPageConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
 export type RootQueryDonorPrivacyPolicyPdfArgs = {
   asPreview?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['ID']['input'];
@@ -19320,33 +18194,6 @@ export type RootQueryFaqsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToFaqConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryFoodPantriesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<RootQueryToFoodPantryConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryFoodPantryArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
-  id: Scalars['ID']['input'];
-  idType?: InputMaybe<FoodPantryIdType>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryFoodPantryByArgs = {
-  foodPantryId?: InputMaybe<Scalars['Int']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-  uri?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -19972,33 +18819,6 @@ export type RootQueryRevisionsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToRevisionsConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQuerySeniorCenterArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
-  id: Scalars['ID']['input'];
-  idType?: InputMaybe<SeniorCenterIdType>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQuerySeniorCenterByArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-  seniorCenterId?: InputMaybe<Scalars['Int']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-  uri?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQuerySeniorCentersArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<RootQueryToSeniorCenterConnectionWhereArgs>;
 };
 
 
@@ -20982,77 +19802,6 @@ export type RootQueryToCurrent990FormPdfConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** Connection between the RootQuery type and the customPage type */
-export type RootQueryToCustomPageConnection = Connection & CustomPageConnection & {
-  __typename?: 'RootQueryToCustomPageConnection';
-  /** Edges for the RootQueryToCustomPageConnection connection */
-  edges: Array<RootQueryToCustomPageConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<CustomPage>;
-  /** Information about pagination in a connection. */
-  pageInfo: RootQueryToCustomPageConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type RootQueryToCustomPageConnectionEdge = CustomPageConnectionEdge & Edge & {
-  __typename?: 'RootQueryToCustomPageConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The item at the end of the edge */
-  node: CustomPage;
-};
-
-/** Pagination metadata specific to &quot;RootQueryToCustomPageConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToCustomPageConnection Nodes. */
-export type RootQueryToCustomPageConnectionPageInfo = CustomPageConnectionPageInfo & PageInfo & WpPageInfo & {
-  __typename?: 'RootQueryToCustomPageConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** Arguments for filtering the RootQueryToCustomPageConnection connection */
-export type RootQueryToCustomPageConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']['input']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']['input']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What parameter to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']['input']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']['input']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 /** Connection between the RootQuery type and the donorPrivacyPolicyPdf type */
 export type RootQueryToDonorPrivacyPolicyPdfConnection = Connection & DonorPrivacyPolicyPdfConnection & {
   __typename?: 'RootQueryToDonorPrivacyPolicyPdfConnection';
@@ -21225,77 +19974,6 @@ export type RootQueryToFaqConnectionPageInfo = FaqConnectionPageInfo & PageInfo 
 
 /** Arguments for filtering the RootQueryToFaqConnection connection */
 export type RootQueryToFaqConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']['input']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']['input']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What parameter to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']['input']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']['input']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** Connection between the RootQuery type and the foodPantry type */
-export type RootQueryToFoodPantryConnection = Connection & FoodPantryConnection & {
-  __typename?: 'RootQueryToFoodPantryConnection';
-  /** Edges for the RootQueryToFoodPantryConnection connection */
-  edges: Array<RootQueryToFoodPantryConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<FoodPantry>;
-  /** Information about pagination in a connection. */
-  pageInfo: RootQueryToFoodPantryConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type RootQueryToFoodPantryConnectionEdge = Edge & FoodPantryConnectionEdge & {
-  __typename?: 'RootQueryToFoodPantryConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The item at the end of the edge */
-  node: FoodPantry;
-};
-
-/** Pagination metadata specific to &quot;RootQueryToFoodPantryConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToFoodPantryConnection Nodes. */
-export type RootQueryToFoodPantryConnectionPageInfo = FoodPantryConnectionPageInfo & PageInfo & WpPageInfo & {
-  __typename?: 'RootQueryToFoodPantryConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** Arguments for filtering the RootQueryToFoodPantryConnection connection */
-export type RootQueryToFoodPantryConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -23006,77 +21684,6 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** Connection between the RootQuery type and the seniorCenter type */
-export type RootQueryToSeniorCenterConnection = Connection & SeniorCenterConnection & {
-  __typename?: 'RootQueryToSeniorCenterConnection';
-  /** Edges for the RootQueryToSeniorCenterConnection connection */
-  edges: Array<RootQueryToSeniorCenterConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<SeniorCenter>;
-  /** Information about pagination in a connection. */
-  pageInfo: RootQueryToSeniorCenterConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type RootQueryToSeniorCenterConnectionEdge = Edge & SeniorCenterConnectionEdge & {
-  __typename?: 'RootQueryToSeniorCenterConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The item at the end of the edge */
-  node: SeniorCenter;
-};
-
-/** Pagination metadata specific to &quot;RootQueryToSeniorCenterConnection&quot; collections. Provides cursors and flags for navigating through sets of RootQueryToSeniorCenterConnection Nodes. */
-export type RootQueryToSeniorCenterConnectionPageInfo = PageInfo & SeniorCenterConnectionPageInfo & WpPageInfo & {
-  __typename?: 'RootQueryToSeniorCenterConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** Arguments for filtering the RootQueryToSeniorCenterConnection connection */
-export type RootQueryToSeniorCenterConnectionWhereArgs = {
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']['input']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']['input']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What parameter to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']['input']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']['input']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 /** Connection between the RootQuery type and the tag type */
 export type RootQueryToTagConnection = Connection & TagConnection & {
   __typename?: 'RootQueryToTagConnection';
@@ -23719,271 +22326,6 @@ export type SendPasswordResetEmailPayload = {
    * @deprecated This field will be removed in a future version of WPGraphQL
    */
   user?: Maybe<User>;
-};
-
-/** The seniorCenter type */
-export type SeniorCenter = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfSeniorCenterFields & {
-  __typename?: 'SeniorCenter';
-  /**
-   * The ancestors of the content node.
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  ancestors?: Maybe<SeniorCenterToSeniorCenterConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The name of the Content Type the node belongs to */
-  contentTypeName: Scalars['String']['output'];
-  /** The unique identifier stored in the database */
-  databaseId: Scalars['Int']['output'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']['output']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']['output']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']['output']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']['output']>;
-  /** Whether the senior_center object is password protected. */
-  hasPassword?: Maybe<Scalars['Boolean']['output']>;
-  /** The globally unique identifier of the senior_center object. */
-  id: Scalars['ID']['output'];
-  /** Whether the node is a Comment */
-  isComment: Scalars['Boolean']['output'];
-  /** Whether the node is a Content Node */
-  isContentNode: Scalars['Boolean']['output'];
-  /** Whether the node represents the front page. */
-  isFrontPage: Scalars['Boolean']['output'];
-  /** Whether  the node represents the blog page. */
-  isPostsPage: Scalars['Boolean']['output'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']['output']>;
-  /** Whether the node is a Term */
-  isTermNode: Scalars['Boolean']['output'];
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']['output']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']['output']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']['output']>;
-  /**
-   * The parent of the content node.
-   * @deprecated This content type is not hierarchical and typically will not have a parent
-   */
-  parent?: Maybe<SeniorCenterToParentConnectionEdge>;
-  /** The password for the senior_center object. */
-  password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the SeniorCenter type and the seniorCenter type */
-  preview?: Maybe<SeniorCenterToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']['output']>;
-  /** Fields of the SeniorCenterFields ACF Field Group */
-  seniorCenterFields?: Maybe<SeniorCenterFields>;
-  /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
-   */
-  seniorCenterId: Scalars['Int']['output'];
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']['output']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']['output']>;
-  /** The template assigned to the node */
-  template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']['output']>;
-  /** The unique resource identifier path */
-  uri?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** The seniorCenter type */
-export type SeniorCenterAncestorsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The seniorCenter type */
-export type SeniorCenterEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The seniorCenter type */
-export type SeniorCenterEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The seniorCenter type */
-export type SeniorCenterTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** A paginated collection of seniorCenter Nodes, Supports cursor-based pagination and filtering to efficiently retrieve sets of seniorCenter Nodes */
-export type SeniorCenterConnection = {
-  /** A list of edges (relational context) between RootQuery and connected seniorCenter Nodes */
-  edges: Array<SeniorCenterConnectionEdge>;
-  /** A list of connected seniorCenter Nodes */
-  nodes: Array<SeniorCenter>;
-  /** Information about pagination in a connection. */
-  pageInfo: SeniorCenterConnectionPageInfo;
-};
-
-/** Represents a connection to a seniorCenter. Contains both the seniorCenter Node and metadata about the relationship. */
-export type SeniorCenterConnectionEdge = {
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The connected seniorCenter Node */
-  node: SeniorCenter;
-};
-
-/** Pagination metadata specific to &quot;SeniorCenterConnectionEdge&quot; collections. Provides cursors and flags for navigating through sets of &quot;SeniorCenterConnectionEdge&quot; Nodes. */
-export type SeniorCenterConnectionPageInfo = {
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;SeniorCenterFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type SeniorCenterFields = AcfFieldGroup & AcfFieldGroupFields & SeniorCenterFields_Fields & {
-  __typename?: 'SeniorCenterFields';
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  img?: Maybe<AcfMediaItemConnectionEdge>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  link?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  linkText?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  text?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;SeniorCenterFields&quot; Field Group */
-export type SeniorCenterFields_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  img?: Maybe<AcfMediaItemConnectionEdge>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  link?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  linkText?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  text?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SeniorCenterFields&quot; Field Group */
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-/** Identifier types for retrieving a specific SeniorCenter. Specifies which unique attribute is used to find an exact SeniorCenter. */
-export enum SeniorCenterIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the SeniorCenter type and the seniorCenter type */
-export type SeniorCenterToParentConnectionEdge = Edge & OneToOneConnection & SeniorCenterConnectionEdge & {
-  __typename?: 'SeniorCenterToParentConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /**
-   * The node of the connection, without the edges
-   * @deprecated This content type is not hierarchical and typically will not have a parent
-   */
-  node: SeniorCenter;
-};
-
-/** Connection between the SeniorCenter type and the seniorCenter type */
-export type SeniorCenterToPreviewConnectionEdge = Edge & OneToOneConnection & SeniorCenterConnectionEdge & {
-  __typename?: 'SeniorCenterToPreviewConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /** The node of the connection, without the edges */
-  node: SeniorCenter;
-};
-
-/** Connection between the SeniorCenter type and the seniorCenter type */
-export type SeniorCenterToSeniorCenterConnection = Connection & SeniorCenterConnection & {
-  __typename?: 'SeniorCenterToSeniorCenterConnection';
-  /** Edges for the SeniorCenterToSeniorCenterConnection connection */
-  edges: Array<SeniorCenterToSeniorCenterConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<SeniorCenter>;
-  /** Information about pagination in a connection. */
-  pageInfo: SeniorCenterToSeniorCenterConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type SeniorCenterToSeniorCenterConnectionEdge = Edge & SeniorCenterConnectionEdge & {
-  __typename?: 'SeniorCenterToSeniorCenterConnectionEdge';
-  /**
-   * A cursor for use in pagination
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  cursor?: Maybe<Scalars['String']['output']>;
-  /**
-   * The item at the end of the edge
-   * @deprecated This content type is not hierarchical and typically will not have ancestors
-   */
-  node: SeniorCenter;
-};
-
-/** Pagination metadata specific to &quot;SeniorCenterToSeniorCenterConnection&quot; collections. Provides cursors and flags for navigating through sets of SeniorCenterToSeniorCenterConnection Nodes. */
-export type SeniorCenterToSeniorCenterConnectionPageInfo = PageInfo & SeniorCenterConnectionPageInfo & WpPageInfo & {
-  __typename?: 'SeniorCenterToSeniorCenterConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 /** All of the registered settings */
@@ -25142,43 +23484,6 @@ export type UpdateCurrent990FormPdfPayload = {
   current990FormPdf?: Maybe<Current990FormPdf>;
 };
 
-/** Input for the updateCustomPage mutation. */
-export type UpdateCustomPageInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The content of the object */
-  content?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** The excerpt of the object */
-  excerpt?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the customPage object */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The ID of the parent object */
-  parentId?: InputMaybe<Scalars['ID']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** The payload for the updateCustomPage mutation. */
-export type UpdateCustomPagePayload = {
-  __typename?: 'UpdateCustomPagePayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  customPage?: Maybe<CustomPage>;
-};
-
 /** Input for the updateDonorPrivacyPolicyPdf mutation. */
 export type UpdateDonorPrivacyPolicyPdfInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -25239,37 +23544,6 @@ export type UpdateFaqPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   faq?: Maybe<Faq>;
-};
-
-/** Input for the updateFoodPantry mutation. */
-export type UpdateFoodPantryInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the foodPantry object */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** The payload for the updateFoodPantry mutation. */
-export type UpdateFoodPantryPayload = {
-  __typename?: 'UpdateFoodPantryPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  foodPantry?: Maybe<FoodPantry>;
 };
 
 /** Input for the updateFourPillarsHeroComponent mutation. */
@@ -25926,37 +24200,6 @@ export type UpdatePostPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   post?: Maybe<Post>;
-};
-
-/** Input for the updateSeniorCenter mutation. */
-export type UpdateSeniorCenterInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the seniorCenter object */
-  id: Scalars['ID']['input'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']['input']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']['input']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** The payload for the updateSeniorCenter mutation. */
-export type UpdateSeniorCenterPayload = {
-  __typename?: 'UpdateSeniorCenterPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** The Post object mutation type. */
-  seniorCenter?: Maybe<SeniorCenter>;
 };
 
 /** Input for the updateSettings mutation. */
@@ -27900,12 +26143,6 @@ export type WithAcfCurrent990FormPdfFields = {
   current990FormPDFFields?: Maybe<Current990FormPdfFields>;
 };
 
-/** Provides access to fields of the &quot;CustomPageFields&quot; ACF Field Group via the &quot;customPageFields&quot; field */
-export type WithAcfCustomPageFields = {
-  /** Fields of the CustomPageFields ACF Field Group */
-  customPageFields?: Maybe<CustomPageFields>;
-};
-
 /** Provides access to fields of the &quot;DonorPrivacyPolicyPDFFields&quot; ACF Field Group via the &quot;donorPrivacyPolicyPDFFields&quot; field */
 export type WithAcfDonorPrivacyPolicyPdfFields = {
   /** Fields of the DonorPrivacyPolicyPDFFields ACF Field Group */
@@ -27916,12 +26153,6 @@ export type WithAcfDonorPrivacyPolicyPdfFields = {
 export type WithAcfFaqFields = {
   /** Fields of the FAQFields ACF Field Group */
   fAQFields?: Maybe<FaqFields>;
-};
-
-/** Provides access to fields of the &quot;FoodPantryFields&quot; ACF Field Group via the &quot;foodPantryFields&quot; field */
-export type WithAcfFoodPantryFields = {
-  /** Fields of the FoodPantryFields ACF Field Group */
-  foodPantryFields?: Maybe<FoodPantryFields>;
 };
 
 /** Provides access to fields of the &quot;FourPillarsHeroComponentFields&quot; ACF Field Group via the &quot;fourPillarsHeroComponentFields&quot; field */
@@ -28036,12 +26267,6 @@ export type WithAcfPartnerPageHeroFields = {
 export type WithAcfPartnersTickerItemFields = {
   /** Fields of the PartnersTickerItemFields ACF Field Group */
   partnersTickerItemFields?: Maybe<PartnersTickerItemFields>;
-};
-
-/** Provides access to fields of the &quot;SeniorCenterFields&quot; ACF Field Group via the &quot;seniorCenterFields&quot; field */
-export type WithAcfSeniorCenterFields = {
-  /** Fields of the SeniorCenterFields ACF Field Group */
-  seniorCenterFields?: Maybe<SeniorCenterFields>;
 };
 
 /** Provides access to fields of the &quot;UWContactInformationFields&quot; ACF Field Group via the &quot;uWContactInformationFields&quot; field */
