@@ -188,7 +188,7 @@
                     p-2 xl:p-0 rounded-md xl:rounded-none"
 		>
 			<!-- Category Sidebar -->
-			<div class="h-min flex flex-row flex-wrap xl:flex-col xl:gap-2 justify-center xl:justify-start mx-2 xl:mr-4 mt-4">
+			<div class="h-min flex flex-row flex-wrap xl:flex-col xl:gap-2 justify-center xl:justify-start mx-2 xl:mr-4 mt-2">
 				{#each categories.filter((c) => !unavailableCategories.includes(c.name)) as { name, color, icon, subCategories }}
 					<button
 						class={cn(
@@ -206,7 +206,7 @@
 
 			<div
 				class="alice-view relative min-w-[70vw] xl:overflow-y-scroll flex flex-col items-center justify-center
-                        bg-white/50 rounded-md shadow-inner border border-gray-100 p-3 mt-2
+                        bg-white/50 rounded-md shadow-inner border border-gray-100 p-1 mt-1
                         xl:bg-transparent xl:shadow-none xl:border-0 xl:p-0 xl:mt-0"
 			>
 				{#if !isLoading && activeCategory === null}
@@ -214,7 +214,7 @@
 				{/if}
 
 				<!-- Subcategory Buttons -->
-				<div class="w-full flex justify-center mt-4 xl:mt-0 xl:justify-start">
+				<div class="w-full flex justify-center mt-1 xl:mt-0 xl:justify-start">
 					{#if !isLoading}
 						<div class="flex items-center">
 							{#if displayedSubCategories.length > 0}

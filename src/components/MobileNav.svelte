@@ -21,7 +21,7 @@
 
 	let open = $state(false);
 
-	const { navTabs } = config;
+	const { navTabs, helpfulLinks } = config;
 
 	let tabSetBreadcrumbs = $state<NavTab[][]>([]);
 	let currentParentTab = $state<NavTab | null>(null);
@@ -127,8 +127,14 @@
 						/>
 					{/each}
 				{/if}
+				{#if tabSetBreadcrumbs.length === 1}
+					{#each helpfulLinks as { title, href }}
+						<BtnOrLink className="max-w-[80%] w-full self-start text-primary-blue-2 font-semibold text-lg text-nowrap" {href} text={title} ariaLabel={`Navigate to ${title}`} role="menuitem" />
+					{/each}
+				{/if}
 			</div>
 			<!-- DONATE BUTTON -->
+
 			<div class="flex flex-col items-center justify-center w-full list-none mt-4" role="none">
 				<LearnMoreBtn
 					text="Donate"

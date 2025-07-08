@@ -19,7 +19,7 @@
 </script>
 
 {#snippet link(href: Props['href'])}
-	<a {href} class="items-start {commonClasses}" aria-label={ariaLabel} {role} data-astro-prefetch="tap">
+	<a {href} class="items-start m-0 {commonClasses}" aria-label={ariaLabel} {role} data-astro-prefetch="tap">
 		{text.toUpperCase()}
 	</a>
 {/snippet}
