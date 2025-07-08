@@ -36,8 +36,6 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 			}
 		}
 	`;
-	console.log("wpapiusername: ", WP_API_USERNAME);
-	console.log("wpapipassword: ", WP_API_PASSWORD);
 
 	console.log("login mutation: ", LOGIN_MUTATION);
 	try {
