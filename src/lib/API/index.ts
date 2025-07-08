@@ -190,78 +190,61 @@ export default async function getPageContent(path: string, variables = {}) {
 	let data;
 
 	try {
-		// if (!import.meta.env.PROD) {
+		if (!import.meta.env.PROD) {
 
-		// 	// const data = getPageContentDev(path)
+			// const data = getPageContentDev(path)
 
-		// 	const response = await fetch(`${WP_URL_SRVR}/graphql`, {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify({ query, variables }),
-		// 	});
+			const response = await fetch(`${WP_URL_SRVR}/graphql`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ query, variables }),
+			});
 
 
-		// 	if (!response.ok) {
-		// 		throw new Error(`HTTP error! status: ${response.status}`);
-		// 	}
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
 
-		// 	data = await response.json();
+			data = await response.json();
 
-		// 	data = data.data;
-		// 	if (!data || data?.errors) {
-		// 		throw new Error(data?.errors[0]?.message);
-		// 	}
+			data = data.data;
+			if (!data || data?.errors) {
+				throw new Error(data?.errors[0]?.message);
+			}
 
-		// 	return data;
-		// }
+			return data;
+		}
 
 		const cacheKey = `pageContent:${path}:${JSON.stringify(variables)}`;
 		const auth = await getOrRefreshTokens();
 
 
 
-		// data = await getCachedData(cacheKey, async () => {
-		// 	const response = await fetch(`${WP_URL_SRVR_PROD}/graphql`, {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 			Authorization: `Bearer ${auth}`,
-		// 		},
-		// 		body: JSON.stringify({ query, variables }),
-		// 	});
-		// 	if (!response.ok) {
-		// 		throw new Error(`HTTP error! status: ${response.status}`);
-		// 	}
+		data = await getCachedData(cacheKey, async () => {
+			const response = await fetch(`${WP_URL_SRVR_PROD}/graphql`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${auth}`,
+				},
+				body: JSON.stringify({ query, variables }),
+			});
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
 
-		// 	const { data } = await response.json();
-		// 	if (!data || data?.errors) {
-		// 		throw new Error(data.errors[0].message);
-		// 	}
-		// 	return data;
-		// });
-		const response = await fetch(`${WP_URL_SRVR_PROD}/graphql`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${auth}`,
-			},
-			body: JSON.stringify({ query, variables }),
+			const { data } = await response.json();
+			if (!data || data?.errors) {
+				throw new Error(data.errors[0].message);
+			}
+			return data;
 		});
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-
-		const { data } = await response.json();
-		if (!data || data?.errors) {
-			throw new Error(data.errors[0].message);
+		if (!data) {
+			throw new Error(`No data found for path: ${path}`);
 		}
 		return data;
-		// if (!data) {
-		// 	throw new Error(`No data found for path: ${path}`);
-		// }
-		// return data;
 	} catch (error) {
 		return getDefaultPageProps(`ERROR IN getPageContent ${error}`);
 	}
@@ -309,50 +292,30 @@ export async function getContent(query: string, variables = {}) {
 		if (!auth) {
 			throw new Error('No token found');
 		}
-		// const data = await getCachedData(cacheKey, async () => {
-		// 	const response = await fetch(`${wpUrl}/graphql`, {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 			Authorization: `Bearer ${auth}`,
-		// 		},
-		// 		body: JSON.stringify({ query, variables }),
-		// 	});
+		const data = await getCachedData(cacheKey, async () => {
+			const response = await fetch(`${wpUrl}/graphql`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${auth}`,
+				},
+				body: JSON.stringify({ query, variables }),
+			});
 
-		// 	if (!response.ok) {
-		// 		throw new Error(`HTTP error! status: ${response.status}`);
-		// 	}
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
 
-		// 	const data = await response.json();
-		// 	if (data?.errors) {
-		// 		throw new Error(data.errors[0].message);
-		// 	}
+			const data = await response.json();
+			if (data?.errors) {
+				throw new Error(data.errors[0].message);
+			}
 
-		// 	return data;
-		// });
-		// if (!data) {
-		// 	throw new Error(`No data found for query: ${query}`);
-		// }
-		// return data;
-
-		const response = await fetch(`${wpUrl}/graphql`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${auth}`,
-			},
-			body: JSON.stringify({ query, variables }),
+			return data;
 		});
-
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+		if (!data) {
+			throw new Error(`No data found for query: ${query}`);
 		}
-
-		const data = await response.json();
-		if (data?.errors) {
-			throw new Error(data.errors[0].message);
-		}
-
 		return data;
 	} catch (error) {
 		return getDefaultProps(`ERROR IN getContent ${error}`);
