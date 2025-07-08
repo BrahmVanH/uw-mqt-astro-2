@@ -1,12 +1,14 @@
 import { vitePreprocess } from '@astrojs/svelte';
 import path from 'path';
+import { env } from 'process';
+
 
 
 export default {
 	preprocess: vitePreprocess({ script: true }),
 
 	compilerOptions: {
-		dev: import.meta.env.NODE_ENV !== 'production',
+		dev: env.NODE_ENV !== 'production',
 		css: 'injected',
 		hydratable: true
 	},
