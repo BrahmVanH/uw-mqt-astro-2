@@ -43,7 +43,7 @@
 			{#if hours.length}
 				<p class="text-sm text-left font-bold">Hours</p>
 
-				<ul class="list-disc text-left xl:text-center">
+				<ul class="list-disc text-left">
 					{#if typeof hours === 'string'}
 						<li class="text-xs ml-3">
 							<span class="text-sm">
@@ -62,7 +62,7 @@
 
 			{#if pantry.flags.length}
 				<p class="text-sm text-left font-bold">Eligibility</p>
-				<ul class=" list-disc flex flex-col text-left xl:text-center">
+				<ul class=" list-disc flex flex-col text-left">
 					{#each pantry.flags as flag}
 						<li class="text-xs ml-3">
 							<span class="text-sm">{flag}</span>
