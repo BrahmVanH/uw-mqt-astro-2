@@ -1,7 +1,7 @@
 import { isServer } from '../environment';
 import { getDefaultPageProps, getDefaultProps, gracefullyGetDefaultProps, onError } from '../error';
 import { getContentQuery } from './helpers';
-import { WP_URL_SRVR, WP_URL_SRVR_PROD, WP_API_USERNAME, WP_API_PASSWORD, YOOPERS_UNITED_API_TOKEN, YOOPERS_UNITED_API_ROOT_URL } from 'astro:env/server';
+import { WP_URL_SRVR, WP_URL_SRVR_PROD, WP_API_USERNAME, WP_API_PASSWORD, YOOPERS_UNITED_API_TOKEN, YOOPERS_UNITED_API_ROOT_URL, APP_ROOT_URL_SRVR } from 'astro:env/server';
 import type { YoopersUnitedNeed, YoopersUnitedNeedsFetchResponse } from '@/types/index';
 
 import { WP_URL_CLNT } from 'astro:env/client';
@@ -36,12 +36,14 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 			}
 		}
 	`;
+	console.log("login mutation: ", LOGIN_MUTATION);
 	try {
 
 		const response = await fetch(`${wpUrl}/graphql`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				'Origin': APP_ROOT_URL_SRVR
 			},
 			body: JSON.stringify({
 				query: LOGIN_MUTATION,
