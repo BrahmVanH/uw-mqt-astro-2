@@ -57,6 +57,11 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 		console.log("response: ", response);
 
 		if (!response.ok) {
+			const errorText = await response.text();
+			console.log('Error response:', errorText);
+			console.log('Response status:', response.status);
+			console.log('Response headers:', [...response.headers.entries()]);
+			// TEMP!!!!
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
