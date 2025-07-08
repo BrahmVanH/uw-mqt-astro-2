@@ -6,7 +6,7 @@ import type { YoopersUnitedNeed, YoopersUnitedNeedsFetchResponse } from '@/types
 
 import { WP_URL_CLNT } from 'astro:env/client';
 import { getOrRefreshTokens, getRedis } from '../redis';
-import { gql } from 'graphql-tag';
+import { gql } from 'graphql-request';
 import { sanitizeHTML } from './sanitize';
 
 interface CacheOptions {
