@@ -1,21 +1,3 @@
-// import {
-//   communityResiliencyPageQuery,
-//   financialSecurityPageQuery,
-//   youthOpportunityPageQuery,
-//   healthyCommunityPageQuery,
-//   homePageQuery,
-//   ourImpactPageQuery,
-//   campaignToolkitPageQuery,
-//   valuesHistoryPageQuery,
-//   ourCulturePageQuery,
-//   ourLeadershipPageQuery,
-//   individualsPageQuery,
-//   getInvolvedPageQuery,
-//   partnerPageQuery,
-//   agenciesPageQuery,
-//   alicePageQuery,
-// } from "./queries/";
-
 import {
   communityResiliencyPageQuery,
   financialSecurityPageQuery,
@@ -32,7 +14,7 @@ import {
   partnerPageQuery,
   agenciesPageQuery,
   alicePageQuery,
-} from "./quaffies";
+} from "./queries/";
 
 // import devDataJson from '@/lib/dist/redis-cache.json'
 
