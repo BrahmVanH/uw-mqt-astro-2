@@ -67,8 +67,6 @@
 		mapCenter = latLng;
 	}
 
- 
-
 	function setMapCenterWithZip(zip: string) {
 		if (zip.length === 5 && zipcodes[zip as keyof typeof zipcodes]) {
 			const [zipLng, zipLat] = zipcodes[zip as keyof typeof zipcodes];
@@ -124,7 +122,7 @@
 	});
 </script>
 
-<div class="w-full h-min flex flex-row">
+<div class="w-full xl:h-min flex flex-row">
 	<h2 class="text-xl mb-1">Food Pantries</h2>
 	<div class="border-2 border-primary-blue-4 rounded-sm m-2">
 		<input
@@ -141,15 +139,15 @@
 	</div>
 </div>
 
-<div class="w-full grid grid-cols-8 max-h-[600px]">
-	<div class="col-span-5" style="height: 100%">
+<div class="w-full max-w-[90vw] flex flex-col xl:grid xl:grid-cols-8 xl:max-h-[600px]">
+	<div class="h-full xl:col-span-5" >
 		{#if isClient}
 			<LeafletMap {selectedPantryId} {mapCenter} {userDefinedLocation} pantries={pantryFeatures} {handleSelectPantry} />
 		{:else}
 			<LoadingSpinner />
 		{/if}
 	</div>
-	<div class="col-span-3 max-h-[600px] overflow-y-scroll">
+	<div class="xl:col-span-3 min-h-[200px] xl:h-[600px] xl:max-h-[600px]">
 		{#if isClient}
 			<Panel {sortedPantries} handleFocusPantryLocation={handleSetMapCenter} />
 		{:else}

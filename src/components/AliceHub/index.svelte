@@ -172,7 +172,7 @@
 	<ErrorDisplay {error} />
 {:else}
 	<div
-		class="relative overflow-hidden flex flex-col items-center justify-center mb-8
+		class="relative xl:overflow-hidden flex flex-col items-center justify-center mb-8
                 border border-gray-200 rounded-lg shadow-sm bg-gray-50/30
                 xl:border-0 xl:shadow-none xl:bg-transparent xl:rounded-none"
 	>
@@ -204,9 +204,8 @@
 				{/each}
 			</div>
 
-			<!-- Main Content Area with subtle inset styling -->
 			<div
-				class="alice-view relative min-w-[70vw] overflow-y-scroll flex flex-col items-center justify-center
+				class="alice-view relative min-w-[70vw] xl:overflow-y-scroll flex flex-col items-center justify-center
                         bg-white/50 rounded-md shadow-inner border border-gray-100 p-3 mt-2
                         xl:bg-transparent xl:shadow-none xl:border-0 xl:p-0 xl:mt-0"
 			>
@@ -214,7 +213,6 @@
 					<img class="hidden xl:block absolute right-[25%] z-0 w-full h-full" src={aliceHubBg.src} alt="overlapping circle graphic" loading="lazy" decoding="async" />
 				{/if}
 
-				<!-- Rest of your content remains the same... -->
 				<!-- Subcategory Buttons -->
 				<div class="w-full flex justify-center mt-4 xl:mt-0 xl:justify-start">
 					{#if !isLoading}
