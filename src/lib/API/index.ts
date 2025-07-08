@@ -37,6 +37,7 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 		}
 	`;
 	try {
+
 		const response = await fetch(`${wpUrl}/graphql`, {
 			method: 'POST',
 			headers: {
@@ -50,6 +51,8 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 				},
 			}),
 		});
+
+		console.log("response: ", response);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -97,6 +100,9 @@ export async function refreshAuthToken(refreshToken: string): Promise<AuthTokens
 				},
 			}),
 		});
+
+		console.log("response: ", response);
+
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
