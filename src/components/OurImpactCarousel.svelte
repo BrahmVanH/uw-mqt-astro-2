@@ -69,7 +69,7 @@
 
 	let { carouselItems }: Props = $props();
 
-	let selectedItem = $state<CarouselItem>(carouselItems[0]);
+	let selectedItem = $state<CarouselItem | null>(carouselItems?.[0] || null);
 
 	const handleSelectItem = (item: CarouselItem) => {
 		selectedItem = item;
@@ -82,6 +82,7 @@
 	aria-labelledby="success-stories-heading"
 >
 	<h2 id="success-stories-heading" class="text-xl lg:text-2xl w-full text-center mb-1 lg:mb-2">Success Stories</h2>
+	{#if selectedItem}
 	<div class="relative z-20 w-full mx-auto row-start-1 col-span-3 flex flex-col lg:flex-row justify-center items-start bg-transparent">
 		<div class="w-full lg:w-1/2 h-auto">
 			<img
@@ -95,13 +96,14 @@
 			/>
 		</div>
 		<article class="w-full lg:w-1/2 p-0 lg:p-6 mb-4 lg:ml-2">
-			<h3 class="text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4">{selectedItem?.title}</h3>
-			<p class="mb-3 text-md md:text-md text-pretty leading-relaxed">{selectedItem?.text}</p>
+			<h3 class="text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4">{selectedItem.title}</h3>
+			<p class="mb-3 text-md md:text-md text-pretty leading-relaxed">{selectedItem.text}</p>
 			{#if selectedItem.link && selectedItem.linkText}
 				<LearnMoreBtn size="md" text={selectedItem.linkText} href={selectedItem.link} openInNewTab={true} color="blue" ariaLabel="Learn more about our impact" />
 			{/if}
 		</article>
 	</div>
+{/if}
 
 	<div
 		style="scrollbarWidth: thin;"
