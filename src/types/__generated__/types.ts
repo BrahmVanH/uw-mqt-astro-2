@@ -4205,23 +4205,6 @@ export type CreateAdminCostPdfPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
-/** Input for the createAliceHubProgramCustom mutation. */
-export type CreateAliceHubProgramCustomInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Input for creating an Alice Hub Program */
-  input: CreateAliceHubProgramInputCustom;
-};
-
-/** The payload for the createAliceHubProgramCustom mutation. */
-export type CreateAliceHubProgramCustomPayload = {
-  __typename?: 'CreateAliceHubProgramCustomPayload';
-  /** The created Alice Hub Program */
-  aliceHubProgram?: Maybe<AliceHubProgram>;
-  /** The client mutation ID */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-};
-
 /** Input for the createAliceHubProgram mutation. */
 export type CreateAliceHubProgramInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -4238,26 +4221,6 @@ export type CreateAliceHubProgramInput = {
   status?: InputMaybe<PostStatusEnum>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** Input for creating an Alice Hub Program */
-export type CreateAliceHubProgramInputCustom = {
-  /** The category of the program */
-  category: Scalars['String']['input'];
-  /** The description of the program */
-  description: Scalars['String']['input'];
-  /** Optional link for the program */
-  link?: InputMaybe<Scalars['String']['input']>;
-  /** The name of the program */
-  name: Scalars['String']['input'];
-  /** The provider of the program */
-  provider: Scalars['String']['input'];
-  /** Requirements (newline separated) */
-  requirements?: InputMaybe<Scalars['String']['input']>;
-  /** Service areas (newline separated) */
-  serviceAreas?: InputMaybe<Scalars['String']['input']>;
-  /** Program types (newline separated) */
-  type?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** The payload for the createAliceHubProgram mutation. */
@@ -16546,8 +16509,6 @@ export type RootMutation = {
   createAdminCostPdf?: Maybe<CreateAdminCostPdfPayload>;
   /** The createAliceHubProgram mutation */
   createAliceHubProgram?: Maybe<CreateAliceHubProgramPayload>;
-  /** The createAliceHubProgramCustom mutation */
-  createAliceHubProgramCustom?: Maybe<CreateAliceHubProgramCustomPayload>;
   /** The createAliceReportPage mutation */
   createAliceReportPage?: Maybe<CreateAliceReportPagePayload>;
   /** The createAliceReportPdf mutation */
@@ -16796,12 +16757,6 @@ export type RootMutationCreateAdminCostPdfArgs = {
 /** The root mutation */
 export type RootMutationCreateAliceHubProgramArgs = {
   input: CreateAliceHubProgramInput;
-};
-
-
-/** The root mutation */
-export type RootMutationCreateAliceHubProgramCustomArgs = {
-  input: CreateAliceHubProgramCustomInput;
 };
 
 
