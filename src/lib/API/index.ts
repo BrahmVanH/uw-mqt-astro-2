@@ -232,6 +232,14 @@ export default async function getPageContent(path: string, variables = {}) {
 				body: JSON.stringify({ query, variables }),
 			});
 			if (!response.ok) {
+
+				// TEMP!!!!
+				const errorText = await response.text();
+				console.log('Error response:', errorText);
+				console.log('Response status:', response.status);
+				console.log('Response headers:', [...response.headers.entries()]);
+				// TEMP!!!!
+
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 
@@ -305,6 +313,14 @@ export async function getContent(query: string, variables = {}) {
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
+
+			// TEMP!!!!
+			const errorText = await response.text();
+			console.log('Error response:', errorText);
+			console.log('Response status:', response.status);
+			console.log('Response headers:', [...response.headers.entries()]);
+			// TEMP!!!!
+
 
 			const data = await response.json();
 			if (data?.errors) {
