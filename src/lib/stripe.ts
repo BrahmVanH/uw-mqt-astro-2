@@ -10,7 +10,7 @@ export function getStripe() {
   }
 
   return new Stripe(secret, {
-    apiVersion: "2025-01-27.acacia",
+    apiVersion: "2025-05-28.basil",
     typescript: true,
   });
 }

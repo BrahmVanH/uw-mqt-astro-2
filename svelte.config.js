@@ -6,7 +6,7 @@ export default {
 	preprocess: vitePreprocess({ script: true }),
 
 	compilerOptions: {
-		dev: process.env.NODE_ENV !== 'production',
+		dev: import.meta.env.NODE_ENV !== 'production',
 		css: 'injected',
 		hydratable: true
 	},
