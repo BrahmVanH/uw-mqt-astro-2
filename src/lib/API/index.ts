@@ -236,20 +236,15 @@ export default async function getPageContent(path: string, variables = {}) {
 				},
 				body: JSON.stringify({ query, variables }),
 			});
-			if (response.status !== 200) {
 
+			const { data } = await response.json();
+			if (!data || data?.errors) {
 				// TEMP!!!!
 				const errorText = await response.text();
 				console.log('Error response:', errorText);
 				console.log('Response status:', response.status);
 				console.log('Response headers:', [...response.headers.entries()]);
 				// TEMP!!!!
-
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-
-			const { data } = await response.json();
-			if (!data || data?.errors) {
 				throw new Error(data.errors[0].message);
 			}
 			return data;
@@ -315,23 +310,17 @@ export async function getContent(query: string, variables = {}) {
 				body: JSON.stringify({ query, variables }),
 			});
 
-			if (response.status !== 200) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-
-			// TEMP!!!!
-			const errorText = await response.text();
-			console.log('Error response:', errorText);
-			console.log('Response status:', response.status);
-			console.log('Response headers:', [...response.headers.entries()]);
-			// TEMP!!!!
-
 
 			const data = await response.json();
-			if (data?.errors) {
+			if (!data || data?.errors) {
+				// TEMP!!!!
+				const errorText = await response.text();
+				console.log('Error response:', errorText);
+				console.log('Response status:', response.status);
+				console.log('Response headers:', [...response.headers.entries()]);
+				// TEMP!!!!
 				throw new Error(data.errors[0].message);
 			}
-
 			return data;
 		});
 		if (!data) {
