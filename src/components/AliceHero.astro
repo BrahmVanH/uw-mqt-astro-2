@@ -1,11 +1,34 @@
 ---
 import { Image } from 'astro:assets';
 
+import LearnMoreBtn from './LearnMoreBtn.svelte';
+
 // import heroBg from '@/image/get-involved-hero-bg-img-fafwm-volunteers-handoff-grapges-w-graphic-01.jpg';
+
 import heroBg from '@/image/alice-hero-bg-temp.jpg';
 import heroMobileBg from '@/image/alice-hero-mobile-bg-temp.jpg';
+
 import { formatHeroHeadingText } from '@/lib/utils';
-const heading = 'The ALICE Report';
+
+import { aliceReportContent } from '@/config';
+
+import type { RootQueryToAliceReportPdfConnection } from '@/types/__generated__/types';
+
+export interface Props {
+	link1: string;
+	linkText1: string;
+}
+
+export function createProps({ aliceReportPdfs }: { aliceReportPdfs: RootQueryToAliceReportPdfConnection }): Props {
+	const link1 = aliceReportPdfs.nodes[0].aLICEReportPDFFields?.pdfFile?.node?.mediaItemUrl ?? '';
+	const linkText1 = 'Read the full pdf report';
+	return { link1, linkText1 };
+}
+
+const { link1, linkText1 } = Astro.props;
+
+const { heading, linkText2, link2 } = aliceReportContent;
+
 const text =
 	'Traditional economic measures underestimate the actual cost of basics. To better capture the reality of household costs in each Michigan county, United For ALICE provides budgets that are tailored by location and household type.';
 ---
@@ -19,6 +42,10 @@ const text =
 		<div class='min-w-[50vw] backdrop-blur-md rounded-sm my-auto p-2 xl:w-min'>
 			{heading && <h1 class='text-2xl 2xl:text-3xl text-primary-yellow-2  text-center text-nowrap xl:text-left xl:w-min'>{formatHeroHeadingText(heading)}</h1>}
 			{text && <p class='text-sm sm:text-md font-medium m-auto text-balanced  mt-1 mx-0 text-center xl:text-left xl:text-pretty'>{text}</p>}
+			<div class='col-start-1 col-span-2 row-start-3 flex flex-col sm:flex-row items-start sm::flex-row mt-4'>
+				<LearnMoreBtn className='mb-1 lg:mb-0 sm:mx-2 lg:mx-4 ' href={link1} text={linkText1} color='white' size='md' openInNewTab={true} ariaLabel={'Read the ALICE Report PDF'} />
+				<LearnMoreBtn href={link2} text={linkText2} color='white' size='md' openInNewTab={true} ariaLabel={'Visit the interactive ALICE Report web page'} />
+			</div>
 		</div>
 	</div>
 </section>

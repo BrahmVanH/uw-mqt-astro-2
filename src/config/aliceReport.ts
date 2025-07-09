@@ -2,7 +2,7 @@ import type { Config } from "@/types/aliceReport";
 import { ALICE_INTERACTIVE_REPORT_URL } from "@/lib/constants";
 
 const config: Config = {
-  title: "Alice Report",
+  title: "The ALICE Report",
   heading: "What is the 'Alice' Report?",
   subheading: "Asset-Limited, Income-Constrained, Employed ",
   text: "It is a complex term for a population we know too well. ALICE is working hard, but barely surviving and definitely not thriving. ALICE is part of our economic engine but ALICE is struggling. ALICE may be a college student, working and going to school hoping for a better life or a senior citizen making a difficult choice between food, housing and prescriptions. ALICE could be a working dad, with childcare, transportation and housing costs that leave very little to provide shoes for his children. ALICE is many of us. ",

@@ -78,7 +78,7 @@
 
 <section
 	id="our-impact-carousel"
-	class="w-full relative flex flex-col lg:grid grid-cols-3 auto-rows-auto lg:gap-4 max-w-[80%] lg:max-w-full mx-auto px-0 lg:px-8 text-pretty mt-1"
+	class="w-full relative flex flex-col lg:grid grid-cols-3 auto-rows-auto lg:gap-4 max-w-[80%] lg:max-w-full mx-auto px-0 lg:px-8 text-pretty my-8 py-8"
 	aria-labelledby="success-stories-heading"
 >
 	<h2 id="success-stories-heading" class="text-xl lg:text-2xl w-full text-center mb-1 lg:mb-2">Success Stories</h2>
@@ -97,7 +97,7 @@
 		</div>
 		<article class="w-full lg:w-1/2 p-0 lg:p-6 mb-4 lg:ml-2">
 			<h3 class="text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4">{selectedItem.title}</h3>
-			<p class="mb-3 text-md md:text-md text-pretty leading-relaxed">{selectedItem.text}</p>
+			<p class="mb-8 text-md md:text-md text-pretty leading-relaxed">{selectedItem.text}</p>
 			{#if selectedItem.link && selectedItem.linkText}
 				<LearnMoreBtn size="md" text={selectedItem.linkText} href={selectedItem.link} openInNewTab={true} color="blue" ariaLabel="Learn more about our impact" />
 			{/if}

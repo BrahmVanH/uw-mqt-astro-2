@@ -52,11 +52,11 @@ const getButtonClass = (index: number) => {
 };
 ---
 
-<section class='w-full mt-2 lg:mt-4 mb-2'>
+<section class='w-full mt-2 lg:my-8'>
 	<div class='w-[90%] mx-auto grid grid-cols-1 grid-rows-3 sm:grid-cols-3 sm:grid-rows-1 justify-center items-center'>
 		{
 			buttonContent?.map((button, i) => (
-				<a class={`${getButtonClass(i)}   w-full h-full text-white lg:hover:scale-[.98] lg:hover:transition-all p-4`} href={button.href} target='_blank' rel='noopener noreferrer'>
+				<a class={`${getButtonClass(i)}   w-full h-full text-white lg:hover:scale-[.98] lg:hover:transition-all p-4 py-8`} href={button.href} target='_blank' rel='noopener noreferrer'>
 					<h2 class=' text-lg sm:text-xl lg:text-2xl'>{button?.title?.toUpperCase()}</h2>
 					<p class=' text-sm sm:text-md mt-2 lg:mt-4'>{button?.text}</p>
 				</a>

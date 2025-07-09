@@ -16,7 +16,7 @@ if (!cards || !cards.every(isValidCard)) {
 }
 ---
 
-<section class='flex flex-col xl:grid grid-cols-3 grid-rows-1 gap-2 max-w-[80%] mx-auto items-center' aria-labelledby='local-impact-heading'>
+<section class='flex flex-col xl:grid grid-cols-3 grid-rows-1 gap-2 max-w-[80%] mx-auto items-center my-4' aria-labelledby='local-impact-heading'>
 	{
 		cards?.map(({ title, icon, text, headingBgColor, iconColor }) => (
 			<article class='self-start flex flex-col justify-center items-center text-center p-0'>

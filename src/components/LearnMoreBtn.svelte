@@ -21,15 +21,15 @@
 	};
 
 	const sizeStyles = {
-		sm: 'text-xs lg:text-sm rounded-lg px-1 py-[1px] border-[3px]',
-		md: ' rounded-lg px-2 py-0 border-[3px]',
-		lg: 'text-md lg:text-lg px-4 py-2 border-[4px]',
-		xl: 'text-xl lg:text-2xl rounded-lg px-8 py-3 border-[5px]',
+		sm: 'text-xs lg:text-sm rounded-lg px-1 py-[3px] border-[2px]',
+		md: 'text-sm lg:text-md rounded-lg px-2 py-1 border-[2px]',
+		lg: 'text-md lg:text-lg px-4 py-2 border-[3px]',
+		xl: 'text-xl lg:text-2xl rounded-lg px-8 py-3 border-[4px]',
 	};
 </script>
 
 <a
-	class="{className} w-min text-nowrap leading-none uppercase font-semibold font-body no-underline rounded-lg lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md {buttonStyles[
+	class="{className} w-min text-nowrap leading-none font-semibold font-body no-underline rounded-lg cursor-pointer lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md {buttonStyles[
 		color
 	]} {sizeStyles[size]} "
 	{href}
