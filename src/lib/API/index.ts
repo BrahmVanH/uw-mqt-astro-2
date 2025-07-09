@@ -311,6 +311,8 @@ export async function getContent(query: string, variables = {}) {
 			});
 
 
+
+
 			const data = await response.json();
 			if (!data || data?.errors) {
 				// TEMP!!!!
