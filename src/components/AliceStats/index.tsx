@@ -47,9 +47,12 @@ const CountyButton = React.memo(
     }, [isSelected, selectionIndex]);
 
     return (
-      <button className={buttonClass} onClick={(e) => onButtonClick(e, name)}>
-        {capitalizeFirstLetter(name)}
-      </button>
+      <div className="content" aria-label={`Compare ${name} County`} data-microtip-position='top' role="tooltip" data-microtip-size="medium">
+
+        <button className={buttonClass} onClick={(e) => onButtonClick(e, name)}>
+          {capitalizeFirstLetter(name)}
+        </button>
+      </div>
     );
   },
 );
@@ -282,7 +285,8 @@ const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) =>
   );
 
   return (
-    <div className="w-full xl:w-[80%] flex flex-col-reverse  mx-auto my-4 px-4 xl:flex-row xl:mb-4">
+    <div className="w-full xl:w-[80%] flex flex-col-reverse  mx-auto my-4 px-4 xl:flex-row xl:mb-4 relative">
+
       <div className="w-full xl:w-1/2 text-md mt-2 xl:mt-0">
         {isLoading ? (
           <SkeletonText />
@@ -302,8 +306,17 @@ const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) =>
         )}
       </div>
 
-      <div className="w-full xl:w-1/2 flex flex-col items-center justify-center">
-        {/* <div className={cn('w-full grid gap-4 auto-rows-min', getChartContainerStyles(activeCountyStats.length + 1))}> */}
+      <div className="w-full xl:w-1/2 flex flex-col items-center justify-center relative">
+        {/* Interaction Prompt - Positioned in bottom left of chart area */}
+        <div className="absolute bottom-[45%] xl:bottom-[80%] left-4 z-10 bg-primary-blue-4/90 backdrop-blur-sm border border-primary-blue-3/30 rounded-lg px-3 py-2 shadow-sm">
+          <p className="text-xs lg:text-sm font-medium text-primary-blue-2 m-0">
+            <span className="hidden lg:block" >Hover over chart segments</span>
+            <span className="lg:hidden">Tap chart segments</span>
+
+            <span className="block text-[10px] lg:text-xs text-primary-blue-2/80 mt-0.5">for county statistics</span>
+          </p>
+        </div>
+
         <h3 className="text-lg">ALICE in the Central UP</h3>
         {isLoading ? (
           <SkeletonPieChart />

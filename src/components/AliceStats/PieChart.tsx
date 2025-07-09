@@ -56,7 +56,7 @@ const PieChart: React.FC<Props> = ({
           <Chart className="relative w-2 xl:w-full" width={76} height={76}>
             {chartConfig && (
               <ChartTooltip
-                wrapperClassName="border-2 border-primary-blue-4"
+                wrapperClassName="border-2 border-primary-blue-4 font-serious"
                 cursor={false}
                 content={
                   <ChartTooltipContent

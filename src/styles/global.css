@@ -100,6 +100,9 @@
   --font-heading: "Antonio", sans-serif;
   --font-body: "Palanquin", sans-serif;
   --font-donate-form: "IBM Plex Sans", sans-serif;
+  --font-serious: "IBM Plex Sans", sans-serif;
+
+  --microtip-font-size: 10px;
 
 }
 
