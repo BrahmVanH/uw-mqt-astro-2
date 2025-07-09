@@ -35,6 +35,8 @@ const pageContent: HomePageQueryResponse = queryResponse;
 if (!pageContent) {
 	onError('No data returned from the server home page query', Astro);
 }
+
+console.log("page content: ", page)
 // wp content for hero section
 const heroContent = pageContent?.homePageHeroes;
 const heroProps = createHeroProps(heroContent);
