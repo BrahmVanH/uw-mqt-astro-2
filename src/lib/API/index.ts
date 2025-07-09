@@ -37,7 +37,6 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 		}
 	`;
 
-	console.log("login mutation: ", LOGIN_MUTATION);
 	try {
 
 		const response = await fetch(`${wpUrl}/graphql`, {
@@ -54,14 +53,8 @@ export async function getAuthTokens(): Promise<AuthTokens> {
 			}),
 		});
 
-		console.log("response: ", response);
 
 		if (!response.ok) {
-			const errorText = await response.text();
-			console.log('Error response:', errorText);
-			console.log('Response status:', response.status);
-			console.log('Response headers:', [...response.headers.entries()]);
-			// TEMP!!!!
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
@@ -108,7 +101,6 @@ export async function refreshAuthToken(refreshToken: string): Promise<AuthTokens
 			}),
 		});
 
-		console.log("response: ", response);
 
 
 		if (!response.ok) {
@@ -239,12 +231,6 @@ export default async function getPageContent(path: string, variables = {}) {
 
 			const { data } = await response.json();
 			if (!data || data?.errors) {
-				// TEMP!!!!
-				const errorText = await response.text();
-				console.log('Error response:', errorText);
-				console.log('Response status:', response.status);
-				console.log('Response headers:', [...response.headers.entries()]);
-				// TEMP!!!!
 				throw new Error(data.errors[0].message);
 			}
 			return data;
@@ -315,12 +301,6 @@ export async function getContent(query: string, variables = {}) {
 
 			const data = await response.json();
 			if (!data || data?.errors) {
-				// TEMP!!!!
-				const errorText = await response.text();
-				console.log('Error response:', errorText);
-				console.log('Response status:', response.status);
-				console.log('Response headers:', [...response.headers.entries()]);
-				// TEMP!!!!
 				throw new Error(data.errors[0].message);
 			}
 			return data;

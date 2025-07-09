@@ -59,7 +59,7 @@
 								<ChevronDown class="relative top-[1px] ml-1 size-3 transition-transform duration-200 group-data-[state=open]:rotate-180" aria-hidden="true" />
 							</NavigationMenu.Trigger>
 							<NavigationMenu.Content
-								class="absolute bg-white  top-[-10px] w-[700px] rounded-sm data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 "
+								class="absolute bg-white/95 backdrop-blur-sm top-[-30px] w-[700px] rounded-lg border border-gray-200/60 shadow-lg ring-1 ring-black/5 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52"
 								role="menu"
 							>
 								<NavigationMenu.Sub>

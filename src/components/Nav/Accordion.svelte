@@ -39,7 +39,7 @@
 				{link.title}
 			</a>
 		</AccordionTrigger>
-		<AccordionContent class={`${styles.accordionContent} animate-slide-right`} role="menu">
+		<AccordionContent class={`${styles.accordionContent} animate-slide-right  bg-white/95 backdrop-blur-sm  rounded-lg border border-gray-200/60 shadow-lg ring-2 ring-black/5 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`} role="menu">
 			<div class="flex flex-col bg-transparent">
 				<ul>
 					{#if link.navTabs}
