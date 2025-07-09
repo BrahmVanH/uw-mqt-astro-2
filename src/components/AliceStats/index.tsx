@@ -306,7 +306,7 @@ const AliceStats: React.FC<Props> = ({ countyNames, statsByCounty, content }) =>
         )}
       </div>
 
-      <div className="w-full xl:w-1/2 flex flex-col items-center justify-center relative">
+      <div className="w-full xl:w-1/2 flex flex-col items-center justify-center relative font-serious">
         {/* Interaction Prompt - Positioned in bottom left of chart area */}
         <div className="absolute bottom-[45%] xl:bottom-[80%] left-4 z-10 bg-primary-blue-4/90 backdrop-blur-sm border border-primary-blue-3/30 rounded-lg px-3 py-2 shadow-sm">
           <p className="text-xs lg:text-sm font-medium text-primary-blue-2 m-0">
