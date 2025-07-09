@@ -236,7 +236,7 @@ export default async function getPageContent(path: string, variables = {}) {
 				},
 				body: JSON.stringify({ query, variables }),
 			});
-			if (!response.ok) {
+			if (response.status !== 200) {
 
 				// TEMP!!!!
 				const errorText = await response.text();
@@ -315,7 +315,7 @@ export async function getContent(query: string, variables = {}) {
 				body: JSON.stringify({ query, variables }),
 			});
 
-			if (!response.ok) {
+			if (response.status !== 200) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 
