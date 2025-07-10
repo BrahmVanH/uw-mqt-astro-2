@@ -40,7 +40,7 @@ const text =
 	</div>
 	<div class='absolute h-full xl:h-[60vh] flex flex-col justify-end items-start inset-0 z-10 text-left text-white xl:ml-4'>
 		<div class='min-w-[50vw] backdrop-blur-md rounded-sm my-auto p-2 xl:w-min'>
-			{heading && <h1 class='text-2xl 2xl:text-3xl text-primary-yellow-2  text-center xl:text-left xl:w-min'>{formatHeroHeadingText(heading)}</h1>}
+			{heading && <h1 class='text-2xl 2xl:text-3xl text-primary-yellow-2  text-center xl:text-no-wrap xl:text-left xl:w-min'>{formatHeroHeadingText(heading)}</h1>}
 			{text && <p class='text-sm sm:text-md font-medium m-auto text-balanced  mt-1 mx-0 text-center xl:text-left xl:text-pretty'>{text}</p>}
 			<div class='col-start-1 col-span-2 row-start-3 flex flex-col-reverse sm:flex-row items-center xl:items-start sm::flex-row mt-4'>
 				<LearnMoreBtn className='mt-2 lg:mt-0 sm:mx-2 lg:mx-4 ' href={link1} text={linkText1} color='white' size='md' openInNewTab={true} ariaLabel={'Read the ALICE Report PDF'} />
