@@ -55,7 +55,7 @@ const path = Astro.url.pathname;
 		<meta name='generator' content={Astro.generator} />
 		<SEO seo={{ title }} />
 	</head>
-	<body>
+	<body >
 		<Nav path={path} client:load />
 		<MobileNav socials={socials} client:load />
 		<PersistentDonateBtn />

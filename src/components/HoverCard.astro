@@ -1,4 +1,6 @@
 ---
+import xBlue from '@/icons/x-blue.svg';
+
 interface Props {
 	triggerText: string;
 	triggerClass?: string;
@@ -11,6 +13,7 @@ const { triggerText = 'Learn More', triggerClass = '', class: className = '' } =
 const id = `hovercard-${Math.random().toString(36).substring(2, 9)}`;
 const triggerId = `${id}-trigger`;
 const contentId = `${id}-content`;
+const closeId = `${id}-close`;
 ---
 
 <div class={`hovercard-root ${className || ''}`}>
@@ -18,9 +21,9 @@ const contentId = `${id}-content`;
 		id={triggerId}
 		class:list={[
 			'hovercard-trigger',
-			'w-min text-nowrap leading-none uppercase font-semibold font-body no-underline rounded-lg lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md',
+			'w-min text-nowrap leading-none  font-semibold font-body no-underline rounded-lg lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md',
 			'bg-transparent border-black text-black lg:hover:bg-black/5 lg:active:bg-black/10',
-			'text-sm lg:text-md rounded-lg px-2 py-0 border-[3px]',
+			'text-sm lg:text-md rounded-lg px-2 py-0 ',
 			triggerClass,
 		]}
 		aria-haspopup='dialog'
@@ -30,12 +33,16 @@ const contentId = `${id}-content`;
 	</button>
 	<div
 		id={contentId}
-		class='hovercard-content fixed top-1/2 left-1/2 z-[999] hidden max-w-[85vw] md:max-w-[66vw] max-h-[85vh] md:max-h-[75vh] bg-white border-2 border-border rounded-[var(--radius)] shadow-2xl backdrop-blur-lg transition-all duration-300 ease-out'
+		class='hovercard-content flex-col justify-center items-center fixed top-1/2 left-1/2 z-[999] hidden w-full lg:w-auto max-w-[90vw] md:max-w-[50vw] max-h-[75vh] md:max-h-[85vh] md:min-h-[300px] bg-white border-2 border-border rounded-[var(--radius)] shadow-2xl backdrop-blur-lg transition-all duration-300 ease-out'
 		role='dialog'
 		aria-labelledby={triggerId}
 		aria-hidden='true'>
-		<div class='hovercard-content-inner p-6 w-full h-full overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent'>
-			<div class='space-y-4 text-foreground'>
+		<div class='hovercard-content-inner p-2 w-full h-full overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent'>
+			<div class='absolute right-3 top-2'>
+				<img id={closeId} loading='lazy' decoding='async' class='bg-transparent aspect-auto' src={xBlue.src} height={14} width={14} alt='close icon' />
+				<span class='sr-only'>Close</span>
+			</div>
+			<div class='space-y-2 text-foreground'>
 				<slot />
 			</div>
 		</div>
@@ -62,6 +69,7 @@ const contentId = `${id}-content`;
 	/* HoverCard content */
 	.hovercard-content {
 		transform: translate(-50%, -50%) scale(0.95);
+		overflow-y: scroll;
 		opacity: 0;
 		background: linear-gradient(135deg, oklch(var(--background)) 0%, oklch(var(--card)) 100%);
 		border-color: oklch(var(--border));
@@ -73,9 +81,9 @@ const contentId = `${id}-content`;
 	}
 
 	.hovercard-content[aria-hidden='false'] {
-		display: block !important;
+		display: flex !important;
 		opacity: 1;
-		transform: translate(-50%, -50%) scale(1);
+		/* transform: translate(-50%, -50%) scale(1); */
 	}
 
 	/* Custom scrollbar for webkit browsers */
@@ -134,7 +142,7 @@ const contentId = `${id}-content`;
 	@media (max-width: 768px) {
 		.hovercard-content {
 			max-width: 95vw;
-			max-height: 90vh;
+			max-height: 80vh;
 		}
 
 		.hovercard-content-inner {
@@ -162,10 +170,12 @@ const contentId = `${id}-content`;
 	}
 </style>
 
-<script define:vars={{ id, triggerId, contentId }}>
+<script define:vars={{ id, triggerId, contentId, closeId }}>
 	// Get elements
 	const trigger = document.getElementById(triggerId);
 	const content = document.getElementById(contentId);
+	const close = document.getElementById(closeId);
+	const documentEl = document.documentElement;
 
 	if (trigger && content) {
 		// Open on hover with delay
@@ -210,6 +220,11 @@ const contentId = `${id}-content`;
 			}
 		});
 
+		// Close hovercard on click x icon
+		close.addEventListener('click', () => {
+			closeHoverCard();
+		});
+
 		// Close hovercard on Escape key
 		document.addEventListener('keydown', (event) => {
 			if (event.key === 'Escape' && content.getAttribute('aria-hidden') === 'false') {
@@ -220,11 +235,13 @@ const contentId = `${id}-content`;
 		function openHoverCard() {
 			content.setAttribute('aria-hidden', 'false');
 			trigger.setAttribute('aria-expanded', 'true');
+			documentEl.style.overflowY = 'hidden';
 		}
 
 		function closeHoverCard() {
 			content.setAttribute('aria-hidden', 'true');
 			trigger.setAttribute('aria-expanded', 'false');
+			documentEl.style.overflowY = 'scroll';
 		}
 	}
 </script>

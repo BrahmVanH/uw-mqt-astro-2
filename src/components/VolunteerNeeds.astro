@@ -35,7 +35,6 @@ export async function createProps(): Promise<Props> {
 
 		const data: YoopersUnitedNeed[] = response.data;
 
-
 		let needs = data?.map((need) => {
 			return {
 				id: need?.id,
@@ -114,10 +113,12 @@ const { needs, heading, subHeading, viewNeedDetailsLinkRoot, volunteerNeedsLink,
 							<p class='text-sm lg:text-md text-tertiary-black-1 leading-relaxed'>{need.agency_name}</p>
 							<p class='text-xs lg:text-sm text-tertiary-black-1 leading-relaxed'>{need.volunteersNeeded} volunteers needed</p>
 							<div class='flex justify-start items-baseline space-x-2 py-2 my-1'>
-								<HoverCard triggerText='More Info'>
+								<HoverCard
+									triggerText='Details'
+									triggerClass='bg-transparent border-black text-black lg:hover:bg-black/5 lg:active:bg-black/10 text-sm lg:text-md rounded-lg px-2 py-1 border-[2px]  w-min text-nowrap leading-none font-semibold font-body no-underline rounded-lg cursor-pointer lg:transform lg:transition-all lg:duration-200 lg:ease-out lg:active:scale-[0.98] lg:hover:-translate-y-[2px] lg:hover:shadow-lg lg:hover:scale-[102%] active:translate-y-0 active:shadow-md'>
 									<div class='flex flex-col items-center'>
 										<h3>{need.title} </h3>
-										<div class='flex flex-col items-center [&>p]:text-sm lg:[&>p]:text-md [&>p]:max-w-[80%] [&>p>a]:text-black' set:html={need.need_body} />
+										<div class='flex flex-col items-center [&>p]:text-sm lg:[&>p]:text-md [&>p]:max-w-[90%] [&>p>a]:text-black' set:html={need.need_body} />
 										<LearnMoreBtn
 											href={`${viewNeedDetailsLinkRoot}${need.id}`}
 											text='Volunteer Portal'
