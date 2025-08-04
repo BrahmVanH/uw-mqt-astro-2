@@ -147,11 +147,7 @@ export default defineConfig({
 
     adapter: netlify({
         imageCDN: false,
-        devFeatures: {
-            environmentVariables: false,
-            images: false,
 
-        },
     }),
 
     vite: {
