@@ -119,6 +119,7 @@ export default defineConfig({
 
     image: {
         domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD : 'https://localhost:10011'],
+        responsiveStyles: true,
     },
 
     integrations: [

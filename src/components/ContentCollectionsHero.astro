@@ -16,8 +16,6 @@ const useWebp = supportsWebP(Astro.request);
 
 <div class='relative w-full grid grid-rows-1 grid-cols-2 bg-primary-blue-2 lg:bg-transparent'>
 	<Image
-		loading='lazy'
-		decoding='async'
 		format={useWebp ? 'webp' : 'jpg'}
 		inferSize={true}
 		src={bgUrl}

@@ -63,7 +63,7 @@ const useWebp = supportsWebP(Astro.request);
 	{
 		img && (
 			<div class='md:w-1/2 lg:w-1/3 hidden md:block'>
-				<Image loading='lazy' decoding='async' inferSize={true} class='my-8 lg:m-8 w-[300px] md:w-[375px]' src={img} alt={alt} />
+				<Image  inferSize={true} class='my-8 lg:m-8 w-[300px] md:w-[375px]' src={img} alt={alt} />
 			</div>
 		)
 	}

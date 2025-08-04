@@ -50,7 +50,7 @@ const useWebp = supportsWebP(Astro.request);
 
 <section class='relative w-full max-w-[1500px] flex flex-col sm:grid grid-cols-2 grid-rows-3 p-0 overflow-hidden mx-auto' aria-labelledby='girl-scouts-title'>
 	<div class='z-0 col-start-1 aspect-auto w-full max-h-[400px] sm:max-h-none row-start-1 row-span-3 col-end-3 sm:col-end-2' aria-hidden='true'>
-		<Image loading='lazy' decoding='async' class='w-full h-full' inferSize={true} src={bg} alt='' role='presentation' />
+		<Image  class='w-full h-full' inferSize={true} src={bg} alt='' role='presentation' />
 	</div>
 	<div class={`absolute sm::block top-0 z-20 col-start-1 col-end-3 sm:col-end-2 justify-end row-start-1 row-span-1 text-right justify-self-end items-end w-full flex flex-col text-white my-4 px-2 md:px-4`}>
 		{

@@ -27,10 +27,10 @@ const { heading, subheading, ourMission, ourValues } = content;
 				{ourMission.title && <h2 class='text-lg lg:text-2xl lg:my-2 text-primary-blue-2'>{ourMission.title}</h2>}
 				{ourMission.text && <p class='w-[80%] text-md lg:text-lg m-0'>{ourMission.text}</p>}
 			</div>
-			{imageOne?.src && imageOne.alt && <Image loading='lazy' decoding='async' src={imageOne?.src} alt={imageOne?.alt} inferSize={true} class='w-full object-cover max-w-[600px]' />}
+			{imageOne?.src && imageOne.alt && <Image  src={imageOne?.src} alt={imageOne?.alt} inferSize={true} class='w-full object-cover max-w-[600px]' />}
 			{
 				imageTwo?.src && imageTwo?.alt && (
-					<Image loading='lazy' decoding='async' src={imageTwo?.src} alt={imageTwo?.alt} width={imageTwo?.width} height={imageTwo?.height} class='w-full h-96 object-cover max-w-[600px]' />
+					<Image  src={imageTwo?.src} alt={imageTwo?.alt} width={imageTwo?.width} height={imageTwo?.height} class='w-full h-96 object-cover max-w-[600px]' />
 				)
 			}
 			<div class='flex flex-col items-center md:items-start'>
@@ -50,7 +50,7 @@ const { heading, subheading, ourMission, ourValues } = content;
 			</div>
 			{
 				imageThree?.src && imageThree?.alt && (
-					<Image loading='lazy' decoding='async' src={imageThree?.src} alt={imageThree?.alt} width={imageThree?.width} height={imageThree?.height} class='w-full h-96 object-cover col-span-2' />
+					<Image  src={imageThree?.src} alt={imageThree?.alt} width={imageThree?.width} height={imageThree?.height} class='w-full h-96 object-cover col-span-2' />
 				)
 			}
 			<HistoryOfAccordion className='col-span-2' />
