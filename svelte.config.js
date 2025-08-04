@@ -10,7 +10,6 @@ export default {
 	compilerOptions: {
 		dev: env.NODE_ENV !== 'production',
 		css: 'injected',
-		hydratable: true
 	},
 	kit: {
 		// Add path aliases here

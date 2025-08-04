@@ -191,6 +191,7 @@ export default async function getPageContent(path: string, variables = {}) {
 
 			// const data = getPageContentDev(path)
 
+
 			const response = await fetch(`${WP_URL_SRVR}/graphql`, {
 				method: 'POST',
 				headers: {
