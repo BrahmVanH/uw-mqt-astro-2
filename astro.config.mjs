@@ -18,6 +18,7 @@ import partytown from '@astrojs/partytown';
 import sentry from '@sentry/astro';
 
 import tailwindcss from '@tailwindcss/vite';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 
 
@@ -117,7 +118,7 @@ export default defineConfig({
     prefetch: true,
 
     image: {
-        domains: [`${import.meta.env.WP_URL_SRVR_PROD ?? 'https://api.uwmqt.org'}`],
+        domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD : 'https://localhost:10011'],
     },
 
     integrations: [
@@ -129,13 +130,15 @@ export default defineConfig({
         icon(),
         sitemap(),
         mdx(),
-        sentry({
-            dsn: import.meta.env.SENTRY_DSN,
-            sourceMapsUploadOptions: {
-                project: 'uw-mqt',
-                authToken: import.meta.env.SENTRY_AUTH_TOKEN,
-            },
-        }),
+        sentry(
+            //     {
+            //     dsn: import.meta.env.SENTRY_DSN,
+            //     sourceMapsUploadOptions: {
+            //         project: 'uw-mqt',
+            //         authToken: import.meta.env.SENTRY_AUTH_TOKEN,
+            //     },
+            // }
+        ),
         svelte({
             prebundleSvelteLibraries: true
         }),
@@ -144,10 +147,21 @@ export default defineConfig({
 
     adapter: netlify({
         imageCDN: false,
+        devFeatures: {
+            environmentVariables: false,
+            images: false,
+
+        },
     }),
 
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [tailwindcss(),
+        sentryVitePlugin({
+            authToken: import.meta.env.SENTRY_AUTH_TOKEN,
+            org: "brahm-van-houzen-studio",
+            project: "uw-mqt",
+        }),
+        ],
         // optimizeDeps: {
         //     include: ['svelte', 'svelte/store'],
         //     exclude: ['@astrojs/svelte']

@@ -1,9 +1,4 @@
-<script module>
-	interface Props {
-		programsByCategory: AliceHubProgramsByCategory;
-		userGeoData: UserGeo;
-	}
-
+<script module lang="ts">
 	function destringifyWpArr(arrStr: string) {
 		if (!arrStr) {
 			return [];
@@ -79,6 +74,10 @@
 	import type { UserGeo } from '@/types/alice';
 	import type { RootQueryToAliceHubProgramConnection } from '@/types/__generated__/types';
 
+	interface Props {
+		programsByCategory: AliceHubProgramsByCategory;
+		userGeoData: UserGeo;
+	}
 	// Lazy-loaded components
 
 	const PantryMapConsole = import('../AlicePantryMap/index.svelte').then((p) => p.default);

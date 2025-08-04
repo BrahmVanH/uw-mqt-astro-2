@@ -42,3 +42,5 @@ src/config/devData.ts
 src/lib/devData/
 src/lib/API/explore.ts
 src/pages/wp-explorer.astro
+# Sentry Config File
+.env.sentry-build-plugin
