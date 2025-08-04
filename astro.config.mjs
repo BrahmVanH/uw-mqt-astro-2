@@ -118,7 +118,7 @@ export default defineConfig({
     prefetch: true,
 
     image: {
-        domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD : 'https://localhost:10011'],
+        domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD || 'https://api.uwmqt.org' : 'https://localhost:10011'],
         responsiveStyles: true,
     },
 
