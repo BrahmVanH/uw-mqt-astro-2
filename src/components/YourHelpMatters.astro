@@ -40,8 +40,6 @@ const useWebp = supportsWebP(Astro.request);
 
 <section class='relative lg:grid flex flex-col justify-center grid-cols-4 grid-rows-3 lg:my-4 lg:justify-center lg:items-center mb-4 mt-2 lg:mt-0 lg:mb-0'>
 	<Image
-		loading='lazy'
-		decoding='async'
 		format={useWebp ? 'webp' : 'jpg'}
 		id='main-bg'
 		src={bgUrl}

@@ -33,7 +33,7 @@
 		"@tailwindcss/vite": "^4.1.11",
 		"@upstash/ratelimit": "^2.0.6",
 		"@upstash/redis": "^1.35.3",
-		"astro": "^5.12.8",
+		"astro": "5.11.1",
 		"astro-icon": "^1.1.5",
 		"astro-seo": "^0.8.4",
 		"bits-ui": "^2.9.1",

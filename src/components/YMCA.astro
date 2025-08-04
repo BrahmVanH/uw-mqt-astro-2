@@ -47,11 +47,11 @@ const useWebp = supportsWebP(Astro.request);
 	<div class='w-[50%] flex flex-col justify-center items-center'>
 		<div class='flex flex-row justify-center items-center mt-2 lg:mt-0'>
 			<h2 class='text-lg lg:text-xl xl:text-2xl text-primary-blue-2'>{title}</h2>
-			<Image loading='lazy' decoding='async' format={useWebp ? 'webp' : 'jpg'} class='w-7 lg:hidden ml-2' inferSize={true} src={brandImg} alt={brandImgAlt} />
+			<Image  format={useWebp ? 'webp' : 'jpg'} class='w-7 lg:hidden ml-2' inferSize={true} src={brandImg} alt={brandImgAlt} />
 		</div>
 		<div class='flex flex-col-reverse items-center lg:flex-row'>
 			<p class='text-md xl:text-lg lg:w-[80%] my-4 leading-normal'>{text}</p>
-			<Image loading='lazy' decoding='async' format={useWebp ? 'webp' : 'jpg'} class='hidden lg:block w-7 lg:w-11 self-start ml-4' inferSize={true} src={brandImg} alt={brandImgAlt} />
+			<Image  format={useWebp ? 'webp' : 'jpg'} class='hidden lg:block w-7 lg:w-11 self-start ml-4' inferSize={true} src={brandImg} alt={brandImgAlt} />
 		</div>
 		<div class='flex flex-row justify-start items-center'>
 			{link1 && <LearnMoreBtn className='mr-2' size='md' useBg={false} text={linkText1} color='blue' href={link1} ariaLabel={`Learn more about ${title}`} />}
@@ -59,6 +59,6 @@ const useWebp = supportsWebP(Astro.request);
 		</div>
 	</div>
 	<div class='lg:w-[50%] flex justify-end items-center'>
-		<Image loading='lazy' decoding='async' class={'w-[90%] max-w-[600px] aspect-auto'} inferSize={true} src={img} alt={imgAlt} />
+		<Image  class={'w-[90%] max-w-[600px] aspect-auto'} inferSize={true} src={img} alt={imgAlt} />
 	</div>
 </section>
