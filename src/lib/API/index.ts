@@ -309,6 +309,7 @@ export async function getContent(query: string, variables = {}) {
 		if (!data) {
 			throw new Error(`No data found for query: ${query}`);
 		}
+		console.log("data: ", data);
 		return data;
 	} catch (error) {
 		return getDefaultProps(`ERROR IN getContent ${error}`);
