@@ -1,24 +1,23 @@
 ---
 export const prerender = false;
+
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import AliceIntro from '@/components/AliceIntro.astro';
 import AliceStats, { createProps as createStatsProps } from '@/components/AliceStats';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorDisplay from '@/components/ErrorDisplay';
-import AliceHero from '@/components/AliceHero.astro';
+import AliceHero, { createProps as createHeroProps } from '@/components/AliceHero.astro';
 import AliceHub, { createHubPrograms } from '@/components/AliceHub/index.svelte';
 import ErrorBoundarySvelte from '@/components/ErrorBoundary.svelte';
 import ErrorDisplaySvelte from '@/components/ErrorDisplay.svelte';
 
-import type { AliceStatsCardContent, CountyStats, FmtdChartData, FmtdChartDataRecord, HouseholdSurvivalBudgetCategories } from '@/types/aliceStats';
 import type { AliceHubProgramsByCategory } from '@/types/aliceHub';
 
 import type { UserGeo } from '@/types/alice';
 import getPageContent from '@/lib/API';
 import { getDefaultProps, onError } from '@/lib/error';
 import type { AlicePageQueryResponse } from '@/types';
-import type { AliceStatsFieldsContent, RootQueryToAliceHubProgramConnection, RootQueryToAliceStatsConnection } from '@/types/__generated__/types';
-import { formatCountyStatsForChart, getAllCountyNames } from '@/config/aliceStats';
+import type { RootQueryToAliceHubProgramConnection } from '@/types/__generated__/types';
 import { CategoryNames, type AliceHubProgram } from '@/types/aliceHub';
 
 export enum CategoryContainerDisplayOptions {
@@ -64,6 +63,8 @@ if (!pageContent) {
 interface Props {
 	programsByCategory: AliceHubProgramsByCategory;
 }
+
+const heroProps = createHeroProps({ aliceReportPdfs: pageContent.aliceReportPdfs });
 
 const aliceStatsProps = createStatsProps(pageContent.allAliceStats);
 
@@ -129,7 +130,7 @@ const hubPrograms = createHubPrograms(pageContent.aliceHubPrograms);
 
 <DefaultLayout title='ALICE'>
 	<main class='max-w-[1800px]'>
-		<AliceHero />
+		<AliceHero {...heroProps} />
 		<AliceIntro />
 		<ErrorBoundary client:load fallback={ErrorDisplay}>
 			<AliceStats {...aliceStatsProps} client:visible />

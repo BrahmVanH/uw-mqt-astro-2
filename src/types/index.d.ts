@@ -125,6 +125,7 @@ export interface OurLeadershipPageQueryResponse {
 export interface AlicePageQueryResponse {
 	allAliceStats: RootQueryToAliceStatsConnection;
 	aliceHubPrograms: RootQueryToAliceHubProgramConnection;
+	aliceReportPdfs: RootQueryToAliceReportPdfConnection;
 }
 
 export interface YoopersUnitedNeedsFetchResponse {
