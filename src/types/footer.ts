@@ -1,6 +1,8 @@
 import type { RootQueryToCurrent990FormPdfConnection, RootQueryToUwContactInfoConnection, UwContactInformationFields } from '@/types/__generated__/types';
 import type { SocialLink } from './socialsIconStrip';
 
+export type { SocialLink };
+
 export interface Config {
 	informationLinks?: InformationLink[];
 	contactInfo?: UwContactInformationFields;

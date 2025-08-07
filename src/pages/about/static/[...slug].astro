@@ -62,7 +62,7 @@ export const getStaticPaths = (async () => {
 			const slug: string = page.slug;
 			if (slug && slug.includes('/')) {
 				return {
-					params: { slug: slug.split('/').filter(Boolean) },
+					params: { slug: slug.split('/')[-1] },
 					props: { page },
 				};
 			} else {

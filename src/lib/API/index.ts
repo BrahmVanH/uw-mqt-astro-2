@@ -239,6 +239,7 @@ export default async function getPageContent(path: string, variables = {}) {
 		if (!data) {
 			throw new Error(`No data found for path: ${path}`);
 		}
+		console.log("data: ", data)
 		return data;
 	} catch (error) {
 		return getDefaultPageProps(`ERROR IN getPageContent ${error}`);

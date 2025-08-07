@@ -242,5 +242,16 @@ export const alicePageQuery = gql`
   query AlicePageQuery {
     ${aliceStats}
     ${hubPrograms}
+    aliceReportPdfs {
+    nodes {
+      aLICEReportPDFFields {
+        pdfFile {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
   }
 `
