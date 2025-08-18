@@ -64,15 +64,17 @@
 	import LoadingSpinner from '../LoadingSpinner.svelte';
 	import ErrorDisplay from '../ErrorDisplay.svelte';
 
-	import { btnIcons, config, getSubCategoryBgColor } from '../../config/aliceHub';
+	import {  config, getSubCategoryBgColor } from '../../config/aliceHub';
 	import aliceHubBg from '@/image/overlapping-blue-circle-outlines-01.svg';
 
 	import { AppError, ErrorCode, getDefaultProps } from '@/lib/error';
-	import { capitalizeFirstLetter, cn } from '@/lib/utils';
 
 	import { CategoryNames, type AliceHubProgram, type AliceHubProgramsByCategory } from '@/types/aliceHub';
 	import type { UserGeo } from '@/types/alice';
 	import type { RootQueryToAliceHubProgramConnection } from '@/types/__generated__/types';
+	import SubCategoryBtns from './SubCategoryBtns.svelte';
+	import CategorySidebar from './CategorySidebar.svelte';
+	import DefaultCard from './DefaultCard.svelte';
 
 	interface Props {
 		programsByCategory: AliceHubProgramsByCategory;
@@ -119,7 +121,7 @@
 	/**
 	 * Handles user clicks to set active ALICE category content to be displayed
 	 */
-	function handleSetActiveCategory(e: Event, category: CategoryNames, subCategories: string[]) {
+	function setActiveCategory(e: Event, category: CategoryNames, subCategories: string[]) {
 		// Set loading state and reset error state var
 		isLoading = true;
 		error = null;
@@ -187,21 +189,7 @@
                     p-2 xl:p-0 rounded-md xl:rounded-none"
 		>
 			<!-- Category Sidebar -->
-			<div class="h-min flex flex-row flex-wrap xl:flex-col xl:gap-2 justify-center xl:justify-start mx-2 xl:mr-4 mt-2">
-				{#each categories.filter((c) => !unavailableCategories.includes(c.name)) as { name, color, icon, subCategories }}
-					<button
-						class={cn(
-							'w-1/4 xl:w-min flex items-center justify-center xl:justify-end rounded-sm text-md xl:text-lg p-0 px-2 mx-4 xl:mx-0 xl:px-5 xl:overflow-hidden lg:transition-all lg:duration-150 lg:hover:cursor-pointer',
-							`text-${color} ring-${color}`,
-							activeCategory === name ? 'ring-2 focus:ring-2' : '',
-						)}
-						onclick={(e) => handleSetActiveCategory(e, name, subCategories)}
-					>
-						<img class="w-8 p-1" src={btnIcons[icon]} alt="{name} icon" />
-						<p class="font-bold">{capitalizeFirstLetter(name)}</p>
-					</button>
-				{/each}
-			</div>
+			<CategorySidebar {categories} {unavailableCategories} {activeCategory} {setActiveCategory} />
 
 			<div
 				class="alice-view relative min-w-[70vw] xl:overflow-y-scroll flex flex-col items-center justify-center
@@ -213,47 +201,14 @@
 				{/if}
 
 				<!-- Subcategory Buttons -->
-				<div class="w-full flex justify-center mt-1 xl:mt-0 xl:justify-start">
-					{#if !isLoading}
-						<div class="flex items-center">
-							{#if displayedSubCategories.length > 0}
-								<p class="text-sm xl:text-md">Filter:</p>
-							{/if}
-
-							{#each displayedSubCategories as sub, i}
-								<button
-									class="border-2 rounded-[64px] text-nowrap text-sm min-w-fit px-2 py-1 ml-2 focus:ring-0 xl:text-md
-                        {selectedSubCategories.includes(sub) ? getSubCategoryBgColor(i) : ''}"
-									onclick={(e) => handleSelectedSubCategories(e, sub)}
-								>
-									{capitalizeFirstLetter(sub)}
-								</button>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				<SubCategoryBtns {isLoading} {displayedSubCategories} {selectedSubCategories} {getSubCategoryBgColor} {handleSelectedSubCategories} />
 
 				<!-- Content Area -->
 				<div class="min-w-[100%]">
 					{#if isLoading}
 						<LoadingSpinner />
 					{:else if activeCategory === null}
-						<div class="relative w-full xl:min-h-[80vh] flex flex-col xl:flex-row justify-center items-center">
-							<div class="w-full xl:w-[40%] flex flex-col text-center items-center mb-2 xl:mb-0">
-								<h3 class="w-full text-xl text-pretty">Central Upper Peninsula ALICE Hub</h3>
-								<p class="w-3/4 my-1 xl:mt-2 text-md">Here you will find a great many of the assistance programs offered across the CUP.</p>
-							</div>
-							<div class="flex flex-col xl:flex-row justify-center w-full xl:w-1/2 gap-2">
-								<div class="w-full xl:w-1/4 rounded-md border-4 border-primary-red-3 p-1">
-									<h4 class="text-lg normal-case">Get Help</h4>
-									<p>Navigate through each ALICE category on the left to view the many assistance programs offered across the UP</p>
-								</div>
-								<div class="w-full xl:w-1/4 rounded-md border-4 border-tertiary-purple-1 p-1">
-									<h4 class="text-lg normal-case">Give</h4>
-									<p>As you browse the various categories, please note the opportunities to donate your time or resources directly to the organizations that make these programs possible.</p>
-								</div>
-							</div>
-						</div>
+						<DefaultCard />
 					{:else if activeCategory === CategoryNames.FOOD}
 						{#if selectedSubCategories.includes('programs') || selectedSubCategories.length === 0}
 							<Suspense onerror={(e) => handleError(e, 'Error loading Food Programs Component', undefined)}>

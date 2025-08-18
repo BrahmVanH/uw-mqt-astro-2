@@ -1,6 +1,5 @@
 ---
 import type { RootQueryToGirlScoutsComponentConnection } from '@/types/__generated__/types';
-import { Image } from 'astro:assets';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
 import { getDefaultProps, onImageError } from '@/lib/error';
 import { supportsWebP } from '@/lib/utils';
@@ -50,9 +49,10 @@ const useWebp = supportsWebP(Astro.request);
 
 <section class='relative w-full max-w-[1500px] flex flex-col sm:grid grid-cols-2 grid-rows-3 p-0 overflow-hidden mx-auto' aria-labelledby='girl-scouts-title'>
 	<div class='z-0 col-start-1 aspect-auto w-full max-h-[400px] sm:max-h-none row-start-1 row-span-3 col-end-3 sm:col-end-2' aria-hidden='true'>
-		<Image  class='w-full h-full' inferSize={true} src={bg} alt='' role='presentation' />
+		<img class='w-full h-full' src={bg} alt='' role='presentation' />
 	</div>
-	<div class={`absolute sm::block top-0 z-20 col-start-1 col-end-3 sm:col-end-2 justify-end row-start-1 row-span-1 text-right justify-self-end items-end w-full flex flex-col text-white my-4 px-2 md:px-4`}>
+	<div
+		class={`absolute sm::block top-0 z-20 col-start-1 col-end-3 sm:col-end-2 justify-end row-start-1 row-span-1 text-right justify-self-end items-end w-full flex flex-col text-white my-4 px-2 md:px-4`}>
 		{
 			title && (
 				<h2 id='girl-scouts-title' class='text-lg lg:text-2xl text-balance'>
@@ -68,10 +68,9 @@ const useWebp = supportsWebP(Astro.request);
 	</div>
 	{
 		img1 && (
-			<Image
+			<img
 				loading='lazy'
 				decoding='async'
-				format={useWebp ? 'webp' : 'jpg'}
 				class={'absolute z-0 col-start-2 col-end-3 hidden sm:block w-full aspect-auto p-0 row-start-1 row-span-3  m-0 '}
 				width={500}
 				height={500}
@@ -82,11 +81,10 @@ const useWebp = supportsWebP(Astro.request);
 	}
 	{
 		img2 && (
-			<Image
+			<img
 				loading='lazy'
 				decoding='async'
 				class={'absolute z-10 col-start-2 hidden sm:block max-w-[100px] md:max-w-[200px] aspect-auto  p-0 row-start-3 row-span-1 col-end-3 justify-self-end mr-8  '}
-				inferSize={true}
 				src={img2}
 				alt={img2Alt}
 			/>

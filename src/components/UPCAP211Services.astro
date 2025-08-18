@@ -1,12 +1,9 @@
 ---
 import { upcap211ServicesContent } from '@/config';
-import { Image } from 'astro:assets';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
-import { supportsWebP } from '@/lib/utils';
-
+ 
 const { heading, subheading, text, link, img, imgAlt } = upcap211ServicesContent;
 
-const useWebp = supportsWebP(Astro.request);
 ---
 
 <section class='flex flex-col mt-8 w-[80%] mx-auto'>
@@ -15,15 +12,7 @@ const useWebp = supportsWebP(Astro.request);
 			<h2 class='text-xl 2xl:text-2xl font-semibold text-primary-blue-2 text-nowrap'>{heading}</h2>
 			<h3 class='text-lg 2xl:text-xl font-semibold mt-2'>{subheading}</h3>
 		</div>
-		<Image
-			loading='lazy'
-			decoding='async'
-			format={useWebp ? 'webp' : 'jpg'}
-			src={img}
-			inferSize={true}
-			alt={imgAlt}
-			class='mt-4 object-cover object-center h-full max-w-[100px] sm:max-w-[150px] lg:max-w-[200px] aspect-auto'
-		/>
+		<img loading='lazy' decoding='async' src={img} alt={imgAlt} class='mt-4 object-cover object-center h-full max-w-[100px] sm:max-w-[150px] lg:max-w-[200px] aspect-auto' />
 	</div>
 	<div class='lg:w-[65%] mx-auto flex flex-col'>
 		<p class='mt-2 mb-2 lg:mb-7 text-md leading-normal'>{text}</p>

@@ -4,7 +4,6 @@ import type { Config } from '@/types/volunteerNeeds';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
 import HoverCard from './HoverCard.astro';
 import { gracefullyGetDefaultProps } from '@/lib/error';
-import { Image } from 'astro:assets';
 import logo from '@/image/logo-no-text.svg';
 import { getGalaxyDigitalNeedsData } from '@/lib/API';
 import type { YoopersUnitedNeed } from '@/types';
@@ -90,17 +89,7 @@ const { needs, heading, subHeading, viewNeedDetailsLinkRoot, volunteerNeedsLink,
 			<p class='text-md my-3 font-semibold'>{subHeading}</p>
 			<LearnMoreBtn href={volunteerNeedsLink} text={volunteerNeedsLinkText} className='my-[2rem]' color='blue' size='lg' ariaLabel='link to volunteer needs page' />
 			<div class='flex justify-center mt-2 lg:mt-4' aria-hidden='true'>
-				<Image
-					loading='lazy'
-					decoding='async'
-					format='svg'
-					src={logo}
-					alt='United Way Logo'
-					height={200}
-					width={200}
-					class='hidden lg:block w-[150px] aspect-auto mx-auto lg:mx-0'
-					role='presentation'
-				/>
+				<img loading='lazy' decoding='async' src={logo.src} alt='United Way Logo' height={200} width={200} class='hidden lg:block w-[150px] aspect-auto mx-auto lg:mx-0' role='presentation' />
 			</div>
 		</div>
 		<div>

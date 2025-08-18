@@ -6,7 +6,6 @@ requiresGraphqlQuery: true
 ---
 
 import { WP_URL_SRVR as WP_URL } from "astro:env/server";
-import { Image as AstroImage } from "astro:assets";
 import { getDefaultProps, onImageError } from "@/lib/error.ts";
 import { UW_MQT_LOGO_SVG_URL_ENDPOINT } from "@/lib/constants.ts";
 
@@ -47,7 +46,7 @@ export function KeyToolsForCampaignLeaders({ queryData }) {
             United Way of Marquette County Logo SVG
           </h3>
           {logoUrl && <a className="py-0" href="/images/logo.svg" target="_blank" rel="noopener noreferrer">
-            <AstroImage
+            <img
               loading="lazy"
               decoding="async"
               src={logo}
@@ -55,7 +54,6 @@ export function KeyToolsForCampaignLeaders({ queryData }) {
               className="w-[200px] mt-2 mb-0 py-0 font-heading"
               width={200}
               height={92.8}
-              format="svg"
 
             />
           </a>}
@@ -115,13 +113,12 @@ export function Collage({ queryData }) {
     <div className="relative grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3 min-h-[382px] xs:min-h-[448px] sm:min-h-[488px] lg:min-h-[512px] max-h-screen max-w-[1000px] xl:max-w-[1400px]">
       <div className="absolute w-full  flex flex-wrap justify-center items-center gap-2 p-2 z-10 my-auto">
         {images.map((img, index) => (
-          <AstroImage
+          <img
             key={index}
             src={img.url}
             alt={img.alt}
             height={img.height}
             width={img.width}
-            format="webp"
             class={`object-cover shadow-md my-0 ${index < 2
                 ? "block"
                 : index < 3

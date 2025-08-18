@@ -83,27 +83,27 @@
 >
 	<h2 id="success-stories-heading" class="text-xl lg:text-2xl w-full text-center mb-1 lg:mb-2">Success Stories</h2>
 	{#if selectedItem}
-	<div class="relative z-20 w-full mx-auto row-start-1 col-span-3 flex flex-col lg:flex-row justify-center items-start bg-transparent">
-		<div class="w-full lg:w-1/2 h-auto">
-			<img
-				src={selectedItem.image ?? placeholderImg}
-				alt={selectedItem.imageAlt}
-				class="shadow-lg object-cover aspect-auto mx-auto max-h-[400px]"
-				loading="lazy"
-				decoding="async"
-				height={400}
-				width={400}
-			/>
+		<div class="relative z-20 w-full mx-auto row-start-1 col-span-3 flex flex-col lg:flex-row justify-center items-start bg-transparent">
+			<div class="w-full lg:w-1/2 h-auto">
+				<img
+					src={selectedItem.image ?? placeholderImg}
+					alt={selectedItem.imageAlt}
+					class="shadow-lg object-cover aspect-auto mx-auto max-h-[400px]"
+					loading="lazy"
+					decoding="async"
+					height={400}
+					width={400}
+				/>
+			</div>
+			<article class="w-full lg:w-1/2 p-0 lg:p-6 mb-4 lg:ml-2">
+				<h3 class="text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4">{selectedItem.title}</h3>
+				<p class="mb-8 text-md md:text-md text-pretty leading-relaxed">{selectedItem.text}</p>
+				{#if selectedItem.link && selectedItem.linkText}
+					<LearnMoreBtn size="md" text={selectedItem.linkText} href={selectedItem.link} openInNewTab={true} color="blue" ariaLabel="Learn more about our impact" />
+				{/if}
+			</article>
 		</div>
-		<article class="w-full lg:w-1/2 p-0 lg:p-6 mb-4 lg:ml-2">
-			<h3 class="text-lg lg:text-xl font-bold mt-2 mb-2 lg:mb-4">{selectedItem.title}</h3>
-			<p class="mb-8 text-md md:text-md text-pretty leading-relaxed">{selectedItem.text}</p>
-			{#if selectedItem.link && selectedItem.linkText}
-				<LearnMoreBtn size="md" text={selectedItem.linkText} href={selectedItem.link} openInNewTab={true} color="blue" ariaLabel="Learn more about our impact" />
-			{/if}
-		</article>
-	</div>
-{/if}
+	{/if}
 
 	<div
 		style="scrollbarWidth: thin;"
@@ -121,15 +121,15 @@
 			<button
 				id={`carousel-item-${index}`}
 				role="tab"
-				aria-selected={selectedItem.title === item.title}
+				aria-selected={selectedItem?.title === item.title}
 				aria-controls={`carousel-item-${index}`}
 				onclick={() => handleSelectItem(item)}
 				class="cursor-pointer snap-center shrink-0 w-[65vw] md:w-[45vw] transition-all duration-300 border-primary-blue-4 border-2"
-				class:ring-2={selectedItem.title === item.title}
-				class:ring-primary-blue-2={selectedItem.title === item.title}
-				class:transform={selectedItem.title === item.title}
-				class:scale-95={selectedItem.title === item.title}
-				class:hover:shadow-sm={selectedItem.title !== item.title}
+				class:ring-2={selectedItem?.title === item.title}
+				class:ring-primary-blue-2={selectedItem?.title === item.title}
+				class:transform={selectedItem?.title === item.title}
+				class:scale-95={selectedItem?.title === item.title}
+				class:hover:shadow-sm={selectedItem?.title !== item.title}
 			>
 				<div class="w-full h-full p-1 lg:p-2 flex flex-row items-center">
 					<div class="w-1/2 h-auto">

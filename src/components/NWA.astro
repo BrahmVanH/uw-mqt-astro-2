@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
 import type { RootQueryToNorthwoodsAirLifelineConnection } from '@/types/__generated__/types';
 import { onImageError } from '@/lib/error';
@@ -35,7 +34,7 @@ const { img, imgAlt, title, text, link, linkText } = Astro.props;
 <section class='w-full flex items-center justify-center my-4'>
 	<div class='w-[80%] flex flex-col-reverse lg:flex-row lg:space-x-2 items-center justify-center'>
 		<div class='w-full lg:w-1/2 flex items-center justify-center'>
-			<Image  src={img} format='jpg' height={600} width={400} alt={imgAlt} class='w-[600px] aspect-auto' />
+			<img src={img} height={600} width={400} alt={imgAlt} class='w-[600px] aspect-auto' />
 		</div>
 		<div class='lg:w-1/2 flex flex-col items-center lg:items-start space-y-2 text-center lg:text-left text-pretty my-2 lg:my-0'>
 			<h2 class='text-2xl'>{title}</h2>
