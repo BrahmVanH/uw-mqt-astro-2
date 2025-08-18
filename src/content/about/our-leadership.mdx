@@ -5,7 +5,6 @@ description: United Way of Marquette County is governed by a volunteer board of 
 requiresGraphqlQuery: true
 ---
 
-import { Image } from "astro:assets";
 import { getDefaultProps, onImageError } from "@/lib/error.ts";
 import placeholderImg from "@/image/placeholder.svg";
 
@@ -23,7 +22,7 @@ export function ImageOne({graphqlData}) {
 
 return (
 
-<Image
+<img
   loading="lazy"
   decoding="async"
   height={image.height}
@@ -47,7 +46,7 @@ export function ImageTwo({graphqlData}) {
 
 return (
 
-<Image
+<img
   loading="lazy"
   decoding="async"
   height={image.height}
@@ -71,7 +70,7 @@ export function ImageThree({graphqlData}) {
 
 return (
 
-<Image
+<img
   loading="lazy"
   decoding="async"
   height={image.height}

@@ -5,13 +5,12 @@ description: United Way fights for the health, education, and financial stabilit
 requiresGraphqlQuery: true
 ---
 
-import { Image } from "astro:assets";
 import { getDefaultProps, onImageError } from "@/lib/error.ts";
 import placeholderImg from "@/image/placeholder.svg";
 
 export function ImageOne({ queryData }) {
   if (!queryData?.mediaItem1?.nodes[0]) {
-    return <Image loading="lazy" decoding="async"
+    return <img loading="lazy" decoding="async"
       src={placeholderImg}
       alt="Placeholder Image"
       class="w-full"
@@ -27,7 +26,7 @@ width: queryData.mediaItem1.nodes[0].mediaDetails?.width ?? 500,
 
 return (
 
-<Image
+<img
   loading="lazy"
   decoding="async"
   height={image.height}
@@ -40,7 +39,7 @@ return (
 
 export function ImageTwo({ queryData }) {
   if (!queryData?.mediaItem2?.nodes[0]) {
-    return <Image loading="lazy" decoding="async"
+    return <img loading="lazy" decoding="async"
       src={placeholderImg}
       alt="Placeholder Image"
       class="w-full"
@@ -56,7 +55,7 @@ width: queryData.mediaItem2.nodes[0].mediaDetails?.width ?? 500,
 
 return (
 
-<Image
+<img
   loading="lazy"
   decoding="async"
   height={image.height}

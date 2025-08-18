@@ -19,7 +19,7 @@ import sentry from '@sentry/astro';
 
 import tailwindcss from '@tailwindcss/vite';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
-
+import { analyzer } from 'vite-bundle-analyzer'
 
 
 // const strippedWPUrl =
@@ -117,10 +117,6 @@ export default defineConfig({
     // },
     prefetch: true,
 
-    image: {
-        domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD || 'https://api.uwmqt.org' : 'https://localhost:10011'],
-        responsiveStyles: true,
-    },
 
     integrations: [
         react({
@@ -148,8 +144,17 @@ export default defineConfig({
 
     adapter: netlify({
         imageCDN: false,
-
+        devFeatures: {
+            images: false,
+            environmentVariables: true
+        }
     }),
+
+    // image: {
+    //     domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD || 'https://api.uwmqt.org' : 'http://localhost:10020'],
+    //     responsiveStyles: true,
+
+    // },
 
     vite: {
         plugins: [tailwindcss(),
@@ -157,6 +162,9 @@ export default defineConfig({
             authToken: import.meta.env.SENTRY_AUTH_TOKEN,
             org: "brahm-van-houzen-studio",
             project: "uw-mqt",
+        }),
+        analyzer({
+            openAnalyzer: false
         }),
         ],
         // optimizeDeps: {

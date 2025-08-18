@@ -1,12 +1,8 @@
 ---
 import { yourHelpMattersContent } from '@/config';
-import { Image } from 'astro:assets';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
-import { supportsWebP } from '@/lib/utils';
 
 const { mainHeading, paragraph, bgUrl, link, linkText } = yourHelpMattersContent;
-
-const useWebp = supportsWebP(Astro.request);
 ---
 
 <!--  Animation styling for Get Involved button & bg animation -->
@@ -39,14 +35,7 @@ const useWebp = supportsWebP(Astro.request);
 </style>
 
 <section class='relative lg:grid flex flex-col justify-center grid-cols-4 grid-rows-3 lg:my-4 lg:justify-center lg:items-center mb-4 mt-2 lg:mt-0 lg:mb-0'>
-	<Image
-		format={useWebp ? 'webp' : 'jpg'}
-		id='main-bg'
-		src={bgUrl}
-		inferSize={true}
-		alt='custom grahpic'
-		class='hidden lg:block row-start-1 row-end-4 col-start-1 col-end-5 object-cover object-center h-full w-7/8'
-	/>
+	<img loading="lazy" decoding="async" id='main-bg' src={bgUrl} alt='custom grahpic' class='hidden lg:block row-start-1 row-end-4 col-start-1 col-end-5 object-cover object-center h-full w-7/8' />
 	<div class='relative lg:absolute w-full col-start-2 col-end-4 row-start-1 row-end-4
 		flex flex-col justify-center lg:items-start font-medium ml-2 lg:ml-0'>
 		{mainHeading.first && <span class='text-xl xl:text-2xl 2xl:text-3xl sm:ml-2 lg:ml-4 text-primary-blue-2'>{mainHeading.first}</span>}

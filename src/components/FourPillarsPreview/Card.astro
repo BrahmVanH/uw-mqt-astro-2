@@ -1,9 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import LearnMoreBtn from '../LearnMoreBtn.svelte';
 import type { FourPillarsPreviewCardContent } from './index.astro';
- 
-import { supportsWebP } from '@/lib/utils';
 
 export interface Props {
 	index: number;
@@ -11,8 +8,6 @@ export interface Props {
 }
 
 const { pillar, index } = Astro.props;
-
-const useWebp = supportsWebP(Astro.request);
 
 if (!pillar) {
 	return getDefaultProps<Props>('FourPillarsPreviewCard', Astro);
@@ -41,23 +36,13 @@ const imgLocationClasses = getImgLocationClasses(index);
 	{
 		imgLocationClasses && (
 			<div class={`${imgLocationClasses} hidden sm:block row-start-1 row-span-3 col-span-1`}>
-				<Image
-					loading='lazy'
-					decoding='async'
-					format={useWebp ? 'webp' : 'jpg'}
-					class='w-full aspect-auto p-0 m-0'
-					inferSize={true}
-					src={pillar.img}
-					alt={pillar.alt}
-					loading='lazy'
-					decoding='async'
-				/>
+				<img loading='lazy' decoding='async' class='w-full aspect-auto p-0 m-0' src={pillar.img} alt={pillar.alt} />
 			</div>
 		)
 	}
 
 	<div class={`${bgLocationClasses} row-start-1 row-span-3 col-span-2 sm:col-span-1`} aria-hidden='true'>
-		<Image  class='w-full aspect-auto max-w-full m-0' inferSize={true} src={pillar.bg} alt='' role='presentation'  />
+		<img class='w-full aspect-auto max-w-full m-0' src={pillar.bg} alt='' role='presentation' />
 	</div>
 
 	<div class={`${textLocationClasses} absolute w-min h-min row-span-1 col-span-1 flex flex-col text-white`}>

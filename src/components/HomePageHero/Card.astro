@@ -1,7 +1,6 @@
 ---
 import LearnMoreBtn from '../LearnMoreBtn.svelte';
 import type { HomePageHeroFeature } from './index.astro';
-import { Image } from 'astro:assets';
 
 export interface Props extends HomePageHeroFeature {
 	class?: string;
@@ -35,11 +34,10 @@ const mobileText = text.split('.')[0];
 	</div>
 	{
 		img && (
-			<Image
+			<img
 				loading='lazy'
 				decoding='async'
 				src={img}
-				format='jpg'
 				alt={imgAlt ?? ''}
 				height={400}
 				width={400}

@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import LearnMoreBtn from './LearnMoreBtn.svelte';
 import type { RootQueryToVitaTaxPrepConnection } from '@/types/__generated__/types';
 import { onImageError } from '@/lib/error';
@@ -43,7 +42,7 @@ const { img, imgAlt, title, text, link, linkText, linkTwo, linkTextTwo } = Astro
 			</div>
 		</div>
 		<div class='w-full lg:w-1/2 flex items-center justify-center'>
-			<Image  src={img} format='jpg' height={400} width={400} alt={imgAlt} class='aspect-auto' />
+			<img src={img} height={400} width={400} alt={imgAlt} class='aspect-auto' />
 		</div>
 	</div>
 </section>

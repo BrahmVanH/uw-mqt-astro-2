@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 import LearnMoreBtn from './LearnMoreBtn.svelte';
 
 // import heroBg from '@/image/get-involved-hero-bg-img-fafwm-volunteers-handoff-grapges-w-graphic-01.jpg';
@@ -13,6 +11,7 @@ import { formatHeroHeadingText } from '@/lib/utils';
 import { aliceReportContent } from '@/config';
 
 import type { RootQueryToAliceReportPdfConnection } from '@/types/__generated__/types';
+import ResponsiveImage from './ResponsiveImage.astro';
 
 export interface Props {
 	link1: string;
@@ -35,8 +34,7 @@ const text =
 
 <section class='w-full relative overflow-hidden' aria-label={`${heading} Hero Section`}>
 	<div class='inset-0 w-full aspect-auto'>
-		<Image width={heroBg.width} height={heroBg.height}  class='hidden lg:block w-full object-cover aspect-auto' src={heroBg} alt=' ' />
-		<Image width={heroMobileBg.width} height={heroMobileBg.height}  class='lg:hidden w-full object-cover aspect-auto' src={heroMobileBg} alt=' ' />
+		<ResponsiveImage className='hidden lg:block w-full object-cover aspect-auto' desktopImgUrl={heroBg.src} mobileImgUrl={heroMobileBg.src} desktopAlt=' ' mobileAlt=' ' />
 	</div>
 	<div class='absolute h-full xl:h-[60vh] flex flex-col justify-end items-start inset-0 z-10 text-left text-white xl:ml-4'>
 		<div class='min-w-[50vw] backdrop-blur-md rounded-sm my-auto p-2 xl:w-min'>
