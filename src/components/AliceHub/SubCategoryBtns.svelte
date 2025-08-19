@@ -21,7 +21,7 @@
 
 			{#each displayedSubCategories as sub, i}
 				<button
-					class="border-2 rounded-[64px] text-nowrap text-sm min-w-fit px-2 py-1 ml-2 focus:ring-0 xl:text-md
+					class="border-2 cursor-pointer rounded-[64px] text-nowrap text-sm min-w-fit px-2 py-1 ml-2 focus:ring-0 xl:text-md
                         {selectedSubCategories.includes(sub) ? getSubCategoryBgColor(i) : ''}"
 					onclick={(e) => handleSelectedSubCategories(e, sub)}
 				>
