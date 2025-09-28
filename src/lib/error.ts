@@ -60,7 +60,7 @@ export enum ErrorCode {
  */
 export class AppError extends Error {
   public readonly code: ErrorCode;
-  public readonly context?: Record<string, any>;
+  public readonly context?: Record<string, unknown>;
   public readonly cause?: Error;
   public readonly isRetryable: boolean;
 
@@ -74,7 +74,7 @@ export class AppError extends Error {
     message: string;
     code?: ErrorCode;
     cause?: Error;
-    context?: Record<string, any>;
+    context?: Record<string, unknown>;
     isRetryable?: boolean;
   }) {
     super(message);
