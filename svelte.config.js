@@ -10,7 +10,9 @@ export default {
 	compilerOptions: {
 		dev: env.NODE_ENV !== 'production',
 		css: 'injected',
-		// hydratable: true
+		experimental: {
+			async: true
+		}
 	},
 	kit: {
 		// Add path aliases here
@@ -22,5 +24,7 @@ export default {
 			'@image': path.resolve('./src/image'),
 			'@types': path.resolve('./src/types'),
 		},
+
 	},
+
 }

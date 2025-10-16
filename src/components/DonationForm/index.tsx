@@ -101,11 +101,13 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
           body: formData,
         });
 
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const data = await response.json();
 
-        const { clientSecret, error } = await response.json();
+        const { clientSecret, error } = data;
         if (!clientSecret) {
           throw new Error("Client secret not found");
         }
@@ -117,6 +119,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ className, ...props }) => {
         setShowStripeFormElements(true);
         setIsLoading(false);
       } catch (error) {
+        console.error(error)
         Sentry.captureException(error);
         setFormError("An error occurred. Please try again later.");
       } finally {
@@ -431,6 +434,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ emailInput }) => {
         });
 
         if (error) {
+          console.error(error)
           if (
             error.type === "card_error" ||
             error.type === "validation_error"
@@ -444,6 +448,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ emailInput }) => {
         }
       } catch (error) {
         Sentry.captureException(error);
+        console.error(error)
         setFormError("An error occurred. Please try again later.");
       } finally {
         setIsLoading(false);

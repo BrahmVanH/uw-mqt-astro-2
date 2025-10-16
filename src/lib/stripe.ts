@@ -10,7 +10,7 @@ export function getStripe() {
   }
 
   return new Stripe(secret, {
-    apiVersion: "2025-07-30.basil",
+    apiVersion: "2025-09-30.clover",
     typescript: true,
   });
 }

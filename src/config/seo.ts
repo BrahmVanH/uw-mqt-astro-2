@@ -1,6 +1,6 @@
 import type { Config } from "../types/seo";
 
-export const config: Config = {
+const config: Config = {
   siteName: "United Way of Marquette County",
   defaultDescription:
     "United is the Way we create lasting change. United Way brings communities together to find strength and share hope.",
@@ -34,3 +34,4 @@ export const config: Config = {
   },
 } as const;
 
+export default config

@@ -66,7 +66,7 @@ export type AliceChartConfig = {
 	};
 };
 
-export interface FmtdChartDataRecord extends Record<string, FmtdChartData> {}
+export type FmtdChartDataRecord = Record<string, FmtdChartData>;
 
 export interface FmtdChartData {
 	county: string;

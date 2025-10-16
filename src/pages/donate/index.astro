@@ -14,6 +14,7 @@ if (Astro.request.method === 'POST') {
 		const amount = Number(data.get('amount'));
 		const email = isRecurring ? (data.get('email') as string) : '';
 
+
 		if (!data) {
 			throw new Error('No form data received');
 		}
@@ -43,6 +44,7 @@ if (Astro.request.method === 'POST') {
 				},
 			});
 
+
 			if (!paymentIntent?.client_secret) {
 				throw new Error('Failed to create payment intent');
 			}
@@ -64,6 +66,7 @@ if (Astro.request.method === 'POST') {
 			});
 		}
 
+
 		if (!customer) {
 			throw new Error('Unable to process payment - could not create new customer');
 		}
@@ -81,6 +84,7 @@ if (Astro.request.method === 'POST') {
 			throw new Error('Unable to process payment, could not create subscription price');
 		}
 
+
 		const subscription = await stripe.subscriptions.create({
 			customer: customer.id,
 			items: [{ price: price.id }],
@@ -89,18 +93,45 @@ if (Astro.request.method === 'POST') {
 			expand: ['latest_invoice.payment_intent'],
 		});
 
+
 		if (!subscription) {
 			throw new Error('Failed to create subscription');
+		}
+		const invoice = subscription.latest_invoice as any;
+
+		if (!invoice) {
+			throw new Error('No invoice found on subscription');
+		}
+
+		// Create a payment intent for the invoice
+		const paymentIntent = await stripe.paymentIntents.create({
+			amount: invoice.amount_due,
+			currency: invoice.currency,
+			customer: customer.id,
+			payment_method_types: ['card'],
+			metadata: {
+				subscription_id: subscription.id,
+				invoice_id: invoice.id,
+				source: 'donation_form',
+				donation_type: 'recurring',
+			},
+		});
+
+		if (!paymentIntent?.client_secret) {
+			throw new Error('Failed to create payment intent for subscription');
 		}
 
 		return new Response(
 			JSON.stringify({
 				subscriptionId: subscription.id,
-				clientSecret: (subscription.latest_invoice as any).payment_intent?.client_secret,
+				clientSecret: paymentIntent.client_secret,
 			}),
 			{ status: 200 },
 		);
+
 	} catch (error) {
+		console.error(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);
+
 		Sentry.captureException(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);
 		return new Response(JSON.stringify({ error: `Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.` }), { status: 400 });
 	}
