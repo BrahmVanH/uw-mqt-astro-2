@@ -130,7 +130,6 @@ if (Astro.request.method === 'POST') {
 		);
 
 	} catch (error) {
-		console.error(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);
 
 		Sentry.captureException(`Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.`);
 		return new Response(JSON.stringify({ error: `Error in stripe paymentIntent creation: ${error}.\n\n **paymentIntent not created.` }), { status: 400 });

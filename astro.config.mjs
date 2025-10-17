@@ -22,10 +22,6 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { analyzer } from 'vite-bundle-analyzer'
 
 
-// const strippedWPUrl =
-//   process.env.WP_URL_SRVR?.replace("https://", "") ??
-//   "southshoretechnical.services";
-
 export default defineConfig({
     env: {
         schema: {
@@ -127,15 +123,7 @@ export default defineConfig({
         icon(),
         sitemap(),
         mdx(),
-        sentry(
-            //     {
-            //     dsn: import.meta.env.SENTRY_DSN,
-            //     sourceMapsUploadOptions: {
-            //         project: 'uw-mqt',
-            //         authToken: import.meta.env.SENTRY_AUTH_TOKEN,
-            //     },
-            // }
-        ),
+        sentry(),
         svelte({
             prebundleSvelteLibraries: true
         }),
@@ -150,11 +138,6 @@ export default defineConfig({
         }
     }),
 
-    // image: {
-    //     domains: [import.meta.env.PROD ? import.meta.env.WP_URL_SRVR_PROD || 'https://api.uwmqt.org' : 'http://localhost:10020'],
-    //     responsiveStyles: true,
-
-    // },
 
     vite: {
         plugins: [tailwindcss(),
@@ -167,28 +150,6 @@ export default defineConfig({
             openAnalyzer: false
         }),
         ],
-        // optimizeDeps: {
-        //     include: ['svelte', 'svelte/store'],
-        //     exclude: ['@astrojs/svelte']
-        //   },
-        // build: {
-        //     rollupOptions: {
-        //         output: {
-        //             // More comprehensive manual chunks
-        //             manualChunks: {
-        //                 'svelte-runtime': [
-        //                     'svelte',
-        //                     'svelte/internal',
-        //                     'svelte/store',
-        //                     'svelte/motion',
-        //                     'svelte/transition',
-        //                     'svelte/animate',
-        //                     'svelte/easing'
-        //                 ],
-        //                 'vendor': ['astro']
-        //             }
-        //         }
-        //     }
-        // }
+
     },
 });
