@@ -127,7 +127,12 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 		<h2 class='sr-only'>United Way of Marquette County</h2>
 
 		<section aria-labelledby='hero-section'>
-			{heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
+			<div class='hidden md:contents'>
+				{heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
+			</div>
+			<div class='contents md:hidden'>
+				<HomePageHero {...heroProps} />
+			</div>
 		</section>
 
 		<section aria-labelledby='partners-section'>

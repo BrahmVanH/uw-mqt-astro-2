@@ -143,10 +143,10 @@
 						? 'opacity-0 -translate-x-full z-0'
 						: 'opacity-0 translate-x-full z-0'}"
 			>
-				<div class="w-[65vw] md:w-[45vw] h-full mx-auto flex flex-col gap-4 rounded-xl overflow-hidden" role="group" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
+				<div class="w-full md:w-[45vw] h-full mx-auto flex flex-col md:gap-4 px-2 rounded-xl md:overflow-hidden" role="group" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
 					{#each itemGroup as item, itemIndex}
 						<div
-							class={cn(shouldFlexGrow(itemGroup, itemIndex) ? 'flex-1' : '', 'carousel-page w-full flex flex-col justify-center transition-all duration-700 ease-out')}
+							class={cn(shouldFlexGrow(itemGroup, itemIndex) ? 'md:flex-1' : '', 'carousel-page w-full flex flex-col justify-center transition-all duration-700 ease-out')}
 							data-page={itemIndex}
 							data-carousel-id={carouselId}
 							style="animation-delay: {itemIndex * 200}ms"
@@ -156,9 +156,9 @@
 								role="region"
 							>
 								{#if item.img}
-									<div class={cn(isPriority ? 'min-w-[50%]' : '', 'relative overflow-hidden')}>
+									<div class={cn(isPriority ? 'min-w-[50%]' : '', 'relative md:overflow-hidden')}>
 										<img src={item.img} alt={item.imgAlt ?? ''} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
-										<div class="absolute inset-0 bg-linear-to-r from-primary-blue-2/50 to-transparent"></div>
+										<div class="md:absolute inset-0 bg-linear-to-r from-primary-blue-2/50 to-transparent"></div>
 									</div>
 								{/if}
 								<div class="p-6">

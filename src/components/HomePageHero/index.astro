@@ -41,7 +41,7 @@ const headingWithNewLine2ndWord = addNewLineAfterNthWord(heading, 2);
 ---
 
 <section class='relative w-full min-h-screen' role='region' aria-labelledby='hero-heading'>
-	<ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='absolute top-0 left-0 w-full h-full object-cover max-w-[1800px] mx-auto z-0' />
+	<!-- <ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='absolute top-0 left-0 w-full h-full object-cover max-w-[1800px] mx-auto z-0' /> -->
 
 	<div class='relative z-10 w-full max-w-[1800px] mx-auto'>
 		<div class='px-4 md:px-8 pb-8'>
@@ -53,6 +53,16 @@ const headingWithNewLine2ndWord = addNewLineAfterNthWord(heading, 2);
 				)
 			}
 			{subheading && <p class='text-tertiary-black-2 text-md font-bold mt-4 max-w-[800px] leading-relaxed'>{subheading}</p>}
+		</div>
+		<div class:list={[features && features?.length > 1 ? 'features-grid' : 'features-flex', 'px-1 xs:px-4 pb-2 lg:py-8']} role='list'>
+			{
+				features &&
+					features.map((feature, i) => (
+						<div role='listitem'>
+							<Card {...feature} index={i} class={i === 0 ? 'featured-card' : 'regular-card'} />
+						</div>
+					))
+			}
 		</div>
 	</div>
 </section>
