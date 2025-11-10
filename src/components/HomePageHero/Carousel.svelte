@@ -55,7 +55,7 @@
 
 		return itemsGroups;
 	}
-	
+
 	let itemsGroups = $derived(parseItemsGroups(featureItems));
 
 	function shouldFlexGrow(itemGroup: HomePageHeroFeature[], index: number) {
