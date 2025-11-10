@@ -75,7 +75,7 @@
 </script>
 
 <Sheet.Root bind:open>
-	<div class="relative lg:hidden w-full flex justify-between p-2">
+	<div class="relative lg:hidden z-10 w-full flex justify-between p-2">
 		<a data-astro-prefetch class="flex items-center" href="/">
 			{#if logo.src}
 				<img loading="lazy" decoding="async" class="h-[50px] xl:h-[75px] w-auto font-heading object-cover" src={logo.src} alt="United Way Logo" width={200} height={100} />
