@@ -74,12 +74,13 @@ export interface FmtdChartData {
 	chartData: AliceChartData[];
 }
 
-export interface AliceChartData {
+export interface AliceChartData extends Record<string, unknown> {
 	incomeLevel: ChartLabels;
 	total: number;
 	fill: ChartColorsYellow | ChartColorsBlue | ChartColorsRed;
 	fill2: ChartColorsRed;
 	fill3: ChartColorsYellow;
+
 }
 
 export enum ChartColorsYellow {

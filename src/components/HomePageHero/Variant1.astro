@@ -1,0 +1,402 @@
+---
+// HeroVariant5: Combined layout from variants 2 & 4 - Split-screen with blue overlay and top-aligned content
+import type { HomePageHeroFeature } from '../HomePageHero/index.astro';
+import LearnMoreBtn from '../LearnMoreBtn.svelte';
+import ResponsiveImage from '../ResponsiveImage.astro';
+import Carousel from './Carousel.svelte';
+
+export interface Props {
+	bg: string;
+	bgMobile: string;
+	heading: string;
+	subheading: string;
+	features: HomePageHeroFeature[];
+	bgAlt: string;
+	bgMobileAlt: string;
+}
+
+const { heading, subheading, features } = Astro.props;
+
+// const combinedFeatures = [...features, ...priorityContent.stories.features].slice(0, 4);
+function sortFeatures(features: HomePageHeroFeature[]) {
+	let priorityFeatures: HomePageHeroFeature[] = [];
+	let filteredFeatures: HomePageHeroFeature[] = [];
+
+	features.forEach((f) => {
+		if (f.priority) {
+			priorityFeatures.push(f);
+		} else {
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+			filteredFeatures.push(f);
+		}
+	});
+
+	return { priorityFeatures, filteredFeatures };
+}
+
+const { priorityFeatures, filteredFeatures } = sortFeatures(features);
+---
+
+<section class='relative w-full overflow-hidden bg-transparent' role='region' aria-labelledby='hero-heading'>
+	<div class='relative z-10 w-full h-[110vh] grid lg:grid-cols-2 hero-full-gradient overflow-hidden'>
+		<div class='relative flex flex-col justify-start items-start p-2 md:p-4 text-white'>
+			<div class='relative w-full h-full overflow-hidden'>
+				<Carousel featureItems={priorityFeatures} isPriority={true} timer={8} client:only />
+			</div>
+		</div>
+
+		<div class='relative p-6 md:p-12 flex flex-col justify-start items-start'>
+			<div class='relative w-full h-full overflow-hidden'>
+				<Carousel featureItems={filteredFeatures} isPriority={false} timer={10} client:only />
+			</div>
+		</div>
+	</div>
+
+	<div class='relative z-10 bg-primary-blue-2/90 backdrop-blur-sm text-white px-6 md:px-12 py-8'>
+		<div class='text-center'>
+			<h1 id='hero-heading' class='text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-4'>
+				{heading}
+			</h1>
+			<p class='text-primary-blue-4 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-6'>
+				{subheading}
+			</p>
+			<div class='flex flex-wrap justify-center gap-4'>
+				<LearnMoreBtn size='lg' text='Get Involved' href='/get-involved' openInNewTab={false} color='white' ariaLabel='Get involved with United Way' />
+				<LearnMoreBtn size='lg' text='View All Programs' href='/our-impact' openInNewTab={false} color='white' ariaLabel='View all our programs' />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero-full-gradient {
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 4%),
+			radial-gradient(
+				ellipse 80% 100% at 50% 50%,
+				rgba(16, 49, 117, 0.7) 0%,
+				rgba(16, 49, 117, 0.68) 2%,
+				rgba(16, 49, 117, 0.66) 4%,
+				rgba(16, 49, 117, 0.64) 6%,
+				rgba(16, 49, 117, 0.62) 8%,
+				rgba(16, 49, 117, 0.6) 10%,
+				rgba(16, 49, 117, 0.58) 12%,
+				rgba(16, 49, 117, 0.56) 14%,
+				rgba(16, 49, 117, 0.54) 16%,
+				rgba(16, 49, 117, 0.52) 18%,
+				rgba(16, 49, 117, 0.5) 20%,
+				rgba(16, 49, 117, 0.48) 22%,
+				rgba(16, 49, 117, 0.46) 24%,
+				rgba(16, 49, 117, 0.44) 26%,
+				rgba(16, 49, 117, 0.42) 28%,
+				rgba(16, 49, 117, 0.4) 30%,
+				rgba(16, 49, 117, 0.38) 32%,
+				rgba(16, 49, 117, 0.36) 34%,
+				rgba(16, 49, 117, 0.34) 36%,
+				rgba(16, 49, 117, 0.32) 38%,
+				rgba(16, 49, 117, 0.3) 40%,
+				rgba(16, 49, 117, 0.28) 42%,
+				rgba(16, 49, 117, 0.26) 44%,
+				rgba(16, 49, 117, 0.24) 46%,
+				rgba(16, 49, 117, 0.22) 48%,
+				rgba(16, 49, 117, 0.2) 50%,
+				rgba(16, 49, 117, 0.18) 52%,
+				rgba(16, 49, 117, 0.16) 54%,
+				rgba(16, 49, 117, 0.14) 56%,
+				rgba(16, 49, 117, 0.12) 58%,
+				rgba(16, 49, 117, 0.1) 60%,
+				rgba(16, 49, 117, 0.09) 62%,
+				rgba(16, 49, 117, 0.08) 64%,
+				rgba(16, 49, 117, 0.07) 66%,
+				rgba(16, 49, 117, 0.06) 68%,
+				rgba(16, 49, 117, 0.05) 70%,
+				rgba(16, 49, 117, 0.04) 72%,
+				rgba(16, 49, 117, 0.03) 74%,
+				rgba(16, 49, 117, 0.02) 76%,
+				rgba(16, 49, 117, 0.015) 78%,
+				rgba(16, 49, 117, 0.01) 80%,
+				rgba(16, 49, 117, 0.008) 82%,
+				rgba(16, 49, 117, 0.006) 84%,
+				rgba(16, 49, 117, 0.004) 86%,
+				rgba(16, 49, 117, 0.002) 88%,
+				rgba(16, 49, 117, 0.001) 90%,
+				transparent 100%
+			),
+			radial-gradient(ellipse 90% 110% at 30% 40%, rgba(65, 131, 215, 0.2) 0%, rgba(65, 131, 215, 0.1) 50%, transparent 80%),
+			radial-gradient(ellipse 120% 130% at 35% 45%, rgba(16, 49, 117, 0.15) 0%, transparent 70%);
+
+		border-radius: 0;
+
+		overflow: hidden;
+
+		position: relative;
+	}
+	.left-pane-radial::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%), radial-gradient(ellipse 80% 60% at 40% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+		border-radius: inherit;
+		pointer-events: none;
+	}
+
+	@keyframes slideInFromLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slideInFromRight {
+		from {
+			opacity: 0;
+			transform: translateX(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.grid > div:first-child {
+		animation: slideInFromLeft 0.8s ease-out;
+	}
+
+	.grid > div:last-child {
+		animation: slideInFromRight 0.8s ease-out;
+	}
+
+	.overflow-y-auto::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.overflow-y-auto::-webkit-scrollbar-track {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	.overflow-y-auto::-webkit-scrollbar-thumb {
+		background: var(--primary-blue-3);
+		border-radius: 3px;
+	}
+
+	.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+		background: var(--primary-blue-2);
+	}
+
+	.bg-image-flipped {
+		transform: scaleY(-1);
+	}
+
+	.card-radial-gradient {
+		background: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(12px) saturate(120%);
+		-webkit-backdrop-filter: blur(12px) saturate(120%);
+		box-shadow:
+			0 8px 32px rgba(0, 0, 0, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.4);
+		position: relative;
+	}
+
+	.carousel-page {
+		transition:
+			transform 1s ease-in-out,
+			opacity 1s ease-in-out;
+	}
+
+	.left-pane-carousel .carousel-page:not(:first-child),
+	.right-pane-carousel .carousel-page:not(:first-child) {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	.left-pane-carousel .carousel-page:first-child,
+	.right-pane-carousel .carousel-page:first-child {
+		transform: translateX(0);
+		opacity: 1;
+	}
+</style>
+
+<script>
+	declare global {
+		interface Window {
+			heroCarousel?: HeroCarousel;
+		}
+	}
+
+	class HeroCarousel {
+		leftCarousel: Element | null;
+		rightCarousel: Element | null;
+		leftPages: NodeListOf<Element>;
+		rightPages: NodeListOf<Element>;
+		leftCurrentPage: number;
+		rightCurrentPage: number;
+		leftTotalPages: number;
+		rightTotalPages: number;
+		transitionDuration: number;
+		leftInterval: number | null;
+		rightInterval: number | null;
+		leftTransitioning: boolean;
+		rightTransitioning: boolean;
+
+		constructor() {
+			this.leftCarousel = document.querySelector('.left-pane-carousel');
+			this.rightCarousel = document.querySelector('.right-pane-carousel');
+
+			this.leftPages = document.querySelectorAll('.left-pane-carousel .carousel-page');
+			this.rightPages = document.querySelectorAll('.right-pane-carousel .carousel-page');
+
+			if (!this.leftCarousel || !this.rightCarousel) {
+				console.warn('Hero carousel containers not found');
+				this.leftPages = document.querySelectorAll('');
+				this.rightPages = document.querySelectorAll('');
+			} else {
+				this.leftPages = this.leftCarousel.querySelectorAll('.carousel-page');
+				this.rightPages = this.rightCarousel.querySelectorAll('.carousel-page');
+			}
+
+			this.leftCurrentPage = 0;
+			this.rightCurrentPage = 0;
+			this.leftTotalPages = this.leftPages.length;
+			this.rightTotalPages = this.rightPages.length;
+
+			this.transitionDuration = 1000; // 1 seconds
+			this.leftInterval = null;
+			this.rightInterval = null;
+			this.leftTransitioning = false;
+			this.rightTransitioning = false;
+
+			this.init();
+		}
+		init() {
+			if (this.leftTotalPages > 1) {
+				this.startLeftCarousel();
+			}
+			if (this.rightTotalPages > 1) {
+				this.startRightCarousel();
+			}
+		}
+
+		startLeftCarousel() {
+			if (this.leftInterval) {
+				clearInterval(this.leftInterval);
+			}
+
+			this.leftInterval = window.setTimeout(() => {
+				this.transitionLeft();
+			}, this.transitionDuration);
+		}
+
+		startRightCarousel() {
+			if (this.rightInterval) {
+				clearInterval(this.rightInterval);
+			}
+
+			this.rightInterval = window.setTimeout(() => {
+				this.transitionRight();
+			}, 5000);
+		}
+
+		transitionLeft() {
+			if (this.leftTotalPages <= 1 || this.leftTransitioning) return;
+
+			this.leftTransitioning = true;
+
+			const currentPage = this.leftPages[this.leftCurrentPage] as HTMLElement;
+			const nextPageIndex = this.leftCurrentPage + 1;
+			const nextPage = this.leftPages[nextPageIndex] as HTMLElement;
+
+			if (!currentPage || !nextPage) {
+				this.leftTransitioning = false;
+				return;
+			}
+
+			currentPage.style.transform = 'translateX(-100%)';
+			currentPage.style.opacity = '0';
+
+			nextPage.style.transform = 'translateX(100%)';
+			nextPage.style.opacity = '0';
+
+			setTimeout(() => {
+				nextPage.style.transform = 'translateX(0)';
+				nextPage.style.opacity = '1';
+
+				setTimeout(() => {
+					this.leftTransitioning = false;
+					this.leftCurrentPage = nextPageIndex;
+
+					this.startLeftCarousel();
+				}, 1000);
+			}, 100);
+		}
+
+		transitionRight() {
+			if (this.rightTotalPages <= 1 || this.rightTransitioning) return;
+
+			this.rightTransitioning = true;
+
+			const currentPage = this.rightPages[this.rightCurrentPage] as HTMLElement;
+			const nextPageIndex = (this.rightCurrentPage + 1) % this.rightTotalPages;
+			const nextPage = this.rightPages[nextPageIndex] as HTMLElement;
+
+			if (!currentPage || !nextPage) {
+				this.rightTransitioning = false;
+				return;
+			}
+
+			currentPage.style.transform = 'translateX(-100%)';
+			currentPage.style.opacity = '0';
+
+			nextPage.style.transform = 'translateX(100%)';
+			nextPage.style.opacity = '0';
+
+			setTimeout(() => {
+				nextPage.style.transform = 'translateX(0)';
+				nextPage.style.opacity = '1';
+
+				setTimeout(() => {
+					this.rightTransitioning = false;
+					this.rightCurrentPage = nextPageIndex;
+
+					this.rightInterval = window.setTimeout(() => {
+						this.transitionRight();
+					}, this.transitionDuration);
+				}, 1000);
+			}, 100);
+		}
+
+		destroy() {
+			if (this.leftInterval) {
+				clearTimeout(this.leftInterval);
+				this.leftInterval = null;
+			}
+			if (this.rightInterval) {
+				clearTimeout(this.rightInterval);
+				this.rightInterval = null;
+			}
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		if (typeof window !== 'undefined') {
+			window.heroCarousel = new HeroCarousel();
+		}
+	});
+
+	window.addEventListener('beforeunload', () => {
+		if (typeof window !== 'undefined' && window.heroCarousel) {
+			window.heroCarousel.destroy();
+		}
+	});
+</script>

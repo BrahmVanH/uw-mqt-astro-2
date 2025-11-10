@@ -15,8 +15,11 @@ import type { HomePageQueryResponse } from '@/types';
 import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel.svelte';
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 import { onError } from '@/lib/error';
-import HomePageHero, { createProps as createHeroProps } from '@/components/HomePageHero/index.astro';
+
+import { HomePageHero, HomePageHeroVariant, createProps as createHeroProps } from '@/components/HomePageHero';
+// import HomePageHero, { createProps as createHeroProps } from '@/components/HomePageHero/index.astro';
 import Loading from '@/components/Loading.astro';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 // import wpWebhook from '@/lib/wpWebhook';
 
 // if (import.meta.env.PROD) {
@@ -37,7 +40,10 @@ if (!pageContent) {
 
 // wp content for hero section
 const heroContent = pageContent?.homePageHeroes;
-const heroProps = createHeroProps(heroContent);
+
+const heroProps = createHeroProps(heroContent, Astro);
+
+const { bg, bgMobile, bgAlt, bgMobileAlt } = heroProps;
 
 // wp content for partner ticker
 const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTickerItems?.nodes
@@ -115,10 +121,13 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 
 <Layout title='United Way of Marquette County'>
 	<main id='main-content' class='w-full mx-auto max-w-[1800px] flow'>
+		<div class='absolute inset-0 z-0 bg-image-flipped'>
+			<ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='w-full h-full object-cover' />
+		</div>
 		<h2 class='sr-only'>United Way of Marquette County</h2>
 
 		<section aria-labelledby='hero-section'>
-			<HomePageHero {...heroProps} />
+			{heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
 		</section>
 
 		<section aria-labelledby='partners-section'>
