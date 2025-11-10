@@ -9,14 +9,16 @@ export interface Props {
 	bgMobile: string;
 	heading: string;
 	subheading: string;
-	features: HomePageHeroFeature[];
+	features?: HomePageHeroFeature[];
 	bgAlt: string;
 	bgMobileAlt: string;
 }
 
 export interface HomePageHeroFeature {
 	title: string;
+	priority: boolean;
 	text: string;
+	subtext: string;
 	link: string;
 	linkText: string;
 	linkTwo?: string;
@@ -25,36 +27,6 @@ export interface HomePageHeroFeature {
 	imgAlt?: string;
 	optionalMedia?: string;
 	optionalMediaTitle?: string;
-}
-
-export function createProps(graphQLContent: RootQueryToHomePageHeroConnection): Props {
-	if (!graphQLContent?.nodes[0]?.homePageHeroFields) {
-		return getDefaultProps<Props>('HomePageHero createProps', Astro);
-	}
-
-	const root = graphQLContent?.nodes[0]?.homePageHeroFields;
-	let features = Array.from({ length: 3 }, (_, i) => ({
-		title: (root[`feature${i + 1}` as keyof typeof root] as any)?.title ?? '',
-		text: (root[`feature${i + 1}` as keyof typeof root] as any)?.text ?? '',
-		link: (root[`feature${i + 1}` as keyof typeof root] as any)?.link ?? '',
-		linkText: (root[`feature${i + 1}` as keyof typeof root] as any)?.linkText ?? '',
-		linkTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLink ?? '',
-		linkTextTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLinkText ?? '',
-		img: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.sourceUrl ?? '',
-		imgAlt: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.altText ?? '',
-		optionalMedia: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
-		optionalMediaTitle: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMediaLabel ?? '',
-	})).filter((feature) => feature.title !== '');
-
-	return {
-		bg: root?.bg?.node?.sourceUrl ?? onImageError('missing bg image home page hero').src,
-		bgMobile: root?.bgMobile?.node?.sourceUrl ?? onImageError('missing bg mobile image home page hero').src,
-		heading: root?.heading ?? '',
-		subheading: root?.subheading ?? '',
-		features,
-		bgAlt: root?.bg?.node?.altText ?? 'placeholder image',
-		bgMobileAlt: root?.bgMobile?.node?.altText ?? 'placeholder image',
-	};
 }
 
 function addNewLineAfterNthWord(heading: string, n: number): string {
@@ -72,17 +44,6 @@ const headingWithNewLine2ndWord = addNewLineAfterNthWord(heading, 2);
 	<ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='absolute top-0 left-0 w-full h-full object-cover max-w-[1800px] mx-auto z-0' />
 
 	<div class='relative z-10 w-full max-w-[1800px] mx-auto'>
-		<div class:list={[features?.length > 1 ? 'features-grid' : 'features-flex', 'px-1 xs:px-4 pb-2 lg:py-8']} role='list'>
-			{
-				features &&
-					features.map((feature, i) => (
-						<div role='listitem'>
-							<Card {...feature} index={i} class={i === 0 ? 'featured-card' : 'regular-card'} />
-						</div>
-					))
-			}
-		</div>
-
 		<div class='px-4 md:px-8 pb-8'>
 			{
 				heading && (

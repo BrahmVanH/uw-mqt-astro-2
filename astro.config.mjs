@@ -123,7 +123,9 @@ export default defineConfig({
         icon(),
         sitemap(),
         mdx(),
-        sentry(),
+        sentry({
+            enabled: import.meta.env.PROD
+        }),
         svelte({
             prebundleSvelteLibraries: true
         }),
