@@ -1,23 +1,8 @@
-// src/lib/sanitize.ts
-import DOMPurify, { type WindowLike } from 'dompurify';
-import { JSDOM } from 'jsdom';
-
-// For server-side rendering (Astro build time)
-function createDOMPurify() {
-  if (typeof window !== 'undefined') {
-    // Client-side
-    return DOMPurify;
-  } else {
-    // Server-side
-    const window = new JSDOM('').window as unknown as WindowLike;
-    return DOMPurify(window);
-  }
-}
+// src/lib/API/sanitize.ts
+import DOMPurify from 'isomorphic-dompurify';
 
 export function sanitizeHTML(dirty: string): string {
-  const purify = createDOMPurify();
-
-  return purify.sanitize(dirty, {
+  return DOMPurify.sanitize(dirty, {
     ALLOWED_TAGS: [
       'p', 'br', 'strong', 'b', 'em', 'i', 'u', 'span', 'div',
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
