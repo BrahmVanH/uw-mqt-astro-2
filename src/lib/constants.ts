@@ -52,3 +52,10 @@ export const elementIds = [
   "current-irs-form-990",
   "our-impact-carousel",
 ];
+
+
+export const WINGS_OF_GLORY_IMG_1 = '';
+export const WINGS_OF_GLORY_DOC_1 = '';
+export const WINGS_OF_GLORY_DOC_2 = '';
+export const WINGS_OF_GLORY_DOC_3 = '';
+

@@ -17,25 +17,26 @@ export function ImageOne({ queryData }) {
     />;
   }
 
-const image = {
-src: queryData.mediaItem1.nodes[0].mediaItemUrl ?? onImageError("No image found for ImageOne").src,
-alt: queryData.mediaItem1.nodes[0].altText ?? "Placeholder Image",
-height: queryData.mediaItem1.nodes[0].mediaDetails?.height ?? 500,
-width: queryData.mediaItem1.nodes[0].mediaDetails?.width ?? 500,
-};
+  const image = {
+    src: queryData.mediaItem1.nodes[0].mediaItemUrl ?? onImageError("No image found for ImageOne").src,
+    alt: queryData.mediaItem1.nodes[0].altText ?? "Placeholder Image",
+    height: queryData.mediaItem1.nodes[0].mediaDetails?.height ?? 500,
+    width: queryData.mediaItem1.nodes[0].mediaDetails?.width ?? 500,
+  };
 
-return (
+  return (
 
-<img
-  loading="lazy"
-  decoding="async"
-  height={image.height}
-  width={image.width}
-  src={image.src}
-  alt={image.alt}
-  class="w-full"
-/>
-); }
+    <img
+      loading="lazy"
+      decoding="async"
+      height={image.height}
+      width={image.width}
+      src={image.src}
+      alt={image.alt}
+      class="w-full"
+    />
+  );
+}
 
 export function ImageTwo({ queryData }) {
   if (!queryData?.mediaItem2?.nodes[0]) {
@@ -46,25 +47,26 @@ export function ImageTwo({ queryData }) {
     />;
   }
 
-const image = {
-src: queryData.mediaItem2.nodes[0].mediaItemUrl,
-alt: queryData.mediaItem2.nodes[0].altText ?? "Placeholder Image",
-height: queryData.mediaItem2.nodes[0].mediaDetails?.height ?? 500,
-width: queryData.mediaItem2.nodes[0].mediaDetails?.width ?? 500,
-};
+  const image = {
+    src: queryData.mediaItem2.nodes[0].mediaItemUrl,
+    alt: queryData.mediaItem2.nodes[0].altText ?? "Placeholder Image",
+    height: queryData.mediaItem2.nodes[0].mediaDetails?.height ?? 500,
+    width: queryData.mediaItem2.nodes[0].mediaDetails?.width ?? 500,
+  };
 
-return (
+  return (
 
-<img
-  loading="lazy"
-  decoding="async"
-  height={image.height}
-  width={image.width}
-  src={image.src}
-  alt={image.alt}
-  class="w-full"
-/>
-); }
+    <img
+      loading="lazy"
+      decoding="async"
+      height={image.height}
+      width={image.width}
+      src={image.src}
+      alt={image.alt}
+      class="w-full"
+    />
+  );
+}
 
 <div className="content"> 
       ## DIVERSITY, EQUITY & INCLUSION STATEMENT OF PRINCIPLE

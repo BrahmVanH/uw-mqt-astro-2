@@ -106,15 +106,15 @@ const partner = defineCollection({
 const staticRoot = defineCollection({
 	loader: glob({
 		pattern: '*.{md,mdx}',
-		base: 'src/content/our-impact/static/',
+		base: 'src/content/',
 	}),
 	schema: staticRootSchema,
 });
 
 const staticAbout = defineCollection({
 	loader: glob({ pattern: '*.{md,mdx}', base: 'src/content/about/static/' }),
-	schema: staticAboutSchema, 
-	
+	schema: staticAboutSchema,
+
 });
 
 const staticGetInvolved = defineCollection({
@@ -203,7 +203,7 @@ export type FinancialSecurity = z.infer<typeof financialSecuritySchema>;
 export type Partner = z.infer<typeof partnerSchema>;
 
 // Export static types
-export type  StaticAbout = z.infer<typeof staticAboutSchema>;
+export type StaticAbout = z.infer<typeof staticAboutSchema>;
 export type StaticFinancialSecurity = z.infer<typeof staticFinancialSecuritySchema>;
 export type StaticPartner = z.infer<typeof staticPartnerSchema>;
 export type StaticRoot = z.infer<typeof staticRootSchema>;
