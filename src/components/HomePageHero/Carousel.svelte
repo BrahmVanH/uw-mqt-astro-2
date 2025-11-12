@@ -143,7 +143,7 @@
 						? 'opacity-0 -translate-x-full z-0'
 						: 'opacity-0 translate-x-full z-0'}"
 			>
-				<div class="w-full md:w-[45vw] h-full mx-auto flex flex-col md:gap-4 px-2 rounded-xl md:overflow-hidden" role="group" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
+				<div class="w-full md:w-[50vw] h-full mx-auto flex flex-col md:gap-4  rounded-xl md:overflow-hidden" role="group" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
 					{#each itemGroup as item, itemIndex}
 						<div
 							class={cn(shouldFlexGrow(itemGroup, itemIndex) ? 'md:flex-1' : '', 'carousel-page w-full flex flex-col justify-center transition-all duration-700 ease-out')}
@@ -163,7 +163,7 @@
 								{/if}
 								<div class="p-6">
 									<h3 class="text-xl font-bold mb-3 text-tertiary-black-2">{item.title}</h3>
-									<p class="text-tertiary-black-1 mb-3 font-bold leading-relaxed">{item.text}</p>
+									<p class="text-tertiary-black-2 mb-3 leading-relaxed">{item.text}</p>
 									{#if item.subtext}
 										<span class="text-tertiary-black-2 font-semibold text-sm">{item.subtext}</span>
 									{/if}

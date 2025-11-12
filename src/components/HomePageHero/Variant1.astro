@@ -37,14 +37,14 @@ const { priorityFeatures, filteredFeatures } = sortFeatures(features);
 ---
 
 <section class='relative w-full overflow-hidden bg-transparent' role='region' aria-labelledby='hero-heading'>
-	<div class='relative z-10 w-full h-[110vh] grid lg:grid-cols-2 hero-full-gradient overflow-hidden'>
-		<div class='relative flex flex-col justify-start items-start md:p-4 text-white'>
+	<div class='relative z-10 w-full h-[110vh] grid lg:grid-cols-2 gap-0 hero-full-gradient overflow-hidden'>
+		<div class='relative flex flex-col justify-start items-start md:p-2 text-white'>
 			<div class='relative w-full h-full overflow-hidden'>
 				<Carousel featureItems={priorityFeatures} isPriority={true} timer={8} client:only />
 			</div>
 		</div>
 
-		<div class='relative md:p-12 flex flex-col justify-start items-start'>
+		<div class='relative md:p-2 flex flex-col justify-start items-start'>
 			<div class='relative w-full h-full overflow-hidden'>
 				<Carousel featureItems={filteredFeatures} isPriority={false} timer={10} client:only />
 			</div>

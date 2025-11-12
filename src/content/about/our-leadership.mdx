@@ -8,32 +8,33 @@ requiresGraphqlQuery: true
 import { getDefaultProps, onImageError } from "@/lib/error.ts";
 import placeholderImg from "@/image/placeholder.svg";
 
-export function ImageOne({graphqlData}) {
+export function ImageOne({ graphqlData }) {
   const image = {
     src: graphqlData?.mediaItem1?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image one our culture").src,
     alt: graphqlData?.mediaItem1?.nodes[0]?.altText ?? "Placeholder Image",
     height: graphqlData?.mediaItem1?.nodes[0]?.mediaDetails?.height ?? 500,
     width: graphqlData?.mediaItem1?.nodes[0]?.mediaDetails?.width ?? 500,
   };
-  
+
   if (!image?.src) {
     onError("No wp content found for image one our leadership ");
   }
 
-return (
+  return (
 
-<img
-  loading="lazy"
-  decoding="async"
-  height={image.height}
-  width={image.width}
-  src={image.src}
-  alt={image.alt}
-  className="max-h-[500px] w-auto justify-self-center mx-auto"
-/>
-); }
+    <img
+      loading="lazy"
+      decoding="async"
+      height={image.height}
+      width={image.width}
+      src={image.src}
+      alt={image.alt}
+      className="max-h-[500px] w-auto justify-self-center mx-auto"
+    />
+  );
+}
 
-export function ImageTwo({graphqlData}) {
+export function ImageTwo({ graphqlData }) {
   const image = {
     src: graphqlData?.mediaItem2?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image two our leadership").src,
     alt: graphqlData?.mediaItem2?.nodes[0]?.altText ?? "Placeholder Image",
@@ -44,42 +45,44 @@ export function ImageTwo({graphqlData}) {
     onError("No wp content found for image two our leadership ");
   }
 
-return (
+  return (
 
-<img
-  loading="lazy"
-  decoding="async"
-  height={image.height}
-  width={image.width}
-  src={image.src}
-  alt={image.alt}
-  className=" max-h-[600px] w-auto justify-self-center mx-auto "
-/>
-); }
+    <img
+      loading="lazy"
+      decoding="async"
+      height={image.height}
+      width={image.width}
+      src={image.src}
+      alt={image.alt}
+      className=" max-h-[600px] w-auto justify-self-center mx-auto "
+    />
+  );
+}
 
-export function ImageThree({graphqlData}) {
+export function ImageThree({ graphqlData }) {
   const image = {
     src: graphqlData?.mediaItem3?.nodes[0]?.mediaItemUrl ?? onImageError("No image found for image three our leadership").src,
     alt: graphqlData?.mediaItem3?.nodes[0]?.altText ?? "Placeholder Image",
     height: graphqlData?.mediaItem3?.nodes[0]?.mediaDetails?.height ?? 500,
-    width: graphqlData?.mediaItem3?.nodes[0]?.mediaDetails?.width  ?? 500 ,
+    width: graphqlData?.mediaItem3?.nodes[0]?.mediaDetails?.width ?? 500,
   };
   if (!image?.src) {
     onError("No wp content found for image three our leadership ");
   }
 
-return (
+  return (
 
-<img
-  loading="lazy"
-  decoding="async"
-  height={image.height}
-  width={image.width}
-  src={image.src}
-  alt={image.alt}
-  className="w-full max-w-[700px] justify-self-center mx-auto"
-/>
-); }
+    <img
+      loading="lazy"
+      decoding="async"
+      height={image.height}
+      width={image.width}
+      src={image.src}
+      alt={image.alt}
+      className="w-full max-w-[700px] justify-self-center mx-auto"
+    />
+  );
+}
 
 <ImageOne graphqlData={props.queryData} />
 

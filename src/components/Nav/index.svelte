@@ -128,7 +128,7 @@
 				{/each}
 			</NavigationMenu.List>
 		</div> -->
-		<div class="flex flex-row justify-between bg-gradient-to-b from-white to-gray-50/30 border-b border-gray-200/40 px-8">
+		<div class="flex flex-row justify-between bg-linear-to-b z-10 from-white to-gray-50/30 border-b border-gray-200/40 px-8">
 			<Breadcrumb {path} />
 			<NavigationMenu.List class="flex items-center gap-6 px-6 py-3 font-semibold">
 				{#each helpfulLinks as { title, href }}

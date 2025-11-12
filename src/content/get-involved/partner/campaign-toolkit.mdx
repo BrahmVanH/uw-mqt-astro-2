@@ -120,14 +120,14 @@ export function Collage({ queryData }) {
             height={img.height}
             width={img.width}
             class={`object-cover shadow-md my-0 ${index < 2
-                ? "block"
-                : index < 3
-                  ? "hidden md:block"
-                  : index < 5
-                    ? "hidden lg:block"
-                    : index < 6
-                      ? "hidden xl:block"
-                      : "hidden 2xl:block"
+              ? "block"
+              : index < 3
+                ? "hidden md:block"
+                : index < 5
+                  ? "hidden lg:block"
+                  : index < 6
+                    ? "hidden xl:block"
+                    : "hidden 2xl:block"
               }`}
           />
         ))}
