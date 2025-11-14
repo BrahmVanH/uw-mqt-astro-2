@@ -1,35 +1,141 @@
 ---
-slug: /about/our-culture
-title: Wings of Glory Raffle
-description: Win a signed lithograph of the "Wings of Glory" by Ed LaPere, commissioned by Dino Ciccarelli and the Detroit Red Wings Alumni Association.
+slug: wings-of-glory
+title: 'Wings of Glory: Limited Edition Red Wings Lithograph Raffle'
+description: 'An authenticated, limited-edition lithograph signed by Gordie Howe, Ted
+  Lindsay, Scotty Bowman, and Red Wings legends. One of only 65 ever available
+  to collectors. Valued at $7,500 minimum. Available now at United Way of
+  Marquette County.'
 requiresGraphqlQuery: false
 ---
 
-import { WINGS_OF_GLORY_IMG_1 } from '../lib/constants'
+import { WINGS_OF_GLORY_IMG_1, WINGS_OF_GLORY_IMG_2, WINGS_OF_GLORY_IMG_3 } from '../lib/constants';
+
+<div className="col-span-2">
+  The United Way of Marquette County is proud to offer an extraordinary opportunity for Red Wings fans and sports
+  memorabilia collectors: a limited-edition "Wings of Glory" lithograph, one of only 100 ever printed and just 65 made
+  available to the public. This museum-quality piece, valued at a minimum of $7,500 by the professional framer for the
+  Detroit Red Wings, Detroit Pistons, and numerous high-profile sports organizations, represents more than just
+  artwork—it's a tangible connection to the legends who built hockey's most storied franchise.
+</div>
+
+{WINGS_OF_GLORY_IMG_1 && (
 
 <img
   loading="lazy"
   decoding="async"
-  height={image.height}
-  width={image.width}
   src={WINGS_OF_GLORY_IMG_1}
   alt="'Wings of Glory' lithograph by Ed LaPere"
   class="w-full"
 />
-
-<div class="contents">
-  `"Wings of Glory" is a beautifully designed limited-edition lithograph 
-  by Ed LaPere, commisioned by Dino Ciccarelli and the Detroit Red Wings 
-  Alumni Association, featuring renderings of all players participating 
-  in the 2013 Maple Leafs vs. Red Wings Alumni Showdown.
-  
-  Prints have been signed by the active particiapnts in the contest,
-   who were selected eiether by their Hockey Hall of Fame status or 
-   their inclusion on the Stanley Cup as a member of the Detroit Red Wings.
-   `
+)}
+<div>
+  <h2>Commissioned by a Legend, Created by a Master</h2>
+  <p>
+    "Wings of Glory" was commissioned by Hockey Hall of Famer Dino Ciccarelli and the Detroit Red Wings Alumni
+    Association specifically for the 2013 Maple Leafs vs. Red Wings Alumni Showdown. Artist Ed LaPere masterfully
+    captured the spirit of that historic event, creating renderings of every participating player in stunning detail.
+  </p>
+  <p>
+    This isn't a mass-produced poster—it's a legitimate limited-edition lithograph, a fine art printing technique that
+    ensures exceptional quality and longevity. Each piece is individually numbered as part of the exclusive 100-print
+    run.
+  </p>
 </div>
 
-<div class="contents">
-This lithograph has been vetted and valued at $7,500. This raffle gives you a chance
+<div>
+  <h2>Signed by Hockey Royalty</h2>
+  <p>
+    What elevates this lithograph from remarkable to extraordinary is the collection of signatures it bears. Each
+    participating player from the 2013 Alumni Showdown has personally signed this piece, and every one was selected for
+    either their Hockey Hall of Fame status or their name being engraved on the Stanley Cup as a Detroit Red Wing.
+  </p>
+  <ul className="text-left justify-self-center text-nowrap">
+    <li>Gordie Howe - Mr. Hockey himself</li>
+    <li>Alex Delvecchio - Red Wings legend and Hall of Famer</li>
+    <li>Ted Lindsay - Terrible Ted and hockey pioneer</li>
+    <li>Scotty Bowman - The winningest coach in NHL history</li>
+    <li>Mike Ilitch - The beloved Red Wings owner</li>
+    <li>Jimmy Devellano - Architect of championship teams</li>
+    <li>Ken Holland - Hall of Fame general manager</li>
+    <li>Plus all active participants in the 2013 Alumni Showdown</li>
+  </ul>
+  <p>
+    This collection of autographs represents decades of Detroit hockey excellence, multiple Stanley Cups, and countless
+    Hockey Hall of Fame inductions.
+  </p>
 </div>
 
+{WINGS_OF_GLORY_IMG_2 && (
+
+<img
+  loading="lazy"
+  decoding="async"
+  src={WINGS_OF_GLORY_IMG_2}
+  alt="'Description of auctioned itemWings of Glory origin in text"
+  class="w-full"
+/>
+)}
+
+{WINGS_OF_GLORY_IMG_3 && (
+
+  <img
+    loading="lazy"
+    decoding="async"
+    src={WINGS_OF_GLORY_IMG_3}
+    alt="'Wings of Glory' lithograph by Ed LaPere"
+    class="w-full"
+  />
+)}
+<div>
+<h2>A Complete Collector's Package</h2>
+<div>
+<p>
+This isn't just a lithograph—it's a comprehensive collector's package that includes:
+</p>
+<ul className='text-left justify-self-center text-nowrap'>
+<li>The signed "Wings of Glory" limited-edition lithograph</li>
+<li>Thumbnail images showing each player's signature</li>
+<li>Certificate of authenticity from Hockeytown Authentics</li>
+<li>Professional protective packaging</li>
+<li>Complete documentation and edition information</li>
+</ul>
+<p>
+The piece comes ready to display and enjoy, with all the authentication and documentation a serious collector expects.
+</p>
+</div>
+
+<h2>
+Authenticated and Professionally Valued
+</h2>
+<p>
+Your investment is protected with a certificate of authenticity from Hockeytown Authentics, 
+the official authentication service of the Detroit Red Wings organization. 
+This documentation ensures the legitimacy of every signature and the provenance of the piece.
+The lithograph has been professionally appraised at a minimum value of $7,500 by the trusted 
+framing expert who serves the Detroit Red Wings, Detroit Pistons, and many other elite sports 
+organizations. Given the limited availability (only 65 of these were ever offered to collectors), 
+the inclusion of signatures from legends who have since passed, and the impeccable authentication, 
+this piece represents both a treasured collectible and a sound investment.
+</p>
+</div>
+
+<div className="col-span-2 flex flex-col items-center">
+<h2>How to Make This Yours</h2>
+<p>
+Due to licensing requirements, this extraordinary piece must be purchased in person at the United Way of Marquette County office. This rare opportunity won't last long—only 65 of these lithographs were ever made available to the public, and this may be your only chance to own one in the Upper Peninsula.
+</p>
+<p>To arrange a viewing and purchase:</p>
+<div className='text-left justify-self-center text-nowrap'>
+<p><strong>United Way of Marquette County</strong></p>
+<p>1414 W Fair Ave # 26, Marquette, MI 49855</p>
+<p>(906) 226-8171</p>
+<p>Please call to make an appointment.</p>
+</div>
+
+<p>
+Whether you're a lifelong Red Wings fan, a serious sports memorabilia collector, or someone looking for a truly special gift, "Wings of Glory" represents a once-in-a-lifetime opportunity to own a piece of authenticated Detroit hockey history.
+</p>
+<p>
+Your purchase not only brings home an incredible piece of art and sports history—it also supports the vital work of United Way of Marquette County in strengthening our community.
+</p>
+</div>

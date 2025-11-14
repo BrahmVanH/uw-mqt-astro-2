@@ -1,0 +1,38 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "printWidth": 120,
+  "proseWrap": "preserve",
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "always",
+        "printWidth": 80
+      }
+    },
+    {
+      "files": ["*.mdx"],
+      "options": {
+        "proseWrap": "preserve",
+        "printWidth": 120,
+        "htmlWhitespaceSensitivity": "ignore",
+        "bracketSameLine": false,
+        "jsxSingleQuote": false
+      }
+    }
+  ]
+}

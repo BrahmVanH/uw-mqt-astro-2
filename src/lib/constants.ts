@@ -54,8 +54,7 @@ export const elementIds = [
 ];
 
 
-export const WINGS_OF_GLORY_IMG_1 = '';
-export const WINGS_OF_GLORY_DOC_1 = '';
-export const WINGS_OF_GLORY_DOC_2 = '';
-export const WINGS_OF_GLORY_DOC_3 = '';
+export const WINGS_OF_GLORY_IMG_1 = 'http://localhost:10020/wp-content/uploads/2025/11/wings-of-glory-print-framed-on-wall-cropped.jpg';
+export const WINGS_OF_GLORY_IMG_2 = 'http://localhost:10020/wp-content/uploads/2025/11/lithograph-proof.jpg';
+export const WINGS_OF_GLORY_IMG_3 = 'http://localhost:10020/wp-content/uploads/2025/11/wings-of-glory-print-take-2-authentics-proof.jpg';
 
