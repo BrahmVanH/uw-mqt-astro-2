@@ -302,7 +302,7 @@ export async function getContent(query: string, variables = {}) {
 
 			const data = await response.json();
 			if (!data || data?.errors) {
-				throw new Error(data.errors[0].message);
+				return null;
 			}
 			return data;
 		});
