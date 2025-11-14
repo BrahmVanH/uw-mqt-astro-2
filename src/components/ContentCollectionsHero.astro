@@ -3,8 +3,8 @@ import { formatHeroHeadingText, supportsWebP } from '@/lib/utils';
 import { WP_URL_SRVR } from 'astro:env/server';
 import { CONTENT_COLLECTIONS_HERO_BG_URL_ENDPOINT } from '@/lib/constants';
 export interface Props {
-	heading: string;
-	subheading: string;
+  heading: string;
+  subheading: string;
 }
 const bgUrl = `${WP_URL_SRVR}${CONTENT_COLLECTIONS_HERO_BG_URL_ENDPOINT}`;
 
@@ -14,10 +14,19 @@ const useWebp = supportsWebP(Astro.request);
 ---
 
 <div class='relative w-full grid grid-rows-1 grid-cols-2 bg-primary-blue-2 lg:bg-transparent'>
-	<img src={bgUrl} alt='' class='hidden lg:block absolute z-0 row-start-1 row-span-1 col-start-1 col-span-2 object-cover object-center w-full h-full max-w-[100vw] aspect-auto' />
+  <img
+    src={bgUrl}
+    alt=''
+    class='hidden lg:block absolute z-0 row-start-1 row-span-1 col-start-1 col-span-2 object-cover object-center w-full h-full max-w-[100vw] aspect-auto'
+  />
 
-	<div class='z-10 row-start-1 row-span-1 col-start-1 col-span-2 justify-self-start self-center text-left flex flex-col items-center sm:items-start sm:ml-4 md:ml-5 lg:ml-8 my-4 lg:mt-7'>
-		<h1 class='text-xl md:text-2xl 2xl:text-3xl font-bold text-primary-yellow-2 text-nowrap'>{formatHeroHeadingText(heading)}</h1>
-		<p class='w-[80%] text-sm font-semibold text-center sm:text-left text-pretty leading-snug lg:ml-4 text-white mt-2'>{subheading}</p>
-	</div>
+  <div
+    class='z-10 row-start-1 row-span-1 col-start-1 col-span-2 justify-self-start self-center text-left flex flex-col items-center sm:items-start sm:ml-4 md:ml-5 lg:ml-8 my-4 lg:mt-7'>
+    <h1 class='text-xl md:text-2xl 2xl:text-3xl font-bold text-primary-yellow-2 text-nowrap'>
+      {formatHeroHeadingText(heading)}
+    </h1>
+    <p class='w-[60%] text-sm font-semibold text-center sm:text-left text-pretty leading-snug lg:ml-4 text-white mt-2'>
+      {subheading}
+    </p>
+  </div>
 </div>
