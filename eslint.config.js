@@ -1,6 +1,6 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import * as mdx from 'eslint';
+import mdx from 'eslint-plugin-mdx';
 
 export default [
   {
@@ -14,5 +14,20 @@ export default [
       '@typescript-eslint/no-explicit-any': 'warn'
     }
   },
-  { ...mdx.flat }
+  {
+    ...mdx.flat,
+    processor: mdx.createRemarkProcessor({
+      lintCodeBlocks: true,
+    }),
+  },
+  {
+    // Override the processor for `.mdx` files
+    files: ['**/*.mdx'],
+    ...mdx.flatCodeBlocks,
+    rules: {
+      // Add any MDX-specific rules here
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
 ];

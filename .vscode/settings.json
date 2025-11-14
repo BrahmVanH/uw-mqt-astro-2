@@ -9,7 +9,7 @@
   
   // Enable ESLint formatting on save
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   
   // Set ESLint as the default formatter for all supported file types
@@ -31,8 +31,20 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.autoIndent": "full"
+  },
   // Format settings for different file types
   // Avoid conflicts with Prettier
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
   "svelte.enable-ts-plugin": true,
   "typescript.enablePromptUseWorkspaceTsdk": true
 }

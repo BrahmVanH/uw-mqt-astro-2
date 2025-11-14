@@ -12,7 +12,6 @@ import { getDefaultPageProps } from '@/lib/error';
 // 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
 // }
 
-const { slug } = Astro.params;
 const { pathname } = Astro.url;
 if (!pathname) {
 	return getDefaultPageProps('No pathname found in the URL about/[...slug]', Astro);
