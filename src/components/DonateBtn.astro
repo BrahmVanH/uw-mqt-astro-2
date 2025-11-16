@@ -2,11 +2,12 @@
 import Button from './ui/Button.astro';
 
 export interface Props {
-	className?: string;
-	size: 'sm' | 'lg' | 'xl' | 'icon';
+  className?: string;
+  size: 'sm' | 'lg' | 'xl' | 'icon';
+  text?: string;
 }
 
-const { className, size } = Astro.props;
+const { className, size, text = 'DONATE' } = Astro.props;
 ---
 
-<Button variant='donate' size={size} class:list={['cursor-pointer', className]}> DONATE </Button>
+<Button variant='donate' size={size} class:list={['cursor-pointer', className]}>{text}</Button>
