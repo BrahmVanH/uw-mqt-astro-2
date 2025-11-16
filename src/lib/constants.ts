@@ -58,3 +58,6 @@ export const WINGS_OF_GLORY_IMG_1 = 'https://api.uwmqt.org/wp-content/uploads/20
 export const WINGS_OF_GLORY_IMG_2 = 'https://api.uwmqt.org/wp-content/uploads/2025/11/lithograph-proof.jpg';
 export const WINGS_OF_GLORY_IMG_3 = 'https://api.uwmqt.org/wp-content/uploads/2025/11/wings-of-glory-print-take-2-authentics-proof.jpg';
 
+// 2025 Campaign placeholder images
+export const CAMPAIGN_2025_IMG_1 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/cancer-care.jpg' : 'http://localhost:10020/wp-content/uploads/2025/11/cancer-care.jpg';
+export const CAMPAIGN_2025_IMG_2 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png' : 'http://localhost:10020/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png';
