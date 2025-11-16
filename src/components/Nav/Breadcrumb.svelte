@@ -21,18 +21,16 @@
       return [];
     }
     const parts = p.split('/');
-    return parts
-      .filter(part => part !== '' && part !== ' ')
-      .map((part, i) => {
-        if (i === 0) {
-          return {
-            title: 'Home',
-            path: '/',
-          };
-        } else {
-          return { title: capitalizeFirstLetter(part), path: parts.slice(0, i + 1).join('/') };
-        }
-      });
+    return parts.map((part, i) => {
+      if (i === 0) {
+        return {
+          title: 'Home',
+          path: '/',
+        };
+      } else {
+        return { title: capitalizeFirstLetter(part), path: parts.slice(0, i + 1).join('/') };
+      }
+    });
   }
 
   function formatBreadcrumbName(n: string) {
