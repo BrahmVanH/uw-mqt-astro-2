@@ -20,9 +20,79 @@ import sentry from '@sentry/astro';
 import tailwindcss from '@tailwindcss/vite';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { analyzer } from 'vite-bundle-analyzer'
+import { graphqlSchemaCache } from './src/integrations/page-queries-cache.js';
 
 
 export default defineConfig({
+
+    prefetch: true,
+    site: import.meta.env.SITE || 'https://uwmqt.org',
+    output: 'server',
+
+    // vite: {
+    //   server: {
+    //     proxy: {
+    //       "/graphql": {
+    //         target: `${process.env.WP_URL_SRVR_PROD ?? "https://api.uwmqt.org"}`,
+    //         changeOrigin: true,
+    //       },
+    //       "^/wp-content/.*": {
+    //         target: "https://api.uwmqt.org",
+    //         changeOrigin: true,
+    //         secure: true,
+    //         rewrite: (path) => path,
+    //       },
+    //     },
+    //   },
+    // },
+
+
+    integrations: [
+        graphqlSchemaCache(),
+        react({
+            babel: {
+                plugins: [['babel-plugin-react-compiler']],
+            },
+        }),
+        icon(),
+        sitemap(),
+        mdx(),
+        sentry({
+            enabled: import.meta.env.PROD
+        }),
+        svelte({
+            prebundleSvelteLibraries: true
+        }),
+        partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
+    ],
+
+    adapter: netlify({
+        imageCDN: false,
+        devFeatures: {
+            images: false,
+            environmentVariables: true
+        }
+    }),
+
+
+    vite: {
+        resolve: {
+            alias: {
+                '@': new URL('./src', import.meta.url).pathname.replace(/\/$/, '')
+            }
+        },
+        plugins: [tailwindcss(),
+        sentryVitePlugin({
+            authToken: import.meta.env.SENTRY_AUTH_TOKEN,
+            org: "brahm-van-houzen-studio",
+            project: "uw-mqt",
+        }),
+        analyzer({
+            openAnalyzer: false
+        }),
+        ],
+
+    },
     env: {
         schema: {
             APP_ROOT_URL_CLNT: envField.string({
@@ -92,66 +162,4 @@ export default defineConfig({
         },
     },
 
-    site: import.meta.env.SITE || 'https://uwmqt.org',
-    output: 'server',
-
-    // vite: {
-    //   server: {
-    //     proxy: {
-    //       "/graphql": {
-    //         target: `${process.env.WP_URL_SRVR_PROD ?? "https://api.uwmqt.org"}`,
-    //         changeOrigin: true,
-    //       },
-    //       "^/wp-content/.*": {
-    //         target: "https://api.uwmqt.org",
-    //         changeOrigin: true,
-    //         secure: true,
-    //         rewrite: (path) => path,
-    //       },
-    //     },
-    //   },
-    // },
-    prefetch: true,
-
-
-    integrations: [
-        react({
-            babel: {
-                plugins: [['babel-plugin-react-compiler']],
-            },
-        }),
-        icon(),
-        sitemap(),
-        mdx(),
-        sentry({
-            enabled: import.meta.env.PROD
-        }),
-        svelte({
-            prebundleSvelteLibraries: true
-        }),
-        partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
-    ],
-
-    adapter: netlify({
-        imageCDN: false,
-        devFeatures: {
-            images: false,
-            environmentVariables: true
-        }
-    }),
-
-
-    vite: {
-        plugins: [tailwindcss(),
-        sentryVitePlugin({
-            authToken: import.meta.env.SENTRY_AUTH_TOKEN,
-            org: "brahm-van-houzen-studio",
-            project: "uw-mqt",
-        }),
-        analyzer({
-            openAnalyzer: false
-        }),
-        ],
-
-    },
 });
