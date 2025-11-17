@@ -31,7 +31,7 @@ export const OUR_CULTURE_PAGE_IMG_TWO_TITLE =
 
 export const OUR_LEADERSHIP_PAGE_IMG_ONE_TITLE =
   "andrew-rickauer-director-headshot";
-export const OUR_LEADERSHIP_PAGE_IMG_TWO_TITLE = "25-campaign-cochairs";
+export const OUR_LEADERSHIP_PAGE_IMG_TWO_TITLE = "26-campaign-cochairs";
 export const OUR_LEADERSHIP_PAGE_IMG_THREE_TITLE = "UW-BOD-Christmas-2023";
 
 export const ALICE_INTERACTIVE_REPORT_URL =
