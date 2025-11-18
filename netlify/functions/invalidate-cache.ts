@@ -18,7 +18,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const redis = getRedis();
 
     const postTypeKey = body.graphql_plural_name
-
+    console.log("postTypeKey: ", postTypeKey)
 
     let cursor = '0';
     let allKeys: string[] = [];
