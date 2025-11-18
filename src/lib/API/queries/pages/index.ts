@@ -1,35 +1,15 @@
-import { valuesHistoryPageQuery } from "./valuesHistory";
-import { agenciesPageQuery } from "./agencies";
-import { campaignToolkitPageQuery } from "./campaignToolkit";
-import { communityResiliencyPageQuery } from "./communityResiliency";
-import { financialSecurityPageQuery } from "./financialSecurity";
-import { getInvolvedPageQuery } from "./getInvolved";
-import { fourPillarsHeroComponentQuery, ourImpactPageQuery } from "./ourImpact";
-import { healthyCommunityPageQuery } from "./healthy-community";
-import { homePageQuery } from "./home";
-import { individualsPageQuery, individualsPageHeroComponentQuery } from "./individuals";
-import { ourCulturePageQuery } from "./ourCulture";
-import { ourLeadershipPageQuery } from "./ourLeadership";
-import { partnerPageQuery } from "./partner";
-import { youthOpportunityPageQuery } from "./youthOpportunity";
-import { alicePageQuery } from "./alice";
-
-export {
-  valuesHistoryPageQuery,
-  agenciesPageQuery,
-  campaignToolkitPageQuery,
-  communityResiliencyPageQuery,
-  financialSecurityPageQuery,
-  fourPillarsHeroComponentQuery,
-  ourImpactPageQuery,
-  getInvolvedPageQuery,
-  healthyCommunityPageQuery,
-  homePageQuery,
-  individualsPageQuery,
-  individualsPageHeroComponentQuery,
-  ourCulturePageQuery,
-  ourLeadershipPageQuery,
-  partnerPageQuery,
-  youthOpportunityPageQuery,
-  alicePageQuery
-};
+export { valuesHistoryPageQuery } from "./valuesHistory";
+export { agenciesPageQuery } from "./agencies";
+export { campaignToolkitPageQuery } from "./campaignToolkit";
+export { communityResiliencyPageQuery } from "./communityResiliency";
+export { financialSecurityPageQuery } from "./financialSecurity";
+export { getInvolvedPageQuery } from "./getInvolved";
+export { fourPillarsHeroComponentQuery, ourImpactPageQuery } from "./ourImpact";
+export { healthyCommunityPageQuery } from "./healthy-community";
+export { homePageQuery } from "./home";
+export { individualsPageQuery, individualsPageHeroComponentQuery } from "./individuals";
+export { ourCulturePageQuery } from "./ourCulture";
+export { ourLeadershipPageQuery } from "./ourLeadership";
+export { partnerPageQuery } from "./partner";
+export { youthOpportunityPageQuery } from "./youthOpportunity";
+export { alicePageQuery } from "./alice";

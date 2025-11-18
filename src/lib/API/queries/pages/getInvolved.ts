@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery, partnersTickerComponentQuery } from "../common";
+import { howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery, partnersTickerComponentQuery } from "../common.js";
 
 export const getInvolvedPageQuery = gql`
   query GetInvolvedPage {

@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery, partnersTickerComponentQuery } from "../common";
+import { howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery, partnersTickerComponentQuery } from "../common.js";
 
 // GraphQL query string for the Home page
 export const homePageQuery = gql`

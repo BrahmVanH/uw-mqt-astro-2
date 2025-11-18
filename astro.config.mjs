@@ -20,7 +20,6 @@ import sentry from '@sentry/astro';
 import tailwindcss from '@tailwindcss/vite';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { analyzer } from 'vite-bundle-analyzer'
-import { graphqlSchemaCache } from './src/integrations/page-queries-cache.js';
 
 
 export default defineConfig({
@@ -48,7 +47,6 @@ export default defineConfig({
 
 
     integrations: [
-        graphqlSchemaCache(),
         react({
             babel: {
                 plugins: [['babel-plugin-react-compiler']],

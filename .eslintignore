@@ -4,3 +4,4 @@ dist/
 .svelte-kit/
 build/
 public/
+gql-generated/

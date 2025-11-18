@@ -4,15 +4,15 @@ import {
   UPSTASH_REDIS_TOKEN,
 } from "astro:env/server";
 
+import { type AuthTokens, getAuthTokens, refreshAuthToken } from "./API";
+import { onError } from "./error";
+
 export function getRedis() {
   return new Redis({
     url: UPSTASH_REDIS_URL,
     token: UPSTASH_REDIS_TOKEN,
   });
 }
-
-import { type AuthTokens, getAuthTokens, refreshAuthToken } from "./API";
-import { onError } from "./error";
 
 export async function getOrRefreshTokens(): Promise<AuthTokens["authToken"]> {
   const redis = getRedis();

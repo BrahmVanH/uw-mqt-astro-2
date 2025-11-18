@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { faqsComponentQuery, ourImpactCarouselComponentQuery } from "../common";
+import { faqsComponentQuery, ourImpactCarouselComponentQuery } from "../common.js";
 // GraphQL query string for the Individuals page hero component
 export const individualsPageHeroComponentQuery = gql`
 individualsPageHeroes {
