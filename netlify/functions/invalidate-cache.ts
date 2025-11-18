@@ -12,7 +12,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  console.log("headers: ", event.headers)
 
   const origin = event.headers['x-wp-webhook-source'];
 
@@ -36,12 +35,10 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // Get headers
   const signature = event.headers['x-hub-signature-256'];
   const timestamp = event.headers['x-webhook-timestamp'];
   const source = event.headers['x-webhook-source'];
 
-  // Validate required headers
   if (!signature || !timestamp) {
     return {
       statusCode: 401,
@@ -49,7 +46,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // Check timestamp for replay protection (5 minute window)
   const now = Math.floor(Date.now() / 1000);
   const requestTime = parseInt(timestamp);
 
@@ -60,13 +56,11 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // Verify HMAC signature
   const expectedSignature = 'sha256=' + crypto
     .createHmac('sha256', webhookSecret)
     .update(event.body || '')
     .digest('hex');
 
-  // Use timing-safe comparison
   if (!crypto.timingSafeEqual(
     Buffer.from(signature),
     Buffer.from(expectedSignature)
