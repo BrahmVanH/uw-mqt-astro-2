@@ -2,6 +2,7 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
 import { getRedis } from './lib/redis';
 import { queries, type QueryName } from './lib/generated-queries';
 import { getContentQueryKey, getParentQueryNames } from './lib/schema-parser';
+import crypto from "node:crypto";
 
 export const handler: Handler = async (event: HandlerEvent) => {
   if (event.httpMethod !== 'POST') {
@@ -11,8 +12,10 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  console.log("event: ", event)
+  console.log("headers: ", event.headers)
+
   const origin = event.headers['x-wp-webhook-source'];
+
 
   if (!origin) {
     throw new Error("Origin not allowed");
@@ -22,14 +25,65 @@ export const handler: Handler = async (event: HandlerEvent) => {
     throw new Error("Origin not allowed");
   }
 
-  try {
-    const body = JSON.parse(event.body || '{}');
 
+  const webhookSecret = process.env.INVALIDATE_CACHE_WEBHOOK_JWT;
+
+  if (!webhookSecret) {
+    console.error('WEBHOOK_SECRET_KEY not configured');
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Server configuration error' })
+    };
+  }
+
+  // Get headers
+  const signature = event.headers['x-hub-signature-256'];
+  const timestamp = event.headers['x-webhook-timestamp'];
+  const source = event.headers['x-webhook-source'];
+
+  // Validate required headers
+  if (!signature || !timestamp) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Missing authentication headers' })
+    };
+  }
+
+  // Check timestamp for replay protection (5 minute window)
+  const now = Math.floor(Date.now() / 1000);
+  const requestTime = parseInt(timestamp);
+
+  if (Math.abs(now - requestTime) > 300) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Request timestamp too old' })
+    };
+  }
+
+  // Verify HMAC signature
+  const expectedSignature = 'sha256=' + crypto
+    .createHmac('sha256', webhookSecret)
+    .update(event.body || '')
+    .digest('hex');
+
+  // Use timing-safe comparison
+  if (!crypto.timingSafeEqual(
+    Buffer.from(signature),
+    Buffer.from(expectedSignature)
+  )) {
+    console.error('Invalid signature');
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Invalid signature' })
+    };
+  }
+  const body = JSON.parse(event.body || '{}');
+
+  try {
 
     const redis = getRedis();
 
     const postTypeKey = body.graphql_plural_name
-    console.log("postTypeKey: ", postTypeKey)
 
     let cursor = '0';
     let allKeys: string[] = [];
