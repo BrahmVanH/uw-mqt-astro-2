@@ -9,6 +9,7 @@
   
   // Enable ESLint formatting on save
   "editor.codeActionsOnSave": {
+  
     "source.fixAll.eslint": "explicit"
   },
   

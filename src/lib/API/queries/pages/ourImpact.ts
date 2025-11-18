@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { faqsComponentQuery, howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery } from "../common";
+import { faqsComponentQuery, howToContributeComponentQuery, impactStatisticsComponentQuery, ourImpactCarouselComponentQuery } from "../common.js";
 
 // GraphQL query string for the frequently asked questions component
 export const fourPillarsHeroComponentQuery = gql`

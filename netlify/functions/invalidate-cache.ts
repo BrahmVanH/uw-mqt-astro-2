@@ -1,95 +1,79 @@
-import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
+import type { Handler, HandlerEvent } from '@netlify/functions';
+import { getRedis } from './lib/redis';
+import { queries, type QueryName } from './lib/generated-queries';
+import { getContentQueryKey, getParentQueryNames } from './lib/schema-parser';
 
-export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
-  // Only allow POST requests for webhooks
+export const handler: Handler = async (event: HandlerEvent) => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({
-        error: 'Method Not Allowed',
-        message: 'This endpoint only accepts POST requests'
-      }),
+      body: JSON.stringify({ error: 'Method not allowed' }),
     };
   }
 
   try {
-    // Log the entire event for debugging
-    console.log('Webhook received:', {
-      timestamp: new Date().toISOString(),
-      headers: event.headers,
-      httpMethod: event.httpMethod,
-      path: event.path,
-      queryStringParameters: event.queryStringParameters,
+    const body = JSON.parse(event.body || '{}');
+
+
+    const redis = getRedis();
+
+    const postTypeKey = body.graphql_plural_name
+
+
+    let cursor = '0';
+    let allKeys: string[] = [];
+
+    do {
+      const result = await redis.scan(cursor, { match: 'pageContent:*' });
+      cursor = result[0];
+      allKeys.push(...result[1]);
+    } while (cursor !== '0');
+
+
+    const keyValuePairs: Record<string, any> = {};
+
+    if (allKeys.length > 0) {
+      const values = await redis.mget(...allKeys);
+
+      for (const [index, key] of allKeys.entries()) {
+        keyValuePairs[key] = values[index];
+      }
+
+    }
+
+
+    const postTypeParentPageQueryNames: QueryName[] = getParentQueryNames(postTypeKey, queries);
+
+
+    const deletionPromises = postTypeParentPageQueryNames.map(async (queryName) => {
+      const queryKey = getContentQueryKey(queryName);
+
+      const result = await redis.del(queryKey);
+
+      return { queryName, queryKey, deleted: result };
     });
 
-    // Parse and log the webhook payload
-    let payload;
-    try {
-      payload = JSON.parse(event.body || '{}');
-      console.log('Webhook payload:', JSON.stringify(payload, null, 2));
-    } catch (parseError) {
-      console.log('Raw webhook body (not JSON):', event.body);
-      payload = { rawBody: event.body };
-    }
+    const deletionResults = await Promise.all(deletionPromises);
 
-    // Log specific WordPress webhook headers if present
-    const wpHeaders = Object.keys(event.headers).filter(key =>
-      key.toLowerCase().includes('wp') ||
-      key.toLowerCase().includes('wordpress') ||
-      key.toLowerCase().includes('webhook')
-    );
+    const clearedKeys = deletionResults
+      .filter(result => result.deleted > 0)
+      .map(result => result.queryKey);
 
-    if (wpHeaders.length > 0) {
-      console.log('WordPress-related headers:',
-        wpHeaders.reduce((acc, key) => {
-          const headerValue = event.headers[key];
-          if (headerValue) {
-            acc[key] = headerValue;
-          }
-          return acc;
-        }, {} as Record<string, string>)
-      );
-    }
-
-    // Log the user agent to identify the webhook source
-    if (event.headers['user-agent']) {
-      console.log('User-Agent:', event.headers['user-agent']);
-    }
-
-    // Check for common WordPress webhook indicators
-    const isWordPressWebhook =
-      event.headers['user-agent']?.includes('WordPress') ||
-      event.headers['x-wp-webhook'] ||
-      payload.source === 'wordpress' ||
-      payload.post_type ||
-      payload.post_id;
-
-    if (isWordPressWebhook) {
-      console.log('✅ Identified as WordPress webhook');
-    } else {
-      console.log('ℹ️  Webhook source not identified as WordPress');
-    }
-
-    // Respond with success
     return {
       statusCode: 200,
       body: JSON.stringify({
-        success: true,
-        message: 'Webhook received and logged successfully',
-        timestamp: new Date().toISOString(),
-        payloadReceived: !!event.body
+        message: 'Cache invalidated successfully',
+        postType: postTypeKey,
+        clearedKeys: clearedKeys,
+        deletionResults: deletionResults
       }),
     };
 
   } catch (error) {
     console.error('Error processing webhook:', error);
-
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        error: 'Internal Server Error',
-        message: 'Failed to process webhook'
-      }),
+      body: JSON.stringify({ error: 'Internal server error' }),
     };
   }
 };

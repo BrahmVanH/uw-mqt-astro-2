@@ -4,7 +4,7 @@ import mdx from 'eslint-plugin-mdx';
 
 export default [
   {
-    ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**']
+    ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**', 'gql-generated/**', '.netlify/**']
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,

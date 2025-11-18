@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
-import { fourPillarsHeroComponentQuery } from "./ourImpact";
-import { howToContributeComponentQuery } from "../common";
+import { fourPillarsHeroComponentQuery } from "./ourImpact.js";
+import { howToContributeComponentQuery } from "../common.js";
 
 // GraphQL query string for the Healthy Community page
 export const healthyCommunityPageQuery = gql`
