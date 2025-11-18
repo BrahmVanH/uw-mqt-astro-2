@@ -11,6 +11,17 @@ export const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
+  console.log("event: ", event)
+  const origin = event.headers['x-wp-webhook-source'];
+
+  if (!origin) {
+    throw new Error("Origin not allowed");
+  }
+
+  if (origin !== process.env.ALLOWED_ORIGIN_INVALIDATE_CACHE) {
+    throw new Error("Origin not allowed");
+  }
+
   try {
     const body = JSON.parse(event.body || '{}');
 
@@ -18,7 +29,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const redis = getRedis();
 
     const postTypeKey = body.graphql_plural_name
-
+    console.log("postTypeKey: ", postTypeKey)
 
     let cursor = '0';
     let allKeys: string[] = [];
