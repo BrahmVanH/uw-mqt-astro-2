@@ -1,7 +1,9 @@
 import { WP_URL_CLNT } from "astro:env/client";
 
 export const UW_MQT_LOGO_SVG_URL_ENDPOINT =
-  `${WP_URL_CLNT}https://res.cloudinary.com/doixcciwn/images/v1740446448/logo-mqt-3/logo-mqt-3.jpg?_i=AA`;
+  //  import.meta.env.PROD ?
+  `https://res.cloudinary.com/doixcciwn/images/v1740446448/logo-mqt-3/logo-mqt-3.jpg?_i=AA`
+// :"http://localhost:10020/wp-content/uploads/2025/02/logo-mqt-2.svg"
 
 export const YOUR_HELP_MATTERS_COMPONENT_BG_URL_ENDPOINT =
   "/wp-content/uploads/2025/08/your-help-matters-bg-02.svg";

@@ -11,7 +11,6 @@ import { UW_MQT_LOGO_SVG_URL_ENDPOINT } from "@/lib/constants.ts";
 
 import Loading from "@/components/Loading.astro";
 
-import logo from "@/image/logo-mqt-2.svg";
 
 export function KeyToolsForCampaignLeaders({ queryData }) {
   const keyToolsContent = queryData?.campaignToolkitAssets?.nodes[0]?.campaignToolkitAssetFields || null;
@@ -28,7 +27,7 @@ export function KeyToolsForCampaignLeaders({ queryData }) {
   const workplacePacket =
     keyToolsContent?.workplacePacket?.node?.mediaItemUrl ?? "";
 
-  const logoUrl = WP_URL ? UW_MQT_LOGO_SVG_URL_ENDPOINT : onImageError("No WP URL found for logo campaign toolkit").src;
+  const logoUrl =  UW_MQT_LOGO_SVG_URL_ENDPOINT ?? onImageError("No WP URL found for logo campaign toolkit").src;
 
   if (!logoUrl) {
     return Loading;
@@ -45,11 +44,11 @@ export function KeyToolsForCampaignLeaders({ queryData }) {
           <h3 className="text-lg font-bold">
             United Way of Marquette County Logo SVG
           </h3>
-          {logoUrl && <a className="py-0" href="/images/logo.svg" target="_blank" rel="noopener noreferrer">
+          {logoUrl && <a className="py-0" href={logoUrl} target="_blank" rel="noopener noreferrer">
             <img
               loading="lazy"
               decoding="async"
-              src={logo}
+              src={logoUrl}
               alt="United Way of Marquette County Logo"
               className="w-[200px] mt-2 mb-0 py-0 font-heading"
               width={200}
