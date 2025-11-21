@@ -3,48 +3,107 @@ import LearnMoreBtn from '../LearnMoreBtn.svelte';
 import type { HomePageHeroFeature } from './index.astro';
 
 export interface Props extends HomePageHeroFeature {
-	class?: string;
-	index: number;
+  class?: string;
+  index: number;
 }
 
-const { title, text, link, linkText, class: className, img, imgAlt, index, linkTextTwo, linkTwo, optionalMedia, optionalMediaTitle } = Astro.props;
+const {
+  title,
+  text,
+  link,
+  linkText,
+  class: className,
+  img,
+  imgAlt,
+  index,
+  linkTextTwo,
+  linkTwo,
+  optionalMedia,
+  optionalMediaTitle,
+} = Astro.props;
 
 // only use first sentence of text for mobile
-const mobileText = text.split('.')[0];
+const mobileText = text.split('.')[0] ?? text;
 ---
 
 <article
-	class:list={[
-		'flex flex-col-reverse lg:flex-row justify-center items-center text-center xs:mx-auto text-tertiary-black-2 bg-[rgba(0,70,139,0.1)] px-1 xs:px-2 py-2 xs:py-4 space-y-1 lg:space-y-0 h-max w-full transition-all duration-300 rounded-xs shadow-md hover:shadow-lg',
-		className,
-	]}>
-	<div class:list={['flex flex-col justify-center items-center space-y-2 lg:mr-1', index === 0 ? 'w-full lg:w-1/2' : 'w-full']}>
-		{title && <h3 class='text-xl mt-1 lg:mt-0 font-bold'>{title}</h3>}
-		{text && <p class:list={['hidden lg:block max-w-[80%] w-full text-pretty leading-relaxed', index === 0 ? 'text-md' : 'text-lg']}>{index === 0 ? text : mobileText}</p>}
-		{mobileText && <p class='lg:hidden w-full sm:w-[75%] md:w-[50%] text-md text-medium text-pretty leading-relaxed'>{mobileText}</p>}
-		<div class='flex flex-col xl:flex-row flex-wrap items-center justify-center w-full gap-2' role='group' aria-label={`Actions for ${title}`}>
-			{linkText && link && <LearnMoreBtn size='md' text={linkText} href={link} color='blue' openInNewTab={false} ariaLabel={linkText} />}
-			{linkTwo !== '' && linkTextTwo && <LearnMoreBtn className='xl:ml-2' size='md' text={linkTextTwo} href={linkTwo} color='blue' ariaLabel={linkTextTwo} />}
-			{
-				optionalMedia && optionalMediaTitle && (
-					<LearnMoreBtn className='xl:ml-2' size='md' text={optionalMediaTitle} href={optionalMedia} openInNewTab={true} ariaLabel={`Download ${optionalMediaTitle} (opens in new tab)`} color='blue' />
-				)
-			}
-		</div>
-	</div>
-	{
-		img && (
-			<img
-				loading='lazy'
-				decoding='async'
-				src={img}
-				alt={imgAlt ?? ''}
-				height={400}
-				width={400}
-				class='w-[300px] sm:w-[500px] lg:w-[300px] aspect-auto object-cover rounded-xs'
-				loading='lazy'
-				decoding='async'
-			/>
-		)
-	}
+  class:list={[
+    'flex flex-col-reverse lg:flex-row justify-center items-center text-center xs:mx-auto text-tertiary-black-2 bg-[rgba(0,70,139,0.1)] px-1 xs:px-2 py-2 xs:py-4 space-y-1 lg:space-y-0 h-max w-full transition-all duration-300 rounded-xs shadow-md hover:shadow-lg',
+    className,
+  ]}>
+  <div
+    class:list={[
+      'flex flex-col justify-center items-center space-y-2 lg:mr-1',
+      index === 0 ? 'w-full lg:w-1/2' : 'w-full',
+    ]}>
+    {title && <h3 class='text-xl mt-1 lg:mt-0 font-bold'>{title}</h3>}
+    {
+      text && (
+        <p
+          class:list={[
+            'hidden lg:block max-w-[80%] w-full text-pretty leading-relaxed',
+            index === 0 ? 'text-md' : 'text-lg',
+          ]}>
+          {index === 0 ? text : mobileText}
+        </p>
+      )
+    }
+    {
+      mobileText && (
+        <p class='lg:hidden w-full sm:w-[75%] md:w-[50%] text-md text-medium text-pretty leading-relaxed'>
+          {mobileText}
+        </p>
+      )
+    }
+    <div
+      class='flex flex-col xl:flex-row flex-wrap items-center justify-center w-full gap-2'
+      role='group'
+      aria-label={`Actions for ${title}`}>
+      {
+        linkText && link && (
+          <LearnMoreBtn size='md' text={linkText} href={link} color='blue' openInNewTab={false} ariaLabel={linkText} />
+        )
+      }
+      {
+        linkTwo !== '' && linkTextTwo && (
+          <LearnMoreBtn
+            className='xl:ml-2'
+            size='md'
+            text={linkTextTwo}
+            href={linkTwo}
+            color='blue'
+            ariaLabel={linkTextTwo}
+          />
+        )
+      }
+      {
+        optionalMedia && optionalMediaTitle && (
+          <LearnMoreBtn
+            className='xl:ml-2'
+            size='md'
+            text={optionalMediaTitle}
+            href={optionalMedia}
+            openInNewTab={true}
+            ariaLabel={`Download ${optionalMediaTitle} (opens in new tab)`}
+            color='blue'
+          />
+        )
+      }
+    </div>
+  </div>
+  {
+    img && (
+      <img
+        loading='lazy'
+        decoding='async'
+        src={img}
+        alt={imgAlt ?? ''}
+        height={400}
+        width={400}
+        class='w-[300px] sm:w-[500px] lg:w-[300px] aspect-auto object-cover rounded-xs'
+        loading='lazy'
+        decoding='async'
+      />
+    )
+  }
 </article>

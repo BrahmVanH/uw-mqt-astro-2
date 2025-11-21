@@ -26,6 +26,7 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
+
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
   let isHovered = $state(false);
@@ -36,20 +37,21 @@
   const itemsPerPage = isPriority ? 2 : 3;
 
   function parseItemsGroups(items: HomePageHeroFeature[]) {
-    let featureItemsMut = [...featureItems];
+    let featureItemsMut = [...items];
 
     let itemsGroups: HomePageHeroFeature[][] = [];
 
-    const iterations = Math.ceil(featureItems.length / itemsPerPage);
+    const iterations = Math.ceil(items.length / itemsPerPage);
     for (let i = 0; i < iterations; i++) {
-      if (featureItemsMut.length > itemsPerPage) {
+      if (featureItemsMut.length >= itemsPerPage) {
         const group = featureItemsMut.slice(0, itemsPerPage);
         const rest = featureItemsMut.slice(itemsPerPage);
 
         itemsGroups.push(group);
         featureItemsMut = rest;
-      } else {
+      } else if (featureItemsMut.length > 0) {
         itemsGroups.push(featureItemsMut);
+        break;
       }
     }
 
@@ -74,15 +76,38 @@
 
     isTransitioning = true;
 
-    if (currentGroupIndex < itemsGroups.length - 1) {
-      currentGroupIndex++;
-    } else {
-      currentGroupIndex = 0;
+    const currentPage = document.getElementById(`${carouselId}-item-${currentGroupIndex}`);
+    const nextPageIndex = (currentGroupIndex + 1) % itemsGroups.length;
+    const nextPage = document.getElementById(`${carouselId}-item-${nextPageIndex}`);
+
+    if (!currentPage || !nextPage) {
+      isTransitioning = false;
+      return;
     }
 
+    // Set z-index for proper layering
+    currentPage.style.zIndex = '10';
+    nextPage.style.zIndex = '10';
+
+    // Animate current page out to the left
+    currentPage.style.transform = 'translateX(-100%)';
+    currentPage.style.opacity = '0';
+
+    // Position next page to the right and make it invisible initially
+    nextPage.style.transform = 'translateX(100%)';
+    nextPage.style.opacity = '0';
+
     setTimeout(() => {
-      isTransitioning = false;
-    }, 1000);
+      // Animate next page in from the right to center
+      nextPage.style.transform = 'translateX(0)';
+      nextPage.style.opacity = '1';
+
+      setTimeout(() => {
+        currentPage.style.zIndex = '0';
+        currentGroupIndex = nextPageIndex;
+        isTransitioning = false;
+      }, 1000);
+    }, 100);
   }
 
   function startAutoPlay() {
@@ -137,11 +162,7 @@
       <div
         id={`${carouselId}-item-${groupIndex}`}
         aria-controls={`${carouselId}-item-${groupIndex}`}
-        class="absolute inset-0 w-full transition-all duration-1000 ease-in-out {groupIndex === currentGroupIndex
-          ? 'opacity-100 translate-x-0 z-10'
-          : groupIndex < currentGroupIndex
-            ? 'opacity-0 -translate-x-full z-0'
-            : 'opacity-0 translate-x-full z-0'}"
+        class="carousel-item absolute inset-0 w-full"
       >
         <div
           class="w-full md:w-[50vw] h-full mx-auto flex flex-col md:gap-4 rounded-xl md:overflow-hidden"
@@ -219,28 +240,21 @@
       opacity 1s ease-in-out;
   }
 
-  @keyframes slideInFromRight {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  .carousel-item {
+    transition:
+      transform 1000ms ease-in-out,
+      opacity 1000ms ease-in-out;
+    /* All items start off-screen to the right except the first */
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 0;
   }
 
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  .carousel-item:first-child {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 10;
   }
-
   @keyframes fadeInUp {
     from {
       transform: translateY(20px);
