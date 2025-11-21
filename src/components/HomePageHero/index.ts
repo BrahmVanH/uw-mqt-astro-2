@@ -46,7 +46,7 @@ function createProps(graphQLContent: RootQueryToHomePageHeroConnection, Astro: A
       optionalMedia: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
       optionalMediaTitle: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMediaLabel ?? '',
     }
-  })
+  }).reverse();
 
 
 
