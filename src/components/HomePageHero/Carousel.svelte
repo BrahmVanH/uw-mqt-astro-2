@@ -181,11 +181,11 @@
               style="animation-delay: {itemIndex * 200}ms"
             >
               <div
-                class="group flex flex-row items-center justify-evenly bg-primary-blue-1/20 backdrop-blur-md border border-primary-blue-4/30 rounded-xl p-6 hover:bg-primary-blue-1/30 transition-all duration-300 w-full h-full"
+                class="group flex flex-row items-center justify-evenly bg-primary-blue-1/20 backdrop-blur-md border border-primary-blue-4/30 rounded-xl p-2 hover:bg-primary-blue-1/30 transition-all duration-300 w-full h-full"
                 role="region"
               >
                 {#if item.img}
-                  <div class={cn(isPriority ? 'min-w-[50%]' : '', 'max-w-[40%] relative md:overflow-hidden')}>
+                  <div class={cn(isPriority ? 'min-w-[50%]' : '', 'max-w-[40%] relative md:overflow-hidden p-4 bg-transparent')}>
                     <img
                       src={item.img}
                       alt={item.imgAlt ?? ''}
@@ -196,7 +196,7 @@
                     <div class="md:absolute inset-0 bg-linear-to-r from-primary-blue-2/50 to-transparent"></div>
                   </div>
                 {/if}
-                <div class="p-6 max-w-[50%]">
+                <div class="p-2 max-w-[50%]">
                   <h3 class="text-xl font-bold mb-3 text-tertiary-black-2">{item.title}</h3>
                   <p class="text-tertiary-black-2 mb-3 leading-relaxed w-7/8">{item.text}</p>
                   {#if item.subtext}
