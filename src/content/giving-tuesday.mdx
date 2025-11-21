@@ -1,0 +1,232 @@
+---
+slug: giving-tuesday
+title: 'GivingTuesday Came Early - United Way of Marquette County'
+description: 'This GivingTuesday, we are rallying early to strengthen every corner of Marquette County - feeding families, keeping homes warm, supporting mental health, and ensuring no one is left behind. Join our early giving campaign because our community needs cannot wait.'
+requiresGraphqlQuery: false
+---
+
+import { GIVING_TUESDAY_IMG_1, GIVING_TUESDAY_IMG_2 } from '../lib/constants';
+import DonateBtn from '../components/DonateBtn.astro';
+
+<div className="col-span-2">
+  This year, United Way of Marquette County is launching a revitalized GivingTuesday campaign focused on the whole 
+  community — ensuring that families have access not only to food, but to the full range of supports that sustain 
+  dignity, stability, and well-being. Our message is clear: **"GivingTuesday came early — because our community's 
+  needs can't wait."**
+</div>
+
+<div>
+  <h2>Beyond the Food Pantry</h2>
+  <p>
+    While many resources this season are flowing toward food insecurity, United Way has a broader vantage point. 
+    We see that behind every meal served are families also facing challenges with housing, childcare, transportation, 
+    healthcare, mental health, and senior care.
+  </p>
+  <p>
+    As Campaign Co-Chair Jesse Renfors explains, "The fact that we oversee 26 different agencies gives us 
+    a different vantage point. We're able to see where some of these holes are and where we can 
+    plug some of these holes."
+  </p>
+</div>
+
+{GIVING_TUESDAY_IMG_1 && (
+
+<img
+  loading="lazy"
+  decoding="async"
+  src={GIVING_TUESDAY_IMG_1}
+  alt="Community members working together to support local families during the holidays"
+  class="w-full"
+/>
+)}
+
+<div className="col-span-2">
+  <h2>The Interconnected Nature of Community Needs</h2>
+  <p>
+    Food insecurity is real and serious right now, but there are other programs that desperately need help as well. 
+    Whether it's childcare, rides for the elderly to the doctors or grocery store, or basic items that people take 
+    for granted — these are the essential supports that keep families stable.
+  </p>
+  
+  <div className="grid md:grid-cols-2 gap-6 my-6">
+    <div className="border-l-4 border-red-500 pl-4">
+      <h3 className="font-bold text-red-900">Immediate Needs</h3>
+      <p>Emergency food assistance, home heating help, and crisis intervention services for families facing urgent challenges.</p>
+    </div>
+    <div className="border-l-4 border-blue-500 pl-4">
+      <h3 className="font-bold text-blue-900">Essential Services</h3>
+      <p>Transportation for seniors, childcare support, and healthcare access that keeps our most vulnerable neighbors safe.</p>
+    </div>
+    <div className="border-l-4 border-green-500 pl-4">
+      <h3 className="font-bold text-green-900">Stability Support</h3>
+      <p>Housing assistance, mental health services, and financial education that helps families build long-term security.</p>
+    </div>
+    <div className="border-l-4 border-purple-500 pl-4">
+      <h3 className="font-bold text-purple-900">Community Care</h3>
+      <p>Senior companion services, youth programs, and family support that strengthens our entire community fabric.</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Why We Started Early</h2>
+  <p>
+    "We're going to get a jump start on it as well," says Co-Chair Jesse Renfors. "We're going to 
+    do this early bird situation because we just can't wait around. We can't wait until 
+    Giving Tuesday. That's weeks in between. That's valuable time and we need to get people on their feet."
+  </p>
+  <p>
+    We're becoming more and more aware of what's happening in our community and it's unfortunately going in 
+    a backwards direction. That's why we really need to dig deep right now and help each other out.
+  </p>
+</div>
+
+{GIVING_TUESDAY_IMG_2 && (
+
+<img
+  loading="lazy"
+  decoding="async"
+  src={GIVING_TUESDAY_IMG_2}
+  alt="United Way staff and volunteers preparing holiday support packages for local families"
+  class="w-full"
+/>
+)}
+
+<div className="col-span-2">
+  <h2>Smart Giving for Maximum Impact</h2>
+  <p>
+    When you give to United Way of Marquette County, your dollars go where they're needed most — across food, 
+    housing, health, and human services. United Way covering the multiple agencies the way that we do 
+    "is like one-stop shopping and allows us to get those funds to people that really need it with 
+    the most efficiency as well."
+  </p>
+
+  <div className="bg-blue-50 p-6 rounded-lg my-6">
+    <h3 className="font-bold text-blue-900 mb-4">Your Gift Supports All Essential Programs:</h3>
+    <div className="grid md:grid-cols-2 gap-4 text-blue-800">
+      <ul className="space-y-2">
+        <li>• Emergency food assistance</li>
+        <li>• Home heating and utility help</li>
+        <li>• Senior transportation services</li>
+        <li>• Mental health counseling</li>
+      </ul>
+      <ul className="space-y-2">
+        <li>• Childcare assistance</li>
+        <li>• Housing stability programs</li>
+        <li>• Healthcare access support</li>
+        <li>• Youth development programs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Multiple Ways to Give Back</h2>
+  <p>
+    As Co-Chair Rebecca Bartelme emphasizes, "time, talent or treasure, right? There's something you can do." 
+    Whether you can make a financial donation or have some time you can give up this season, there are 
+    programs that could use your support.
+  </p>
+  <p>
+    It's also important to first check on our neighbors and make sure we're keeping track of each other. 
+    How can we make that donation? How can we help grow our community and get them where they need to be?
+  </p>
+</div>
+
+<div className="col-span-2">
+  <h2>Campaign Focus Areas</h2>
+  <p>
+    Our early GivingTuesday campaign educates donors and inspires action for all essential needs in Marquette County. 
+    This isn't just about meals — it's about building a thriving community where every neighbor has what they need.
+  </p>
+
+  <div className="grid grid-cols-2 gap-6">
+    <div className="bg-orange-50 p-4 rounded-lg">
+      <h3 className="font-bold text-orange-900">Whole Community Support</h3>
+      <p className="text-orange-800">
+        When you give to United Way, your dollars go where they're needed most across food, housing, health, 
+        and human services throughout Marquette County.
+      </p>
+    </div>
+
+    <div className="bg-red-50 p-4 rounded-lg">
+      <h3 className="font-bold text-red-900">Early Action Urgency</h3>
+      <p className="text-red-800">
+        We're starting early because community needs don't wait until Tuesday. Every day matters when 
+        families are struggling with essential needs.
+      </p>
+    </div>
+
+    <div className="bg-green-50 p-4 rounded-lg">
+      <h3 className="font-bold text-green-900">Smart Investment</h3>
+      <p className="text-green-800">
+        One gift supports dozens of programs county-wide, ensuring maximum efficiency and impact for 
+        your generosity in our community.
+      </p>
+    </div>
+
+    <div className="bg-blue-50 p-4 rounded-lg">
+      <h3 className="font-bold text-blue-900">Lasting Impact</h3>
+      <p className="text-blue-800">
+        Together, we can keep Marquette County strong — every family, every neighbor — with support 
+        that reaches every corner of our community.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div className="col-span-2">
+  <h2>Connect with Our Full Impact</h2>
+  <p>
+    Our early GivingTuesday campaign is part of United Way of Marquette County's comprehensive approach to 
+    community care. Learn more about our ongoing work through our 
+    <a href="/2025-campaign" className="text-blue-600 hover:text-blue-800 underline">2025 annual campaign</a>, 
+    which supports all four pillars of community strength: healthy communities, youth opportunity, 
+    financial security, and community resiliency.
+  </p>
+  <p>
+    You can also explore other special initiatives, including our{' '}
+    <a href="/wings-of-glory" className="text-blue-600 hover:text-blue-800 underline">Wings of Glory raffle</a>{' '}
+    featuring an authenticated Red Wings lithograph signed by hockey legends, with proceeds supporting 
+    our community programs.
+  </p>
+</div>
+
+<div className="col-span-2 flex flex-col items-center md:space-y-4">
+  <h2>Give Early, Give Local, Give Hope</h2>
+  <p>
+    This GivingTuesday season, join us in strengthening every corner of Marquette County. When you give early, 
+    your donation supports every essential program in our community — not just for the holidays, but for the 
+    months ahead.
+  </p>
+
+<div className="text-left justify-self-center space-y-2">
+  <h3 className="font-bold">Ready to Make an Early Gift?</h3>
+  <p>
+    <strong>Online: </strong> <DonateBtn text={"Give early at unitedwaymqt.org"} />
+  </p>
+  <p>
+    <strong>Phone:</strong> Call us at (906) 226-8171 to make your early gift
+  </p>
+  <p>
+    <strong>Visit:</strong> 1414 W Fair Ave # 26, Marquette, MI 49855
+  </p>
+  <p>
+    <strong>Volunteer:</strong> Explore time and talent opportunities at <a href="https://www.yoopersunited.com" target="_blank" rel="noopener noreferrer">yoopersunited.com</a>
+  </p>
+</div>
+
+  <div className="bg-red-50 p-6 rounded-lg my-6 text-center">
+    <h3 className="font-bold text-red-900 mb-2">GivingTuesday 2025 Goal</h3>
+    <p className="text-red-800">
+      Help us strengthen the whole community — together! Our early campaign ensures that hope reaches 
+      every corner of Marquette County when families need it most.
+    </p>
+  </div>
+
+  <p>
+    Thanks to community leaders like Campaign Co-Chairs Jesse Renfors and Rebecca Bartelme, and Executive Director 
+    Andrew Rickauer, United Way of Marquette County continues building the comprehensive support network our 
+    neighbors need and deserve.
+  </p>
+</div>
