@@ -66,3 +66,5 @@ export const CAMPAIGN_2025_IMG_1 = import.meta.env.PROD ? 'https://api.uwmqt.org
 export const CAMPAIGN_2025_IMG_2 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png' : 'http://localhost:10020/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png';
 
 export const GIVING_TUESDAY_IMG_1 = import.meta.env.PROD ? "https://api.uwmqt.org/wp-content/uploads/2025/11/giving-tuesday-came-early-graphic.jpg" : 'http://localhost:10020/wp-content/uploads/2025/11/giving-tuesday-came-early-graphic.jpg';
+
+export const ANNUAL_CAMPAIGN_YOUTUBE_LINK = "https://www.youtube.com/watch?v=ZV5iIOeYwLo"
