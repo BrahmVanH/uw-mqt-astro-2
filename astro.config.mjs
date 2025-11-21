@@ -20,6 +20,7 @@ import sentry from '@sentry/astro';
 import tailwindcss from '@tailwindcss/vite';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { analyzer } from 'vite-bundle-analyzer'
+import embeds from 'astro-embed/integration'
 
 
 export default defineConfig({
@@ -47,21 +48,22 @@ export default defineConfig({
 
 
     integrations: [
+        embeds(),
         react({
             babel: {
                 plugins: [['babel-plugin-react-compiler']],
             },
         }),
         icon(),
-        sitemap(),
         mdx(),
+        partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
         sentry({
             enabled: import.meta.env.PROD
         }),
+        sitemap(),
         svelte({
             prebundleSvelteLibraries: true
         }),
-        partytown({ config: { debug: false, forward: ['dataLayer.push'] } }),
     ],
 
     adapter: netlify({

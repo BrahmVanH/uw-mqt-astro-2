@@ -54,7 +54,6 @@
 
 			mapCenter = new LatLng(position.coords.latitude, position.coords.longitude);
 		} catch (error) {
-			console.log('Geolocation failed:', error);
 		}
 	}
 

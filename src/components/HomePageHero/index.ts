@@ -1,5 +1,5 @@
 import { getDefaultProps, onImageError } from '@/lib/error';
-import type { RootQueryToHomePageHeroConnection } from '@/types/__generated__/types';
+import type { HomePageHeroFieldsFeature1, RootQueryToHomePageHeroConnection } from '@/types/__generated__/types';
 import type { AstroGlobal } from 'astro';
 
 
@@ -34,21 +34,22 @@ function createProps(graphQLContent: RootQueryToHomePageHeroConnection, Astro: A
   }
 
   const root = graphQLContent?.nodes[0]?.homePageHeroFields;
+  const featureEntries = Object.entries(root).filter((field) => field[0].toLowerCase().startsWith('feature'))
+  let features: HomePageHeroFeature[] = featureEntries.map((entry) => entry[1]) as HomePageHeroFeature[]
+  features = features.filter((feature) => feature.title  && feature.text ).map((feature, i) => {
+    return {
+      ...feature,
+      linkTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLink ?? '',
+      linkTextTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLinkText ?? '',
+      img: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.sourceUrl ?? '',
+      imgAlt: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.altText ?? '',
+      optionalMedia: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
+      optionalMediaTitle: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMediaLabel ?? '',
+    }
+  })
 
-  const features = Array.from({ length: 3 }, (_, i) => ({
-    title: (root[`feature${i + 1}` as keyof typeof root] as any)?.title ?? '',
-    priority: (root[`feature${i + 1}` as keyof typeof root] as any)?.priority ?? false,
-    text: (root[`feature${i + 1}` as keyof typeof root] as any)?.text ?? '',
-    subtext: (root[`feature${i + 1}` as keyof typeof root] as any)?.subtext ?? '',
-    link: (root[`feature${i + 1}` as keyof typeof root] as any)?.link ?? '',
-    linkText: (root[`feature${i + 1}` as keyof typeof root] as any)?.linkText ?? '',
-    linkTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLink ?? '',
-    linkTextTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLinkText ?? '',
-    img: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.sourceUrl ?? '',
-    imgAlt: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.altText ?? '',
-    optionalMedia: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
-    optionalMediaTitle: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMediaLabel ?? '',
-  })).filter((feature) => feature.title !== '');
+
+
 
   return {
     bg: root?.bg?.node?.sourceUrl ?? onImageError('missing bg image home page hero').src,
