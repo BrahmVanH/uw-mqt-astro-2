@@ -1,5 +1,7 @@
+import { WP_URL_CLNT } from "astro:env/client";
+
 export const UW_MQT_LOGO_SVG_URL_ENDPOINT =
-  "https://res.cloudinary.com/doixcciwn/images/v1740446448/logo-mqt-3/logo-mqt-3.jpg?_i=AA";
+  `${WP_URL_CLNT}https://res.cloudinary.com/doixcciwn/images/v1740446448/logo-mqt-3/logo-mqt-3.jpg?_i=AA`;
 
 export const YOUR_HELP_MATTERS_COMPONENT_BG_URL_ENDPOINT =
   "/wp-content/uploads/2025/08/your-help-matters-bg-02.svg";
@@ -61,3 +63,7 @@ export const WINGS_OF_GLORY_IMG_3 = 'https://api.uwmqt.org/wp-content/uploads/20
 // 2025 Campaign placeholder images
 export const CAMPAIGN_2025_IMG_1 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/cancer-care.jpg' : 'http://localhost:10020/wp-content/uploads/2025/11/cancer-care.jpg';
 export const CAMPAIGN_2025_IMG_2 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png' : 'http://localhost:10020/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png';
+
+// Giving Tuesday placeholder images
+export const GIVING_TUESDAY_IMG_1 = 'https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=Community+Support+Image';
+export const GIVING_TUESDAY_IMG_2 = 'https://via.placeholder.com/800x400/EF4444/FFFFFF?text=Early+Giving+Campaign+Image';

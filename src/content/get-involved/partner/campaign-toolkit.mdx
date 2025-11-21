@@ -1,5 +1,5 @@
 ---
-slug: /get-involved/partner/campaign-toolkit
+slug: campaign-toolkit
 title: Campaign Toolkit
 description: United Way’s Workplace Campaigns are about bringing your coworkers and staff together through the workplace to inspire change and build your local communities.
 requiresGraphqlQuery: true
@@ -28,7 +28,7 @@ export function KeyToolsForCampaignLeaders({ queryData }) {
   const workplacePacket =
     keyToolsContent?.workplacePacket?.node?.mediaItemUrl ?? "";
 
-  const logoUrl = WP_URL ? `${WP_URL}${UW_MQT_LOGO_SVG_URL_ENDPOINT}` : onImageError("No WP URL found for logo campaign toolkit").src;
+  const logoUrl = WP_URL ? UW_MQT_LOGO_SVG_URL_ENDPOINT : onImageError("No WP URL found for logo campaign toolkit").src;
 
   if (!logoUrl) {
     return Loading;

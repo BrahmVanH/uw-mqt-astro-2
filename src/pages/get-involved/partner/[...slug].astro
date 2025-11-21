@@ -1,5 +1,5 @@
 ---
-export const prerender = false;
+export const prerender = true;
 import MdPagesLayout from '@/layouts/MdPagesLayout.astro';
 import Prose from '@/components/Prose/PartnerPage.astro';
 import { getEntry, render } from 'astro:content';
@@ -7,37 +7,92 @@ import Loading from '@/components/Loading.astro';
 
 import getPageContent from '@/lib/API';
 import { getDefaultPageProps } from '@/lib/error';
+import { getCollection } from 'astro:content';
 
-const { pathname } = Astro.url;
-if (!pathname) {
-	return getDefaultPageProps('No pathname found in the URL partner/[...slug]', Astro);
+// // Get the slug from Astro params
+// const slug = Astro.params.slug;
+// console.log('Slug from params:', slug);
+// console.log('Astro:', Astro);
+
+// if (!slug) {
+//   return getDefaultPageProps('No slug found in the URL partner/[...slug]', Astro);
+// }
+
+// console.log('Attempting to get entry with slug:', slug);
+// const entry = await getEntry('partner', slug);
+// console.log('Entry result:', entry);
+// if (!entry || !entry?.data) {
+//   return getDefaultPageProps('No entry found partner/[...slug]', Astro);
+// }
+
+// let queryData = null;
+
+// if (entry.data.requiresGraphqlQuery) {
+//   const path = Astro.url.pathname;
+//   const graphQLContent = await getPageContent(path);
+//   if (!graphQLContent) {
+//     return getDefaultPageProps('No content collection page data returned from the server about/[...slug]', Astro);
+//   }
+//   queryData = graphQLContent;
+// }
+
+// if (!queryData && entry.data.requiresGraphqlQuery) {
+//   return getDefaultPageProps('No query data returned from the server partner/[...slug]', Astro);
+// }
+
+export async function getStaticPaths() {
+  try {
+    const pages = await getCollection('partner');
+
+    if (!pages || pages.length === 0) {
+      return [];
+    }
+
+    const paths = await Promise.all(
+      pages.map(async (page): Promise<{ params: { slug: string }; props: { entry: any; queryData: any } }> => {
+        // Use the slug from frontmatter, fallback to file ID
+        const slug = page.data.slug || page.id;
+        // Remove leading slash and split into segments
+
+        let queryData = null;
+
+        if (page?.data.requiresGraphqlQuery) {
+          const path = `/get-involved/partner/${slug}`;
+          const graphQLContent = await getPageContent(path);
+          if (!graphQLContent) {
+            console.error('No content collection page data returned from the server for partner:', slug);
+            queryData = null;
+          } else {
+            queryData = graphQLContent;
+          }
+        }
+
+        return {
+          params: {
+            slug: slug,
+          },
+          props: {
+            entry: page,
+            queryData,
+          },
+        };
+      }),
+    );
+
+    return paths;
+  } catch (error) {
+    console.error('Error in getting static content in partner/[...slug]: ', error);
+    return [];
+  }
 }
 
-const entry = await getEntry('partner', pathname);
-if (!entry || !entry?.data) {
-	return getDefaultPageProps('No entry found partner/[...slug]', Astro);
-}
-
-let queryData = null;
-
-if (entry.data.requiresGraphqlQuery) {
-	const path = Astro.url.pathname;
-	const graphQLContent = await getPageContent(path);
-	if (!graphQLContent) {
-		return getDefaultPageProps('No content collection page data returned from the server about/[...slug]', Astro);
-	}
-	queryData = graphQLContent;
-}
-
-if (!queryData && entry.data.requiresGraphqlQuery) {
-	return getDefaultPageProps('No query data returned from the server partner/[...slug]', Astro);
-}
+const { entry, queryData } = Astro.props;
 
 const { Content } = await render(entry);
 ---
 
 <MdPagesLayout frontmatter={entry.data}>
-	<Prose>
-		{entry.data.requiresGraphqlQuery ? queryData ? <Content queryData={queryData} /> : <Loading /> : <Content />}
-	</Prose>
+  <Prose>
+    {entry.data.requiresGraphqlQuery ? queryData ? <Content queryData={queryData} /> : <Loading /> : <Content />}
+  </Prose>
 </MdPagesLayout>

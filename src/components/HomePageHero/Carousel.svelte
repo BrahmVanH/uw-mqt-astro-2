@@ -164,7 +164,7 @@
                 role="region"
               >
                 {#if item.img}
-                  <div class={cn(isPriority ? 'min-w-[50%]' : '', 'relative md:overflow-hidden')}>
+                  <div class={cn(isPriority ? 'min-w-[50%]' : '', 'max-w-[40%] relative md:overflow-hidden')}>
                     <img
                       src={item.img}
                       alt={item.imgAlt ?? ''}
@@ -175,9 +175,9 @@
                     <div class="md:absolute inset-0 bg-linear-to-r from-primary-blue-2/50 to-transparent"></div>
                   </div>
                 {/if}
-                <div class="p-6">
+                <div class="p-6 max-w-[50%]">
                   <h3 class="text-xl font-bold mb-3 text-tertiary-black-2">{item.title}</h3>
-                  <p class="text-tertiary-black-2 mb-3 leading-relaxed">{item.text}</p>
+                  <p class="text-tertiary-black-2 mb-3 leading-relaxed w-7/8">{item.text}</p>
                   {#if item.subtext}
                     <span class="text-tertiary-black-2 font-semibold text-sm">{item.subtext}</span>
                   {/if}
