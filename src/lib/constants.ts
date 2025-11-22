@@ -64,7 +64,9 @@ export const WINGS_OF_GLORY_IMG_3 = 'https://api.uwmqt.org/wp-content/uploads/20
 
 export const CAMPAIGN_2025_IMG_1 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/cancer-care.jpg' : 'http://localhost:10020/wp-content/uploads/2025/11/cancer-care.jpg';
 export const CAMPAIGN_2025_IMG_2 = import.meta.env.PROD ? 'https://api.uwmqt.org/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png' : 'http://localhost:10020/wp-content/uploads/2025/11/happy-volunteer-at-barry-center-food-pantry.png';
+export const CAMPAIGN_2025_DONATE_LINK = "https://secure.givelively.org/donate/united-way-of-marquette-county/upstrong";
 
 export const GIVING_TUESDAY_IMG_1 = import.meta.env.PROD ? "https://api.uwmqt.org/wp-content/uploads/2025/11/giving-tuesday-came-early-graphic.jpg" : 'http://localhost:10020/wp-content/uploads/2025/11/giving-tuesday-came-early-graphic.jpg';
+export const GIVING_TUESDAY_DONATE_LINK = "https://pci.jotform.com/form/253235705669161";
 
 export const ANNUAL_CAMPAIGN_YOUTUBE_LINK = "https://www.youtube.com/watch?v=ZV5iIOeYwLo"

@@ -5,7 +5,7 @@ description: 'This GivingTuesday, we are rallying early to strengthen every corn
 requiresGraphqlQuery: false
 ---
 
-import { GIVING_TUESDAY_IMG_1, YOOPERS_UNITED_NEEDS_PAGE_ENDPOINT, ANNUAL_CAMPAIGN_YOUTUBE_LINK} from '../lib/constants';
+import { GIVING_TUESDAY_IMG_1, YOOPERS_UNITED_NEEDS_PAGE_ENDPOINT, ANNUAL_CAMPAIGN_YOUTUBE_LINK, GIVING_TUESDAY_DONATE_LINK } from '../lib/constants';
 import DonateBtn from '../components/DonateBtn.astro';
 import {YouTube} from '@astro-community/astro-embed-youtube';
 
@@ -94,7 +94,7 @@ import {YouTube} from '@astro-community/astro-embed-youtube';
     programs that could use your support.
   </p>
   <p>
-    <strong>Make a financial gift:</strong> <DonateBtn text={"Donate to United Way"} /> to support all our essential programs across Marquette County.
+    <strong>Make a financial gift:</strong> <DonateBtn href={GIVING_TUESDAY_DONATE_LINK} text={"Donate Online"} /> to support all our essential programs across Marquette County.
   </p>
   <p>
     <strong>Volunteer your time:</strong> Explore volunteer opportunities and community needs at <a href="https://www.yoopersunited.com/need/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">yoopersunited.com</a>.

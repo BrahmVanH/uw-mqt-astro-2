@@ -5,7 +5,7 @@ description: 'Join us in making a lasting impact in Marquette County. Our 2025 c
 requiresGraphqlQuery: false
 ---
 
-import { CAMPAIGN_2025_IMG_1, CAMPAIGN_2025_IMG_2 } from '../lib/constants';
+import { CAMPAIGN_2025_IMG_1, CAMPAIGN_2025_IMG_2, CAMPAIGN_2025_DONATE_LINK } from '../lib/constants';
 import DonateBtn from '../components/DonateBtn.astro';
 
 <div className="col-span-2">
@@ -171,15 +171,18 @@ import DonateBtn from '../components/DonateBtn.astro';
   <h2>Join Our Community of Care</h2>
   <p>
     The strength of our 2025 campaign lies not in any single large gift, but in the collective commitment of community
-    members who believe in the power of neighbors helping neighbors. Whether you're able to contribute monthly through
-    workplace payroll deduction, make a one-time gift, or volunteer your time and skills, you become part of something
-    bigger than yourself.
+    members who believe in the power of neighbors helping neighbors. Here in the Upper Peninsula, we've always known that
+    true strength comes from standing together—whether facing harsh winters, economic challenges, or times of uncertainty.
+    This spirit of resilience and mutual support defines who we are as Yoopers, and it's what makes our UPSTRONG campaign
+    so powerful. Whether you're able to contribute monthly through workplace payroll deduction, make a one-time gift, or
+    volunteer your time and skills, you become part of something bigger than yourself—part of the unbreakable fabric that
+    makes the UP strong.
   </p>
 
 <div className="text-left justify-self-center space-y-2">
   <h3 className="font-bold">Ready to Make a Difference?</h3>
   <p>
-    <strong>Online: </strong> <DonateBtn text={"Make a secure donation"} />
+    <strong>Online: </strong> <DonateBtn href={CAMPAIGN_2025_DONATE_LINK} text={"Donate"} /> or text <span class="font-bold">UPSTRONG</span> to 44321
   </p>
   <p>
     <strong>Phone:</strong> Call us at (906) 226-8171 to speak with our team
