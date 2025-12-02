@@ -26,7 +26,6 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
-
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
   let isHovered = $state(false);
@@ -185,11 +184,16 @@
                 role="region"
               >
                 {#if item.img}
-                  <div class={cn(isPriority ? 'min-w-[50%]' : '', 'max-w-[40%] relative md:overflow-hidden p-4 bg-transparent')}>
+                  <div
+                    class={cn(
+                      isPriority ? 'min-w-[50%]' : '',
+                      'max-w-[40%] relative md:overflow-hidden p-4 bg-transparent',
+                    )}
+                  >
                     <img
                       src={item.img}
                       alt={item.imgAlt ?? ''}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      class=" h-full max-h-[400px] object-cover aspect-auto mx-auto group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                       decoding="async"
                     />
