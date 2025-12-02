@@ -23,7 +23,7 @@ import ResponsiveImage from '@/components/ResponsiveImage.astro';
 // import wpWebhook from '@/lib/wpWebhook';
 
 if (import.meta.env.PROD) {
-  Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24}, s-maxage=${60 * 60 * 24}`);
+  Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 2}, s-maxage=${60 * 60 * 2}`);
 }
 
 const path = Astro.url.pathname;
