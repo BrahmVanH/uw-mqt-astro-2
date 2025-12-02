@@ -22,6 +22,7 @@ import '@fontsource/palanquin/400.css';
 import '@fontsource/palanquin/500.css';
 import '@fontsource/palanquin/600.css';
 import '@fontsource/palanquin/700.css';
+import PersistentDonateBtn from '@/components/PersistentDonateBtn.astro';
 
 const { frontmatter } = Astro.props;
 
@@ -32,31 +33,31 @@ const path = Astro.url.pathname;
 ---
 
 <html>
-	<head>
-		<Gtag />
-		<meta charset='UTF-8' />
-		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/png' href='/favicon-96x96.png' sizes='96x96' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<link rel='shortcut icon' href='/favicon.ico' />
-		<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-		<meta name='apple-mobile-web-app-title' content='United Way MQT' />
-		<link rel='sitemap' href='/sitemap-0.xml' />
+  <head>
+    <Gtag />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/png' href='/favicon-96x96.png' sizes='96x96' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <meta name='apple-mobile-web-app-title' content='United Way MQT' />
+    <link rel='sitemap' href='/sitemap-0.xml' />
 
-		<meta name='msapplication-TileColor' content='#0044b5' />
-		<meta name='msapplication-config' content='/browserconfig.xml' />
-		<meta name='generator' content={Astro.generator} />
-		<SEO seo={{ title: frontmatter.title }} />
-	</head>
+    <meta name='msapplication-TileColor' content='#0044b5' />
+    <meta name='msapplication-config' content='/browserconfig.xml' />
+    <meta name='generator' content={Astro.generator} />
+    <SEO seo={{ title: frontmatter.title }} />
+  </head>
 </html>
 <body>
-	<main>
-		<Nav path={path} client:load />
-		<MobileNav socials={socials} client:load />
-
-		<ContentCollectionsHero heading={frontmatter.title} subheading={frontmatter.description} />
-		<slot />
-		<Footer {...footerProps} />
-		<ConsentBanner />
-	</main>
+  <main>
+    <Nav path={path} client:load />
+    <MobileNav socials={socials} client:load />
+    <PersistentDonateBtn />
+    <ContentCollectionsHero heading={frontmatter.title} subheading={frontmatter.description} />
+    <slot />
+    <Footer {...footerProps} />
+    <ConsentBanner />
+  </main>
 </body>

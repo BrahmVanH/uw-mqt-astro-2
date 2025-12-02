@@ -4,7 +4,6 @@ import { getContent } from '@/lib/API';
 
 import type { Props } from '@/components/Footer.astro';
 import type { UwContactInformationFields } from '@/types/__generated__/types';
-import { getDefaultProps } from '@/lib/error';
 
 const content: Config = {
 	informationLinks: [
@@ -57,7 +56,14 @@ export async function getFooterData(): Promise<FooterComponentQueryResponse> {
 
 		return footerData;
 	} catch (error) {
-		return getDefaultProps<FooterComponentQueryResponse>('footer getFooterData');
+		console.warn(`Error in footer getFooterData: ${error}`);
+		return {
+			uwContactInfos: { nodes: [] },
+			current990FormPdfs: { nodes: [] },
+			donorPrivacyPolicyPdfs: { nodes: [] },
+			giftAcceptancePolicyPdfs: { nodes: [] },
+			adminCostPdfs: { nodes: [] }
+		} as FooterComponentQueryResponse;
 	}
 }
 
@@ -93,7 +99,12 @@ export async function createProps(): Promise<Props> {
 		});
 		return { informationLinks, socials, contactInfo };
 	} catch (error) {
-		return getDefaultProps<Props>(`Error in footer createProps: ${error}`);
+		console.warn(`Error in footer createProps: ${error}`);
+		return {
+			informationLinks: [],
+			socials: [],
+			contactInfo: {} as any
+		};
 	}
 }
 

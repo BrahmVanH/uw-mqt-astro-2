@@ -1,7 +1,19 @@
 [build]
+  NODE_VERSION = "22"
   command = "npm run build"
   functions = "netlify/functions"
   publish = "dist"
+  
+[dev]
+  command = "npm run dev"
+
+[functions]
+  external_node_modules = ["@astrojs/*"]
+  node_bundler = "esbuild"
+
+[[edge_functions]]
+  function = "invalidate-cache"
+  path = "/.netlify/functions/invalidate-cache"
 
 
 [[redirects]]

@@ -1,0 +1,212 @@
+---
+slug: 2025-campaign
+title: 'United Way of Marquette County 2025 Campaign'
+description: 'Join us in making a lasting impact in Marquette County. Our 2025 campaign supports 30 partner agencies helping 1 in 4 residents through four pillars of service: healthy communities, youth opportunity, financial security, and community resiliency.'
+requiresGraphqlQuery: false
+---
+
+import { CAMPAIGN_2025_IMG_1, CAMPAIGN_2025_IMG_2, CAMPAIGN_2025_DONATE_LINK } from '../lib/constants';
+import DonateBtn from '../components/DonateBtn.astro';
+
+<div className="col-span-2">
+  Every day in Marquette County, neighbors are helping neighbors build a stronger, more resilient community. Through our
+  2025 campaign, United Way of Marquette County continues this tradition of caring, bringing together generous hearts
+  and dedicated partners to address our community's most pressing needs. With your support, we're making a real
+  difference in the lives of more than 16,000 friends and neighbors—that's 1 out of every 4 Marquette County residents.
+</div>
+
+<div>
+  <h2>Your Impact in Action</h2>
+  <p>
+    The numbers tell an inspiring story of community care and collective action. In 2024, United Way of Marquette County
+    facilitated about $1.5 million of impact in our community—a remarkable 40% increase from the previous year. This
+    growth reflects not just increased funding, but expanded partnerships and innovative approaches to addressing local
+    challenges.
+  </p>
+  <p>
+    When you contribute to our annual campaign, you're not just making a donation—you're investing in solutions that
+    touch every corner of our community, from ensuring families have enough to eat to providing safe spaces for children
+    to learn and grow.
+  </p>
+</div>
+
+
+{CAMPAIGN_2025_IMG_1 && (
+
+<img
+  loading="lazy"
+  decoding="async"
+  src={CAMPAIGN_2025_IMG_1}
+  alt="Child in hospital bed with parents at side and dog at foot of bed. "
+  class="w-full"
+/>
+)}
+
+<div className="col-span-2">
+  <h2>Four Pillars of Community Strength</h2>
+  <p>
+    Our work is guided by four essential pillars that create the foundation for a thriving Marquette County. Each
+    pillar addresses critical needs while building long-term stability and opportunity for all residents.
+  </p>
+
+  <div className="grid grid-cols-2 gap-6">
+    <div className="bg-blue-50 p-4 rounded-lg">
+      <h3 className="font-bold text-blue-900">Making a Healthy Community</h3>
+      <p className="text-blue-800">
+        Supporting programs that improve physical and mental health, ensuring access to healthcare, and promoting
+        wellness throughout our region.
+      </p>
+    </div>
+
+    <div className="bg-green-50 p-4 rounded-lg">
+      <h3 className="font-bold text-green-900">Creating Youth Opportunity</h3>
+      <p className="text-green-800">
+        Investing in programs that help young people succeed in school, develop life skills, and prepare for bright
+        futures in our community.
+      </p>
+    </div>
+
+    <div className="bg-purple-50 p-4 rounded-lg">
+      <h3 className="font-bold text-purple-900">Fostering Financial Security</h3>
+      <p className="text-purple-800">
+        Helping families achieve stability through job training, financial education, emergency assistance, and
+        pathways to self-sufficiency.
+      </p>
+    </div>
+
+    <div className="bg-orange-50 p-4 rounded-lg">
+      <h3 className="font-bold text-orange-900">Developing Community Resiliency</h3>
+      <p className="text-orange-800">
+        Building our community's ability to face challenges together, from natural disasters to economic uncertainty,
+        through strong partnerships and innovative solutions.
+      </p>
+    </div>
+  </div>
+</div>
+
+{CAMPAIGN_2025_IMG_2 && (
+
+<img
+  loading="lazy"
+  decoding="async"
+  src={CAMPAIGN_2025_IMG_2}
+  alt="Mobile food pantry volunteer with big smile holding up bags of fruit in each hand"
+  class="w-full"
+/>
+)}
+
+<div>
+  <h2>Addressing Critical Community Needs</h2>
+  <p>
+    Food insecurity affects about 40% of Marquette County households—a sobering reminder of the challenges our neighbors
+    face. Through our network of partner agencies and community collaborations, we're responding with both immediate
+    relief and long-term solutions. In 2024 alone, mobile food pantries delivered 493,593 meals throughout Marquette
+    County.
+  </p>
+  <p>
+    But our impact extends far beyond food assistance. Through our network of 30 trusted partner agencies, we're
+    tackling challenges ranging from housing instability to educational barriers, from healthcare access to emergency
+    relief.
+  </p>
+</div>
+
+<div className='col-span-2'>
+  <h2>How Your Support Makes a Difference</h2>
+  <p>
+    Every gift to United Way of Marquette County—whether $5 or $5,000—creates ripple effects throughout our community.
+    Your support doesn't just fund programs; it builds connections, strengthens families, and creates opportunities for
+    lasting change.
+  </p>
+
+  <div className="grid md:grid-cols-2 gap-6 my-6">
+    <div className="border-l-4 border-blue-500 pl-4">
+      <h3 className="font-bold">Immediate Impact</h3>
+      <p>Your gift provides immediate assistance to families in crisis, ensuring children have meals and families have shelter.</p>
+    </div>
+    <div className="border-l-4 border-green-500 pl-4">
+      <h3 className="font-bold">Long-term Change</h3>
+      <p>Your investment funds programs that help people build skills, find stable employment, and achieve independence.</p>
+    </div>
+    <div className="border-l-4 border-purple-500 pl-4">
+      <h3 className="font-bold">Community Connection</h3>
+      <p>Your support brings people together, fostering the relationships and networks that make communities strong.</p>
+    </div>
+    <div className="border-l-4 border-orange-500 pl-4">
+      <h3 className="font-bold">Innovation and Growth</h3>
+      <p>Your contribution helps us develop new solutions and expand successful programs to reach more people in need.</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Special Campaigns Making Extra Impact</h2>
+  <p>
+    Throughout 2025, we've launched special initiatives that bring our community together around shared goals. From the
+    TV6 Canathon that mobilizes the entire Upper Peninsula to collect food for local pantries, to our partnership with
+    DoorDash that delivers supplies directly to families who need them most—these campaigns showcase the incredible
+    power of community collaboration.
+  </p>
+  <p>
+    Our holiday programs, including the Giving Tree and Adopt a Family initiatives, ensure that the magic of the season
+    reaches every child in our community. These efforts remind us that when we work together, no family has to face
+    hardship alone.
+  </p>
+</div>
+
+<div >
+  <h2>Your Trusted Partners in Change</h2>
+  <p>
+    United Way of Marquette County works with 26 carefully selected partner agencies, each bringing unique expertise and
+    deep community connections to address different aspects of human need. From the American Red Cross and Big Brothers
+    Big Sisters to local organizations like the Janzen House and Lake Superior Village Youth and Family Center, our
+    partners represent decades of combined experience in serving our community.
+  </p>
+  <p>
+    When you give to United Way, you're supporting this entire network of care—ensuring your donation has maximum impact
+    across multiple programs and services that work together to strengthen families and build community resilience.
+  </p>
+</div>
+
+<div className="col-span-2 flex flex-col items-center md:space-y-4">
+  <h2>Join Our Community of Care</h2>
+  <p>
+    The strength of our 2025 campaign lies not in any single large gift, but in the collective commitment of community
+    members who believe in the power of neighbors helping neighbors. Here in the Upper Peninsula, we've always known that
+    true strength comes from standing together—whether facing harsh winters, economic challenges, or times of uncertainty.
+    This spirit of resilience and mutual support defines who we are as Yoopers, and it's what makes our UPSTRONG campaign
+    so powerful. Whether you're able to contribute monthly through workplace payroll deduction, make a one-time gift, or
+    volunteer your time and skills, you become part of something bigger than yourself—part of the unbreakable fabric that
+    makes the UP strong.
+  </p>
+
+<div className="text-left justify-self-center space-y-2">
+  <h3 className="font-bold">Ready to Make a Difference?</h3>
+  <p>
+    <strong>Online: </strong> <DonateBtn href={CAMPAIGN_2025_DONATE_LINK} text={"Donate"} /> or text <span class="font-bold">UPSTRONG</span> to 44321
+  </p>
+  <p>
+    <strong>Phone:</strong> Call us at (906) 226-8171 to speak with our team
+  </p>
+  <p>
+    <strong>Mail:</strong> Send your gift to PO Box 73, Marquette, MI 49855
+  </p>
+  <p>
+    <strong>Workplace:</strong> Ask about payroll deduction options at your employer
+  </p>
+  <p>
+    <strong>Volunteer:</strong> Explore opportunities at <a href="https://www.yoopersunited.com" target="_blank" rel="noopener noreferrer">yoopersunited.com</a>
+  </p>
+</div>
+
+<p>
+  Under the leadership of Executive Director Andrew Rickauer and 2025 Campaign Co-Chairs Jesse Renfors and Rebecca
+  Bartelme, United Way of Marquette County continues building on a foundation of trust, transparency, and community
+  impact that spans decades.
+</p>
+
+  <p>
+    Together, we're not just meeting today's challenges—we're building the strong, resilient community that future
+    generations will inherit. Your support of our 2025 campaign is an investment in that brighter future for Marquette
+    County.
+  </p>
+</div>

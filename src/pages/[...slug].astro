@@ -1,0 +1,49 @@
+---
+export const prerender = true;
+import type { GetStaticPaths } from 'astro';
+
+import MdPagesLayout from '@/layouts/MdPagesLayout.astro';
+import Prose from '@/components/Prose/AboutPage.astro';
+import { getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	try {
+		const pages = await getCollection('staticRoot');
+
+		if (!pages || pages.length === 0) {
+			return [];
+		}
+
+		const paths = pages.map((page) => {
+			// Use the slug from frontmatter, fallback to file ID
+			const slug = page.data.slug || page.id;
+			// Remove leading slash and split into segments
+
+			return {
+				params: {
+					slug: slug,
+				},
+				props: {
+					entry: page,
+				},
+			};
+		});
+
+		return paths;
+	} catch (error) {
+		console.error('Error in getting static content in /[...slug]: ', error);
+		return [];
+	}
+}
+
+const { entry } = Astro.props;
+
+const { Content } = await render(entry);
+---
+
+<MdPagesLayout frontmatter={entry.data}>
+	<Prose>
+		<Content />
+	</Prose>
+</MdPagesLayout>

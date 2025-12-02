@@ -22,20 +22,20 @@ import Loading from '@/components/Loading.astro';
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
 // import wpWebhook from '@/lib/wpWebhook';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 2}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24}, s-maxage=${60 * 60 * 24}`);
+}
 
 const path = Astro.url.pathname;
 const queryResponse = await getPageContent(path);
 if (!queryResponse) {
-	onError('No data returned from the server home page query', Astro);
+  onError('No data returned from the server home page query', Astro);
 }
 
 const pageContent: HomePageQueryResponse = queryResponse;
 
 if (!pageContent) {
-	onError('No data returned from the server home page query', Astro);
+  onError('No data returned from the server home page query', Astro);
 }
 
 // wp content for hero section
@@ -43,17 +43,18 @@ const heroContent = pageContent?.homePageHeroes;
 
 const heroProps = createHeroProps(heroContent, Astro);
 
+
 const { bg, bgMobile, bgAlt, bgMobileAlt } = heroProps;
 
 // wp content for partner ticker
 const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTickerItems?.nodes
-	.map((node: PartnersTickerItem) => node?.partnersTickerItemFields)
-	.filter(
-		(
-			// filter for undefined values
-			partner: Maybe<PartnersTickerItemFields> | undefined,
-		): partner is PartnersTickerItemFields => !!partner,
-	);
+  .map((node: PartnersTickerItem) => node?.partnersTickerItemFields)
+  .filter(
+    (
+      // filter for undefined values
+      partner: Maybe<PartnersTickerItemFields> | undefined,
+    ): partner is PartnersTickerItemFields => !!partner,
+  );
 
 const partnerTickerItems = createPartnersTickerProps(partnerTickerContent);
 // wp content for how to contribute section
@@ -120,60 +121,66 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 {!queryResponse && <Loading />}
 
 <Layout title='United Way of Marquette County'>
-	<main id='main-content' class='w-full mx-auto max-w-[1800px] flow'>
-		<div class='absolute inset-0 z-0 bg-image-flipped'>
-			<ResponsiveImage mobileImgUrl={bgMobile} desktopImgUrl={bg} desktopAlt={bgAlt} mobileAlt={bgMobileAlt} className='w-full h-full object-cover' />
-		</div>
-		<h2 class='sr-only'>United Way of Marquette County</h2>
+  <main id='main-content' class='w-full mx-auto max-w-[1800px] flow'>
+    <div class='absolute inset-0 z-0 bg-image-flipped'>
+      <ResponsiveImage
+        mobileImgUrl={bgMobile}
+        desktopImgUrl={bg}
+        desktopAlt={bgAlt}
+        mobileAlt={bgMobileAlt}
+        className='w-full h-full object-cover'
+      />
+    </div>
+    <h2 class='sr-only'>United Way of Marquette County</h2>
 
-		<section aria-labelledby='hero-section'>
-			<div class='hidden md:contents'>
-				{heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
-			</div>
-			<div class='contents md:hidden'>
-				<HomePageHero {...heroProps} />
-			</div>
-		</section>
+    <section aria-labelledby='hero-section'>
+      <div class='hidden md:contents'>
+        {heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
+      </div>
+      <div class='contents md:hidden'>
+        <HomePageHero {...heroProps} />
+      </div>
+    </section>
 
-		<section aria-labelledby='partners-section'>
-			<h2 id='partners-section' class='sr-only'>Our Partners</h2>
-			<PartnersTicker {...partnerTickerItems} />
-		</section>
+    <section aria-labelledby='partners-section'>
+      <h2 id='partners-section' class='sr-only'>Our Partners</h2>
+      <PartnersTicker {...partnerTickerItems} />
+    </section>
 
-		<section aria-labelledby='help-section'>
-			<h2 id='help-section' class='sr-only'>Your Help Matters</h2>
-			<YourHelpMatters />
-		</section>
+    <section aria-labelledby='help-section'>
+      <h2 id='help-section' class='sr-only'>Your Help Matters</h2>
+      <YourHelpMatters />
+    </section>
 
-		<section aria-labelledby='stats-section'>
-			<h2 id='stats-section' class='sr-only'>Impact Statistics</h2>
-			<OurImpactStats {...ourImpactStatsProps} />
-		</section>
+    <section aria-labelledby='stats-section'>
+      <h2 id='stats-section' class='sr-only'>Impact Statistics</h2>
+      <OurImpactStats {...ourImpactStatsProps} />
+    </section>
 
-		<section aria-labelledby='impact-section'>
-			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:visible />
-		</section>
+    <section aria-labelledby='impact-section'>
+      <h2 id='impact-section' class='sr-only'>Our Impact</h2>
+      <OurImpactCarousel {...impactCarouselProps} client:visible />
+    </section>
 
-		<section aria-labelledby='volunteer-section'>
-			<h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
-			<VolunteerNeeds {...volunteerNeedsProps} />
-		</section>
+    <section aria-labelledby='volunteer-section'>
+      <h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
+      <VolunteerNeeds {...volunteerNeedsProps} />
+    </section>
 
-		<section aria-labelledby='contribute-section'>
-			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
-			<HowToContribute {...howToContributeProps} />
-		</section>
+    <section aria-labelledby='contribute-section'>
+      <h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
+      <HowToContribute {...howToContributeProps} />
+    </section>
 
-		<section aria-labelledby='local-section'>
-			<h2 id='local-section' class='sr-only'>Local Impact</h2>
-			<WeAreYourLocal />
-		</section>
-	</main>
+    <section aria-labelledby='local-section'>
+      <h2 id='local-section' class='sr-only'>Local Impact</h2>
+      <WeAreYourLocal />
+    </section>
+  </main>
 </Layout>
 
 <style>
-	.flow > * + * {
-		margin-top: var(--flow-space, 1rem);
-	}
+  .flow > * + * {
+    margin-top: var(--flow-space, 1rem);
+  }
 </style>

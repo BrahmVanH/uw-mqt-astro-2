@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { girlScoutsComponentQuery, howToContributeComponentQuery, northwoodsAirLifelineComponentQuery, ourImpactCarouselComponentQuery } from "../common";
+import { girlScoutsComponentQuery, howToContributeComponentQuery, northwoodsAirLifelineComponentQuery, ourImpactCarouselComponentQuery } from "../common.js";
 import { fourPillarsHeroComponentQuery } from "./ourImpact";
 
 // GraphQL query string for the Youth Opportunity page

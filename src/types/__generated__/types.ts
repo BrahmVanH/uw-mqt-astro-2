@@ -254,7 +254,7 @@ export type AdminCostPdf = ContentNode & DatabaseIdentifier & MenuItemLinkable &
   parent?: Maybe<AdminCostPdfToParentConnectionEdge>;
   /** The password for the admin_costs_pdf object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the AdminCostPdf type and the adminCostPdf type */
+  /** Connection between the adminCostPdf type and the adminCostPdf type */
   preview?: Maybe<AdminCostPdfToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -348,7 +348,7 @@ export enum AdminCostPdfIdType {
   Uri = 'URI'
 }
 
-/** Connection between the AdminCostPdf type and the adminCostPdf type */
+/** Connection between the adminCostPdf type and the adminCostPdf type */
 export type AdminCostPdfToAdminCostPdfConnection = AdminCostPdfConnection & Connection & {
   __typename?: 'AdminCostPdfToAdminCostPdfConnection';
   /** Edges for the AdminCostPdfToAdminCostPdfConnection connection */
@@ -387,7 +387,7 @@ export type AdminCostPdfToAdminCostPdfConnectionPageInfo = AdminCostPdfConnectio
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the AdminCostPdf type and the adminCostPdf type */
+/** Connection between the adminCostPdf type and the adminCostPdf type */
 export type AdminCostPdfToParentConnectionEdge = AdminCostPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AdminCostPdfToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -399,7 +399,7 @@ export type AdminCostPdfToParentConnectionEdge = AdminCostPdfConnectionEdge & Ed
   node: AdminCostPdf;
 };
 
-/** Connection between the AdminCostPdf type and the adminCostPdf type */
+/** Connection between the adminCostPdf type and the adminCostPdf type */
 export type AdminCostPdfToPreviewConnectionEdge = AdminCostPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AdminCostPdfToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -503,7 +503,7 @@ export type AliceHubProgram = ContentNode & DatabaseIdentifier & MenuItemLinkabl
   parent?: Maybe<AliceHubProgramToParentConnectionEdge>;
   /** The password for the alice_hub_program object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the AliceHubProgram type and the aliceHubProgram type */
+  /** Connection between the aliceHubProgram type and the aliceHubProgram type */
   preview?: Maybe<AliceHubProgramToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -648,7 +648,7 @@ export enum AliceHubProgramIdType {
   Uri = 'URI'
 }
 
-/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+/** Connection between the aliceHubProgram type and the aliceHubProgram type */
 export type AliceHubProgramToAliceHubProgramConnection = AliceHubProgramConnection & Connection & {
   __typename?: 'AliceHubProgramToAliceHubProgramConnection';
   /** Edges for the AliceHubProgramToAliceHubProgramConnection connection */
@@ -687,7 +687,7 @@ export type AliceHubProgramToAliceHubProgramConnectionPageInfo = AliceHubProgram
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+/** Connection between the aliceHubProgram type and the aliceHubProgram type */
 export type AliceHubProgramToParentConnectionEdge = AliceHubProgramConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceHubProgramToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -699,7 +699,7 @@ export type AliceHubProgramToParentConnectionEdge = AliceHubProgramConnectionEdg
   node: AliceHubProgram;
 };
 
-/** Connection between the AliceHubProgram type and the aliceHubProgram type */
+/** Connection between the aliceHubProgram type and the aliceHubProgram type */
 export type AliceHubProgramToPreviewConnectionEdge = AliceHubProgramConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceHubProgramToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -780,7 +780,7 @@ export type AliceReportPage = ContentNode & DatabaseIdentifier & HierarchicalCon
   parentId?: Maybe<Scalars['ID']['output']>;
   /** The password for the alice_report_page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the AliceReportPage type and the aliceReportPage type */
+  /** Connection between the aliceReportPage type and the aliceReportPage type */
   preview?: Maybe<AliceReportPageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -883,7 +883,7 @@ export enum AliceReportPageIdType {
   Uri = 'URI'
 }
 
-/** Connection between the AliceReportPage type and the aliceReportPage type */
+/** Connection between the aliceReportPage type and the aliceReportPage type */
 export type AliceReportPageToPreviewConnectionEdge = AliceReportPageConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceReportPageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -964,7 +964,7 @@ export type AliceReportPdf = ContentNode & DatabaseIdentifier & MenuItemLinkable
   parent?: Maybe<AliceReportPdfToParentConnectionEdge>;
   /** The password for the alice_report_pdf object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the AliceReportPdf type and the aliceReportPdf type */
+  /** Connection between the aliceReportPdf type and the aliceReportPdf type */
   preview?: Maybe<AliceReportPdfToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -1058,7 +1058,7 @@ export enum AliceReportPdfIdType {
   Uri = 'URI'
 }
 
-/** Connection between the AliceReportPdf type and the aliceReportPdf type */
+/** Connection between the aliceReportPdf type and the aliceReportPdf type */
 export type AliceReportPdfToAliceReportPdfConnection = AliceReportPdfConnection & Connection & {
   __typename?: 'AliceReportPdfToAliceReportPdfConnection';
   /** Edges for the AliceReportPdfToAliceReportPdfConnection connection */
@@ -1097,7 +1097,7 @@ export type AliceReportPdfToAliceReportPdfConnectionPageInfo = AliceReportPdfCon
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the AliceReportPdf type and the aliceReportPdf type */
+/** Connection between the aliceReportPdf type and the aliceReportPdf type */
 export type AliceReportPdfToParentConnectionEdge = AliceReportPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceReportPdfToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -1109,7 +1109,7 @@ export type AliceReportPdfToParentConnectionEdge = AliceReportPdfConnectionEdge 
   node: AliceReportPdf;
 };
 
-/** Connection between the AliceReportPdf type and the aliceReportPdf type */
+/** Connection between the aliceReportPdf type and the aliceReportPdf type */
 export type AliceReportPdfToPreviewConnectionEdge = AliceReportPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceReportPdfToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -1190,7 +1190,7 @@ export type AliceStats = ContentNode & DatabaseIdentifier & MenuItemLinkable & N
   parent?: Maybe<AliceStatsToParentConnectionEdge>;
   /** The password for the alice_stats object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the AliceStats type and the aliceStats type */
+  /** Connection between the aliceStats type and the aliceStats type */
   preview?: Maybe<AliceStatsToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -2205,7 +2205,7 @@ export enum AliceStatsIdType {
   Uri = 'URI'
 }
 
-/** Connection between the AliceStats type and the aliceStats type */
+/** Connection between the aliceStats type and the aliceStats type */
 export type AliceStatsToAliceStatsConnection = AliceStatsConnection & Connection & {
   __typename?: 'AliceStatsToAliceStatsConnection';
   /** Edges for the AliceStatsToAliceStatsConnection connection */
@@ -2244,7 +2244,7 @@ export type AliceStatsToAliceStatsConnectionPageInfo = AliceStatsConnectionPageI
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the AliceStats type and the aliceStats type */
+/** Connection between the aliceStats type and the aliceStats type */
 export type AliceStatsToParentConnectionEdge = AliceStatsConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceStatsToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -2256,7 +2256,7 @@ export type AliceStatsToParentConnectionEdge = AliceStatsConnectionEdge & Edge &
   node: AliceStats;
 };
 
-/** Connection between the AliceStats type and the aliceStats type */
+/** Connection between the aliceStats type and the aliceStats type */
 export type AliceStatsToPreviewConnectionEdge = AliceStatsConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'AliceStatsToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -2376,7 +2376,7 @@ export type CampaignToolkitAsset = ContentNode & DatabaseIdentifier & MenuItemLi
   parent?: Maybe<CampaignToolkitAssetToParentConnectionEdge>;
   /** The password for the campaign_tlkit_asst object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the CampaignToolkitAsset type and the campaignToolkitAsset type */
+  /** Connection between the campaignToolkitAsset type and the campaignToolkitAsset type */
   preview?: Maybe<CampaignToolkitAssetToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -2556,7 +2556,7 @@ export enum CampaignToolkitAssetIdType {
   Uri = 'URI'
 }
 
-/** Connection between the CampaignToolkitAsset type and the campaignToolkitAsset type */
+/** Connection between the campaignToolkitAsset type and the campaignToolkitAsset type */
 export type CampaignToolkitAssetToCampaignToolkitAssetConnection = CampaignToolkitAssetConnection & Connection & {
   __typename?: 'CampaignToolkitAssetToCampaignToolkitAssetConnection';
   /** Edges for the CampaignToolkitAssetToCampaignToolkitAssetConnection connection */
@@ -2595,7 +2595,7 @@ export type CampaignToolkitAssetToCampaignToolkitAssetConnectionPageInfo = Campa
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the CampaignToolkitAsset type and the campaignToolkitAsset type */
+/** Connection between the campaignToolkitAsset type and the campaignToolkitAsset type */
 export type CampaignToolkitAssetToParentConnectionEdge = CampaignToolkitAssetConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'CampaignToolkitAssetToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -2607,7 +2607,7 @@ export type CampaignToolkitAssetToParentConnectionEdge = CampaignToolkitAssetCon
   node: CampaignToolkitAsset;
 };
 
-/** Connection between the CampaignToolkitAsset type and the campaignToolkitAsset type */
+/** Connection between the campaignToolkitAsset type and the campaignToolkitAsset type */
 export type CampaignToolkitAssetToPreviewConnectionEdge = CampaignToolkitAssetConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'CampaignToolkitAssetToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -5484,7 +5484,7 @@ export type Current990FormPdf = ContentNode & DatabaseIdentifier & MenuItemLinka
   parent?: Maybe<Current990FormPdfToParentConnectionEdge>;
   /** The password for the current_990_form_pdf object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the Current990FormPdf type and the current990FormPdf type */
+  /** Connection between the current990FormPdf type and the current990FormPdf type */
   preview?: Maybe<Current990FormPdfToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -5578,7 +5578,7 @@ export enum Current990FormPdfIdType {
   Uri = 'URI'
 }
 
-/** Connection between the Current990FormPdf type and the current990FormPdf type */
+/** Connection between the current990FormPdf type and the current990FormPdf type */
 export type Current990FormPdfToCurrent990FormPdfConnection = Connection & Current990FormPdfConnection & {
   __typename?: 'Current990FormPdfToCurrent990FormPdfConnection';
   /** Edges for the Current990FormPdfToCurrent990FormPdfConnection connection */
@@ -5617,7 +5617,7 @@ export type Current990FormPdfToCurrent990FormPdfConnectionPageInfo = Current990F
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the Current990FormPdf type and the current990FormPdf type */
+/** Connection between the current990FormPdf type and the current990FormPdf type */
 export type Current990FormPdfToParentConnectionEdge = Current990FormPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'Current990FormPdfToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -5629,7 +5629,7 @@ export type Current990FormPdfToParentConnectionEdge = Current990FormPdfConnectio
   node: Current990FormPdf;
 };
 
-/** Connection between the Current990FormPdf type and the current990FormPdf type */
+/** Connection between the current990FormPdf type and the current990FormPdf type */
 export type Current990FormPdfToPreviewConnectionEdge = Current990FormPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'Current990FormPdfToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -5724,7 +5724,7 @@ export type CustomPage = ContentNode & DatabaseIdentifier & HierarchicalContentN
   parentId?: Maybe<Scalars['ID']['output']>;
   /** The password for the custom_page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the CustomPage type and the customPage type */
+  /** Connection between the customPage type and the customPage type */
   preview?: Maybe<CustomPageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -5880,7 +5880,7 @@ export enum CustomPageIdType {
   Uri = 'URI'
 }
 
-/** Connection between the CustomPage type and the customPage type */
+/** Connection between the customPage type and the customPage type */
 export type CustomPageToPreviewConnectionEdge = CustomPageConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'CustomPageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -7019,7 +7019,7 @@ export type DonorPrivacyPolicyPdf = ContentNode & DatabaseIdentifier & MenuItemL
   parent?: Maybe<DonorPrivacyPolicyPdfToParentConnectionEdge>;
   /** The password for the donor_privacy_pdf object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the DonorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
+  /** Connection between the donorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
   preview?: Maybe<DonorPrivacyPolicyPdfToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -7113,7 +7113,7 @@ export enum DonorPrivacyPolicyPdfIdType {
   Uri = 'URI'
 }
 
-/** Connection between the DonorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
+/** Connection between the donorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
 export type DonorPrivacyPolicyPdfToDonorPrivacyPolicyPdfConnection = Connection & DonorPrivacyPolicyPdfConnection & {
   __typename?: 'DonorPrivacyPolicyPdfToDonorPrivacyPolicyPdfConnection';
   /** Edges for the DonorPrivacyPolicyPdfToDonorPrivacyPolicyPdfConnection connection */
@@ -7152,7 +7152,7 @@ export type DonorPrivacyPolicyPdfToDonorPrivacyPolicyPdfConnectionPageInfo = Don
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the DonorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
+/** Connection between the donorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
 export type DonorPrivacyPolicyPdfToParentConnectionEdge = DonorPrivacyPolicyPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'DonorPrivacyPolicyPdfToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -7164,7 +7164,7 @@ export type DonorPrivacyPolicyPdfToParentConnectionEdge = DonorPrivacyPolicyPdfC
   node: DonorPrivacyPolicyPdf;
 };
 
-/** Connection between the DonorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
+/** Connection between the donorPrivacyPolicyPdf type and the donorPrivacyPolicyPdf type */
 export type DonorPrivacyPolicyPdfToPreviewConnectionEdge = DonorPrivacyPolicyPdfConnectionEdge & Edge & OneToOneConnection & {
   __typename?: 'DonorPrivacyPolicyPdfToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -7555,7 +7555,7 @@ export type Faq = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & N
   parent?: Maybe<FaqToParentConnectionEdge>;
   /** The password for the faqs object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the Faq type and the faq type */
+  /** Connection between the faq type and the faq type */
   preview?: Maybe<FaqToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -7649,7 +7649,7 @@ export enum FaqIdType {
   Uri = 'URI'
 }
 
-/** Connection between the Faq type and the faq type */
+/** Connection between the faq type and the faq type */
 export type FaqToFaqConnection = Connection & FaqConnection & {
   __typename?: 'FaqToFaqConnection';
   /** Edges for the FaqToFaqConnection connection */
@@ -7688,7 +7688,7 @@ export type FaqToFaqConnectionPageInfo = FaqConnectionPageInfo & PageInfo & WpPa
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the Faq type and the faq type */
+/** Connection between the faq type and the faq type */
 export type FaqToParentConnectionEdge = Edge & FaqConnectionEdge & OneToOneConnection & {
   __typename?: 'FaqToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -7700,7 +7700,7 @@ export type FaqToParentConnectionEdge = Edge & FaqConnectionEdge & OneToOneConne
   node: Faq;
 };
 
-/** Connection between the Faq type and the faq type */
+/** Connection between the faq type and the faq type */
 export type FaqToPreviewConnectionEdge = Edge & FaqConnectionEdge & OneToOneConnection & {
   __typename?: 'FaqToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -7781,7 +7781,7 @@ export type FoodPantry = ContentNode & DatabaseIdentifier & MenuItemLinkable & N
   parent?: Maybe<FoodPantryToParentConnectionEdge>;
   /** The password for the food_pantry object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the FoodPantry type and the foodPantry type */
+  /** Connection between the foodPantry type and the foodPantry type */
   preview?: Maybe<FoodPantryToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -8113,7 +8113,7 @@ export enum FoodPantryIdType {
   Uri = 'URI'
 }
 
-/** Connection between the FoodPantry type and the foodPantry type */
+/** Connection between the foodPantry type and the foodPantry type */
 export type FoodPantryToFoodPantryConnection = Connection & FoodPantryConnection & {
   __typename?: 'FoodPantryToFoodPantryConnection';
   /** Edges for the FoodPantryToFoodPantryConnection connection */
@@ -8152,7 +8152,7 @@ export type FoodPantryToFoodPantryConnectionPageInfo = FoodPantryConnectionPageI
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the FoodPantry type and the foodPantry type */
+/** Connection between the foodPantry type and the foodPantry type */
 export type FoodPantryToParentConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
   __typename?: 'FoodPantryToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -8164,7 +8164,7 @@ export type FoodPantryToParentConnectionEdge = Edge & FoodPantryConnectionEdge &
   node: FoodPantry;
 };
 
-/** Connection between the FoodPantry type and the foodPantry type */
+/** Connection between the foodPantry type and the foodPantry type */
 export type FoodPantryToPreviewConnectionEdge = Edge & FoodPantryConnectionEdge & OneToOneConnection & {
   __typename?: 'FoodPantryToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -8245,7 +8245,7 @@ export type FourPillarsHeroComponent = ContentNode & DatabaseIdentifier & MenuIt
   parent?: Maybe<FourPillarsHeroComponentToParentConnectionEdge>;
   /** The password for the four_pillars_hero object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the FourPillarsHeroComponent type and the fourPillarsHeroComponent type */
+  /** Connection between the fourPillarsHeroComponent type and the fourPillarsHeroComponent type */
   preview?: Maybe<FourPillarsHeroComponentToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -8514,7 +8514,7 @@ export enum FourPillarsHeroComponentIdType {
   Uri = 'URI'
 }
 
-/** Connection between the FourPillarsHeroComponent type and the fourPillarsHeroComponent type */
+/** Connection between the fourPillarsHeroComponent type and the fourPillarsHeroComponent type */
 export type FourPillarsHeroComponentToFourPillarsHeroComponentConnection = Connection & FourPillarsHeroComponentConnection & {
   __typename?: 'FourPillarsHeroComponentToFourPillarsHeroComponentConnection';
   /** Edges for the FourPillarsHeroComponentToFourPillarsHeroComponentConnection connection */
@@ -8553,7 +8553,7 @@ export type FourPillarsHeroComponentToFourPillarsHeroComponentConnectionPageInfo
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the FourPillarsHeroComponent type and the fourPillarsHeroComponent type */
+/** Connection between the fourPillarsHeroComponent type and the fourPillarsHeroComponent type */
 export type FourPillarsHeroComponentToParentConnectionEdge = Edge & FourPillarsHeroComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'FourPillarsHeroComponentToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -8565,7 +8565,7 @@ export type FourPillarsHeroComponentToParentConnectionEdge = Edge & FourPillarsH
   node: FourPillarsHeroComponent;
 };
 
-/** Connection between the FourPillarsHeroComponent type and the fourPillarsHeroComponent type */
+/** Connection between the fourPillarsHeroComponent type and the fourPillarsHeroComponent type */
 export type FourPillarsHeroComponentToPreviewConnectionEdge = Edge & FourPillarsHeroComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'FourPillarsHeroComponentToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -8646,7 +8646,7 @@ export type FourPillarsPreview = ContentNode & DatabaseIdentifier & MenuItemLink
   parent?: Maybe<FourPillarsPreviewToParentConnectionEdge>;
   /** The password for the four_pillars_preview object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the FourPillarsPreview type and the fourPillarsPreview type */
+  /** Connection between the fourPillarsPreview type and the fourPillarsPreview type */
   preview?: Maybe<FourPillarsPreviewToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -8862,7 +8862,7 @@ export enum FourPillarsPreviewIdType {
   Uri = 'URI'
 }
 
-/** Connection between the FourPillarsPreview type and the fourPillarsPreview type */
+/** Connection between the fourPillarsPreview type and the fourPillarsPreview type */
 export type FourPillarsPreviewToFourPillarsPreviewConnection = Connection & FourPillarsPreviewConnection & {
   __typename?: 'FourPillarsPreviewToFourPillarsPreviewConnection';
   /** Edges for the FourPillarsPreviewToFourPillarsPreviewConnection connection */
@@ -8901,7 +8901,7 @@ export type FourPillarsPreviewToFourPillarsPreviewConnectionPageInfo = FourPilla
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the FourPillarsPreview type and the fourPillarsPreview type */
+/** Connection between the fourPillarsPreview type and the fourPillarsPreview type */
 export type FourPillarsPreviewToParentConnectionEdge = Edge & FourPillarsPreviewConnectionEdge & OneToOneConnection & {
   __typename?: 'FourPillarsPreviewToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -8913,7 +8913,7 @@ export type FourPillarsPreviewToParentConnectionEdge = Edge & FourPillarsPreview
   node: FourPillarsPreview;
 };
 
-/** Connection between the FourPillarsPreview type and the fourPillarsPreview type */
+/** Connection between the fourPillarsPreview type and the fourPillarsPreview type */
 export type FourPillarsPreviewToPreviewConnectionEdge = Edge & FourPillarsPreviewConnectionEdge & OneToOneConnection & {
   __typename?: 'FourPillarsPreviewToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9040,7 +9040,7 @@ export type GetInvolvedHero = ContentNode & DatabaseIdentifier & MenuItemLinkabl
   parent?: Maybe<GetInvolvedHeroToParentConnectionEdge>;
   /** The password for the get_involved_hero object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the GetInvolvedHero type and the getInvolvedHero type */
+  /** Connection between the getInvolvedHero type and the getInvolvedHero type */
   preview?: Maybe<GetInvolvedHeroToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -9169,7 +9169,7 @@ export enum GetInvolvedHeroIdType {
   Uri = 'URI'
 }
 
-/** Connection between the GetInvolvedHero type and the getInvolvedHero type */
+/** Connection between the getInvolvedHero type and the getInvolvedHero type */
 export type GetInvolvedHeroToGetInvolvedHeroConnection = Connection & GetInvolvedHeroConnection & {
   __typename?: 'GetInvolvedHeroToGetInvolvedHeroConnection';
   /** Edges for the GetInvolvedHeroToGetInvolvedHeroConnection connection */
@@ -9208,7 +9208,7 @@ export type GetInvolvedHeroToGetInvolvedHeroConnectionPageInfo = GetInvolvedHero
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the GetInvolvedHero type and the getInvolvedHero type */
+/** Connection between the getInvolvedHero type and the getInvolvedHero type */
 export type GetInvolvedHeroToParentConnectionEdge = Edge & GetInvolvedHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'GetInvolvedHeroToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9220,7 +9220,7 @@ export type GetInvolvedHeroToParentConnectionEdge = Edge & GetInvolvedHeroConnec
   node: GetInvolvedHero;
 };
 
-/** Connection between the GetInvolvedHero type and the getInvolvedHero type */
+/** Connection between the getInvolvedHero type and the getInvolvedHero type */
 export type GetInvolvedHeroToPreviewConnectionEdge = Edge & GetInvolvedHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'GetInvolvedHeroToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9324,7 +9324,7 @@ export type GiftAcceptancePolicyPdf = ContentNode & DatabaseIdentifier & MenuIte
   parent?: Maybe<GiftAcceptancePolicyPdfToParentConnectionEdge>;
   /** The password for the gift_policy_pdf object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the GiftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
+  /** Connection between the giftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
   preview?: Maybe<GiftAcceptancePolicyPdfToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -9418,7 +9418,7 @@ export enum GiftAcceptancePolicyPdfIdType {
   Uri = 'URI'
 }
 
-/** Connection between the GiftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
+/** Connection between the giftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
 export type GiftAcceptancePolicyPdfToGiftAcceptancePolicyPdfConnection = Connection & GiftAcceptancePolicyPdfConnection & {
   __typename?: 'GiftAcceptancePolicyPdfToGiftAcceptancePolicyPdfConnection';
   /** Edges for the GiftAcceptancePolicyPdfToGiftAcceptancePolicyPdfConnection connection */
@@ -9457,7 +9457,7 @@ export type GiftAcceptancePolicyPdfToGiftAcceptancePolicyPdfConnectionPageInfo =
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the GiftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
+/** Connection between the giftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
 export type GiftAcceptancePolicyPdfToParentConnectionEdge = Edge & GiftAcceptancePolicyPdfConnectionEdge & OneToOneConnection & {
   __typename?: 'GiftAcceptancePolicyPdfToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9469,7 +9469,7 @@ export type GiftAcceptancePolicyPdfToParentConnectionEdge = Edge & GiftAcceptanc
   node: GiftAcceptancePolicyPdf;
 };
 
-/** Connection between the GiftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
+/** Connection between the giftAcceptancePolicyPdf type and the giftAcceptancePolicyPdf type */
 export type GiftAcceptancePolicyPdfToPreviewConnectionEdge = Edge & GiftAcceptancePolicyPdfConnectionEdge & OneToOneConnection & {
   __typename?: 'GiftAcceptancePolicyPdfToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9550,7 +9550,7 @@ export type GirlScoutsComponent = ContentNode & DatabaseIdentifier & MenuItemLin
   parent?: Maybe<GirlScoutsComponentToParentConnectionEdge>;
   /** The password for the girl_scouts_comp object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the GirlScoutsComponent type and the girlScoutsComponent type */
+  /** Connection between the girlScoutsComponent type and the girlScoutsComponent type */
   preview?: Maybe<GirlScoutsComponentToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -9699,7 +9699,7 @@ export enum GirlScoutsComponentIdType {
   Uri = 'URI'
 }
 
-/** Connection between the GirlScoutsComponent type and the girlScoutsComponent type */
+/** Connection between the girlScoutsComponent type and the girlScoutsComponent type */
 export type GirlScoutsComponentToGirlScoutsComponentConnection = Connection & GirlScoutsComponentConnection & {
   __typename?: 'GirlScoutsComponentToGirlScoutsComponentConnection';
   /** Edges for the GirlScoutsComponentToGirlScoutsComponentConnection connection */
@@ -9738,7 +9738,7 @@ export type GirlScoutsComponentToGirlScoutsComponentConnectionPageInfo = GirlSco
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the GirlScoutsComponent type and the girlScoutsComponent type */
+/** Connection between the girlScoutsComponent type and the girlScoutsComponent type */
 export type GirlScoutsComponentToParentConnectionEdge = Edge & GirlScoutsComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'GirlScoutsComponentToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9750,7 +9750,7 @@ export type GirlScoutsComponentToParentConnectionEdge = Edge & GirlScoutsCompone
   node: GirlScoutsComponent;
 };
 
-/** Connection between the GirlScoutsComponent type and the girlScoutsComponent type */
+/** Connection between the girlScoutsComponent type and the girlScoutsComponent type */
 export type GirlScoutsComponentToPreviewConnectionEdge = Edge & GirlScoutsComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'GirlScoutsComponentToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -9874,7 +9874,7 @@ export type HeroComponentOurImpactPage = ContentNode & DatabaseIdentifier & Menu
   parent?: Maybe<HeroComponentOurImpactPageToParentConnectionEdge>;
   /** The password for the hero_our_impact_page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the HeroComponentOurImpactPage type and the heroComponentOurImpactPage type */
+  /** Connection between the heroComponentOurImpactPage type and the heroComponentOurImpactPage type */
   preview?: Maybe<HeroComponentOurImpactPageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -9968,7 +9968,7 @@ export enum HeroComponentOurImpactPageIdType {
   Uri = 'URI'
 }
 
-/** Connection between the HeroComponentOurImpactPage type and the heroComponentOurImpactPage type */
+/** Connection between the heroComponentOurImpactPage type and the heroComponentOurImpactPage type */
 export type HeroComponentOurImpactPageToHeroComponentOurImpactPageConnection = Connection & HeroComponentOurImpactPageConnection & {
   __typename?: 'HeroComponentOurImpactPageToHeroComponentOurImpactPageConnection';
   /** Edges for the HeroComponentOurImpactPageToHeroComponentOurImpactPageConnection connection */
@@ -10007,7 +10007,7 @@ export type HeroComponentOurImpactPageToHeroComponentOurImpactPageConnectionPage
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the HeroComponentOurImpactPage type and the heroComponentOurImpactPage type */
+/** Connection between the heroComponentOurImpactPage type and the heroComponentOurImpactPage type */
 export type HeroComponentOurImpactPageToParentConnectionEdge = Edge & HeroComponentOurImpactPageConnectionEdge & OneToOneConnection & {
   __typename?: 'HeroComponentOurImpactPageToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -10019,7 +10019,7 @@ export type HeroComponentOurImpactPageToParentConnectionEdge = Edge & HeroCompon
   node: HeroComponentOurImpactPage;
 };
 
-/** Connection between the HeroComponentOurImpactPage type and the heroComponentOurImpactPage type */
+/** Connection between the heroComponentOurImpactPage type and the heroComponentOurImpactPage type */
 export type HeroComponentOurImpactPageToPreviewConnectionEdge = Edge & HeroComponentOurImpactPageConnectionEdge & OneToOneConnection & {
   __typename?: 'HeroComponentOurImpactPageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -10447,7 +10447,7 @@ export type HomePageHero = ContentNode & DatabaseIdentifier & MenuItemLinkable &
   parent?: Maybe<HomePageHeroToParentConnectionEdge>;
   /** The password for the home_page_hero object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the HomePageHero type and the homePageHero type */
+  /** Connection between the homePageHero type and the homePageHero type */
   preview?: Maybe<HomePageHeroToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -11916,7 +11916,7 @@ export enum HomePageHeroIdType {
   Uri = 'URI'
 }
 
-/** Connection between the HomePageHero type and the homePageHero type */
+/** Connection between the homePageHero type and the homePageHero type */
 export type HomePageHeroToHomePageHeroConnection = Connection & HomePageHeroConnection & {
   __typename?: 'HomePageHeroToHomePageHeroConnection';
   /** Edges for the HomePageHeroToHomePageHeroConnection connection */
@@ -11955,7 +11955,7 @@ export type HomePageHeroToHomePageHeroConnectionPageInfo = HomePageHeroConnectio
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the HomePageHero type and the homePageHero type */
+/** Connection between the homePageHero type and the homePageHero type */
 export type HomePageHeroToParentConnectionEdge = Edge & HomePageHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'HomePageHeroToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -11967,7 +11967,7 @@ export type HomePageHeroToParentConnectionEdge = Edge & HomePageHeroConnectionEd
   node: HomePageHero;
 };
 
-/** Connection between the HomePageHero type and the homePageHero type */
+/** Connection between the homePageHero type and the homePageHero type */
 export type HomePageHeroToPreviewConnectionEdge = Edge & HomePageHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'HomePageHeroToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -12048,7 +12048,7 @@ export type HowToContributeComponent = ContentNode & DatabaseIdentifier & MenuIt
   parent?: Maybe<HowToContributeComponentToParentConnectionEdge>;
   /** The password for the how_to_contribute object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the HowToContributeComponent type and the howToContributeComponent type */
+  /** Connection between the howToContributeComponent type and the howToContributeComponent type */
   preview?: Maybe<HowToContributeComponentToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -12266,7 +12266,7 @@ export enum HowToContributeComponentIdType {
   Uri = 'URI'
 }
 
-/** Connection between the HowToContributeComponent type and the howToContributeComponent type */
+/** Connection between the howToContributeComponent type and the howToContributeComponent type */
 export type HowToContributeComponentToHowToContributeComponentConnection = Connection & HowToContributeComponentConnection & {
   __typename?: 'HowToContributeComponentToHowToContributeComponentConnection';
   /** Edges for the HowToContributeComponentToHowToContributeComponentConnection connection */
@@ -12305,7 +12305,7 @@ export type HowToContributeComponentToHowToContributeComponentConnectionPageInfo
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the HowToContributeComponent type and the howToContributeComponent type */
+/** Connection between the howToContributeComponent type and the howToContributeComponent type */
 export type HowToContributeComponentToParentConnectionEdge = Edge & HowToContributeComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'HowToContributeComponentToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -12317,7 +12317,7 @@ export type HowToContributeComponentToParentConnectionEdge = Edge & HowToContrib
   node: HowToContributeComponent;
 };
 
-/** Connection between the HowToContributeComponent type and the howToContributeComponent type */
+/** Connection between the howToContributeComponent type and the howToContributeComponent type */
 export type HowToContributeComponentToPreviewConnectionEdge = Edge & HowToContributeComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'HowToContributeComponentToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -12398,7 +12398,7 @@ export type ImpactCarousel = ContentNode & DatabaseIdentifier & MenuItemLinkable
   parent?: Maybe<ImpactCarouselToParentConnectionEdge>;
   /** The password for the impact_carousel object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ImpactCarousel type and the impactCarousel type */
+  /** Connection between the impactCarousel type and the impactCarousel type */
   preview?: Maybe<ImpactCarouselToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -12972,7 +12972,7 @@ export enum ImpactCarouselIdType {
   Uri = 'URI'
 }
 
-/** Connection between the ImpactCarousel type and the impactCarousel type */
+/** Connection between the impactCarousel type and the impactCarousel type */
 export type ImpactCarouselToImpactCarouselConnection = Connection & ImpactCarouselConnection & {
   __typename?: 'ImpactCarouselToImpactCarouselConnection';
   /** Edges for the ImpactCarouselToImpactCarouselConnection connection */
@@ -13011,7 +13011,7 @@ export type ImpactCarouselToImpactCarouselConnectionPageInfo = ImpactCarouselCon
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the ImpactCarousel type and the impactCarousel type */
+/** Connection between the impactCarousel type and the impactCarousel type */
 export type ImpactCarouselToParentConnectionEdge = Edge & ImpactCarouselConnectionEdge & OneToOneConnection & {
   __typename?: 'ImpactCarouselToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -13023,7 +13023,7 @@ export type ImpactCarouselToParentConnectionEdge = Edge & ImpactCarouselConnecti
   node: ImpactCarousel;
 };
 
-/** Connection between the ImpactCarousel type and the impactCarousel type */
+/** Connection between the impactCarousel type and the impactCarousel type */
 export type ImpactCarouselToPreviewConnectionEdge = Edge & ImpactCarouselConnectionEdge & OneToOneConnection & {
   __typename?: 'ImpactCarouselToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -13104,7 +13104,7 @@ export type ImpactStatistic = ContentNode & DatabaseIdentifier & MenuItemLinkabl
   parent?: Maybe<ImpactStatisticToParentConnectionEdge>;
   /** The password for the impact_statistics object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ImpactStatistic type and the impactStatistic type */
+  /** Connection between the impactStatistic type and the impactStatistic type */
   preview?: Maybe<ImpactStatisticToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -13198,7 +13198,7 @@ export enum ImpactStatisticIdType {
   Uri = 'URI'
 }
 
-/** Connection between the ImpactStatistic type and the impactStatistic type */
+/** Connection between the impactStatistic type and the impactStatistic type */
 export type ImpactStatisticToImpactStatisticConnection = Connection & ImpactStatisticConnection & {
   __typename?: 'ImpactStatisticToImpactStatisticConnection';
   /** Edges for the ImpactStatisticToImpactStatisticConnection connection */
@@ -13237,7 +13237,7 @@ export type ImpactStatisticToImpactStatisticConnectionPageInfo = ImpactStatistic
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the ImpactStatistic type and the impactStatistic type */
+/** Connection between the impactStatistic type and the impactStatistic type */
 export type ImpactStatisticToParentConnectionEdge = Edge & ImpactStatisticConnectionEdge & OneToOneConnection & {
   __typename?: 'ImpactStatisticToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -13249,7 +13249,7 @@ export type ImpactStatisticToParentConnectionEdge = Edge & ImpactStatisticConnec
   node: ImpactStatistic;
 };
 
-/** Connection between the ImpactStatistic type and the impactStatistic type */
+/** Connection between the impactStatistic type and the impactStatistic type */
 export type ImpactStatisticToPreviewConnectionEdge = Edge & ImpactStatisticConnectionEdge & OneToOneConnection & {
   __typename?: 'ImpactStatisticToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -13330,7 +13330,7 @@ export type IndividualsPageHero = ContentNode & DatabaseIdentifier & MenuItemLin
   parent?: Maybe<IndividualsPageHeroToParentConnectionEdge>;
   /** The password for the indivdls_page_hero object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the IndividualsPageHero type and the individualsPageHero type */
+  /** Connection between the individualsPageHero type and the individualsPageHero type */
   preview?: Maybe<IndividualsPageHeroToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -13459,7 +13459,7 @@ export enum IndividualsPageHeroIdType {
   Uri = 'URI'
 }
 
-/** Connection between the IndividualsPageHero type and the individualsPageHero type */
+/** Connection between the individualsPageHero type and the individualsPageHero type */
 export type IndividualsPageHeroToIndividualsPageHeroConnection = Connection & IndividualsPageHeroConnection & {
   __typename?: 'IndividualsPageHeroToIndividualsPageHeroConnection';
   /** Edges for the IndividualsPageHeroToIndividualsPageHeroConnection connection */
@@ -13498,7 +13498,7 @@ export type IndividualsPageHeroToIndividualsPageHeroConnectionPageInfo = Individ
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the IndividualsPageHero type and the individualsPageHero type */
+/** Connection between the individualsPageHero type and the individualsPageHero type */
 export type IndividualsPageHeroToParentConnectionEdge = Edge & IndividualsPageHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'IndividualsPageHeroToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -13510,7 +13510,7 @@ export type IndividualsPageHeroToParentConnectionEdge = Edge & IndividualsPageHe
   node: IndividualsPageHero;
 };
 
-/** Connection between the IndividualsPageHero type and the individualsPageHero type */
+/** Connection between the individualsPageHero type and the individualsPageHero type */
 export type IndividualsPageHeroToPreviewConnectionEdge = Edge & IndividualsPageHeroConnectionEdge & OneToOneConnection & {
   __typename?: 'IndividualsPageHeroToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -14208,7 +14208,7 @@ export enum MenuItemNodeIdTypeEnum {
   Id = 'ID'
 }
 
-/** Deprecated in favor of MenuItemLinkeable Interface */
+/** Deprecated in favor of MenuItemLinkable Interface */
 export type MenuItemObjectUnion = AdminCostPdf | AliceHubProgram | AliceReportPage | AliceReportPdf | AliceStats | CampaignToolkitAsset | Category | Current990FormPdf | CustomPage | DonorPrivacyPolicyPdf | Faq | FoodPantry | FourPillarsHeroComponent | FourPillarsPreview | GetInvolvedHero | GiftAcceptancePolicyPdf | GirlScoutsComponent | HeroComponentOurImpactPage | HomePageHero | HowToContributeComponent | ImpactCarousel | ImpactStatistic | IndividualsPageHero | MobileFoodPantryComponent | NorthwoodsAirLifeline | OurImpactHomePage | Page | PartnerPageHero | PartnersTickerItem | Post | PostFormat | SeniorCenter | Tag | UwContactInfo | ValuesHistory | VitaTaxPrep | YmcaComponent;
 
 /** Connection between the MenuItem type and the Menu type */
@@ -14603,7 +14603,7 @@ export type MobileFoodPantryComponent = ContentNode & DatabaseIdentifier & MenuI
   parent?: Maybe<MobileFoodPantryComponentToParentConnectionEdge>;
   /** The password for the mobile_food_pantry object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the MobileFoodPantryComponent type and the mobileFoodPantryComponent type */
+  /** Connection between the mobileFoodPantryComponent type and the mobileFoodPantryComponent type */
   preview?: Maybe<MobileFoodPantryComponentToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -14740,7 +14740,7 @@ export enum MobileFoodPantryComponentIdType {
   Uri = 'URI'
 }
 
-/** Connection between the MobileFoodPantryComponent type and the mobileFoodPantryComponent type */
+/** Connection between the mobileFoodPantryComponent type and the mobileFoodPantryComponent type */
 export type MobileFoodPantryComponentToMobileFoodPantryComponentConnection = Connection & MobileFoodPantryComponentConnection & {
   __typename?: 'MobileFoodPantryComponentToMobileFoodPantryComponentConnection';
   /** Edges for the MobileFoodPantryComponentToMobileFoodPantryComponentConnection connection */
@@ -14779,7 +14779,7 @@ export type MobileFoodPantryComponentToMobileFoodPantryComponentConnectionPageIn
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the MobileFoodPantryComponent type and the mobileFoodPantryComponent type */
+/** Connection between the mobileFoodPantryComponent type and the mobileFoodPantryComponent type */
 export type MobileFoodPantryComponentToParentConnectionEdge = Edge & MobileFoodPantryComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'MobileFoodPantryComponentToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -14791,7 +14791,7 @@ export type MobileFoodPantryComponentToParentConnectionEdge = Edge & MobileFoodP
   node: MobileFoodPantryComponent;
 };
 
-/** Connection between the MobileFoodPantryComponent type and the mobileFoodPantryComponent type */
+/** Connection between the mobileFoodPantryComponent type and the mobileFoodPantryComponent type */
 export type MobileFoodPantryComponentToPreviewConnectionEdge = Edge & MobileFoodPantryComponentConnectionEdge & OneToOneConnection & {
   __typename?: 'MobileFoodPantryComponentToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -15019,7 +15019,7 @@ export type NorthwoodsAirLifeline = ContentNode & DatabaseIdentifier & MenuItemL
   parent?: Maybe<NorthwoodsAirLifelineToParentConnectionEdge>;
   /** The password for the nrtwds_air_lflne object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the NorthwoodsAirLifeline type and the northwoodsAirLifeline type */
+  /** Connection between the northwoodsAirLifeline type and the northwoodsAirLifeline type */
   preview?: Maybe<NorthwoodsAirLifelineToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -15156,7 +15156,7 @@ export enum NorthwoodsAirLifelineIdType {
   Uri = 'URI'
 }
 
-/** Connection between the NorthwoodsAirLifeline type and the northwoodsAirLifeline type */
+/** Connection between the northwoodsAirLifeline type and the northwoodsAirLifeline type */
 export type NorthwoodsAirLifelineToNorthwoodsAirLifelineConnection = Connection & NorthwoodsAirLifelineConnection & {
   __typename?: 'NorthwoodsAirLifelineToNorthwoodsAirLifelineConnection';
   /** Edges for the NorthwoodsAirLifelineToNorthwoodsAirLifelineConnection connection */
@@ -15195,7 +15195,7 @@ export type NorthwoodsAirLifelineToNorthwoodsAirLifelineConnectionPageInfo = Nor
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the NorthwoodsAirLifeline type and the northwoodsAirLifeline type */
+/** Connection between the northwoodsAirLifeline type and the northwoodsAirLifeline type */
 export type NorthwoodsAirLifelineToParentConnectionEdge = Edge & NorthwoodsAirLifelineConnectionEdge & OneToOneConnection & {
   __typename?: 'NorthwoodsAirLifelineToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -15207,7 +15207,7 @@ export type NorthwoodsAirLifelineToParentConnectionEdge = Edge & NorthwoodsAirLi
   node: NorthwoodsAirLifeline;
 };
 
-/** Connection between the NorthwoodsAirLifeline type and the northwoodsAirLifeline type */
+/** Connection between the northwoodsAirLifeline type and the northwoodsAirLifeline type */
 export type NorthwoodsAirLifelineToPreviewConnectionEdge = Edge & NorthwoodsAirLifelineConnectionEdge & OneToOneConnection & {
   __typename?: 'NorthwoodsAirLifelineToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -15378,7 +15378,7 @@ export type OurImpactHomePage = ContentNode & DatabaseIdentifier & MenuItemLinka
   parent?: Maybe<OurImpactHomePageToParentConnectionEdge>;
   /** The password for the our_impact_home_page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the OurImpactHomePage type and the ourImpactHomePage type */
+  /** Connection between the ourImpactHomePage type and the ourImpactHomePage type */
   preview?: Maybe<OurImpactHomePageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -15472,7 +15472,7 @@ export enum OurImpactHomePageIdType {
   Uri = 'URI'
 }
 
-/** Connection between the OurImpactHomePage type and the ourImpactHomePage type */
+/** Connection between the ourImpactHomePage type and the ourImpactHomePage type */
 export type OurImpactHomePageToOurImpactHomePageConnection = Connection & OurImpactHomePageConnection & {
   __typename?: 'OurImpactHomePageToOurImpactHomePageConnection';
   /** Edges for the OurImpactHomePageToOurImpactHomePageConnection connection */
@@ -15511,7 +15511,7 @@ export type OurImpactHomePageToOurImpactHomePageConnectionPageInfo = OurImpactHo
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the OurImpactHomePage type and the ourImpactHomePage type */
+/** Connection between the ourImpactHomePage type and the ourImpactHomePage type */
 export type OurImpactHomePageToParentConnectionEdge = Edge & OneToOneConnection & OurImpactHomePageConnectionEdge & {
   __typename?: 'OurImpactHomePageToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -15523,7 +15523,7 @@ export type OurImpactHomePageToParentConnectionEdge = Edge & OneToOneConnection 
   node: OurImpactHomePage;
 };
 
-/** Connection between the OurImpactHomePage type and the ourImpactHomePage type */
+/** Connection between the ourImpactHomePage type and the ourImpactHomePage type */
 export type OurImpactHomePageToPreviewConnectionEdge = Edge & OneToOneConnection & OurImpactHomePageConnectionEdge & {
   __typename?: 'OurImpactHomePageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -16173,7 +16173,7 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   parentId?: Maybe<Scalars['ID']['output']>;
   /** The password for the page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the Page type and the page type */
+  /** Connection between the page type and the page type */
   preview?: Maybe<PageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -16413,7 +16413,7 @@ export type PageToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
 
-/** Connection between the Page type and the page type */
+/** Connection between the page type and the page type */
 export type PageToPreviewConnectionEdge = Edge & OneToOneConnection & PageConnectionEdge & {
   __typename?: 'PageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -16631,7 +16631,7 @@ export type PartnerPageHero = ContentNode & DatabaseIdentifier & MenuItemLinkabl
   partnerPageHeroId: Scalars['Int']['output'];
   /** The password for the partner_page_hero object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the PartnerPageHero type and the partnerPageHero type */
+  /** Connection between the partnerPageHero type and the partnerPageHero type */
   preview?: Maybe<PartnerPageHeroToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -16760,7 +16760,7 @@ export enum PartnerPageHeroIdType {
   Uri = 'URI'
 }
 
-/** Connection between the PartnerPageHero type and the partnerPageHero type */
+/** Connection between the partnerPageHero type and the partnerPageHero type */
 export type PartnerPageHeroToParentConnectionEdge = Edge & OneToOneConnection & PartnerPageHeroConnectionEdge & {
   __typename?: 'PartnerPageHeroToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -16772,7 +16772,7 @@ export type PartnerPageHeroToParentConnectionEdge = Edge & OneToOneConnection & 
   node: PartnerPageHero;
 };
 
-/** Connection between the PartnerPageHero type and the partnerPageHero type */
+/** Connection between the partnerPageHero type and the partnerPageHero type */
 export type PartnerPageHeroToPartnerPageHeroConnection = Connection & PartnerPageHeroConnection & {
   __typename?: 'PartnerPageHeroToPartnerPageHeroConnection';
   /** Edges for the PartnerPageHeroToPartnerPageHeroConnection connection */
@@ -16811,7 +16811,7 @@ export type PartnerPageHeroToPartnerPageHeroConnectionPageInfo = PageInfo & Part
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the PartnerPageHero type and the partnerPageHero type */
+/** Connection between the partnerPageHero type and the partnerPageHero type */
 export type PartnerPageHeroToPreviewConnectionEdge = Edge & OneToOneConnection & PartnerPageHeroConnectionEdge & {
   __typename?: 'PartnerPageHeroToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -16892,7 +16892,7 @@ export type PartnersTickerItem = ContentNode & DatabaseIdentifier & MenuItemLink
   partnersTickerItemId: Scalars['Int']['output'];
   /** The password for the partners_ticker object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the PartnersTickerItem type and the partnersTickerItem type */
+  /** Connection between the partnersTickerItem type and the partnersTickerItem type */
   preview?: Maybe<PartnersTickerItemToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -17025,7 +17025,7 @@ export enum PartnersTickerItemIdType {
   Uri = 'URI'
 }
 
-/** Connection between the PartnersTickerItem type and the partnersTickerItem type */
+/** Connection between the partnersTickerItem type and the partnersTickerItem type */
 export type PartnersTickerItemToParentConnectionEdge = Edge & OneToOneConnection & PartnersTickerItemConnectionEdge & {
   __typename?: 'PartnersTickerItemToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -17037,7 +17037,7 @@ export type PartnersTickerItemToParentConnectionEdge = Edge & OneToOneConnection
   node: PartnersTickerItem;
 };
 
-/** Connection between the PartnersTickerItem type and the partnersTickerItem type */
+/** Connection between the partnersTickerItem type and the partnersTickerItem type */
 export type PartnersTickerItemToPartnersTickerItemConnection = Connection & PartnersTickerItemConnection & {
   __typename?: 'PartnersTickerItemToPartnersTickerItemConnection';
   /** Edges for the PartnersTickerItemToPartnersTickerItemConnection connection */
@@ -17076,7 +17076,7 @@ export type PartnersTickerItemToPartnersTickerItemConnectionPageInfo = PageInfo 
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Connection between the PartnersTickerItem type and the partnersTickerItem type */
+/** Connection between the partnersTickerItem type and the partnersTickerItem type */
 export type PartnersTickerItemToPreviewConnectionEdge = Edge & OneToOneConnection & PartnersTickerItemConnectionEdge & {
   __typename?: 'PartnersTickerItemToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -17266,7 +17266,7 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
    * @deprecated Deprecated in favor of the databaseId field
    */
   postId: Scalars['Int']['output'];
-  /** Connection between the Post type and the post type */
+  /** Connection between the post type and the post type */
   preview?: Maybe<PostToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -18072,7 +18072,7 @@ export type PostToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToParentConnectionEdge = Edge & OneToOneConnection & PostConnectionEdge & {
   __typename?: 'PostToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -18084,7 +18084,7 @@ export type PostToParentConnectionEdge = Edge & OneToOneConnection & PostConnect
   node: Post;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToPostConnection = Connection & PostConnection & {
   __typename?: 'PostToPostConnection';
   /** Edges for the PostToPostConnection connection */
@@ -18200,7 +18200,7 @@ export type PostToPostFormatConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToPreviewConnectionEdge = Edge & OneToOneConnection & PostConnectionEdge & {
   __typename?: 'PostToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -24904,7 +24904,7 @@ export type SeniorCenter = ContentNode & DatabaseIdentifier & MenuItemLinkable &
   parent?: Maybe<SeniorCenterToParentConnectionEdge>;
   /** The password for the senior_center object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the SeniorCenter type and the seniorCenter type */
+  /** Connection between the seniorCenter type and the seniorCenter type */
   preview?: Maybe<SeniorCenterToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -25044,7 +25044,7 @@ export enum SeniorCenterIdType {
   Uri = 'URI'
 }
 
-/** Connection between the SeniorCenter type and the seniorCenter type */
+/** Connection between the seniorCenter type and the seniorCenter type */
 export type SeniorCenterToParentConnectionEdge = Edge & OneToOneConnection & SeniorCenterConnectionEdge & {
   __typename?: 'SeniorCenterToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -25056,7 +25056,7 @@ export type SeniorCenterToParentConnectionEdge = Edge & OneToOneConnection & Sen
   node: SeniorCenter;
 };
 
-/** Connection between the SeniorCenter type and the seniorCenter type */
+/** Connection between the seniorCenter type and the seniorCenter type */
 export type SeniorCenterToPreviewConnectionEdge = Edge & OneToOneConnection & SeniorCenterConnectionEdge & {
   __typename?: 'SeniorCenterToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -25065,7 +25065,7 @@ export type SeniorCenterToPreviewConnectionEdge = Edge & OneToOneConnection & Se
   node: SeniorCenter;
 };
 
-/** Connection between the SeniorCenter type and the seniorCenter type */
+/** Connection between the seniorCenter type and the seniorCenter type */
 export type SeniorCenterToSeniorCenterConnection = Connection & SeniorCenterConnection & {
   __typename?: 'SeniorCenterToSeniorCenterConnection';
   /** Edges for the SeniorCenterToSeniorCenterConnection connection */
@@ -28253,7 +28253,7 @@ export type UwContactInfo = ContentNode & DatabaseIdentifier & MenuItemLinkable 
   parent?: Maybe<UwContactInfoToParentConnectionEdge>;
   /** The password for the uw_contact_info object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the UwContactInfo type and the uwContactInfo type */
+  /** Connection between the uwContactInfo type and the uwContactInfo type */
   preview?: Maybe<UwContactInfoToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -28354,7 +28354,7 @@ export enum UwContactInfoIdType {
   Uri = 'URI'
 }
 
-/** Connection between the UwContactInfo type and the uwContactInfo type */
+/** Connection between the uwContactInfo type and the uwContactInfo type */
 export type UwContactInfoToParentConnectionEdge = Edge & OneToOneConnection & UwContactInfoConnectionEdge & {
   __typename?: 'UwContactInfoToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28366,7 +28366,7 @@ export type UwContactInfoToParentConnectionEdge = Edge & OneToOneConnection & Uw
   node: UwContactInfo;
 };
 
-/** Connection between the UwContactInfo type and the uwContactInfo type */
+/** Connection between the uwContactInfo type and the uwContactInfo type */
 export type UwContactInfoToPreviewConnectionEdge = Edge & OneToOneConnection & UwContactInfoConnectionEdge & {
   __typename?: 'UwContactInfoToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28375,7 +28375,7 @@ export type UwContactInfoToPreviewConnectionEdge = Edge & OneToOneConnection & U
   node: UwContactInfo;
 };
 
-/** Connection between the UwContactInfo type and the uwContactInfo type */
+/** Connection between the uwContactInfo type and the uwContactInfo type */
 export type UwContactInfoToUwContactInfoConnection = Connection & UwContactInfoConnection & {
   __typename?: 'UwContactInfoToUwContactInfoConnection';
   /** Edges for the UwContactInfoToUwContactInfoConnection connection */
@@ -28571,7 +28571,7 @@ export type ValuesHistory = ContentNode & DatabaseIdentifier & MenuItemLinkable 
   parent?: Maybe<ValuesHistoryToParentConnectionEdge>;
   /** The password for the values_history object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the ValuesHistory type and the valuesHistory type */
+  /** Connection between the valuesHistory type and the valuesHistory type */
   preview?: Maybe<ValuesHistoryToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -28678,7 +28678,7 @@ export enum ValuesHistoryIdType {
   Uri = 'URI'
 }
 
-/** Connection between the ValuesHistory type and the valuesHistory type */
+/** Connection between the valuesHistory type and the valuesHistory type */
 export type ValuesHistoryToParentConnectionEdge = Edge & OneToOneConnection & ValuesHistoryConnectionEdge & {
   __typename?: 'ValuesHistoryToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28690,7 +28690,7 @@ export type ValuesHistoryToParentConnectionEdge = Edge & OneToOneConnection & Va
   node: ValuesHistory;
 };
 
-/** Connection between the ValuesHistory type and the valuesHistory type */
+/** Connection between the valuesHistory type and the valuesHistory type */
 export type ValuesHistoryToPreviewConnectionEdge = Edge & OneToOneConnection & ValuesHistoryConnectionEdge & {
   __typename?: 'ValuesHistoryToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28699,7 +28699,7 @@ export type ValuesHistoryToPreviewConnectionEdge = Edge & OneToOneConnection & V
   node: ValuesHistory;
 };
 
-/** Connection between the ValuesHistory type and the valuesHistory type */
+/** Connection between the valuesHistory type and the valuesHistory type */
 export type ValuesHistoryToValuesHistoryConnection = Connection & ValuesHistoryConnection & {
   __typename?: 'ValuesHistoryToValuesHistoryConnection';
   /** Edges for the ValuesHistoryToValuesHistoryConnection connection */
@@ -28803,7 +28803,7 @@ export type VitaTaxPrep = ContentNode & DatabaseIdentifier & MenuItemLinkable & 
   parent?: Maybe<VitaTaxPrepToParentConnectionEdge>;
   /** The password for the vita_tax_prep object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the VitaTaxPrep type and the vitaTaxPrep type */
+  /** Connection between the vitaTaxPrep type and the vitaTaxPrep type */
   preview?: Maybe<VitaTaxPrepToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -28904,7 +28904,7 @@ export enum VitaTaxPrepIdType {
   Uri = 'URI'
 }
 
-/** Connection between the VitaTaxPrep type and the vitaTaxPrep type */
+/** Connection between the vitaTaxPrep type and the vitaTaxPrep type */
 export type VitaTaxPrepToParentConnectionEdge = Edge & OneToOneConnection & VitaTaxPrepConnectionEdge & {
   __typename?: 'VitaTaxPrepToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28916,7 +28916,7 @@ export type VitaTaxPrepToParentConnectionEdge = Edge & OneToOneConnection & Vita
   node: VitaTaxPrep;
 };
 
-/** Connection between the VitaTaxPrep type and the vitaTaxPrep type */
+/** Connection between the vitaTaxPrep type and the vitaTaxPrep type */
 export type VitaTaxPrepToPreviewConnectionEdge = Edge & OneToOneConnection & VitaTaxPrepConnectionEdge & {
   __typename?: 'VitaTaxPrepToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -28925,7 +28925,7 @@ export type VitaTaxPrepToPreviewConnectionEdge = Edge & OneToOneConnection & Vit
   node: VitaTaxPrep;
 };
 
-/** Connection between the VitaTaxPrep type and the vitaTaxPrep type */
+/** Connection between the vitaTaxPrep type and the vitaTaxPrep type */
 export type VitaTaxPrepToVitaTaxPrepConnection = Connection & VitaTaxPrepConnection & {
   __typename?: 'VitaTaxPrepToVitaTaxPrepConnection';
   /** Edges for the VitaTaxPrepToVitaTaxPrepConnection connection */
@@ -29313,7 +29313,7 @@ export type YmcaComponent = ContentNode & DatabaseIdentifier & MenuItemLinkable 
   parent?: Maybe<YmcaComponentToParentConnectionEdge>;
   /** The password for the ymca_comp object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the YmcaComponent type and the ymcaComponent type */
+  /** Connection between the ymcaComponent type and the ymcaComponent type */
   preview?: Maybe<YmcaComponentToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -29414,7 +29414,7 @@ export enum YmcaComponentIdType {
   Uri = 'URI'
 }
 
-/** Connection between the YmcaComponent type and the ymcaComponent type */
+/** Connection between the ymcaComponent type and the ymcaComponent type */
 export type YmcaComponentToParentConnectionEdge = Edge & OneToOneConnection & YmcaComponentConnectionEdge & {
   __typename?: 'YmcaComponentToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -29426,7 +29426,7 @@ export type YmcaComponentToParentConnectionEdge = Edge & OneToOneConnection & Ym
   node: YmcaComponent;
 };
 
-/** Connection between the YmcaComponent type and the ymcaComponent type */
+/** Connection between the ymcaComponent type and the ymcaComponent type */
 export type YmcaComponentToPreviewConnectionEdge = Edge & OneToOneConnection & YmcaComponentConnectionEdge & {
   __typename?: 'YmcaComponentToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -29435,7 +29435,7 @@ export type YmcaComponentToPreviewConnectionEdge = Edge & OneToOneConnection & Y
   node: YmcaComponent;
 };
 
-/** Connection between the YmcaComponent type and the ymcaComponent type */
+/** Connection between the ymcaComponent type and the ymcaComponent type */
 export type YmcaComponentToYmcaComponentConnection = Connection & YmcaComponentConnection & {
   __typename?: 'YmcaComponentToYmcaComponentConnection';
   /** Edges for the YmcaComponentToYmcaComponentConnection connection */
