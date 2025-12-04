@@ -186,21 +186,21 @@
                 {#if item.img}
                   <div
                     class={cn(
-                      isPriority ? 'min-w-[50%]' : '',
+                      isPriority ? 'min-w-[40%]' : '',
                       'max-w-[40%] relative md:overflow-hidden p-4 bg-transparent',
                     )}
                   >
                     <img
                       src={item.img}
                       alt={item.imgAlt ?? ''}
-                      class=" h-full max-h-[400px] object-cover aspect-auto mx-auto group-hover:scale-105 transition-transform duration-300"
+                      class=" h-full max-h-[400px] aspect-auto mx-auto group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                       decoding="async"
                     />
                     <div class="md:absolute inset-0 bg-linear-to-r from-primary-blue-2/50 to-transparent"></div>
                   </div>
                 {/if}
-                <div class="p-2 max-w-[50%]">
+                <div class="p-2 max-w-[40%]">
                   <h3 class="text-xl font-bold mb-3 text-tertiary-black-2">{item.title}</h3>
                   <p class="text-tertiary-black-2 mb-3 leading-relaxed w-7/8">{item.text}</p>
                   {#if item.subtext}
