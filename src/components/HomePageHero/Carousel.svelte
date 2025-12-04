@@ -33,18 +33,18 @@
 
   const carouselId = `carousel-${Math.random().toString(36).substring(2, 9)}`;
 
-  const itemsPerPage = isPriority ? 2 : 3;
+  const itemsPerPage = $derived(() => (isPriority ? 2 : 3));
 
   function parseItemsGroups(items: HomePageHeroFeature[]) {
     let featureItemsMut = [...items];
 
     let itemsGroups: HomePageHeroFeature[][] = [];
 
-    const iterations = Math.ceil(items.length / itemsPerPage);
+    const iterations = Math.ceil(items.length / itemsPerPage());
     for (let i = 0; i < iterations; i++) {
-      if (featureItemsMut.length >= itemsPerPage) {
-        const group = featureItemsMut.slice(0, itemsPerPage);
-        const rest = featureItemsMut.slice(itemsPerPage);
+      if (featureItemsMut.length >= itemsPerPage()) {
+        const group = featureItemsMut.slice(0, itemsPerPage());
+        const rest = featureItemsMut.slice(itemsPerPage());
 
         itemsGroups.push(group);
         featureItemsMut = rest;
@@ -60,7 +60,7 @@
   let itemsGroups = $derived(parseItemsGroups(featureItems));
 
   function shouldFlexGrow(itemGroup: HomePageHeroFeature[], index: number) {
-    if (itemGroup.length % itemsPerPage === 0) {
+    if (itemGroup.length % itemsPerPage() === 0) {
       return true;
     } else {
       if (index === itemGroup.length - 1) {
