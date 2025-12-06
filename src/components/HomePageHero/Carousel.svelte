@@ -26,10 +26,20 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
+  $effect(() => {
+    console.log('feature items: ', featureItems);
+    if (stupidDebuggingChange) {
+      stupidDebuggingChange = false;
+    } else {
+      stupidDebuggingChange = true;
+    }
+  });
+
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
   let isHovered = $state(false);
   let isTransitioning = $state(false);
+  let stupidDebuggingChange = $state(false);
 
   const carouselId = `carousel-${Math.random().toString(36).substring(2, 9)}`;
 
