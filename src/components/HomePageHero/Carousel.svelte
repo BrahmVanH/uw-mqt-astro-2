@@ -26,14 +26,7 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
-  $effect(() => {
-    console.log('feature items: ', featureItems);
-    if (stupidDebuggingChange) {
-      stupidDebuggingChange = false;
-    } else {
-      stupidDebuggingChange = true;
-    }
-  });
+  console.log('feature items: ', featureItems);
 
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
