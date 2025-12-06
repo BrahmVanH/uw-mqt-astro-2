@@ -27,7 +27,6 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
-
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
   let isHovered = $state(false);
@@ -194,7 +193,7 @@
                     )}
                   >
                     <img
-                      src={item.img ?? item.image}
+                      src={item.img ?? item.image.node.sourceUrl}
                       alt={item.imgAlt ?? ''}
                       class=" h-full max-h-[400px] aspect-auto mx-auto group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
