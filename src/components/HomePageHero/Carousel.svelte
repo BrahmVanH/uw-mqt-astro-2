@@ -26,7 +26,9 @@
 
   let { featureItems, isPriority, timer }: Props = $props();
 
-  console.log("feature items: ", featureItems);
+  $effect(() => {
+    console.log('feature items: ', featureItems);
+  });
 
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
