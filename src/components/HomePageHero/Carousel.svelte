@@ -22,11 +22,10 @@
     imgAlt?: string;
     optionalMedia?: string;
     optionalMediaTitle?: string;
+    image: { node: { altText: string; sourceUrl: string } };
   }
 
   let { featureItems, isPriority, timer }: Props = $props();
-
-  console.log('feature items: ', featureItems);
 
   let currentGroupIndex = $state(0);
   let intervalId: ReturnType<typeof setInterval> | null = null;
@@ -186,7 +185,7 @@
                 class="group flex flex-row items-center justify-evenly bg-primary-blue-1/20 backdrop-blur-md border border-primary-blue-4/30 rounded-xl p-2 hover:bg-primary-blue-1/30 transition-all duration-300 w-full h-full"
                 role="region"
               >
-                {#if item.img}
+                {#if item.img || item.image}
                   <div
                     class={cn(
                       isPriority ? 'min-w-[40%]' : '',
@@ -194,7 +193,7 @@
                     )}
                   >
                     <img
-                      src={item.img}
+                      src={item.img ?? item.image.node.sourceUrl}
                       alt={item.imgAlt ?? ''}
                       class=" h-full max-h-[400px] aspect-auto mx-auto group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
