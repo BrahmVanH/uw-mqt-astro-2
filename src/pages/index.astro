@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import getPageContent, { getAuthTokens } from '@/lib/API';
+import getPageContent from '@/lib/API';
 
 import Layout from '@/layouts/DefaultLayout.astro';
 
@@ -16,11 +16,11 @@ import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/c
 import VolunteerNeeds, { createProps as createVolunteerNeedsProps } from '@/components/VolunteerNeeds.astro';
 import { onError } from '@/lib/error';
 
-import { HomePageHero, HomePageHeroVariant, createProps as createHeroProps } from '@/components/HomePageHero';
-// import HomePageHero, { createProps as createHeroProps } from '@/components/HomePageHero/index.astro';
+import { createProps as createHeroProps } from '@/components/HomePageHero';
+import HomePageHero from '@/components/HomePageHero/index.astro';
+import HomePageHeroVariant from '@/components/HomePageHero/Variant1.astro';
 import Loading from '@/components/Loading.astro';
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
-// import wpWebhook from '@/lib/wpWebhook';
 
 if (import.meta.env.PROD) {
   Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 2}, s-maxage=${60 * 60 * 2}`);

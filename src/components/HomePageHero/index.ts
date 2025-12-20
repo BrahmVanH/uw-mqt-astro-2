@@ -35,18 +35,27 @@ function createProps(graphQLContent: RootQueryToHomePageHeroConnection, Astro: A
 
   const root = graphQLContent?.nodes[0]?.homePageHeroFields;
   const featureEntries = Object.entries(root).filter((field) => field[0].toLowerCase().startsWith('feature'))
-  let features: HomePageHeroFeature[] = featureEntries.map((entry) => entry[1]) as HomePageHeroFeature[]
-  features = features.filter((feature) => feature.title  && feature.text ).map((feature, i) => {
-    return {
-      ...feature,
-      linkTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLink ?? '',
-      linkTextTwo: (root[`feature${i + 1}` as keyof typeof root] as any)?.secondLinkText ?? '',
-      img: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.sourceUrl ?? '',
-      imgAlt: (root[`feature${i + 1}` as keyof typeof root] as any)?.image?.node?.altText ?? '',
-      optionalMedia: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
-      optionalMediaTitle: (root[`feature${i + 1}` as keyof typeof root] as any)?.optionalMediaLabel ?? '',
-    }
-  }).reverse();
+
+  let features: HomePageHeroFeature[] = featureEntries
+    .map((entry) => {
+      const [key, value] = entry;
+      const featureNum = key.match(/\d+/)?.[0]; // Extract the feature number from the key
+      return { featureNum, feature: value as HomePageHeroFeature };
+    })
+    .filter(({ feature }) => feature.title && feature.text)
+    .map(({ featureNum, feature }) => {
+      const featureKey = `feature${featureNum}` as keyof typeof root;
+      return {
+        ...feature,
+        linkTwo: (root[featureKey] as any)?.secondLink ?? '',
+        linkTextTwo: (root[featureKey] as any)?.secondLinkText ?? '',
+        img: (root[featureKey] as any)?.image?.node?.sourceUrl ?? '',
+        imgAlt: (root[featureKey] as any)?.image?.node?.altText ?? '',
+        optionalMedia: (root[featureKey] as any)?.optionalMedia?.node?.mediaItemUrl ?? '',
+        optionalMediaTitle: (root[featureKey] as any)?.optionalMediaLabel ?? '',
+      };
+    })
+    .reverse();
 
 
 
@@ -62,8 +71,5 @@ function createProps(graphQLContent: RootQueryToHomePageHeroConnection, Astro: A
   };
 }
 
-// export { createProps, HomePageHero, HomePageHeroVariant }
 
 export { createProps };
-export { default as HomePageHero } from './index.astro';
-export { default as HomePageHeroVariant } from './Variant1.astro';
