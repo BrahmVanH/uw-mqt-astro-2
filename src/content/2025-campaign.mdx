@@ -5,7 +5,8 @@ description: 'Join us in making a lasting impact in Marquette County. Our 2025 c
 requiresGraphqlQuery: false
 ---
 
-import { CAMPAIGN_2025_IMG_1, CAMPAIGN_2025_IMG_2, CAMPAIGN_2025_DONATE_LINK } from '../lib/constants';
+import { CAMPAIGN_2025_IMG_1, CAMPAIGN_2025_IMG_2, CAMPAIGN_2025_DONATE_LINK, ANNUAL_CAMPAIGN_YOUTUBE_LINK } from '../lib/constants';
+import {YouTube} from '@astro-community/astro-embed-youtube';
 import DonateBtn from '../components/DonateBtn.astro';
 
 <div className="col-span-2">
@@ -31,15 +32,10 @@ import DonateBtn from '../components/DonateBtn.astro';
 </div>
 
 
-{CAMPAIGN_2025_IMG_1 && (
-
-<img
-  loading="lazy"
-  decoding="async"
-  src={CAMPAIGN_2025_IMG_1}
-  alt="Child in hospital bed with parents at side and dog at foot of bed. "
-  class="w-full"
-/>
+{ ANNUAL_CAMPAIGN_YOUTUBE_LINK && (
+  <div class="w-full">
+    <YouTube id={ANNUAL_CAMPAIGN_YOUTUBE_LINK}/>
+  </div>
 )}
 
 <div className="col-span-2">
