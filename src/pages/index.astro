@@ -137,7 +137,7 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
         {heroProps.features.length > 0 ? <HomePageHeroVariant {...heroProps} /> : <HomePageHero {...heroProps} />}
       </div>
       <div class='contents md:hidden'>
-        <HomePageHero {...heroProps} client:load />
+        <HomePageHero {...heroProps} />
       </div>
     </section>
 
