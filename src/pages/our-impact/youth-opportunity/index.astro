@@ -6,17 +6,29 @@ import getPageContent from '@/lib/API';
 // component imports
 import Layout from '@/layouts/DefaultLayout.astro';
 
-import FourPillarsHero, { type Props as HeroProps, Pillar, createProps as createHeroProps } from '@/components/FourPillarsHero.astro';
-import HowToContribute, { type Props as HowToContributeProps, createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
+import FourPillarsHero, {
+  type Props as HeroProps,
+  Pillar,
+  createProps as createHeroProps,
+} from '@/components/FourPillarsHero.astro';
+import HowToContribute, {
+  type Props as HowToContributeProps,
+  createProps as createHowToContributeProps,
+} from '@/components/HowToContribute.astro';
 import GirlScouts, { createProps as createGirlScoutsProps } from '@/components/GirlScouts.astro';
 import YMCA, { createProps as createYmcaProps } from '@/components/YMCA.astro';
 import type { YouthOpportunityPageQueryResponse } from '@/types';
 import { onError } from '@/lib/error';
 import NWA, { createProps as createNwaProps } from '@/components/NWA.astro';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', 'path:/our-impact/youth-opportunity');
+  Astro.response.headers.set('Netlify-Cache-Tag', 'path:/our-impact/youth-opportunity');
+}
 
 const path = Astro.url.pathname;
 const pageName = Pillar.YOUTH_OPPORTUNITY;
@@ -26,12 +38,12 @@ const queryResponse = await getPageContent(path);
 const pageContent: YouthOpportunityPageQueryResponse = queryResponse;
 
 if (!pageContent) {
-	onError('No data returned from the server youth opportunity page query', Astro);
+  onError('No data returned from the server youth opportunity page query', Astro);
 }
 
 const heroContent = pageContent?.fourPillarsHeroComponents;
 if (!heroContent) {
-	onError('No hero content returned from the server', Astro);
+  onError('No hero content returned from the server', Astro);
 }
 const heroProps: HeroProps = createHeroProps(heroContent, pageName);
 
@@ -53,32 +65,32 @@ const ymcaProps = createYmcaProps(ymcaContent);
 ---
 
 <Layout title={'Youth Opportunity | Untied Way Marquette County'}>
-	<main id='main-content'>
-		<h2 class='sr-only'>Youth Opportunity Programs</h2>
+  <main id='main-content'>
+    <h2 class='sr-only'>Youth Opportunity Programs</h2>
 
-		<section aria-labelledby='hero-section'>
-			<h2 id='hero-section' class='sr-only'>Welcome</h2>
-			<FourPillarsHero {...heroProps} />
-		</section>
+    <section aria-labelledby='hero-section'>
+      <h2 id='hero-section' class='sr-only'>Welcome</h2>
+      <FourPillarsHero {...heroProps} />
+    </section>
 
-		<section aria-labelledby='ymca-section'>
-			<h2 id='ymca-section' class='sr-only'>YMCA Programs</h2>
-			<YMCA {...ymcaProps} />
-		</section>
+    <section aria-labelledby='ymca-section'>
+      <h2 id='ymca-section' class='sr-only'>YMCA Programs</h2>
+      <YMCA {...ymcaProps} />
+    </section>
 
-		<section aria-labelledby='nwa-section'>
-			<h2 id='nwa-section' class='sr-only'>Northwoods Air Lifeline</h2>
-			<NWA {...nwaProps} />
-		</section>
+    <section aria-labelledby='nwa-section'>
+      <h2 id='nwa-section' class='sr-only'>Northwoods Air Lifeline</h2>
+      <NWA {...nwaProps} />
+    </section>
 
-		<section aria-labelledby='girl-scouts-section'>
-			<h2 id='girl-scouts-section' class='sr-only'>Girl Scouts Programs</h2>
-			<GirlScouts {...girlScoutsProps} />
-		</section>
+    <section aria-labelledby='girl-scouts-section'>
+      <h2 id='girl-scouts-section' class='sr-only'>Girl Scouts Programs</h2>
+      <GirlScouts {...girlScoutsProps} />
+    </section>
 
-		<section aria-labelledby='contribute-section'>
-			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
-			<HowToContribute {...howToContributeProps} />
-		</section>
-	</main>
+    <section aria-labelledby='contribute-section'>
+      <h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
+      <HowToContribute {...howToContributeProps} />
+    </section>
+  </main>
 </Layout>

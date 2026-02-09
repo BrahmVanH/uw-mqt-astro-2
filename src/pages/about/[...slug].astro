@@ -8,40 +8,45 @@ import getPageContent from '@/lib/API';
 import Loading from '@/components/Loading.astro';
 import { getDefaultPageProps } from '@/lib/error';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', `path:${Astro.url.pathname}`);
+  Astro.response.headers.set('Netlify-Cache-Tag', `path:${Astro.url.pathname}`);
+}
 
 const { pathname } = Astro.url;
 if (!pathname) {
-	return getDefaultPageProps('No pathname found in the URL about/[...slug]', Astro);
+  return getDefaultPageProps('No pathname found in the URL about/[...slug]', Astro);
 }
 
 const entry = await getEntry('about', pathname);
 if (!entry || !entry?.data) {
-	return getDefaultPageProps('No entry found about/[...slug]', Astro);
+  return getDefaultPageProps('No entry found about/[...slug]', Astro);
 }
 
 let queryData = null;
 
 if (entry.data.requiresGraphqlQuery) {
-	const path = Astro.url.pathname;
-	const graphQLContent = await getPageContent(path);
-	if (!graphQLContent) {
-		return getDefaultPageProps('No content collection page data returned from the server about/[...slug]', Astro);
-	}
-	queryData = graphQLContent;
+  const path = Astro.url.pathname;
+  const graphQLContent = await getPageContent(path);
+  if (!graphQLContent) {
+    return getDefaultPageProps('No content collection page data returned from the server about/[...slug]', Astro);
+  }
+  queryData = graphQLContent;
 }
 
 if (!queryData && entry.data.requiresGraphqlQuery) {
-	return getDefaultPageProps('No query data returned from the server about/[...slug]', Astro);
+  return getDefaultPageProps('No query data returned from the server about/[...slug]', Astro);
 }
 
 const { Content } = await render(entry);
 ---
 
 <MdPagesLayout frontmatter={entry.data}>
-	<Prose>
-		{entry.data.requiresGraphqlQuery ? queryData ? <Content queryData={queryData} /> : <Loading /> : <Content />}
-	</Prose>
+  <Prose>
+    {entry.data.requiresGraphqlQuery ? queryData ? <Content queryData={queryData} /> : <Loading /> : <Content />}
+  </Prose>
 </MdPagesLayout>

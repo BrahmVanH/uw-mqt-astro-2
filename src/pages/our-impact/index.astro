@@ -7,16 +7,23 @@ import getPageContent from '@/lib/API';
 import Layout from '@/layouts/DefaultLayout.astro';
 import OurImpactPageHero, { createProps as createHeroProps } from '@/components/OurImpactPageHero.astro';
 import OurImpactStats, { createProps as createImpactStatsProps } from '@/components/OurImpactStatsSvelte/index.astro';
-import FourPillarsCards, { createProps as createFourPillarsPreviewProps } from '@/components/FourPillarsPreview/index.astro';
+import FourPillarsCards, {
+  createProps as createFourPillarsPreviewProps,
+} from '@/components/FourPillarsPreview/index.astro';
 import HowToContribute, { createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
 import type { OurImpactPageQueryResponse } from '@/types';
 import FAQs from '@/components/FAQs.svelte';
 import { createProps as createFaqsProps } from '@/config/faqs';
 import { onError } from '@/lib/error';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', 'path:/our-impact');
+  Astro.response.headers.set('Netlify-Cache-Tag', 'path:/our-impact');
+}
 
 const path = Astro.url.pathname;
 const queryResponse = await getPageContent(path);
@@ -24,7 +31,7 @@ const queryResponse = await getPageContent(path);
 const pageContent: OurImpactPageQueryResponse = queryResponse;
 
 if (!pageContent) {
-	onError('No data returned from the server our impact page query', Astro);
+  onError('No data returned from the server our impact page query', Astro);
 }
 
 const heroContent = pageContent?.heroComponentOurImpactPages;
@@ -46,40 +53,40 @@ const faqProps = createFaqsProps(pageContent?.faqs);
 ---
 
 <Layout title={'Our Impact | United Way Marquette County'}>
-	<main id='main-content' class='flow'>
-		<h2 class='sr-only'>Our Impact</h2>
-		<OurImpactPageHero {...heroProps} />
-		<div class='content-sections'>
-			<section aria-labelledby='pillars-title'>
-				<h2 id='pillars-title' class='sr-only'>Our Four Pillars</h2>
-				<FourPillarsCards {...fourPillarsProps} />
-			</section>
+  <main id='main-content' class='flow'>
+    <h2 class='sr-only'>Our Impact</h2>
+    <OurImpactPageHero {...heroProps} />
+    <div class='content-sections'>
+      <section aria-labelledby='pillars-title'>
+        <h2 id='pillars-title' class='sr-only'>Our Four Pillars</h2>
+        <FourPillarsCards {...fourPillarsProps} />
+      </section>
 
-			<section aria-labelledby='contribute-title'>
-				<h2 id='contribute-title' class='sr-only'>How To Contribute</h2>
-				<HowToContribute {...howToContributeProps} />
-			</section>
+      <section aria-labelledby='contribute-title'>
+        <h2 id='contribute-title' class='sr-only'>How To Contribute</h2>
+        <HowToContribute {...howToContributeProps} />
+      </section>
 
-			<section aria-labelledby='stats-title'>
-				<h2 id='stats-title' class='sr-only'>Impact Statistics</h2>
-				<OurImpactStats {...ourImpactStatsProps} />
-			</section>
+      <section aria-labelledby='stats-title'>
+        <h2 id='stats-title' class='sr-only'>Impact Statistics</h2>
+        <OurImpactStats {...ourImpactStatsProps} />
+      </section>
 
-			<section aria-labelledby='faq-title'>
-				<h2 id='faq-title' class='sr-only'>Frequently Asked Questions</h2>
-				<FAQs {...faqProps} client:visible />
-			</section>
-		</div>
-	</main>
+      <section aria-labelledby='faq-title'>
+        <h2 id='faq-title' class='sr-only'>Frequently Asked Questions</h2>
+        <FAQs {...faqProps} client:visible />
+      </section>
+    </div>
+  </main>
 </Layout>
 
 <style>
-	.flow > * + * {
-		margin-top: var(--flow-space, 1rem);
-	}
-	[data-icon] {
-		color: black;
-		stroke: black;
-		fill: hwb(0 0% 100%);
-	}
+  .flow > * + * {
+    margin-top: var(--flow-space, 1rem);
+  }
+  [data-icon] {
+    color: black;
+    stroke: black;
+    fill: hwb(0 0% 100%);
+  }
 </style>

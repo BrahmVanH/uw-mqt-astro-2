@@ -9,9 +9,14 @@ import IndividualsPageHero, { createProps as createHeroProps } from '@/component
 import OurImpactCarousel, { createProps as createImpactCarouselProps } from '@/components/OurImpactCarousel.svelte';
 import type { IndividualsPageQueryResponse } from '@/types';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', 'path:/get-involved/individuals');
+  Astro.response.headers.set('Netlify-Cache-Tag', 'path:/get-involved/individuals');
+}
 
 const path = Astro.url.pathname;
 
@@ -27,22 +32,22 @@ const impactCarouselProps = createImpactCarouselProps(impactCarouselContent);
 ---
 
 <Layout title='United Way of Marquette County'>
-	<main id='main-content' class='w-full mx-auto max-w-[1800px]'>
-		<h2 class='sr-only'>Get Involved as an Individual</h2>
+  <main id='main-content' class='w-full mx-auto max-w-[1800px]'>
+    <h2 class='sr-only'>Get Involved as an Individual</h2>
 
-		<section aria-labelledby='hero-section'>
-			<h2 id='hero-section' class='sr-only'>Welcome</h2>
-			<IndividualsPageHero {...heroProps} />
-		</section>
+    <section aria-labelledby='hero-section'>
+      <h2 id='hero-section' class='sr-only'>Welcome</h2>
+      <IndividualsPageHero {...heroProps} />
+    </section>
 
-		<section aria-labelledby='volunteer-section'>
-			<h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
-			<VolunteerNeeds {...volunteerNeedsProps} />
-		</section>
+    <section aria-labelledby='volunteer-section'>
+      <h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
+      <VolunteerNeeds {...volunteerNeedsProps} />
+    </section>
 
-		<section aria-labelledby='impact-section'>
-			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:visible />
-		</section>
-	</main>
+    <section aria-labelledby='impact-section'>
+      <h2 id='impact-section' class='sr-only'>Our Impact</h2>
+      <OurImpactCarousel {...impactCarouselProps} client:visible />
+    </section>
+  </main>
 </Layout>

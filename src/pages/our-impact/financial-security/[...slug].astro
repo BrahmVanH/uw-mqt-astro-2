@@ -6,24 +6,29 @@ import Prose from '@/components/Prose/FinancialSecurityPage.astro';
 import { getEntry, render } from 'astro:content';
 import { getDefaultPageProps } from '@/lib/error';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', `path:${Astro.url.pathname}`);
+  Astro.response.headers.set('Netlify-Cache-Tag', `path:${Astro.url.pathname}`);
+}
 
 const { pathname } = Astro.url;
 if (!pathname) {
-	return getDefaultPageProps('No slug found in the URL financial-security/[...slug]', Astro);
+  return getDefaultPageProps('No slug found in the URL financial-security/[...slug]', Astro);
 }
 
 const entry = await getEntry('financialSecurity', pathname);
 if (!entry) {
-	return getDefaultPageProps('No entry found financial-security/[...slug]', Astro);
+  return getDefaultPageProps('No entry found financial-security/[...slug]', Astro);
 }
 const { Content } = await render(entry);
 ---
 
 <MdPagesLayout frontmatter={entry.data}>
-	<Prose>
-		<Content />
-	</Prose>
+  <Prose>
+    <Content />
+  </Prose>
 </MdPagesLayout>
