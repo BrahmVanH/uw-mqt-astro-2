@@ -36,22 +36,14 @@ export function createProps(wpContent: RootQueryToImpactStatisticConnection): Pr
   const root = wpContent?.nodes[0]?.ourImpactStatisticFields;
 
   const stats = root?.stats ?? {};
-  // const gallery = root?.gallery ?? {};
 
-  // Turn object from wordpress into an array of stats objects
   const statsArray: IStatistic[] = Array.from({ length: 6 }, (_, i) => ({
     unit: (stats[`unit${i + 1}` as keyof typeof stats] as string) ?? '',
     value: (stats[`value${i + 1}` as keyof typeof stats] as string) ?? '',
     text: (stats[`text${i + 1}` as keyof typeof stats] as string) ?? '',
   }));
 
-  //  Turn object from wordpress into an array of gallery objects
-  // const statsGalleryArray: UWGalleryItem[] = Array.from({ length: 3 }, (_, i) => ({
-  // 	image: (gallery[`image${i + 1}` as keyof typeof gallery] as AcfMediaItemConnectionEdge)?.node?.sourceUrl ?? onImageError('missing image in our impact stats').src,
-  // 	imageAlt: (gallery[`image${i + 1}` as keyof typeof gallery] as AcfMediaItemConnectionEdge)?.node?.altText ?? 'placeholder image',
-  // 	link: (gallery[`link${i + 1}` as keyof typeof gallery] as string) ?? '',
-  // 	text: (gallery[`text${i + 1}` as keyof typeof gallery] as string) ?? '',
-  // }));
+  
 
   return {
     stats: statsArray,
@@ -62,12 +54,12 @@ const { stats } = Astro.props;
 ---
 
 <section
-  class='bg-secondary-green-2 w-full md:max-w-[80%] flex flex-col items-center relative text-white [&>*]:mt-4 lg:[&>*]:mt-0 pb-4 py-8 my-2'
+  class='bg-secondary-green-2 w-full mx-auto flex flex-col items-center relative text-white *:mt-4 lg:*:mt-0 pb-4 py-8 my-2'
   aria-labelledby='impact-stats-heading'>
   <h2 id='impact-stats-heading' class='sr-only'>Our Impact Statistics</h2>
   <div
     role='list'
-    class='flex flex-col justify-center items-center lg:flex-row md:justify-evenly [&>*]:mt-4 lg:[&>*]:mt-0 lg:[&>*]:ml-2 lg:last:mr-2'>
+    class='flex flex-col max-w-[90%] justify-center items-center lg:flex-row md:justify-evenly *:mt-4 lg:*:mt-0 lg:*:ml-1 lg:last:mr-1'>
     {
       stats &&
         stats.map((stat, index) => (

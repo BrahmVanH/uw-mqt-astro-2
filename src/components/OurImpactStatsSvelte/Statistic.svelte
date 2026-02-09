@@ -11,7 +11,7 @@
   let { value, unit, text, start }: Props = $props();
 </script>
 
-<div class="bg-transparent mt-2 xl:mt-0 w-max">
+<div class="bg-transparent mt-2 xl:mt-0 w-max max-w-[75%]">
   <div class="flex flex-col items-center justify-between text-center">
     <p class="text-lg lg:text-xl font-bold font-heading" aria-live="polite">
       {#if value}
