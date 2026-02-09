@@ -10,32 +10,53 @@ import { formatHeroHeadingText } from '@/lib/utils';
 const title = 'Error 404';
 const text = `We’re sorry, but there’s nothing at this address. Please try refreshing, or visit our homepage.`;
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 60}, s-maxage=${60 * 60 * 24}, stale-while-revalidate=${60 * 60}`,
+  );
+}
 ---
 
 <Layout title={title}>
-	<div
-		class='w-full flex flex-col-reverse items-start md:grid grid-cols-10 grid-rows-5 relative overflow-hidden bg-primary-yellow-2 md:bg-transparent p-4 md:p-0'
-		aria-label={'Our Impact Hero Section'}>
-		<div class='w-full col-span-10 row-span-5 overflow-hidden'>
-			{bgImg && <img class='hidden md:block w-full aspect-auto  object-cover  ' width={1920} height={1080} src={bgImg.src} alt='' />}
-		</div>
-		<div
-			class=`md:absolute col-start-2 col-span-3 mx-auto row-start-3 row-span-1 w-full  
+  <div
+    class='w-full flex flex-col-reverse items-start md:grid grid-cols-10 grid-rows-5 relative overflow-hidden bg-primary-yellow-2 md:bg-transparent p-4 md:p-0'
+    aria-label={'Our Impact Hero Section'}>
+    <div class='w-full col-span-10 row-span-5 overflow-hidden'>
+      {
+        bgImg && (
+          <img
+            class='hidden md:block w-full aspect-auto  object-cover  '
+            width={1920}
+            height={1080}
+            src={bgImg.src}
+            alt=''
+          />
+        )
+      }
+    </div>
+    <div
+      class=`md:absolute col-start-2 col-span-3 mx-auto row-start-3 row-span-1 w-full  
 		flex flex-col justify-end lg:justify-center items-start justify-self-start self-center text-center text-white  inset-0 z-10 [&>*]:mt-4`>
-			{title && <h1 class='text-primary-blue-2 sm:mt-0 text-xl xl:text-3xl 2xl:text-4xl  w-full'>{formatHeroHeadingText(title)}</h1>}
-		</div>
-		<LearnMoreBtn
-			className='z-10 md:absolute md:right-8  max-h-min col-start-9 col-span-3 lg:col-span-2 row-start-3 row-span-2'
-			href='/'
-			text='HOME'
-			size='md'
-			openInNewTab={false}
-			color='blue'
-			ariaLabel='Go back to homepage'
-		/>
-	</div>
-	<section class='w-full p-4'>{text && <h1 class='text-lg font-semibold md:text-xl lg:text-2xl max-w-[75%] mx-auto'>{text}</h1>}</section>
+      {
+        title && (
+          <h1 class='text-primary-blue-2 sm:mt-0 text-xl xl:text-3xl 2xl:text-4xl  w-full'>
+            {formatHeroHeadingText(title)}
+          </h1>
+        )
+      }
+    </div>
+    <LearnMoreBtn
+      className='z-10 md:absolute md:right-8  max-h-min col-start-9 col-span-3 lg:col-span-2 row-start-3 row-span-2'
+      href='/'
+      text='HOME'
+      size='md'
+      openInNewTab={false}
+      color='blue'
+      ariaLabel='Go back to homepage'
+    />
+  </div>
+  <section class='w-full p-4'>
+    {text && <h1 class='text-lg font-semibold md:text-xl lg:text-2xl max-w-[75%] mx-auto'>{text}</h1>}
+  </section>
 </Layout>

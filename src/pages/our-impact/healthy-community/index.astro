@@ -5,15 +5,30 @@ import getPageContent from '@/lib/API';
 
 // component imports
 import Layout from '@/layouts/DefaultLayout.astro';
-import HowToContribute, { type Props as HowToContributeProps, createProps as createHowToContributeProps } from '@/components/HowToContribute.astro';
-import MobileFoodPantry, { type Props as MobileFoodPantryProps, createProps as createMobileFoodPantryProps } from '@/components/MobileFoodPantry.astro';
-import FourPillarsHero, { type Props as HeroProps, Pillar, createProps as createHeroProps } from '@/components/FourPillarsHero.astro';
+import HowToContribute, {
+  type Props as HowToContributeProps,
+  createProps as createHowToContributeProps,
+} from '@/components/HowToContribute.astro';
+import MobileFoodPantry, {
+  type Props as MobileFoodPantryProps,
+  createProps as createMobileFoodPantryProps,
+} from '@/components/MobileFoodPantry.astro';
+import FourPillarsHero, {
+  type Props as HeroProps,
+  Pillar,
+  createProps as createHeroProps,
+} from '@/components/FourPillarsHero.astro';
 
 import type { HealthyCommunityPageQueryResponse } from '@/types';
 import { onError } from '@/lib/error';
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', 'path:/our-impact/healthy-community');
+  Astro.response.headers.set('Netlify-Cache-Tag', 'path:/our-impact/healthy-community');
+}
 
 const path = Astro.url.pathname;
 const pageName = Pillar.HEALTHY_COMMUNITY;
@@ -22,7 +37,7 @@ const queryResponse = await getPageContent(path);
 const pageContent: HealthyCommunityPageQueryResponse = queryResponse;
 
 if (!pageContent) {
-	onError('No data returned from the server healthy community page query', Astro);
+  onError('No data returned from the server healthy community page query', Astro);
 }
 
 const heroContent = pageContent?.fourPillarsHeroComponents;
@@ -38,22 +53,22 @@ const howToContributeProps: HowToContributeProps = createHowToContributeProps(ho
 ---
 
 <Layout title={'Healthy Community | United Way Marquette County'}>
-	<main id='main-content'>
-		<h2 class='sr-only'>Healthy Community Programs</h2>
+  <main id='main-content'>
+    <h2 class='sr-only'>Healthy Community Programs</h2>
 
-		<section aria-labelledby='hero-section'>
-			<h2 id='hero-section' class='sr-only'>Welcome</h2>
-			<FourPillarsHero {...heroProps} />
-		</section>
+    <section aria-labelledby='hero-section'>
+      <h2 id='hero-section' class='sr-only'>Welcome</h2>
+      <FourPillarsHero {...heroProps} />
+    </section>
 
-		<section aria-labelledby='pantry-section'>
-			<h2 id='pantry-section' class='sr-only'>Mobile Food Pantry</h2>
-			<MobileFoodPantry {...mobileFoodPantryProps} />
-		</section>
+    <section aria-labelledby='pantry-section'>
+      <h2 id='pantry-section' class='sr-only'>Mobile Food Pantry</h2>
+      <MobileFoodPantry {...mobileFoodPantryProps} />
+    </section>
 
-		<section aria-labelledby='contribute-section'>
-			<h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
-			<HowToContribute {...howToContributeProps} />
-		</section>
-	</main>
+    <section aria-labelledby='contribute-section'>
+      <h2 id='contribute-section' class='sr-only'>How To Contribute</h2>
+      <HowToContribute {...howToContributeProps} />
+    </section>
+  </main>
 </Layout>

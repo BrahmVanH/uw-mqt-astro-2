@@ -118,13 +118,41 @@ export const handler: Handler = async (event: HandlerEvent) => {
       .filter(result => result.deleted > 0)
       .map(result => result.queryKey);
 
+    // Also purge Netlify CDN cache so stale s-maxage responses are cleared
+    let cdnPurgeResult: Record<string, unknown> = { skipped: true };
+    const siteId = process.env.NETLIFY_SITE_ID;
+    const netlifyToken = process.env.NETLIFY_PURGE_TOKEN;
+
+    if (siteId && netlifyToken) {
+      try {
+        const purgeResponse = await fetch(
+          'https://api.netlify.com/api/v1/purge',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${netlifyToken}`,
+            },
+            body: JSON.stringify({ site_id: siteId }),
+          },
+        );
+        cdnPurgeResult = {
+          status: purgeResponse.status,
+          ok: purgeResponse.ok,
+        };
+      } catch (cdnError) {
+        cdnPurgeResult = { error: String(cdnError) };
+      }
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: 'Cache invalidated successfully',
         postType: postTypeKey,
         clearedKeys: clearedKeys,
-        deletionResults: deletionResults
+        deletionResults: deletionResults,
+        cdnPurge: cdnPurgeResult,
       }),
     };
 

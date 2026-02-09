@@ -16,9 +16,14 @@ import type { GetInvolvedPageQueryResponse } from '@/types';
 import GetInvolvedPageHero, { createProps as createHeroProps } from '@/components/GetInvolvedPageHero.astro';
 import { onError } from '@/lib/error';
 
-// if (import.meta.env.PROD) {
-// 	Astro.response.headers.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 4}, s-maxage=${60 * 60 * 24 * 2}`);
-// }
+if (import.meta.env.PROD) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    `public, max-age=${60 * 5}, s-maxage=${60 * 60 * 2}, stale-while-revalidate=${60 * 60}`,
+  );
+  Astro.response.headers.set('Cache-Tag', 'path:/get-involved');
+  Astro.response.headers.set('Netlify-Cache-Tag', 'path:/get-involved');
+}
 
 const path = Astro.url.pathname;
 
@@ -27,7 +32,7 @@ const queryResponse = await getPageContent(path);
 const pageContent: GetInvolvedPageQueryResponse = queryResponse;
 
 if (!pageContent) {
-	onError('No data returned from the server get involved page query', Astro);
+  onError('No data returned from the server get involved page query', Astro);
 }
 
 // wp content for hero section
@@ -36,13 +41,13 @@ const heroProps = createHeroProps(heroContent);
 
 // wp content for partner ticker
 const partnerTickerContent: PartnersTickerItemFields[] = pageContent?.partnersTickerItems?.nodes
-	.map((node: PartnersTickerItem) => node.partnersTickerItemFields)
-	.filter(
-		(
-			// filter for undefined values
-			partner: Maybe<PartnersTickerItemFields> | undefined,
-		): partner is PartnersTickerItemFields => !!partner,
-	);
+  .map((node: PartnersTickerItem) => node.partnersTickerItemFields)
+  .filter(
+    (
+      // filter for undefined values
+      partner: Maybe<PartnersTickerItemFields> | undefined,
+    ): partner is PartnersTickerItemFields => !!partner,
+  );
 
 const partnerTickerItems = createPartnersTickerProps(partnerTickerContent);
 
@@ -58,32 +63,32 @@ const volunteerNeedsProps = await createVolunteerNeedsProps();
 ---
 
 <Layout title='United Way of Marquette County | Get Involved'>
-	<main id='main-content' class='w-full mx-auto max-w-[1800px]'>
-		<h2 class='sr-only'>Get Involved with United Way</h2>
+  <main id='main-content' class='w-full mx-auto max-w-[1800px]'>
+    <h2 class='sr-only'>Get Involved with United Way</h2>
 
-		<section aria-labelledby='hero-section'>
-			<h2 id='hero-section' class='sr-only'>Welcome</h2>
-			<GetInvolvedPageHero {...heroProps} />
-		</section>
+    <section aria-labelledby='hero-section'>
+      <h2 id='hero-section' class='sr-only'>Welcome</h2>
+      <GetInvolvedPageHero {...heroProps} />
+    </section>
 
-		<section aria-labelledby='partners-section'>
-			<h2 id='partners-section' class='sr-only'>Our Partners</h2>
-			<PartnersTicker {...partnerTickerItems} />
-		</section>
+    <section aria-labelledby='partners-section'>
+      <h2 id='partners-section' class='sr-only'>Our Partners</h2>
+      <PartnersTicker {...partnerTickerItems} />
+    </section>
 
-		<section aria-labelledby='volunteer-section'>
-			<h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
-			<VolunteerNeeds {...volunteerNeedsProps} />
-		</section>
+    <section aria-labelledby='volunteer-section'>
+      <h2 id='volunteer-section' class='sr-only'>Volunteer Opportunities</h2>
+      <VolunteerNeeds {...volunteerNeedsProps} />
+    </section>
 
-		<section aria-labelledby='help-section'>
-			<h2 id='help-section' class='sr-only'>Your Help Matters</h2>
-			<YourHelpMatters />
-		</section>
+    <section aria-labelledby='help-section'>
+      <h2 id='help-section' class='sr-only'>Your Help Matters</h2>
+      <YourHelpMatters />
+    </section>
 
-		<section aria-labelledby='impact-section'>
-			<h2 id='impact-section' class='sr-only'>Our Impact</h2>
-			<OurImpactCarousel {...impactCarouselProps} client:visible />
-		</section>
-	</main></Layout
+    <section aria-labelledby='impact-section'>
+      <h2 id='impact-section' class='sr-only'>Our Impact</h2>
+      <OurImpactCarousel {...impactCarouselProps} client:visible />
+    </section>
+  </main></Layout
 >
