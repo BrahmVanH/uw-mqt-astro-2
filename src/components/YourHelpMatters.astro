@@ -5,67 +5,96 @@ import LearnMoreBtn from './LearnMoreBtn.svelte';
 const { mainHeading, paragraph, bgUrl, link, linkText } = yourHelpMattersContent;
 ---
 
-<!--  Animation styling for Get Involved button & bg animation -->
+<!--  Animation styling for Get Involved button & bg reveal animation -->
 <style>
-	@keyframes fadeOut {
-		from {
-			opacity: 1;
-		}
-		to {
-			opacity: 0;
-		}
-	}
+  #main-bg {
+    clip-path: inset(0 25% 0 0);
+  }
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
+  #main-bg-reveal {
+    clip-path: inset(0 0 0 75%);
+    opacity: 0;
+    transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-	.fade-out {
-		animation: fadeOut 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-	}
-
-	.fade-in {
-		animation: fadeIn 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-	}
+  #main-bg-reveal.revealed {
+    opacity: 1;
+  }
 </style>
 
-<section class='relative lg:grid flex flex-col justify-center grid-cols-4 grid-rows-3 lg:my-4 lg:justify-center lg:items-center mb-4 mt-2 lg:mt-0 lg:mb-0'>
-	<img loading="lazy" decoding="async" id='main-bg' src={bgUrl} alt='custom grahpic' class='hidden lg:block  row-start-1 row-end-4 col-start-1 col-end-5 object-cover object-center h-full w-7/8' />
-	<div class='relative lg:absolute w-full col-start-2 col-end-4 row-start-1 row-end-4
+<section
+  class='relative lg:grid flex flex-col justify-center grid-cols-4 grid-rows-3 lg:my-4 lg:justify-center lg:items-center mb-4 mt-2 lg:mt-0 lg:mb-0'>
+  <img
+    loading='lazy'
+    decoding='async'
+    id='main-bg'
+    src={bgUrl}
+    alt='custom grahpic'
+    class='hidden lg:block row-start-1 row-end-4 col-start-1 col-end-5 object-cover object-center h-full w-7/8'
+  />
+  <img
+    loading='lazy'
+    decoding='async'
+    id='main-bg-reveal'
+    src={bgUrl}
+    alt=''
+    aria-hidden='true'
+    class='hidden lg:block absolute inset-0 row-start-1 row-end-4 col-start-1 col-end-5 object-cover object-center h-full w-7/8'
+  />
+  <div
+    class='relative lg:absolute w-full col-start-2 col-end-4 row-start-1 row-end-4
 		flex flex-col justify-center lg:items-start font-medium ml-2 lg:ml-0'>
-		{mainHeading.first && <span class='text-xl xl:text-2xl 2xl:text-3xl sm:ml-2 lg:ml-4 text-primary-blue-2'>{mainHeading.first}</span>}
-		{mainHeading.second && <span class=' text-xl xl:text-2xl 2xl:text-3xl sm:ml-2 lg:ml-4 text-primary-blue-2'>{mainHeading.second}</span>}
-		{mainHeading.third && <span class='text-lg xl:text-xl 2xl:text-2xl ml-2 sm:ml-4 lg:ml-7 text-nowrap font-semibold'>{mainHeading.third}</span>}
-		{paragraph && <p class='text-md xl:text-lg w-[80%] ml-7 mt-1 leading-normal'>{paragraph}</p>}
+    {
+      mainHeading.first && (
+        <span class='text-xl xl:text-2xl 2xl:text-3xl sm:ml-2 lg:ml-4 text-primary-blue-2'>{mainHeading.first}</span>
+      )
+    }
+    {
+      mainHeading.second && (
+        <span class=' text-xl xl:text-2xl 2xl:text-3xl sm:ml-2 lg:ml-4 text-primary-blue-2'>{mainHeading.second}</span>
+      )
+    }
+    {
+      mainHeading.third && (
+        <span class='text-lg xl:text-xl 2xl:text-2xl ml-2 sm:ml-4 lg:ml-7 text-nowrap font-semibold'>
+          {mainHeading.third}
+        </span>
+      )
+    }
+    {paragraph && <p class='text-md xl:text-lg w-[80%] ml-7 mt-1 leading-normal'>{paragraph}</p>}
 
-		{
-			bgUrl && (
-				<div class='flex flex-row space-x-4 mt-2 lg:mt-4 w-full justify-center items-center'>
-					<LearnMoreBtn useBg={true} bgUrl={bgUrl} className='learn-more-btn ' href={link} text={linkText} ariaLabel='link to Yoopers United page' size='md' color='blue' />
-				</div>
-			)
-		}
-	</div>
+    {
+      bgUrl && (
+        <div class='flex flex-row space-x-4 mt-2 lg:mt-4 w-full justify-center items-center'>
+          <LearnMoreBtn
+            useBg={true}
+            bgUrl={bgUrl}
+            className='learn-more-btn '
+            href={link}
+            text={linkText}
+            ariaLabel='link to Yoopers United page'
+            size='md'
+            color='blue'
+          />
+        </div>
+      )
+    }
+  </div>
 </section>
 
 <script lang='ts' is:inline>
-	if (document && window.innerWidth > 1023) {
-		const mainBg = document.getElementById('main-bg');
-		const button = document.querySelector('.learn-more-btn');
+  if (document && window.innerWidth > 1023) {
+    const mainBg = document.getElementById('main-bg');
+    const button = document.querySelector('.learn-more-btn');
 
-		button?.addEventListener('mouseenter', () => {
-			mainBg?.classList.remove('fade-in');
-			mainBg?.classList.add('fade-out');
-		});
+    button?.addEventListener('mouseenter', () => {
+      const reveal = document.getElementById('main-bg-reveal');
+      reveal?.classList.add('revealed');
+    });
 
-		button?.addEventListener('mouseleave', () => {
-			mainBg?.classList.remove('fade-out');
-			mainBg?.classList.add('fade-in');
-		});
-	}
+    button?.addEventListener('mouseleave', () => {
+      const reveal = document.getElementById('main-bg-reveal');
+      reveal?.classList.remove('revealed');
+    });
+  }
 </script>
