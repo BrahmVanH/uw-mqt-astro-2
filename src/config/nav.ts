@@ -8,7 +8,7 @@ const config: Config = {
     navContentRight: "space-y-1 col-span-1 text-nowrap p-2 xl:text-md",
     navHeading: "text-lg lg:text-xl font-semibold mb-4",
     navTrigger:
-      "text-sm xl:text-md font-bold p-2 h-min lg:hover:no-underline lg:hover:bg-white",
+      "text-sm xl:text-md font-bold p-2 h-min lg:hover:no-underline",
     accordionContent:
       "absolute right-full top-0 min-w-[200px] bg-white shadow-lg rounded-none p-2 ",
   },
