@@ -18,6 +18,7 @@
 
   let { path }: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   let bgColor = path === '/' ? 'transparent' : 'white';
 
   const { navTabs, helpfulLinks, commonStyles } = navContent;
@@ -65,7 +66,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger
                 class={cn(
-                  'group inline-flex h-10 w-max items-center justify-center  bg-transparent px-4 py-2 font-medium transition-colors lg:hover:bg-accent lg:hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ',
+                  'group inline-flex h-10 w-max items-center justify-center  bg-transparent px-4 py-2 font-medium transition-colors  lg:hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ',
                   commonStyles.navTrigger,
                 )}
                 role="menuitem"
@@ -73,7 +74,7 @@
               >
                 {title}
                 <ChevronDown
-                  class="relative top-[1px] ml-1 size-3 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                  class="relative top-px ml-1 size-3 transition-transform duration-200 group-data-[state=open]:rotate-180"
                   aria-hidden="true"
                 />
               </NavigationMenu.Trigger>
@@ -125,7 +126,7 @@
             text="Donate"
             href="/donate"
             size="md"
-            className=" max-h-[20px] font-semibold"
+            className=" max-h-5 font-semibold"
             openInNewTab={true}
             color="black"
             ariaLabel="Make a donation to the united way of marquette county"
@@ -134,7 +135,7 @@
       </NavigationMenu.List>
       <div class="absolute left-1/4 xl:left-[50%] top-full flex w-full">
         <NavigationMenu.Viewport
-          class="origin-top-center rounded-none relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full  border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]"
+          class="origin-top-center rounded-none relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full  border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)"
         />
       </div>
     </div>
