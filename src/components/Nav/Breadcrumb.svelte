@@ -24,11 +24,17 @@
     return parts.map((part, i) => {
       if (i === 0) {
         return {
-          title: 'Home',
+          title: 'home',
           path: '/',
         };
       } else {
-        return { title: capitalizeFirstLetter(part), path: parts.slice(0, i + 1).join('/') };
+        if (part === 'about') {
+          return {
+            title: part,
+            path: '/about/our-leadership',
+          };
+        }
+        return { title: part.toLowerCase(), path: parts.slice(0, i + 1).join('/') };
       }
     });
   }
