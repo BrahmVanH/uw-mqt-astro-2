@@ -44,8 +44,7 @@
       return n;
     }
 
-    const nameArr = n.split('-');
-    return nameArr.map(n => capitalizeFirstLetter(n)).join(' ');
+    return n.split('-').join(' ').toLowerCase();
   }
 </script>
 
