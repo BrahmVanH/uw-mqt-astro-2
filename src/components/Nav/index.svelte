@@ -66,7 +66,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger
                 class={cn(
-                  'group inline-flex h-10 w-max items-center justify-center  bg-transparent px-4 py-2 font-medium transition-colors  lg:hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ',
+                  'group inline-flex h-10 w-max items-center justify-center  bg-transparent px-4 py-2 font-medium transition-colors  lg:hover:text-accent-foreground focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ',
                   commonStyles.navTrigger,
                 )}
                 role="menuitem"
